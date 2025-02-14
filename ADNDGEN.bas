@@ -35,5 +35,28 @@ Rem I don't know what this does yet. Throws an error, though.
 1120 Print "AND "; SFF; "% TO BEND BARS"
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
-1140 IN = z2
+1140 IN = zz
+1150 If IN < 9 Then Print "INTELLIGENCE TOO LOW FOR MAGIC USER"
+1160 If IN = 9 Then Print "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
+1170 If IN > 9 And IN < 13 Then Print "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
+1180 If IN > 12 And IN < 15 Then Print "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9"
+1190 If IN > 14 And IN < 17 Then Print "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11"
+2200 If IN = 17 Then Print "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
+2210 If IN = 18 Then Print "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
+Rem The initial code had "12$ =" instead of "Then Print"
+Rem I don't know BASIC well enough to say what that means.
+Rem I started learning the language today.
+2220 If IN = 3 Then GoTo 2240
+2230 GoTo 2250
+2240 Print "DIFFICULT SPEECH - ILLITERATE"
+2250 If IN > 3 And IN < 6 Then GoTo 2270
+2260 GoTo 2280
+2270 Print "EASY SPEECH BUT ILLITERATE"
+2280 If IN > 5 And IN < 9 Then GoTo 2300
+2290 GoTo 2310
+2300 Print "BARELY LITERATE"
+2310 If IN > 8 And IN < 13 Then GoTo 2330
+2320 GoTo 2340
+2330 Print "LITERATE IN NATIVE TONGUE"
+2340 GOTO 2360
 
