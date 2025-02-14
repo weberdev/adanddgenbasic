@@ -36,7 +36,7 @@ Rem Taking more liberties with the code.
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
-1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
+'1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
 1120 Print "AND "; SFF; "% TO BEND BARS"
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
@@ -105,7 +105,7 @@ Rem very excited for the mystical line 80
 
 1585 DX = zz
 1590 Print "CHARACTER'S DEXTERITY IS "; DX;
-1600 DX = KC: KC = 0
+Rem 1600 DX = KC: KC = 0
 1610 If DX = 3 Then DF = -3
 1620 If DX = 4 Then DF = -2
 1630 If DX = 5 Then DF = -1
@@ -121,3 +121,40 @@ Rem very excited for the mystical line 80
 1740 If DF = 3 Then GoSub 3700
 1750 If DF = 0 Then GoTo 80
 1760 Print "Add "; DF; " TO MISSLE FIRE ROLLS 'TO HIT'"
+1770 Print "Add armor class"
+1780 GoTo 80
+1790 CO = zz
+1800 A = SR / CO
+1810 If A < .67 Or A > 1.5 Then GoTo 100
+1820 Print "CHARACTER'S CONSTITUTION IS "; CO
+Rem 1830 goto 80
+Rem again, 80 is the core of this
+1840 CH = zz
+1850 Print "CHARACTER'S CHARISMA IS "; CH
+1860 If CH = 3 Then XF = 1
+1870 If CH = 4 Then XF = 1
+1880 If CH > 4 And CH < 6 Then XF = 2
+1890 If CH > 6 And CH < 9 Then XF = 3
+1900 If CH > 8 And CH < 12 Then XF = 4
+1910 If CH > 11 And CH < 14 Then XF = 5
+1920 If CH = 14 Then XF = 6
+1930 If CH = 15 Then XF = 7
+1940 If CH = 16 Then XF = 8
+1950 If CH = 17 Then XF = 10
+1960 If CH = 18 Then XF = 15
+1970 Print "CAN HAVE "; XF; " RETAINERS"
+Rem 1971 If H = 1 Then
+1980 L = 0
+Rem 1990 home
+2000 Print "       CLASS LIST"
+2010 PRINT " --------------------------"
+2020 Print " 1 Fighter 2 Paladin"
+2030 Print " 3 Ranger 4 Cavalier"
+2040 Print " 5 Magic-User 6 Illusionist"
+2050 Print " 7 Cleric 8 Druid"
+2060 Print " 9 Thief 10 Assassin"
+2070 Print " 11 Monk"
+2080 Print " SELECT THE CLASS THAT YOU WISH "
+2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
+2100 Print " NUMBER FROM THE TABLE ABOVE "
+
