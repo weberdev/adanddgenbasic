@@ -115,4 +115,9 @@ Rem very excited for the mystical line 80
 1680 If DX = 18 Then DF = 3
 1690 If DF = -3 Then GoSub 3600
 1700 If DF = -2 Then GoSub 3620
-
+1710 If DF = -1 Then GoSub 3640
+1720 If DF = 1 Then GoSub 3660
+1730 If DF = 2 Then GoSub 3680
+1740 If DF = 3 Then GoSub 3700
+1750 If DF = 0 Then GoTo 80
+1760 Print "Add "; DF; " TO MISSLE FIRE ROLLS 'TO HIT'"
