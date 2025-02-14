@@ -1,0 +1,26 @@
+1000 ST = 22
+1001 ST = 18 then PER = INT(RND(1)*100)+1)
+1010 If ST = 3 Then SF = -3 And SFF = 0
+1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0
+1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
+1040 If ST > 7 And ST < 17 Then SF = 0
+1041 If ST > 7 And ST < 10 Then SFF = 1
+1042 If ST > 9 And ST < 12 Then SFF = 2
+1043 If ST > 11 And ST < 14 Then SFF = 4
+1044 If ST > 13 And ST < 16 Then SFF = 7
+1045 If ST = 16 Then SFF = 10
+1050 If ST = 17 Then SF = 1 And SFF = 13
+1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20
+1080 If PER > 50 And PER < 100 Then SF = 2
+1081 If PER > 50 And PER < 76 Then SFF = 25
+1082 If PER > 75 And PER < 91 Then SFF = 30
+1083 If PER > 90 And PER < 100 Then SFF = 35
+1090 If PER = 100 Then SF = 3 And SFF = 40
+Rem 1100 If SF = 0 Then 80
+Rem I don't know what this does yet. Throws an error, though.
+1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
+1120 Print "AND "; SFF; "% TO BEND BARS"
+Rem 1130 GOTO 80
+Rem line 80 isn't defined here, I'll get to it, I'm sure.
+1140 IN = z2
+
