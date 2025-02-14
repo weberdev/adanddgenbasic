@@ -10,7 +10,9 @@ Rem 306 zz = d6 + d6 + d6
 Rem the above option is 3d6 straight down the line, as Crom intended.
 406 zz = (die1 = d6) + (die2 = d6) + (die3 = d6) + (die4 = d6) - MIN(die1, die2, die3, die4)
 Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
-
+999 PER = 0
+Rem I'm guessing that this will fail if I don't have this value.
+Rem Taking more liberties with the code.
 1000 ST = zz
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1010 If ST = 3 Then SF = -3 And SFF = 0
@@ -29,13 +31,19 @@ Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
 1082 If PER > 75 And PER < 91 Then SFF = 30
 1083 If PER > 90 And PER < 100 Then SFF = 35
 1090 If PER = 100 Then SF = 3 And SFF = 40
+1091 Print "CHARACTER'S STRENGTH IS "; ST; PER
+
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
+
 1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
 1120 Print "AND "; SFF; "% TO BEND BARS"
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
+
+
 1140 IN = zz
+1141 Print "CHARACTER'S INT IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
 1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
 1170 If IN > 9 And IN < 13 Then SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
@@ -77,9 +85,24 @@ Rem Mine does not.
 Rem 2440 goto 80
 Rem line 80 is still a mystery.
 Rem we'll get there.
+
 2450 WI = zz
 2460 B = IN / WI
 Rem 2470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
+2480 Print "Character's wisdom is "; WI
+2490 If WI = 3 Then WF = -3
+2500 If WI = 4 Then WF = -2
+2510 If WI > 4 And WI < 8 Then WF = -1
+2520 If WI > 7 And WI < 15 Then WF = 0
+2530 If WI = 15 Then WF = 1
+2540 If WI = 16 Then WF = 2
+2550 If WI = 17 Then WF = 3
+2560 If WI = 18 Then WF = 4
+2570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
+Rem 2580 GOTO 80
+Rem very excited for the mystical line 80
 
-
+2585 DX = zz
+2590 Print "CHARACTER'S DEXTERITY IS "; DX;
+2600 DX
