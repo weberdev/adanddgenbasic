@@ -49,8 +49,8 @@ Rem line 80 isn't defined here, I'll get to it, I'm sure.
 1170 If IN > 9 And IN < 13 Then SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
 1180 If IN > 12 And IN < 15 Then SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9"
 1190 If IN > 14 And IN < 17 Then SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11"
-2200 If IN = 17 Then SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
-2210 If IN = 18 Then SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
+1200 If IN = 17 Then SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
+1210 If IN = 18 Then SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
 
 Rem The initial code had "12$ =" instead of "Then Print"
 Rem That comment no longer makes sense as SP$ has replaced THEN PRINT which replaced 12$
@@ -60,49 +60,59 @@ Rem On further reflection, strings in this basic dialect seem to need to end wit
 Rem Perhaps the prior dialect allowed such formatting?
 Rem Mine does not.
 
-2220 If IN = 3 Then GoTo 2240
-2230 GoTo 2250
-2240 lang$ = "DIFFICULT SPEECH - ILLITERATE"
-2250 If IN > 3 And IN < 6 Then GoTo 2270
-2260 GoTo 2280
-2270 lang$ = "EASY SPEECH BUT ILLITERATE"
-2280 If IN > 5 And IN < 9 Then GoTo 2300
-2290 GoTo 2310
-2300 lang$ = "BARELY LITERATE"
-2310 If IN > 8 And IN < 13 Then GoTo 2330
-2320 GoTo 2340
-2330 lang$ = "LITERATE IN NATIVE TONGUE"
-2340 GoTo 2360
-2350 lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
-2360 If IN > 15 And IN < 18 Then GoTo 2380
-2370 GoTo 2390
-2380 lang$ = "LITERATE AND FLUENT IN 3 LANGUAGES"
-2390 If IN = 18 Then GoTo 2410
-2400 GoTo 2420
-2410 lang$ = "LITERATE AND FLUENT IN 4 LANGUAGES"
-2420 Print lang$
-2430 Print SP$
-Rem 2440 goto 80
+1220 If IN = 3 Then GoTo 1240
+1230 GoTo 1250
+1240 lang$ = "DIFFICULT SPEECH - ILLITERATE"
+1250 If IN > 3 And IN < 6 Then GoTo 1270
+1260 GoTo 1280
+1270 lang$ = "EASY SPEECH BUT ILLITERATE"
+1280 If IN > 5 And IN < 9 Then GoTo 1300
+1290 GoTo 1310
+1300 lang$ = "BARELY LITERATE"
+1310 If IN > 8 And IN < 13 Then GoTo 1330
+1320 GoTo 1340
+1330 lang$ = "LITERATE IN NATIVE TONGUE"
+1340 GoTo 1360
+1350 lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
+1360 If IN > 15 And IN < 18 Then GoTo 1380
+1370 GoTo 1390
+1380 lang$ = "LITERATE AND FLUENT IN 3 LANGUAGES"
+1390 If IN = 18 Then GoTo 1410
+1400 GoTo 1420
+1410 lang$ = "LITERATE AND FLUENT IN 4 LANGUAGES"
+1420 Print lang$
+1430 Print SP$
+Rem 1440 goto 80
 Rem line 80 is still a mystery.
 Rem we'll get there.
 
-2450 WI = zz
-2460 B = IN / WI
-Rem 2470 If B < .67 Or B > 1.5 Then GoTo 100
+1450 WI = zz
+1460 B = IN / WI
+Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
-2480 Print "Character's wisdom is "; WI
-2490 If WI = 3 Then WF = -3
-2500 If WI = 4 Then WF = -2
-2510 If WI > 4 And WI < 8 Then WF = -1
-2520 If WI > 7 And WI < 15 Then WF = 0
-2530 If WI = 15 Then WF = 1
-2540 If WI = 16 Then WF = 2
-2550 If WI = 17 Then WF = 3
-2560 If WI = 18 Then WF = 4
-2570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
+1480 Print "Character's wisdom is "; WI
+1490 If WI = 3 Then WF = -3
+1500 If WI = 4 Then WF = -2
+1510 If WI > 4 And WI < 8 Then WF = -1
+1520 If WI > 7 And WI < 15 Then WF = 0
+1530 If WI = 15 Then WF = 1
+1540 If WI = 16 Then WF = 2
+1550 If WI = 17 Then WF = 3
+1560 If WI = 18 Then WF = 4
+1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
 Rem 2580 GOTO 80
 Rem very excited for the mystical line 80
 
-2585 DX = zz
-2590 Print "CHARACTER'S DEXTERITY IS "; DX;
-2600 DX
+1585 DX = zz
+1590 Print "CHARACTER'S DEXTERITY IS "; DX;
+1600 DX = KC: KC = 0
+1610 If DX = 3 Then DF = -3
+1620 If DX = 4 Then DF = -2
+1630 If DX = 5 Then DF = -1
+1640 If DX > 5 And DX < 16 Then DF = 0
+1650 If DX = 16 Then DF = 1
+1670 If DX = 17 Then DF = 2
+1680 If DX = 18 Then DF = 3
+1690 If DF = -3 Then GoSub 3600
+1700 If DF = -2 Then GoSub 3620
+
