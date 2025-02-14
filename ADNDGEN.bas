@@ -1,5 +1,18 @@
-1000 ST = 22
-1001 ST = 18 then PER = INT(RND(1)*100)+1)
+Rem I don't know what zz means, it could be 22, but I doubt that.
+Rem Upon looking at the original AD&D Player's Handbook (effort applied)
+Rem I saw that the method of generating ability scores is the purview of the
+Rem referee, and is not actually in the original PHB.
+Rem Thus, at the very first line, I have taken a liberty with the code.
+Rem Mea maxima culpa.
+
+106 d6 = Int(Rnd * 6 + 1)
+
+Rem 306 zz = d6 + d6 + d6
+Rem the above option is 3d6 straight down the line, as Crom intended.
+406 zz = (die1 = d6) + (die2 = d6) + (die3 = d6) + (die4 = d6) - MIN(die1, die2, die3, die4)
+Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
+1000 ST = zz
+1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1010 If ST = 3 Then SF = -3 And SFF = 0
 1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0
 1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
