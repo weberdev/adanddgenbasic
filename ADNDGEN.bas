@@ -36,7 +36,7 @@ Rem Taking more liberties with the code.
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
-'1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
+1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
 1120 Print "AND "; SFF; "% TO BEND BARS"
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
@@ -254,7 +254,23 @@ Rem 1990 home
 3070 If CN = 11 Then HF(11) = 8
 Rem 3080 CLASS = CLASS(CN)$
 Rem Don't know what this means, but it throws an error
-3090
+3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
+3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
+3110 Z1$ = " 7    9    11   --   --   --   --   --  "
+3120 TY$ = " THIEF'S ABILITIES"
+3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR"
+3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS"
+3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+3160 RACE1$ = "DWARVEN": RACE2$ = "ELVEN": RACE3$ = "GNOME"
+3170 RACE4$ = "HALF-ELVEN": RACE5$ = "HALFLING": RACE6$ = "HALF-ORC": RACE7$ = "HUMAN"
+3180 Print "         RACE LIST"
+3190 Print " 1: DWARVEN  2: ELVEN"
+3200 Print " 3: GNOME    4: HALF-ELVEN"
+3210 Print " 5: HALFLING 6: HALF-ORC"
+3220 Print " 7: HUMAN"
+3230 Print " SELECT THE RACE YOU WISH"
+3240 Print " YOUR CHARACTER TO BE AND ENTER THE"
+3250 Print " NUMBER FROM THE TABLE ABOVE"
 
 
 
