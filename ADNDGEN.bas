@@ -120,7 +120,7 @@ Rem 1600 DX = KC: KC = 0
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
 1750 If DF = 0 Then GoTo 80
-1760 Print "Add "; DF; " TO MISSLE FIRE ROLLS 'TO HIT'"
+1760 Print "Add "; DF; " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 Print "Add armor class"
 Rem 1780 GoTo 80
 1790 CO = zz
