@@ -270,7 +270,25 @@ Rem Don't know what this means, but it throws an error
 3220 Print " 7: HUMAN"
 3230 Print " SELECT THE RACE YOU WISH"
 3240 Print " YOUR CHARACTER TO BE AND ENTER THE"
-3250 Print " NUMBER FROM THE TABLE ABOVE"
+3250 Print " NUMBER FROM THE TABLE ABOVE", RA$
+3251 RA = Val(RA$)
+3260 If RA < 1 Or RA > 7 Then GoTo 3180
+Rem 3270 something was here, possibly tightened
+3280 If CN = 1 Then m1 = 150
+3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
+3300 If CN > 1 And CN < 5 Then M2 = 50
+3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
+3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
+3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
+3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
+3350 GOLD = Int((Rnd(1) * m1) + M2)
+3360 HP = Int((Rnd(1) * HF(CN)) + 1)
+Rem 3370 HOME
+3380 Print "   SUMMARY OF CHARACTER "
+3390 Print "   RACE: ", RACE$
+
+
+
 
 
 
