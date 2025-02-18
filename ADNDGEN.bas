@@ -286,6 +286,8 @@ Rem 3270 something was here, possibly tightened
 Rem 3370 HOME
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
+3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
+
 
 
 
