@@ -289,7 +289,7 @@ Rem 3370 HOME
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
 3410 Print " PRESS SPACE BAR TO CONTINUE"
 3420 GET
-
+rem not sure how get works yet
 
 
 
