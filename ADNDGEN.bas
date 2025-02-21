@@ -90,6 +90,7 @@ Rem we'll get there.
 1460 B = IN / WI
 Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
+Rem presumably similar to the STR divided by con
 1480 Print "Character's wisdom is "; WI
 1490 If WI = 3 Then WF = -3
 1500 If WI = 4 Then WF = -2
