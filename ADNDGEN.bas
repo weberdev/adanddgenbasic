@@ -305,8 +305,9 @@ Rem not sure how get works yet
 3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; SFF; " TO DAMAGE"
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
-Rem 3470 PRINT I$
+3470 Print lang$
 Rem I DON'T KNOW WHAT THAT'S ABOUT
+rem UPDATE: Languages
 3480 Print " WISDOM: ": Print WI
 3490 If WF = 0 Then GoTo 3510
 3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
