@@ -324,6 +324,16 @@ Rem moved these onto separate lines
 3591 Print TA$
 3592 Print TK$
 3593 Print K1$
+Rem holy shit finally here
+3600 X1$ = "ADD "
+3601 X2$ = "3"
+3602 X3$ = " TO"
+3610 Return
+3620 X1$ = "ADD "
+3621 X2$ = "2"
+3622 X3$ = " TO"
+3630 RETURN
+
 
 
 
