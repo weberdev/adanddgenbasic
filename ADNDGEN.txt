@@ -315,16 +315,7 @@ Rem I DON'T KNOW WHAT THAT'S ABOUT
 3530 Print " MAY HAVE "; XF; " RETAINERS"
 3540 If CN = 7 Then GoTo 3560
 3550 GoTo 3570
-Rem moved these onto separate lines
-3570 Print CZ$
-3571 Print CU$
-3572 Print Z1$
-3580 GoTo 4000
-3590 Print TY$
-3591 Print TA$
-3592 Print TK$
-3593 Print K1$
-
+3570 Print
 
 
 
