@@ -284,13 +284,20 @@ Rem 3270 something was here, possibly tightened
 3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
 3350 GOLD = Int((Rnd(1) * m1) + M2)
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
-Rem 3370 HOME
+Rem 3370 HOME            S
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
 3410 Print " PRESS SPACE BAR TO CONTINUE"
-3420 GET
-rem not sure how get works yet
+3420 Do
+    3421 A$ = InKey$
+3422 Loop Until A$ = " "
+Rem fixed bug that would cause loops
+Rem not sure how get works yet
+3430 Print " STRENGTH: ": Print SR
+3440 Print " ADD "; SF; "TO ROLL TO HIT, AND ";SFF; " TO DAMAGE"
+3450 Print " INTELLIGENCE: ": Print IN
+3460 If CN = 5 Then Print IZ$
 
 
 
