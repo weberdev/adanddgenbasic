@@ -363,13 +363,14 @@ Rem holy shit finally here
 
 
 Function ROLLDIERESULT
+    Randomize Timer
     ROLLDIERESULT = Int(Rnd * 6) + 1
 End Function
 
 Function RollStat
     Dim rolls(4) As Integer
     For i = 1 To 4
-        rolls(i) = RollDie
+        rolls(i) = ROLLDIERESULT
     Next i
 
     ' Find the lowest roll
