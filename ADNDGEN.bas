@@ -341,11 +341,14 @@ Rem holy shit finally here
 3661 X2$ = "1"
 3662 X3$ = " FROM"
 3670 Return
-3680 X1$ = "SUBSTRACT "
+3680 X1$ = "SUBTRACT "
 3681 X2$ = "2"
 3682 X3$ = " FROM"
 3690 Return
-3700
+3700 X1$ = "SUBTRACT "
+3701 X2$ = "3"
+3702 X3$ = " FROM"
+3710 Return
 
 
 
