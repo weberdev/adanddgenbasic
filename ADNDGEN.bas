@@ -332,8 +332,20 @@ Rem holy shit finally here
 3620 X1$ = "ADD "
 3621 X2$ = "2"
 3622 X3$ = " TO"
-3630 RETURN
-
+3630 Return
+3640 X1$ = "ADD "
+3641 X2$ = "2"
+3642 X3$ = " TO"
+3650 Return
+3660 X1$ = "SUBTRACT "
+3661 X2$ = "1"
+3662 X3$ = " FROM"
+3670 Return
+3680 X1$ = "SUBSTRACT "
+3681 X2$ = "2"
+3682 X3$ = " FROM"
+3690 Return
+3700
 
 
 
