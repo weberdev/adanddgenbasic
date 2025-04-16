@@ -127,13 +127,13 @@ Rem 1600 DX = KC: KC = 0
 1720 If DF = 1 Then GoSub 3660
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
-1750 If DF = 0 Then GoTo 80
+Rem 1750 If DF = 0 Then GoTo 80
 1760 Print "Add "; DF; " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 Print "Add armor class"
 Rem 1780 GoTo 80
 1790 CO = zz
 1800 A = SR / CO
-1810 If A < .67 Or A > 1.5 Then GoTo 100
+Rem 1810 If A < .67 Or A > 1.5 Then GoTo 100
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 Rem 1830 goto 80
 Rem again, 80 is the core of this
@@ -321,9 +321,10 @@ Rem UPDATE: Languages
 3540 If CN = 7 Then GoTo 3560
 3550 GoTo 3570
 Rem moved these onto separate lines
-3570 Print CZ$
-3571 Print CU$
-3572 Print Z1$
+3560 Print CZ$
+3561 Print CU$
+3562 Print Z1$
+3570 IF CN = 9 then GOTO 3590
 3580 GoTo 4000
 3590 Print TY$
 3591 Print TA$
@@ -356,8 +357,7 @@ Rem holy shit finally here
 3710 Return
 
 
-
-
+4000 Print "DONE"
 
 
 
