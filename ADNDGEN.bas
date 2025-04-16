@@ -13,6 +13,12 @@ Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
 999 PER = 0
 Rem I'm guessing that this will fail if I don't have this value.
 Rem Taking more liberties with the code.
+
+Rem ST = strength score
+Rem PER = percentile value on 18 str
+Rem SFF = Hit probability
+Rem I NEED TO ADD DAMAGE ADJUSTMENT
+Rem TODO ADD DAMAGE ADJUSTMENT
 1000 ST = zz
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1010 If ST = 3 Then SF = -3 And SFF = 0
@@ -32,6 +38,7 @@ Rem Taking more liberties with the code.
 1083 If PER > 90 And PER < 100 Then SFF = 35
 1090 If PER = 100 Then SF = 3 And SFF = 40
 1091 Print "CHARACTER'S STRENGTH IS "; ST; PER
+
 
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
@@ -295,10 +302,11 @@ Rem 3370 HOME            S
 Rem fixed bug that would cause loops
 Rem not sure how get works yet
 3430 Print " STRENGTH: ": Print SR
-3440 Print " ADD "; SF; "TO ROLL TO HIT, AND ";SFF; " TO DAMAGE"
+3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; SFF; " TO DAMAGE"
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
-
+Rem 3470 PRINT I$
+rem I DON'T KNOW WHAT THAT'S ABOUT
 
 
 
