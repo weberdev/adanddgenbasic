@@ -260,7 +260,11 @@ Rem 1990 home
 3050 If CN = 9 Then HF(9) = 6
 3060 If CN = 10 Then HF(10) = 6
 3070 If CN = 11 Then HF(11) = 8
-Rem 3080 CLASS = CLASS(CN)$
+3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
+3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
+3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
+
+3080 CLASS$ = CLASS$(CN)
 Rem Don't know what this means, but it throws an error
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
 3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
@@ -307,7 +311,7 @@ Rem not sure how get works yet
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
 Rem I DON'T KNOW WHAT THAT'S ABOUT
-rem UPDATE: Languages
+Rem UPDATE: Languages
 3480 Print " WISDOM: ": Print WI
 3490 If WF = 0 Then GoTo 3510
 3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
