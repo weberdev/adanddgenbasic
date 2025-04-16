@@ -5,7 +5,8 @@ Rem referee, and is not actually in the original PHB.
 Rem Thus, at the very first line, I have taken a liberty with the code.
 Rem Mea maxima culpa.
 
-106 d6 = Int(Rnd * 6 + 1)
+
+105 Randomize Timer
 Rem 306 zz = d6 + d6 + d6
 Rem the above option is 3d6 straight down the line, as Crom intended.
 406 zz = (die1 = d6) + (die2 = d6) + (die3 = d6) + (die4 = d6) - MIN(die1, die2, die3, die4)
@@ -19,7 +20,7 @@ Rem PER = percentile value on 18 str
 Rem SFF = Hit probability
 Rem I NEED TO ADD DAMAGE ADJUSTMENT
 Rem TODO ADD DAMAGE ADJUSTMENT
-1000 ST = zz
+1000 ST = RollStat
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1010 If ST = 3 Then SF = -3 And SFF = 0
 1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0
@@ -38,7 +39,7 @@ Rem TODO ADD DAMAGE ADJUSTMENT
 1083 If PER > 90 And PER < 100 Then SFF = 35
 1090 If PER = 100 Then SF = 3 And SFF = 40
 1091 Print "CHARACTER'S STRENGTH IS "; ST; PER
-
+Rem This is not part of the initial code, but a debug.
 
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
@@ -49,7 +50,7 @@ Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
 
-1140 IN = zz
+1140 IN = RollStat
 1141 Print "CHARACTER'S INT IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
 1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
@@ -93,7 +94,7 @@ Rem 1440 goto 80
 Rem line 80 is still a mystery.
 Rem we'll get there.
 
-1450 WI = zz
+1450 WI = RollStat
 1460 B = IN / WI
 Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
@@ -111,7 +112,7 @@ Rem presumably similar to the STR divided by con
 Rem 2580 GOTO 80
 Rem very excited for the mystical line 80
 
-1585 DX = zz
+1585 DX = RollStat
 1590 Print "CHARACTER'S DEXTERITY IS "; DX;
 Rem 1600 DX = KC: KC = 0
 1610 If DX = 3 Then DF = -3
@@ -131,13 +132,13 @@ Rem 1750 If DF = 0 Then GoTo 80
 1760 Print "Add "; DF; " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 Print "Add armor class"
 Rem 1780 GoTo 80
-1790 CO = zz
+1790 CO = RollStat
 1800 A = SR / CO
 Rem 1810 If A < .67 Or A > 1.5 Then GoTo 100
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 Rem 1830 goto 80
 Rem again, 80 is the core of this
-1840 CH = zz
+1840 CH = RollStat
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 1860 If CH = 3 Then XF = 1
 1870 If CH = 4 Then XF = 1
@@ -324,7 +325,7 @@ Rem moved these onto separate lines
 3560 Print CZ$
 3561 Print CU$
 3562 Print Z1$
-3570 IF CN = 9 then GOTO 3590
+3570 If CN = 9 Then GoTo 3590
 3580 GoTo 4000
 3590 Print TY$
 3591 Print TA$
@@ -361,7 +362,31 @@ Rem holy shit finally here
 
 
 
+Function ROLLDIERESULT
+    ROLLDIERESULT = Int(Rnd * 6) + 1
+End Function
 
+Function RollStat
+    Dim rolls(4) As Integer
+    For i = 1 To 4
+        rolls(i) = RollDie
+    Next i
+
+    ' Find the lowest roll
+    lowest = rolls(1)
+    For i = 2 To 4
+        If rolls(i) < lowest Then
+            lowest = rolls(i)
+        End If
+    Next i
+
+    ' Sum all rolls and subtract the lowest
+    total = 0
+    For i = 1 To 4
+        total = total + rolls(i)
+    Next i
+    RollStat = total - lowest
+End Function
 
 
 
