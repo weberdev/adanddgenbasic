@@ -155,6 +155,7 @@ Rem again, 80 is the core of this
 Rem 1971 If H = 1 Then
 1980 L = 0
 Rem 1990 home
+1999 Dim CLASS$(1 To 11)
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
 2020 Print " 1 Fighter 2 Paladin"
@@ -167,7 +168,7 @@ Rem 1990 home
 2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
 2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
 2110 CN = Val(CN$)
-2111 If CN < 1 Or CN > 12 Then GoTo 2000
+2111 If CN < 1 Or CN > 11 Then GoTo 2000
 2130 If CN = 1 Then 2150
 2140 GoTo 2210
 2150 If ST < 9 Then GoTo 2170
@@ -300,10 +301,10 @@ Rem 3370 HOME            S
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
-3410 Print " PRESS SPACE BAR TO CONTINUE"
-3420 Do
-    3421 A$ = InKey$
-3422 Loop Until A$ = " "
+Rem 3410 Print " PRESS SPACE BAR TO CONTINUE"
+Rem 3420 Do
+Rem 3421 A$ = InKey$
+Rem 3422 Loop Until A$ = " "
 Rem fixed bug that would cause loops
 Rem not sure how get works yet
 3430 Print " STRENGTH: ": Print SR
