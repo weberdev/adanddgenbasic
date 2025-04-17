@@ -312,8 +312,6 @@ Rem not sure how get works yet
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
-Rem I DON'T KNOW WHAT THAT'S ABOUT
-Rem UPDATE: Languages
 3480 Print " WISDOM: ": Print WI
 3490 If WF = 0 Then GoTo 3510
 3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
@@ -332,7 +330,7 @@ Rem moved these onto separate lines
 3591 Print TA$
 3592 Print TK$
 3593 Print K1$
-3599 GOTO 4000
+3599 GoTo 4000
 Rem holy shit finally here
 3600 X1$ = "ADD "
 3601 X2$ = "3"
