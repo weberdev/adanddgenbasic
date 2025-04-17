@@ -5,7 +5,7 @@ Rem referee, and is not actually in the original PHB.
 Rem Thus, at the very first line, I have taken a liberty with the code.
 Rem Mea maxima culpa.
 
-
+Rem 101 Option Base 1
 105 Randomize Timer
 Rem 306 zz = d6 + d6 + d6
 Rem the above option is 3d6 straight down the line, as Crom intended.
@@ -155,7 +155,7 @@ Rem again, 80 is the core of this
 Rem 1971 If H = 1 Then
 1980 L = 0
 Rem 1990 home
-1999 Dim CLASS$(1 To 11)
+Rem 1999 Dim CLASS$(1 To 11)
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
 2020 Print " 1 Fighter 2 Paladin"
@@ -284,7 +284,7 @@ Rem Don't know what this means, but it throws an error
 3220 Print " 7: HUMAN"
 3230 Print " SELECT THE RACE YOU WISH"
 3240 Print " YOUR CHARACTER TO BE AND ENTER THE"
-3250 Print " NUMBER FROM THE TABLE ABOVE", RA$
+3250 Input " NUMBER FROM THE TABLE ABOVE", RA$
 3251 RA = Val(RA$)
 3260 If RA < 1 Or RA > 7 Then GoTo 3180
 Rem 3270 something was here, possibly tightened
