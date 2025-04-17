@@ -332,6 +332,7 @@ Rem moved these onto separate lines
 3591 Print TA$
 3592 Print TK$
 3593 Print K1$
+3599 GOTO 4000
 Rem holy shit finally here
 3600 X1$ = "ADD "
 3601 X2$ = "3"
