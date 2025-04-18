@@ -34,7 +34,7 @@ Rem TODO ADD DAMAGE ADJUSTMENT
 1032 If ST > 15 And ST < 18 Then OD = 3
 1033 If PER > 50 And PER < 100 Then OD = 4
 1034 If PER = 100 Then OD = 5 And OW = 2
-1035 IF PER > 90 and PER < 100 then OW = 1
+1035 If PER > 90 And PER < 100 Then OW = 1
 1040 If ST > 7 And ST < 17 Then SF = 0
 1041 If ST > 7 And ST < 10 Then SFF = 1
 1042 If ST > 9 And ST < 12 Then SFF = 2
@@ -57,7 +57,8 @@ Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
 1110 Print "ADD "; SF; " TO ROLLS TO HIT ROLLS, "; DA; " TO DAMAGE ROLLS"
-1120 Print "AND "; SFF; "% TO BEND BARS OR LIFT GATES"
+1120 Print "AND "; SFF; "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A "; OD; " OR LESS ON 1D6"
+1121 If OW > 0 Then Print "WIZARD LOCKED DOORS CAN BE OPENED ON A "; OW; " OR LESS ON 1D6. ONE TRY."
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
