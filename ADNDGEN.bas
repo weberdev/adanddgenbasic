@@ -36,21 +36,21 @@ Rem TODO ADD DAMAGE ADJUSTMENT
 1045 If ST = 16 Then SF = 1 And SFF = 10 And DA = 1
 1050 If ST = 17 Then SF = 1 And SFF = 13 And DA = 1
 Rem there should be a case for non-percentile 18 strength for non-fighters
-rem Edgiest of edge cases, will fix after classes picked
+Rem Edgiest of edge cases, will fix after classes picked
 1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20 And DA = 3
 1080 If PER > 50 And PER < 100 Then SF = 2
-1081 If PER > 50 And PER < 76 Then SFF = 25
-1082 If PER > 75 And PER < 91 Then SFF = 30
-1083 If PER > 90 And PER < 100 Then SFF = 35
-1090 If PER = 100 Then SF = 3 And SFF = 40
+1081 If PER > 50 And PER < 76 Then SFF = 25 And DA = 3
+1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
+1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
+1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
 1091 Print "CHARACTER'S STRENGTH IS "; ST; PER
 Rem This is not part of the initial code, but a debug.
 
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
-1110 Print "ADD "; SF; " TO ROLLS TO HIT, DAMAGE, AND OPEN DOORS"
-1120 Print "AND "; SFF; "% TO BEND BARS"
+1110 Print "ADD "; SF; " TO ROLLS TO HIT ROLLS, "; DA; " TO DAMAGE ROLLS"
+1120 Print "AND "; SFF; "% TO BEND BARS OR LIFT GATES"
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
