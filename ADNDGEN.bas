@@ -20,8 +20,8 @@ Rem PER = percentile value on 18 str
 Rem SF = Hit probability
 Rem SFF = Bend Bars/Lift Gates percentage
 Rem DA = Damage Adjustment
-Rem I NEED TO ADD DAMAGE ADJUSTMENT
-Rem TODO ADD DAMAGE ADJUSTMENT
+Rem OD = Open sealed doors on 1d6
+Rem OW = Open wizard locked doors on 1d6
 1000 ST = RollStat
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1002 DA = 0
