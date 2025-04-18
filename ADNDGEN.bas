@@ -25,9 +25,16 @@ Rem TODO ADD DAMAGE ADJUSTMENT
 1000 ST = RollStat
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1002 DA = 0
+1003 OD = 1
+1004 OW = 0
 1010 If ST = 3 Then SF = -3 And SFF = 0 And DA = -1
 1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0 And DA = -1
 1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
+1031 If ST > 7 And ST < 16 Then OD = 2
+1032 If ST > 15 And ST < 18 Then OD = 3
+1033 If PER > 50 And PER < 100 Then OD = 4
+1034 If PER = 100 Then OD = 5 And OW = 2
+1035 IF PER > 90 and PER < 100 then OW = 1
 1040 If ST > 7 And ST < 17 Then SF = 0
 1041 If ST > 7 And ST < 10 Then SFF = 1
 1042 If ST > 9 And ST < 12 Then SFF = 2
