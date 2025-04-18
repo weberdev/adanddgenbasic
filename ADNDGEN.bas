@@ -17,7 +17,8 @@ Rem Taking more liberties with the code.
 
 Rem ST = strength score
 Rem PER = percentile value on 18 str
-Rem SFF = Hit probability
+Rem SF = Hit probability
+rem SFF = Bend Bars/Lift Gates percentage
 Rem I NEED TO ADD DAMAGE ADJUSTMENT
 Rem TODO ADD DAMAGE ADJUSTMENT
 1000 ST = RollStat
@@ -30,7 +31,7 @@ Rem TODO ADD DAMAGE ADJUSTMENT
 1042 If ST > 9 And ST < 12 Then SFF = 2
 1043 If ST > 11 And ST < 14 Then SFF = 4
 1044 If ST > 13 And ST < 16 Then SFF = 7
-1045 If ST = 16 Then SFF = 10
+1045 If ST = 16 Then SF = 1 And SFF = 10
 1050 If ST = 17 Then SF = 1 And SFF = 13
 1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20
 1080 If PER > 50 And PER < 100 Then SF = 2
