@@ -18,22 +18,26 @@ Rem Taking more liberties with the code.
 Rem ST = strength score
 Rem PER = percentile value on 18 str
 Rem SF = Hit probability
-rem SFF = Bend Bars/Lift Gates percentage
+Rem SFF = Bend Bars/Lift Gates percentage
+Rem DA = Damage Adjustment
 Rem I NEED TO ADD DAMAGE ADJUSTMENT
 Rem TODO ADD DAMAGE ADJUSTMENT
 1000 ST = RollStat
 1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
-1010 If ST = 3 Then SF = -3 And SFF = 0
-1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0
+1002 DA = 0
+1010 If ST = 3 Then SF = -3 And SFF = 0 And DA = -1
+1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0 And DA = -1
 1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
 1040 If ST > 7 And ST < 17 Then SF = 0
 1041 If ST > 7 And ST < 10 Then SFF = 1
 1042 If ST > 9 And ST < 12 Then SFF = 2
 1043 If ST > 11 And ST < 14 Then SFF = 4
 1044 If ST > 13 And ST < 16 Then SFF = 7
-1045 If ST = 16 Then SF = 1 And SFF = 10
-1050 If ST = 17 Then SF = 1 And SFF = 13
-1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20
+1045 If ST = 16 Then SF = 1 And SFF = 10 And DA = 1
+1050 If ST = 17 Then SF = 1 And SFF = 13 And DA = 1
+Rem there should be a case for non-percentile 18 strength for non-fighters
+rem Edgiest of edge cases, will fix after classes picked
+1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20 And DA = 3
 1080 If PER > 50 And PER < 100 Then SF = 2
 1081 If PER > 50 And PER < 76 Then SFF = 25
 1082 If PER > 75 And PER < 91 Then SFF = 30
