@@ -51,7 +51,9 @@ Rem Edgiest of edge cases, will fix after classes picked
 1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
 1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
 1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
-1091 Print "CHARACTER'S STRENGTH IS "; ST; PER
+1091 If STR < 18 Then Print "CHARACTER'S STRENGTH IS "; ST;
+1092 IF STR = 18 THEN PRINT "CHARACTER'S STRENGTH IS 18, WITH " ;PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
+
 Rem This is not part of the initial code, but a debug.
 
 Rem 1100 If SF = 0 Then 80
@@ -337,7 +339,7 @@ Rem fixed bug that would cause loops
 Rem not sure how get works yet
 3430 Print " STRENGTH: ": Print SR
 3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; DA; " TO DAMAGE"
-3441 PRINT " BEND BARS/LIFT GATES " ;SFF; "% CHANCE. OPEN JAMMED DOORS " ;OD; "/6"
+3441 Print " BEND BARS/LIFT GATES "; SFF; "% CHANCE. OPEN JAMMED DOORS "; OD; "/6"
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
