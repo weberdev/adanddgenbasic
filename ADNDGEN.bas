@@ -51,7 +51,7 @@ Rem Edgiest of edge cases, will fix after classes picked
 1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
 1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
 1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
-1091 If STR < 18 Then Print "CHARACTER'S STRENGTH IS "; ST;
+1091 If STR < 18 Then Print "CHARACTER'S STRENGTH IS "; ST
 1092 If STR = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
 Rem This is not part of the initial code, but a debug.
@@ -68,7 +68,7 @@ Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
 
 1140 IN = RollStat
-1141 Print "CHARACTER'S INT IS "; IN
+1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
 1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
 1170 If IN > 9 And IN < 13 Then SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
@@ -103,10 +103,11 @@ Rem Mine does not.
 1370 GoTo 1390
 1380 lang$ = "LITERATE AND FLUENT IN 3 LANGUAGES"
 1390 If IN = 18 Then GoTo 1410
-1400 GoTo 1420
+1400 GoTo 1450
 1410 lang$ = "LITERATE AND FLUENT IN 4 LANGUAGES"
-1420 Print lang$
-1430 Print SP$
+Rem removing these for now.
+Rem 1420 Print lang$
+Rem 1430 Print SP$
 Rem 1440 goto 80
 Rem line 80 is still a mystery.
 Rem we'll get there.
@@ -116,7 +117,7 @@ Rem we'll get there.
 Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
 Rem presumably similar to the STR divided by con
-1480 Print "Character's wisdom is "; WI
+1480 Print "CHARACTER'S WISDOM IS "; WI
 1490 If WI = 3 Then WF = -3
 1500 If WI = 4 Then WF = -2
 1510 If WI > 4 And WI < 8 Then WF = -1
@@ -130,15 +131,18 @@ Rem 2580 GOTO 80
 Rem very excited for the mystical line 80
 
 1585 DX = RollStat
-1590 Print "CHARACTER'S DEXTERITY IS "; DX;
+1590 Print "CHARACTER'S DEXTERITY IS "; DX
 Rem 1600 DX = KC: KC = 0
-1610 If DX = 3 Then DF = -3
-1620 If DX = 4 Then DF = -2
-1630 If DX = 5 Then DF = -1
+DA = 0
+1610 If DX = 3 Then DF = -3 And DA = 4
+1620 If DX = 4 Then DF = -2 And DA = 3
+1630 If DX = 5 Then DF = -1 And DA = 2
+1631 If DX = 6 Then DA = 1
 1640 If DX > 5 And DX < 16 Then DF = 0
-1650 If DX = 16 Then DF = 1
-1670 If DX = 17 Then DF = 2
-1680 If DX = 18 Then DF = 3
+1641 If DX = 15 Then DA = -1
+1650 If DX = 16 Then DF = 1 And DA = -2
+1670 If DX = 17 Then DF = 2 And DA = -3
+1680 If DX = 18 Then DF = 3 And DA = -4
 1690 If DF = -3 Then GoSub 3600
 1700 If DF = -2 Then GoSub 3620
 1710 If DF = -1 Then GoSub 3640
@@ -146,8 +150,10 @@ Rem 1600 DX = KC: KC = 0
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
 Rem 1750 If DF = 0 Then GoTo 80
-1760 Print "Add "; DF; " TO MISSILE FIRE ROLLS 'TO HIT'"
-1770 Print "Add armor class"
+Rem MF$: Missile fire mod.
+rem DG$: Defensive adjustment for reflex saves and armor class
+1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
+1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 Rem 1780 GoTo 80
 1790 CO = RollStat
 1800 A = SR / CO
