@@ -322,7 +322,9 @@ Rem 3270 something was here, possibly tightened
 3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
 3350 GOLD = Int((Rnd(1) * m1) + M2)
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
-3361 If CN > 3 And STR = 18 Then SF = 1 AND SFF = 16 AND DA = 2 AND OD = 3
+Rem This is an edge case for non-fighters with 18 STR.
+Rem You don't get to break out your golf ball d110s for a MUSCLE WIZARD
+3361 If CN > 3 And STR = 18 Then SF = 1 And SFF = 16 And DA = 2 And OD = 3
 Rem 3370 HOME            S
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
@@ -334,7 +336,8 @@ Rem 3422 Loop Until A$ = " "
 Rem fixed bug that would cause loops
 Rem not sure how get works yet
 3430 Print " STRENGTH: ": Print SR
-3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; SFF; " TO DAMAGE"
+3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; DA; " TO DAMAGE"
+3441 PRINT " BEND BARS/LIFT GATES " ;SFF; "% CHANCE. OPEN JAMMED DOORS " ;OD; "/6"
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
