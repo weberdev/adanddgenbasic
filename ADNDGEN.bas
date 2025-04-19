@@ -52,16 +52,17 @@ Rem Edgiest of edge cases, will fix after classes picked
 1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
 1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
 1091 If STR < 18 Then Print "CHARACTER'S STRENGTH IS "; ST;
-1092 IF STR = 18 THEN PRINT "CHARACTER'S STRENGTH IS 18, WITH " ;PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
+1092 If STR = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
 Rem This is not part of the initial code, but a debug.
 
 Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
-1110 Print "ADD "; SF; " TO ROLLS TO HIT ROLLS, "; DA; " TO DAMAGE ROLLS"
-1120 Print "AND "; SFF; "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A "; OD; " OR LESS ON 1D6"
-1121 If OW > 0 Then Print "WIZARD LOCKED DOORS CAN BE OPENED ON A "; OW; " OR LESS ON 1D6. ONE TRY."
+1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
+
+1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
+1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
@@ -338,8 +339,9 @@ Rem 3422 Loop Until A$ = " "
 Rem fixed bug that would cause loops
 Rem not sure how get works yet
 3430 Print " STRENGTH: ": Print SR
-3440 Print " ADD "; SF; "TO ROLL TO HIT, AND "; DA; " TO DAMAGE"
-3441 Print " BEND BARS/LIFT GATES "; SFF; "% CHANCE. OPEN JAMMED DOORS "; OD; "/6"
+3440 Print SH$
+3441 Print SO$
+3442 If OW > 1 Then Print SW$
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
