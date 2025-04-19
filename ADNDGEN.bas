@@ -322,6 +322,7 @@ Rem 3270 something was here, possibly tightened
 3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
 3350 GOLD = Int((Rnd(1) * m1) + M2)
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
+3361 If CN > 3 And STR = 18 Then SF = 1 AND SFF = 16 AND DA = 2 AND OD = 3
 Rem 3370 HOME            S
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
