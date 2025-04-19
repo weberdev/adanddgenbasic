@@ -27,6 +27,7 @@ Rem OW = Open wizard locked doors on 1d6
 1002 DA = 0
 1003 OD = 1
 1004 OW = 0
+
 1010 If ST = 3 Then SF = -3 And SFF = 0 And DA = -1
 1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0 And DA = -1
 1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
@@ -300,6 +301,16 @@ Rem Don't know what this means, but it throws an error
 3250 Input " NUMBER FROM THE TABLE ABOVE", RA$
 3251 RA = Val(RA$)
 3260 If RA < 1 Or RA > 7 Then GoTo 3180
+Rem INITIATING RACE/CLASS COMPATIBILITY MATRIX
+3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 2000
+3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 2000
+3272 If RA = 3 And Not (CN = 1 Or CN = 7 Or CN = 6 Or CN = 9 Or CN = 10) Then GoTo 2000
+3273 If RA = 4 And Not (CN = 1 Or CN = 3 Or CN = 5 Or CN = 7 Or CN = 8 Or CN = 9 Or CN = 10) Then GoTo 2000
+3274 If RA = 5 And Not (CN = 1 Or CN = 8 Or CN = 9) Then GoTo 2000
+3275 If RA = 6 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 2000
+
+
+
 Rem 3270 something was here, possibly tightened
 3280 If CN = 1 Then m1 = 150
 3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
