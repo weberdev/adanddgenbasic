@@ -151,7 +151,7 @@ DA = 0
 1740 If DF = 3 Then GoSub 3700
 Rem 1750 If DF = 0 Then GoTo 80
 Rem MF$: Missile fire mod.
-rem DG$: Defensive adjustment for reflex saves and armor class
+Rem DG$: Defensive adjustment for reflex saves and armor class
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 Rem 1780 GoTo 80
@@ -161,6 +161,8 @@ Rem 1810 If A < .67 Or A > 1.5 Then GoTo 100
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 Rem 1830 goto 80
 Rem again, 80 is the core of this
+
+
 1840 CH = RollStat
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 1860 If CH = 3 Then XF = 1
@@ -177,8 +179,12 @@ Rem again, 80 is the core of this
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 Rem 1971 If H = 1 Then
 1980 L = 0
+
+
 Rem 1990 home
 Rem 1999 Dim CLASS$(1 To 11)
+
+
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
 2020 Print " 1 Fighter 2 Paladin"
@@ -192,6 +198,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
 2110 CN = Val(CN$)
 2111 If CN < 1 Or CN > 11 Then GoTo 2000
+
 2130 If CN = 1 Then 2150
 2140 GoTo 2210
 2150 If ST < 9 Then GoTo 2170
@@ -200,12 +207,14 @@ Rem 1999 Dim CLASS$(1 To 11)
 2180 Print " STRENGTH TOO LOW FOR A FIGHTER": GoTo 2200
 2190 Print " CONSTITUTION TOO LOW FOR A FIGHTER"
 2200 Print " PLEASE SELECT AGAIN": GoTo 2000
+
 2210 If CN = 5 Then GoTo 2230
 2220 GoTo 2270
 2230 If IN < 9 Then GoTo 2250
 2240 If DX < 6 Then GoTo 2260
 2250 Print " INTELLIGENCE TOO LOW FOR A MAGIC USER": GoTo 2200
 2260 Print " DEXTERITY TOO LOW FOR A MAGIC USER": GoTo 2200
+
 2270 If CN = 2 Then 2290
 2280 GoTo 2390
 2290 If ST < 12 Then 2340
@@ -218,6 +227,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 2360 Print " WISDOM TOO LOW FOR A PALADIN": GoTo 2200
 2370 Print " CONSTITUTION TOO LOW FOR A PALADIN": GoTo 2200
 2380 Print " CHARISMA TOO LOW FOR A PALADIN": GoTo 2200
+
 2390 If CN = 3 Then GoTo 2410
 2400 GoTo 2480
 2410 If ST < 13 Then GoTo 2440
@@ -228,6 +238,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 2450 Print " INTELLIGENCE TOO LOW FOR A RANGER": GoTo 2200
 2460 Print " WISDOM TOO LOW FOR A RANGER": GoTo 2200
 2470 Print " CONSTITUTION TOO LOW FOR A RANGER": GoTo 2200
+
 2480 If CN = 4 Then GoTo 2500
 2490 GoTo 2630
 2500 If ST < 15 Then GoTo 2580
@@ -240,30 +251,36 @@ Rem 1999 Dim CLASS$(1 To 11)
 2600 Print " CONSTITUTION TOO LOW FOR A CAVALIER": GoTo 2200
 2610 Print " INTELLIGENCE TOO LOW FOR A CAVALIER": GoTo 2200
 2620 Print " WISDOM TOO LOW FOR A CAVALIER": GoTo 2200
+
 2630 If CN = 6 Then GoTo 2650
 2640 GoTo 2690
 2650 If IN < 15 Then 2670
 2660 If DX < 16 Then 2680
 2670 Print " INTELLIGENCE TOO LOW FOR AN ILLUSIONIST": GoTo 2200
 2680 Print " DEXTERITY TOO LOW FOR AN ILLUSIONIST": GoTo 2200
+
 2690 If CN = 7 Then GoTo 2710
 2700 GoTo 2720
 2710 If WI < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
+
 2720 If CN = 8 Then GoTo 2740
 2730 GoTo 2780
 2740 If WI < 12 Then GoTo 2760
 2750 If CH < 15 Then GoTo 2770
 2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
 2770 Print " CHARISMA TOO LOO FOR A DRUID": GoTo 2200
+
 2780 If CN = 9 Then GoTo 2800
 2790 GoTo 2810
 2800 If DX < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
+
 2810 If CN = 10 Then GoTo 2830
 2820 GoTo 2870
 2830 If IN < 11 Then GoTo 2850
 2840 If DX < 12 Then GoTo 2860
 2850 Print " INTELLIGENCE TOO LOW FOR AN ASSASSIN": GoTo 2200
 2860 Print " DEXTERITY TOO LOW FOR AN ASSASSIN": GoTo 2200
+
 2870 If CN = 11 Then GoTo 2890
 2880 GoTo 2970
 2890 If ST < 15 Then GoTo 2930
@@ -274,6 +291,8 @@ Rem 1999 Dim CLASS$(1 To 11)
 2940 Print " WISDOM TOO LOW FOR A MONK": GoTo 2200
 2950 Print " DEXTERITY TOO LOW FOR A MONK": GoTo 2200
 2960 Print " CONSTITUTION TOO LOW FOR A MONK": GoTo 2200
+
+
 2970 If CN = 1 Then HF(1) = 10
 2980 If CN = 2 Then HF(2) = 10
 2990 If CN = 3 Then HF(3) = 16
@@ -285,19 +304,27 @@ Rem 1999 Dim CLASS$(1 To 11)
 3050 If CN = 9 Then HF(9) = 6
 3060 If CN = 10 Then HF(10) = 6
 3070 If CN = 11 Then HF(11) = 8
+
+
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
 3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
 
 3080 CLASS$ = CLASS$(CN)
 Rem Don't know what this means, but it throws an error
+
+
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
 3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
 3110 Z1$ = " 7    9    11   --   --   --   --   --  "
+
+
 3120 TY$ = " THIEF'S ABILITIES"
 3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR"
 3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS"
 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+
+
 3160 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
 3170 RACE$(4) = "HALF-ELVEN": RACE$(5) = "HALFLING": RACE$(6) = "HALF-ORC": RACE$(7) = "HUMAN"
 3180 Print "         RACE LIST"
@@ -308,8 +335,10 @@ Rem Don't know what this means, but it throws an error
 3230 Print " SELECT THE RACE YOU WISH"
 3240 Print " YOUR CHARACTER TO BE AND ENTER THE"
 3250 Input " NUMBER FROM THE TABLE ABOVE", RA$
+
 3251 RA = Val(RA$)
 3260 If RA < 1 Or RA > 7 Then GoTo 3180
+
 Rem INITIATING RACE/CLASS COMPATIBILITY MATRIX
 3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
 3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
@@ -319,6 +348,7 @@ Rem INITIATING RACE/CLASS COMPATIBILITY MATRIX
 3275 If RA = 6 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
 3276 GoTo 3280
 3278 Print "Race/class combination not allowed."
+
 3279 GoTo 2000
 
 Rem 3270 something was here, possibly tightened
@@ -335,15 +365,20 @@ Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d110s for a MUSCLE WIZARD
 3361 If CN > 3 And STR = 18 Then SF = 1 And SFF = 16 And DA = 2 And OD = 3
 Rem 3370 HOME            S
+
+
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
+
 Rem 3410 Print " PRESS SPACE BAR TO CONTINUE"
 Rem 3420 Do
 Rem 3421 A$ = InKey$
 Rem 3422 Loop Until A$ = " "
 Rem fixed bug that would cause loops
 Rem not sure how get works yet
+
+
 3430 Print " STRENGTH: ": Print SR
 3440 Print SH$
 3441 Print SO$
@@ -357,12 +392,15 @@ Rem not sure how get works yet
 3510 Print " CONSTITUTION ": Print CO
 3520 Print " CHARISMA ": Print CH
 3530 Print " MAY HAVE "; XF; " RETAINERS"
+
+
 3540 If CN = 7 Then GoTo 3560
 3550 GoTo 3570
 Rem moved these onto separate lines
 3560 Print CZ$
 3561 Print CU$
 3562 Print Z1$
+
 3570 If CN = 9 Then GoTo 3590
 3580 GoTo 4000
 3590 Print TY$
@@ -371,26 +409,32 @@ Rem moved these onto separate lines
 3593 Print K1$
 3599 GoTo 4000
 Rem holy shit finally here
+
 3600 X1$ = "ADD "
 3601 X2$ = "3"
 3602 X3$ = " TO"
 3610 Return
+
 3620 X1$ = "ADD "
 3621 X2$ = "2"
 3622 X3$ = " TO"
 3630 Return
+
 3640 X1$ = "ADD "
 3641 X2$ = "2"
 3642 X3$ = " TO"
 3650 Return
+
 3660 X1$ = "SUBTRACT "
 3661 X2$ = "1"
 3662 X3$ = " FROM"
 3670 Return
+
 3680 X1$ = "SUBTRACT "
 3681 X2$ = "2"
 3682 X3$ = " FROM"
 3690 Return
+
 3700 X1$ = "SUBTRACT "
 3701 X2$ = "3"
 3702 X3$ = " FROM"
