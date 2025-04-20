@@ -28,6 +28,7 @@ Rem OW = Open wizard locked doors on 1d6
 1003 OD = 1
 1004 OW = 0
 
+Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
 1010 If ST = 3 Then SF = -3 And SFF = 0 And DA = -1
 1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0 And DA = -1
 1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
@@ -68,6 +69,7 @@ Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
 
 1140 IN = RollStat
+Rem  Intelligence Table I. from Player's Handbook [1, p. 10]
 1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
 1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
@@ -85,6 +87,7 @@ Rem On further reflection, strings in this basic dialect seem to need to end wit
 Rem Perhaps the prior dialect allowed such formatting?
 Rem Mine does not.
 
+Rem I'm not sure which version of the chart this is.
 1220 If IN = 3 Then GoTo 1240
 1230 GoTo 1250
 1240 lang$ = "DIFFICULT SPEECH - ILLITERATE"
@@ -117,6 +120,8 @@ Rem we'll get there.
 Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
 Rem presumably similar to the STR divided by con
+
+Rem WISDOM TABLE I. from PHB [1, p. 11]
 1480 Print "CHARACTER'S WISDOM IS "; WI
 1490 If WI = 3 Then WF = -3
 1500 If WI = 4 Then WF = -2
@@ -133,6 +138,7 @@ Rem very excited for the mystical line 80
 1585 DX = RollStat
 1590 Print "CHARACTER'S DEXTERITY IS "; DX
 Rem 1600 DX = KC: KC = 0
+Rem DEXTERITY TABLE I. from PHB [1, p. 11]
 DA = 0
 1610 If DX = 3 Then DF = -3 And DA = 4
 1620 If DX = 4 Then DF = -2 And DA = 3
@@ -165,6 +171,8 @@ Rem again, 80 is the core of this
 
 1840 CH = RollStat
 1850 Print "CHARACTER'S CHARISMA IS "; CH
+
+Rem CHARISMA TABLE from PHB [1, p. 13]
 1860 If CH = 3 Then XF = 1
 1870 If CH = 4 Then XF = 1
 1880 If CH > 4 And CH < 6 Then XF = 2
@@ -340,6 +348,7 @@ Rem Don't know what this means, but it throws an error
 3260 If RA < 1 Or RA > 7 Then GoTo 3180
 
 Rem INITIATING RACE/CLASS COMPATIBILITY MATRIX
+Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
 3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
 3272 If RA = 3 And Not (CN = 1 Or CN = 7 Or CN = 6 Or CN = 9 Or CN = 10) Then GoTo 3278
