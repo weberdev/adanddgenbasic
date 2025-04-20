@@ -484,7 +484,7 @@ End Function
 
 Rem REFERENCES
 
-Rem [1] G. Gygax, *Advanced Dungeons & Dragons Player’s Handbook*, 1st ed. Lake Geneva, WI: TSR, 1978.
+Rem [1] G. Gygax, Advanced Dungeons & Dragons Player's Handbook, 6th ed., Lake Geneva, WI: TSR Hobbies, Inc., Jan. 1980.
 
 Rem [2] G. Gygax, *Unearthed Arcana*, 1st ed. Lake Geneva, WI: TSR, 1985.
 
