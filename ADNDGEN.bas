@@ -60,7 +60,7 @@ Rem 1100 If SF = 0 Then 80
 Rem I don't know what this does yet. Throws an error, though.
 
 1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
-
+Rem See PHB 1e, PHB
 1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
 1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 Rem 1130 GOTO 80
@@ -472,6 +472,12 @@ Function RollStat
     Next i
     RollStat = total - lowest
 End Function
+
+Rem REFERENCES
+
+Rem [1] G. Gygax, *Advanced Dungeons & Dragons Player’s Handbook*, 1st ed. Lake Geneva, WI: TSR, 1978.
+
+Rem [2] G. Gygax, *Unearthed Arcana*, 1st ed. Lake Geneva, WI: TSR, 1985.
 
 
 
