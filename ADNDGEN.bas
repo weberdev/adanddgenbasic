@@ -51,8 +51,8 @@ Rem Edgiest of edge cases, will fix after classes picked
 1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
 1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
 1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
-1091 If STR < 18 Then Print "CHARACTER'S STRENGTH IS "; ST
-1092 If STR = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
+1091 If ST < 18 Then Print "CHARACTER'S STRENGTH IS "; ST
+1092 If ST = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
 Rem This is not part of the initial code, but a debug.
 
