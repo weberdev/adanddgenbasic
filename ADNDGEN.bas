@@ -365,7 +365,8 @@ Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d110s for a MUSCLE WIZARD
 3361 If CN > 3 And STR = 18 Then SF = 1 And SFF = 16 And DA = 2 And OD = 3
 Rem 3370 HOME            S
-
+3370 CLASS$ = CLASS$(CN)
+3371 RACE$ = RACE$(RA)
 
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
