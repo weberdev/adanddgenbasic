@@ -380,7 +380,7 @@ Rem fixed bug that would cause loops
 Rem not sure how get works yet
 
 
-3430 Print " STRENGTH: ": Print SR
+3430 Print " STRENGTH: ": Print ST
 3440 Print SH$
 3441 Print SO$
 3442 If OW > 1 Then Print SW$
