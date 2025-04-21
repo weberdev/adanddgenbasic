@@ -4,6 +4,7 @@ Rem I saw that the method of generating ability scores is the purview of the
 Rem referee, and is not actually in the original PHB.
 Rem Thus, at the very first line, I have taken a liberty with the code.
 Rem Mea maxima culpa.
+rem TODO: implement various attribute generation methods.
 
 Rem 101 Option Base 1
 105 Randomize Timer
@@ -486,7 +487,7 @@ Rem REFERENCES
 
 Rem [1] G. Gygax, Advanced Dungeons & Dragons Player's Handbook, 6th ed., Lake Geneva, WI: TSR Hobbies, Inc., Jan. 1980.
 
-Rem [2] G. Gygax, *Unearthed Arcana*, 1st ed. Lake Geneva, WI: TSR, 1985.
+Rem [2] G. Gygax, Unearthed Arcana, 1st ed. Lake Geneva, WI: TSR, 1985.
 
 
 
