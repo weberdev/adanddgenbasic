@@ -12,9 +12,6 @@ Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
 Dim Abilities(6)
-For I = 1 To 6
-    Abilities(I) = RollStat
-Next I
 
 
 
@@ -476,7 +473,7 @@ Function RollStat
         rolls(i) = ROLLDIERESULT
     Next i
 
-    ' Find the lowest roll
+    Rem Find the lowest roll
     lowest = rolls(1)
     For i = 2 To 4
         If rolls(i) < lowest Then
@@ -484,12 +481,36 @@ Function RollStat
         End If
     Next i
 
-    ' Sum all rolls and subtract the lowest
+    Rem Sum all rolls and subtract the lowest
     total = 0
     For i = 1 To 4
         total = total + rolls(i)
     Next i
     RollStat = total - lowest
+End Function
+
+Sub GenerateSortedStats (stats() As Integer)
+    Dim temp As Integer
+
+    Rem Generate six stats
+    For i = 1 To 6
+        stats(i) = RollStat
+    Next i
+
+    Rem Bubble sort them
+    For i = 1 To 5
+        For j = i + 1 To 6
+            If stats(i) > stats(j) Then
+                temp = stats(i)
+                stats(i) = stats(j)
+                stats(j) = temp
+            End If
+        Next j
+    Next i
+End Sub
+
+Function SORTARRAY
+
 End Function
 
 Rem REFERENCES
