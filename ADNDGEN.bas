@@ -489,7 +489,7 @@ Rem [1] G. Gygax, Advanced Dungeons & Dragons Player's Handbook, 6th ed., Lake G
 
 Rem [2] G. Gygax, Unearthed Arcana, 1st ed. Lake Geneva, WI: TSR, 1985.
 
-Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private manuscript, reproduced with indirect permission.
+Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private manuscript, reproduced with indirect permission. Circa 1983-1985 (presumed).
 
 
 
