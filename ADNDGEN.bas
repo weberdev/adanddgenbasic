@@ -11,7 +11,11 @@ Rem 101 Option Base 1
 Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
-Dim Abilities(6)
+110 Dim Abilities(6) As Integer
+120 GenerateSortedStats (Abilities)
+130 For I = 1 To 6
+    131 Print Abilities(I)
+132 Next I
 
 
 
