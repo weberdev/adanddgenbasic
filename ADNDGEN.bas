@@ -9,6 +9,10 @@ Rem TODO: implement various attribute generation methods.
 Rem 101 Option Base 1
 105 Randomize Timer
 Rem 306 zz = d6 + d6 + d6
+
+Rem Making a secondary system to assign ability scores.
+
+
 Rem the above option is 3d6 straight down the line, as Crom intended.
 406 zz = (die1 = d6) + (die2 = d6) + (die3 = d6) + (die4 = d6) - MIN(die1, die2, die3, die4)
 Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
