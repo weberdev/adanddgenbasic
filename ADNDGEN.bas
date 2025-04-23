@@ -11,6 +11,11 @@ Rem 101 Option Base 1
 Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
+Dim Abilities(6)
+For I = 1 To 6
+    Abilities(I) = RollStat
+Next I
+
 
 
 Rem the above option is 3d6 straight down the line, as Crom intended.
