@@ -12,16 +12,11 @@ Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
 110 Dim Abilities(6) As Integer
-120 CALL GenerateSortedStats(Abilities)
+120 GenerateSortedStats Abilities()
 130 For I = 1 To 6
-    131 Print Abilities(I)
+    131 Print Str$(I) + ". " + Str$(Abilities(I))
 132 Next I
 
-
-
-Rem the above option is 3d6 straight down the line, as Crom intended.
-406 zz = (die1 = d6) + (die2 = d6) + (die3 = d6) + (die4 = d6) - MIN(die1, die2, die3, die4)
-Rem the above option is 4d6 drop lowest. Values are not assigned by the player.
 999 PER = 0
 Rem I'm guessing that this will fail if I don't have this value.
 Rem Taking more liberties with the code.
@@ -500,40 +495,51 @@ Sub GenerateSortedStats (stats() As Integer)
     For i = 1 To 6
         stats(i) = RollStat
     Next i
-    CALL quicksort(stats(), 1, 6)
-
+    Call quicksort(stats(), 1, 6)
+    Call ReverseArray(stats())
 End Sub
 
-REM Quicksort adapted from RosettaCode example
-REM https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#QB64
-SUB quicksort (arr() AS INTEGER, leftN AS INTEGER, rightN AS INTEGER)
-    DIM pivot AS INTEGER, leftNIdx AS INTEGER, rightNIdx AS INTEGER
+Rem Quicksort adapted from RosettaCode example
+Rem https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#QB64
+Sub quicksort (arr() As Integer, leftN As Integer, rightN As Integer)
+    Dim pivot As Integer, leftNIdx As Integer, rightNIdx As Integer
     leftNIdx = leftN
     rightNIdx = rightN
-    IF (rightN - leftN) > 0 THEN
-        pivot = (leftN + rightN) / 2
-        WHILE (leftNIdx <= pivot) AND (rightNIdx >= pivot)
-            WHILE (arr(leftNIdx) < arr(pivot)) AND (leftNIdx <= pivot)
+    If (rightN - leftN) > 0 Then
+        pivot = (leftN + rightN) \ 2 ' integer division
+        While (leftNIdx <= pivot) And (rightNIdx >= pivot)
+            While (arr(leftNIdx) < arr(pivot)) And (leftNIdx <= pivot)
                 leftNIdx = leftNIdx + 1
-            WEND
-            WHILE (arr(rightNIdx) > arr(pivot)) AND (rightNIdx >= pivot)
+            Wend
+            While (arr(rightNIdx) > arr(pivot)) And (rightNIdx >= pivot)
                 rightNIdx = rightNIdx - 1
-            WEND
-            SWAP arr(leftNIdx), arr(rightNIdx)
+            Wend
+            Swap arr(leftNIdx), arr(rightNIdx)
             leftNIdx = leftNIdx + 1
             rightNIdx = rightNIdx - 1
-            IF (leftNIdx - 1) = pivot THEN
+            If (leftNIdx - 1) = pivot Then
                 rightNIdx = rightNIdx + 1
                 pivot = rightNIdx
-            ELSEIF (rightNIdx + 1) = pivot THEN
+            ElseIf (rightNIdx + 1) = pivot Then
                 leftNIdx = leftNIdx - 1
                 pivot = leftNIdx
-            END IF
-        WEND
-        quicksort arr(), leftN, pivot - 1
-        quicksort arr(), pivot + 1, rightN
-    END IF
-END SUB
+            End If
+        Wend
+        Call quicksort(arr(), leftN, pivot - 1)
+        Call quicksort(arr(), pivot + 1, rightN)
+    End If
+End Sub
+
+Sub ReverseArray (arr() As Integer)
+    Dim i As Integer, j As Integer, temp As Integer
+    j = UBound(arr)
+    For i = 1 To j \ 2
+        temp = arr(i)
+        arr(i) = arr(j - i + 1)
+        arr(j - i + 1) = temp
+    Next i
+End Sub
+
 
 
 
