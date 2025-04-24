@@ -28,7 +28,7 @@ Rem Making a secondary system to assign ability scores.
     Print "You rolled a "; Abilities(I)
     Print "Assign this score to one of the following unassigned stats:"
 
-    REM Show unassigned abilities
+    Rem Show unassigned abilities
     For J = 1 To 6
         If Used(J) = 0 Then Print J; ". "; AbilityNames(J)
     Next J
@@ -53,10 +53,9 @@ Next I
 180 Input "Are these Stats okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then GoTo 160
 
-
+Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
+rem It's not, honestly, a great mechanic.
 999 PER = 0
-Rem I'm guessing that this will fail if I don't have this value.
-Rem Taking more liberties with the code.
 
 Rem ST = strength score
 Rem PER = percentile value on 18 str
