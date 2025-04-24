@@ -14,8 +14,47 @@ Rem Making a secondary system to assign ability scores.
 110 Dim Abilities(6) As Integer
 120 GenerateSortedStats Abilities()
 130 For I = 1 To 6
-    131 Print Str$(I) + ". " + Str$(Abilities(I))
+    131 Print Str$(I) + "." + Str$(Abilities(I)) + "  ";
 132 Next I
+140 Print " "
+150 Dim AbilityAssignedArray(6) As Integer
+151 Dim UsedAbilityArray(6) As Integer
+152 Dim AbilityNames(6) As String
+153 AbilityNames(1) = "Strength"
+154 AbilityNames(2) = "Intelligence"
+155 AbilityNames(3) = "Wisdom"
+156 AbilityNames(4) = "Dexterity"
+157 AbilityNames(5) = "Constitution"
+158 AbilityNames(6) = "Charisma"
+
+For I = 1 To 6
+    Print "You rolled a "; Abilities(I)
+    Print "Assign this score to one of the following unassigned stats:"
+
+    ' Show unassigned abilities
+    For J = 1 To 6
+        If Used(J) = 0 Then Print J; ". "; AbilityNames(J)
+    Next J
+
+    Input "Enter the number of the stat to assign this to: ", choice
+
+    While choice < 1 Or choice > 6 Or UsedAbilityArray(choice) = 1
+        Print "Invalid choice. Try again."
+        Input "Enter the number of the stat to assign this to: ", choice
+    Wend
+
+    AbilityAssignedArray(choice) = Abilities(I)
+    UsedAbilityArray(choice) = 1
+Next I
+
+Print
+Print "Final Assigned Stats:"
+For I = 1 To 6
+    Print AbilityNames(I); ": "; AssignedAbilityArray(I)
+Next I
+
+
+
 
 999 PER = 0
 Rem I'm guessing that this will fail if I don't have this value.
@@ -28,28 +67,28 @@ Rem SFF = Bend Bars/Lift Gates percentage
 Rem DA = Damage Adjustment
 Rem OD = Open sealed doors on 1d6
 Rem OW = Open wizard locked doors on 1d6
-1000 ST = RollStat
-1001 If ST = 18 Then PER = Int((Rnd(1) * 100) + 1)
+1000 St =
+1001 If St = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1002 DA = 0
 1003 OD = 1
 1004 OW = 0
 
 Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
-1010 If ST = 3 Then SF = -3 And SFF = 0 And DA = -1
-1020 If ST > 3 And ST < 6 Then SF = -2 And SFF = 0 And DA = -1
-1030 If ST > 5 And ST < 8 Then SF = -1 And SFF = 0
-1031 If ST > 7 And ST < 16 Then OD = 2
-1032 If ST > 15 And ST < 18 Then OD = 3
+1010 If St = 3 Then SF = -3 And SFF = 0 And DA = -1
+1020 If St > 3 And St < 6 Then SF = -2 And SFF = 0 And DA = -1
+1030 If St > 5 And St < 8 Then SF = -1 And SFF = 0
+1031 If St > 7 And St < 16 Then OD = 2
+1032 If St > 15 And St < 18 Then OD = 3
 1033 If PER > 50 And PER < 100 Then OD = 4
 1034 If PER = 100 Then OD = 5 And OW = 2
 1035 If PER > 90 And PER < 100 Then OW = 1
-1040 If ST > 7 And ST < 17 Then SF = 0
-1041 If ST > 7 And ST < 10 Then SFF = 1
-1042 If ST > 9 And ST < 12 Then SFF = 2
-1043 If ST > 11 And ST < 14 Then SFF = 4
-1044 If ST > 13 And ST < 16 Then SFF = 7
-1045 If ST = 16 Then SF = 1 And SFF = 10 And DA = 1
-1050 If ST = 17 Then SF = 1 And SFF = 13 And DA = 1
+1040 If St > 7 And St < 17 Then SF = 0
+1041 If St > 7 And St < 10 Then SFF = 1
+1042 If St > 9 And St < 12 Then SFF = 2
+1043 If St > 11 And St < 14 Then SFF = 4
+1044 If St > 13 And St < 16 Then SFF = 7
+1045 If St = 16 Then SF = 1 And SFF = 10 And DA = 1
+1050 If St = 17 Then SF = 1 And SFF = 13 And DA = 1
 Rem there should be a case for non-percentile 18 strength for non-fighters
 Rem Edgiest of edge cases, will fix after classes picked
 1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20 And DA = 3
@@ -58,8 +97,8 @@ Rem Edgiest of edge cases, will fix after classes picked
 1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
 1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
 1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
-1091 If ST < 18 Then Print "CHARACTER'S STRENGTH IS "; ST
-1092 If ST = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
+1091 If St < 18 Then Print "CHARACTER'S STRENGTH IS "; St
+1092 If St = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
 Rem This is not part of the initial code, but a debug.
 
@@ -215,7 +254,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 
 2130 If CN = 1 Then 2150
 2140 GoTo 2210
-2150 If ST < 9 Then GoTo 2170
+2150 If St < 9 Then GoTo 2170
 2160 If CO < 7 Then GoTo 2190
 2170 GoTo 2210
 2180 Print " STRENGTH TOO LOW FOR A FIGHTER": GoTo 2200
@@ -231,7 +270,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 
 2270 If CN = 2 Then 2290
 2280 GoTo 2390
-2290 If ST < 12 Then 2340
+2290 If St < 12 Then 2340
 2300 If IN < 9 Then 2350
 2310 If WI < 13 Then 2360
 2320 If CO < 9 Then 2370
@@ -244,7 +283,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 
 2390 If CN = 3 Then GoTo 2410
 2400 GoTo 2480
-2410 If ST < 13 Then GoTo 2440
+2410 If St < 13 Then GoTo 2440
 2420 If IN < 13 Then GoTo 2450
 2430 If WI < 14 Then GoTo 2460
 2431 If CO < 14 Then GoTo 2470
@@ -255,7 +294,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 
 2480 If CN = 4 Then GoTo 2500
 2490 GoTo 2630
-2500 If ST < 15 Then GoTo 2580
+2500 If St < 15 Then GoTo 2580
 2510 If DX < 15 Then GoTo 2590
 2520 If CO < 15 Then GoTo 2600
 2530 If IN < 10 Then GoTo 2610
@@ -297,7 +336,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 
 2870 If CN = 11 Then GoTo 2890
 2880 GoTo 2970
-2890 If ST < 15 Then GoTo 2930
+2890 If St < 15 Then GoTo 2930
 2900 If WI < 15 Then GoTo 2940
 2910 If DX < 15 Then GoTo 2950
 2920 If CO < 11 Then GoTo 2960
@@ -395,7 +434,7 @@ Rem fixed bug that would cause loops
 Rem not sure how get works yet
 
 
-3430 Print " STRENGTH: ": Print ST
+3430 Print " STRENGTH: ": Print St
 3440 Print SH$
 3441 Print SO$
 3442 If OW > 1 Then Print SW$
