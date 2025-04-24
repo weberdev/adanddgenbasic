@@ -27,7 +27,7 @@ Rem Making a secondary system to assign ability scores.
 157 AbilityNames(5) = "Constitution"
 158 AbilityNames(6) = "Charisma"
 
-For I = 1 To 6
+160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
     Print "Assign this score to one of the following unassigned stats:"
 
@@ -47,13 +47,14 @@ For I = 1 To 6
     UsedAbilityArray(choice) = 1
 Next I
 
-Print
-Print "Final Assigned Stats:"
-For I = 1 To 6
-    Print AbilityNames(I); ": "; AssignedAbilityArray(I)
+170 Print
+171 Print "Final Assigned Stats:"
+172 For I = 1 To 6
+    Print AbilityNames(I); ": "; AbilityAssignedArray(I)
 Next I
 
-
+180 Input "Are these Stats okay? Enter y if yes, anything else if no.", response$
+181 if LCASE$(response$) <> "y" then GOTO 160
 
 
 999 PER = 0
@@ -67,7 +68,7 @@ Rem SFF = Bend Bars/Lift Gates percentage
 Rem DA = Damage Adjustment
 Rem OD = Open sealed doors on 1d6
 Rem OW = Open wizard locked doors on 1d6
-1000 St =
+1000 St = AbilityAssignedArray(1)
 1001 If St = 18 Then PER = Int((Rnd(1) * 100) + 1)
 1002 DA = 0
 1003 OD = 1
@@ -113,7 +114,7 @@ Rem 1130 GOTO 80
 Rem line 80 isn't defined here, I'll get to it, I'm sure.
 
 
-1140 IN = RollStat
+1140 IN = AbilityAssignedArray(2)
 Rem  Intelligence Table I. from Player's Handbook [1, p. 10]
 1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
@@ -160,7 +161,7 @@ Rem 1440 goto 80
 Rem line 80 is still a mystery.
 Rem we'll get there.
 
-1450 WI = RollStat
+1450 WI = AbilityAssignedArray(3)
 1460 B = IN / WI
 Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
 Rem I don't know what this Intelligence divided by wisdom value is about.
@@ -180,7 +181,7 @@ Rem WISDOM TABLE I. from PHB [1, p. 11]
 Rem 2580 GOTO 80
 Rem very excited for the mystical line 80
 
-1585 DX = RollStat
+1585 DX = AbilityAssignedArray(4)
 1590 Print "CHARACTER'S DEXTERITY IS "; DX
 Rem 1600 DX = KC: KC = 0
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
@@ -206,7 +207,7 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 Rem 1780 GoTo 80
-1790 CO = RollStat
+1790 CO = AssignedAbilityArray(5)
 1800 A = SR / CO
 Rem 1810 If A < .67 Or A > 1.5 Then GoTo 100
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
@@ -214,7 +215,7 @@ Rem 1830 goto 80
 Rem again, 80 is the core of this
 
 
-1840 CH = RollStat
+1840 CH = AssignedAbilityArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 
 Rem CHARISMA TABLE from PHB [1, p. 13]
@@ -589,6 +590,8 @@ Rem [1] G. Gygax, Advanced Dungeons & Dragons Player's Handbook, 6th ed., Lake G
 Rem [2] G. Gygax, Unearthed Arcana, 1st ed. Lake Geneva, WI: TSR, 1985.
 
 Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private manuscript, reproduced with indirect permission. Circa 1983-1985 (presumed).
+
+Rem [4] G. Gygax, Advanced Dungeons & Dragons Dungeon Masters Guide, 1st ed. Lake Geneva, WI: TSR Hobbies, Inc., 1979.
 
 
 
