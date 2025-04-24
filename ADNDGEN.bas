@@ -1,14 +1,11 @@
-Rem I don't know what zz means, it could be 22, but I doubt that.
-Rem Upon looking at the original AD&D Player's Handbook (effort applied)
-Rem I saw that the method of generating ability scores is the purview of the
-Rem referee, and is not actually in the original PHB.
-Rem Thus, at the very first line, I have taken a liberty with the code.
-Rem Mea maxima culpa.
-Rem TODO: implement various attribute generation methods.
+Rem This is an archival and expansion of some handwritten code I was shown.
+Rem Most likely written between 1983 and 1985, but 1983 is the minimum year.
+Rem It's an archival piece, at least in some ways. I expanded on some features, implementing
+Rem Functionality from D&D volumes of the era.
+Rem This version omits Unerathed Arcana (1985), and such material will be included in a later fork.
 
 101 Option Base 1
 105 Randomize Timer
-Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
 110 Dim Abilities(6) As Integer
@@ -31,7 +28,7 @@ Rem Making a secondary system to assign ability scores.
     Print "You rolled a "; Abilities(I)
     Print "Assign this score to one of the following unassigned stats:"
 
-    ' Show unassigned abilities
+    REM Show unassigned abilities
     For J = 1 To 6
         If Used(J) = 0 Then Print J; ". "; AbilityNames(J)
     Next J
@@ -201,19 +198,13 @@ DA = 0
 1720 If DF = 1 Then GoSub 3660
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
-Rem 1750 If DF = 0 Then GoTo 80
 Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
-Rem 1780 GoTo 80
 1790 CO = AssignedAbilityArray(5)
 1800 A = SR / CO
-Rem 1810 If A < .67 Or A > 1.5 Then GoTo 100
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
-Rem 1830 goto 80
-Rem again, 80 is the core of this
-
 
 1840 CH = AssignedAbilityArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CH
@@ -231,12 +222,7 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1950 If CH = 17 Then XF = 10
 1960 If CH = 18 Then XF = 15
 1970 Print "CAN HAVE "; XF; " RETAINERS"
-Rem 1971 If H = 1 Then
 1980 L = 0
-
-
-Rem 1990 home
-Rem 1999 Dim CLASS$(1 To 11)
 
 
 2000 Print "       CLASS LIST"
