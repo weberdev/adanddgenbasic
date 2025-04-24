@@ -6,13 +6,13 @@ Rem Thus, at the very first line, I have taken a liberty with the code.
 Rem Mea maxima culpa.
 Rem TODO: implement various attribute generation methods.
 
-Rem 101 Option Base 1
+101 Option Base 1
 105 Randomize Timer
 Rem 306 zz = d6 + d6 + d6
 
 Rem Making a secondary system to assign ability scores.
 110 Dim Abilities(6) As Integer
-120 GenerateSortedStats (Abilities)
+120 CALL GenerateSortedStats(Abilities)
 130 For I = 1 To 6
     131 Print Abilities(I)
 132 Next I
@@ -500,22 +500,42 @@ Sub GenerateSortedStats (stats() As Integer)
     For i = 1 To 6
         stats(i) = RollStat
     Next i
+    CALL quicksort(stats(), 1, 6)
 
-    Rem Bubble sort them
-    For i = 1 To 5
-        For j = i + 1 To 6
-            If stats(i) > stats(j) Then
-                temp = stats(i)
-                stats(i) = stats(j)
-                stats(j) = temp
-            End If
-        Next j
-    Next i
 End Sub
 
-Function SORTARRAY
+REM Quicksort adapted from RosettaCode example
+REM https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#QB64
+SUB quicksort (arr() AS INTEGER, leftN AS INTEGER, rightN AS INTEGER)
+    DIM pivot AS INTEGER, leftNIdx AS INTEGER, rightNIdx AS INTEGER
+    leftNIdx = leftN
+    rightNIdx = rightN
+    IF (rightN - leftN) > 0 THEN
+        pivot = (leftN + rightN) / 2
+        WHILE (leftNIdx <= pivot) AND (rightNIdx >= pivot)
+            WHILE (arr(leftNIdx) < arr(pivot)) AND (leftNIdx <= pivot)
+                leftNIdx = leftNIdx + 1
+            WEND
+            WHILE (arr(rightNIdx) > arr(pivot)) AND (rightNIdx >= pivot)
+                rightNIdx = rightNIdx - 1
+            WEND
+            SWAP arr(leftNIdx), arr(rightNIdx)
+            leftNIdx = leftNIdx + 1
+            rightNIdx = rightNIdx - 1
+            IF (leftNIdx - 1) = pivot THEN
+                rightNIdx = rightNIdx + 1
+                pivot = rightNIdx
+            ELSEIF (rightNIdx + 1) = pivot THEN
+                leftNIdx = leftNIdx - 1
+                pivot = leftNIdx
+            END IF
+        WEND
+        quicksort arr(), leftN, pivot - 1
+        quicksort arr(), pivot + 1, rightN
+    END IF
+END SUB
 
-End Function
+
 
 Rem REFERENCES
 
