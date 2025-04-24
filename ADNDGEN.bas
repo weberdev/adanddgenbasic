@@ -30,7 +30,7 @@ Rem Making a secondary system to assign ability scores.
 
     Rem Show unassigned abilities
     For J = 1 To 6
-        If Used(J) = 0 Then Print J; ". "; AbilityNames(J)
+        If UsedAbilityArray(J) = 0 Then Print J; ". "; AbilityNames(J)
     Next J
 
     Input "Enter the number of the stat to assign this to: ", choice
@@ -54,7 +54,7 @@ Next I
 181 If LCase$(response$) <> "y" Then GoTo 160
 
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
-rem It's not, honestly, a great mechanic.
+Rem It's not, honestly, a great mechanic.
 999 PER = 0
 
 Rem ST = strength score
@@ -87,7 +87,7 @@ Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
 1045 If St = 16 Then SF = 1 And SFF = 10 And DA = 1
 1050 If St = 17 Then SF = 1 And SFF = 13 And DA = 1
 Rem there should be a case for non-percentile 18 strength for non-fighters
-Rem Edgiest of edge cases, will fix after classes picked
+Rem Edgiest of edge cases, correction is made after class is chosen.
 1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20 And DA = 3
 1080 If PER > 50 And PER < 100 Then SF = 2
 1081 If PER > 50 And PER < 76 Then SFF = 25 And DA = 3
@@ -99,16 +99,11 @@ Rem Edgiest of edge cases, will fix after classes picked
 
 Rem This is not part of the initial code, but a debug.
 
-Rem 1100 If SF = 0 Then 80
-Rem I don't know what this does yet. Throws an error, though.
 
 1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
 Rem See PHB 1e, PHB
 1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
 1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
-Rem 1130 GOTO 80
-Rem line 80 isn't defined here, I'll get to it, I'm sure.
-
 
 1140 IN = AbilityAssignedArray(2)
 Rem  Intelligence Table I. from Player's Handbook [1, p. 10]
@@ -201,11 +196,10 @@ Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
-1790 CO = AssignedAbilityArray(5)
-1800 A = SR / CO
+1790 CO = AbilityAssignedArray(5)
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 
-1840 CH = AssignedAbilityArray(6)
+1840 CH = AbilityAssignedArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 
 Rem CHARISMA TABLE from PHB [1, p. 13]
@@ -487,7 +481,6 @@ Rem holy shit finally here
 
 
 Function ROLLDIERESULT
-    Randomize Timer
     ROLLDIERESULT = Int(Rnd * 6) + 1
 End Function
 
