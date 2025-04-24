@@ -387,12 +387,6 @@ Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
 
-Rem 3410 Print " PRESS SPACE BAR TO CONTINUE"
-Rem 3420 Do
-Rem 3421 A$ = InKey$
-Rem 3422 Loop Until A$ = " "
-Rem fixed bug that would cause loops
-Rem not sure how get works yet
 
 
 3430 Print " STRENGTH: ": Print St
@@ -412,7 +406,7 @@ Rem not sure how get works yet
 
 3540 If CN = 7 Then GoTo 3560
 3550 GoTo 3570
-Rem moved these onto separate lines
+
 3560 Print CZ$
 3561 Print CU$
 3562 Print Z1$
@@ -424,7 +418,6 @@ Rem moved these onto separate lines
 3592 Print TK$
 3593 Print K1$
 3599 GoTo 4000
-Rem holy shit finally here
 
 3600 X1$ = "ADD "
 3601 X2$ = "3"
