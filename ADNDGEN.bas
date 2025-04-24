@@ -106,7 +106,7 @@ Rem See PHB 1e, PHB
 1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 
 1140 IN = AbilityAssignedArray(2)
-Rem  Intelligence Table I. from Player's Handbook [1, p. 10]
+Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
 1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
 1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
 1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
@@ -116,13 +116,6 @@ Rem  Intelligence Table I. from Player's Handbook [1, p. 10]
 1200 If IN = 17 Then SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
 1210 If IN = 18 Then SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
 
-Rem The initial code had "12$ =" instead of "Then Print"
-Rem That comment no longer makes sense as SP$ has replaced THEN PRINT which replaced 12$
-Rem I don't know BASIC well enough to say what that means.
-Rem I started learning the language today.
-Rem On further reflection, strings in this basic dialect seem to need to end with a $.
-Rem Perhaps the prior dialect allowed such formatting?
-Rem Mine does not.
 
 Rem I'm not sure which version of the chart this is.
 1220 If IN = 3 Then GoTo 1240
@@ -145,18 +138,8 @@ Rem I'm not sure which version of the chart this is.
 1390 If IN = 18 Then GoTo 1410
 1400 GoTo 1450
 1410 lang$ = "LITERATE AND FLUENT IN 4 LANGUAGES"
-Rem removing these for now.
-Rem 1420 Print lang$
-Rem 1430 Print SP$
-Rem 1440 goto 80
-Rem line 80 is still a mystery.
-Rem we'll get there.
 
 1450 WI = AbilityAssignedArray(3)
-1460 B = IN / WI
-Rem 1470 If B < .67 Or B > 1.5 Then GoTo 100
-Rem I don't know what this Intelligence divided by wisdom value is about.
-Rem presumably similar to the STR divided by con
 
 Rem WISDOM TABLE I. from PHB [1, p. 11]
 1480 Print "CHARACTER'S WISDOM IS "; WI
@@ -169,12 +152,12 @@ Rem WISDOM TABLE I. from PHB [1, p. 11]
 1550 If WI = 17 Then WF = 3
 1560 If WI = 18 Then WF = 4
 1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
-Rem 2580 GOTO 80
-Rem very excited for the mystical line 80
+
 
 1585 DX = AbilityAssignedArray(4)
 1590 Print "CHARACTER'S DEXTERITY IS "; DX
-Rem 1600 DX = KC: KC = 0
+
+
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
 DA = 0
 1610 If DX = 3 Then DF = -3 And DA = 4
@@ -192,6 +175,8 @@ DA = 0
 1720 If DF = 1 Then GoSub 3660
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
+
+
 Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
@@ -344,7 +329,6 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
 
 3080 CLASS$ = CLASS$(CN)
-Rem Don't know what this means, but it throws an error
 
 
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
@@ -372,7 +356,6 @@ Rem Don't know what this means, but it throws an error
 3251 RA = Val(RA$)
 3260 If RA < 1 Or RA > 7 Then GoTo 3180
 
-Rem INITIATING RACE/CLASS COMPATIBILITY MATRIX
 Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
 3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
@@ -385,7 +368,6 @@ Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 
 3279 GoTo 2000
 
-Rem 3270 something was here, possibly tightened
 3280 If CN = 1 Then m1 = 150
 3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
 3300 If CN > 1 And CN < 5 Then M2 = 50
@@ -396,9 +378,8 @@ Rem 3270 something was here, possibly tightened
 3350 GOLD = Int((Rnd(1) * m1) + M2)
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
-Rem You don't get to break out your golf ball d110s for a MUSCLE WIZARD
+Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
 3361 If CN > 3 And STR = 18 Then SF = 1 And SFF = 16 And DA = 2 And OD = 3
-Rem 3370 HOME            S
 3370 CLASS$ = CLASS$(CN)
 3371 RACE$ = RACE$(RA)
 
