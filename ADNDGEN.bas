@@ -54,7 +54,7 @@ Next I
 Next I
 
 180 Input "Are these Stats okay? Enter y if yes, anything else if no.", response$
-181 if LCASE$(response$) <> "y" then GOTO 160
+181 If LCase$(response$) <> "y" Then GoTo 160
 
 
 999 PER = 0
@@ -322,7 +322,7 @@ Rem 1999 Dim CLASS$(1 To 11)
 2740 If WI < 12 Then GoTo 2760
 2750 If CH < 15 Then GoTo 2770
 2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
-2770 Print " CHARISMA TOO LOO FOR A DRUID": GoTo 2200
+2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
 
 2780 If CN = 9 Then GoTo 2800
 2790 GoTo 2810
@@ -528,6 +528,7 @@ Function RollStat
     RollStat = total - lowest
 End Function
 
+Rem Implementation of Method I for Generation of Ability Scores from Dungeon Master's Guide [4, p. 11]
 Sub GenerateSortedStats (stats() As Integer)
     Dim temp As Integer
 
@@ -537,6 +538,11 @@ Sub GenerateSortedStats (stats() As Integer)
     Next i
     Call quicksort(stats(), 1, 6)
     Call ReverseArray(stats())
+End Sub
+
+Rem Implementation of Method II for Generation of Ability Scores from Dungeon Master's Guide [4, p. 11]
+Sub GenerateSortedStatsMII (stats() As Integer)
+    Rem TODO: Implement this (I am lazy, and this is unpopular)
 End Sub
 
 Rem Quicksort adapted from RosettaCode example
