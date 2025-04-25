@@ -71,29 +71,29 @@ Rem OW = Open wizard locked doors on 1d6
 1004 OW = 0
 
 Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
-1010 If St = 3 Then SF = -3 And SFF = 0 And DA = -1
-1020 If St > 3 And St < 6 Then SF = -2 And SFF = 0 And DA = -1
-1030 If St > 5 And St < 8 Then SF = -1 And SFF = 0
+1010 If St = 3 Then SF = -3: SFF = 0: DA = -1
+1020 If St > 3 And St < 6 Then SF = -2: SFF = 0: DA = -1
+1030 If St > 5 And St < 8 Then SF = -1: SFF = 0
 1031 If St > 7 And St < 16 Then OD = 2
 1032 If St > 15 And St < 18 Then OD = 3
 1033 If PER > 50 And PER < 100 Then OD = 4
-1034 If PER = 100 Then OD = 5 And OW = 2
+1034 If PER = 100 Then OD = 5: OW = 2
 1035 If PER > 90 And PER < 100 Then OW = 1
 1040 If St > 7 And St < 17 Then SF = 0
 1041 If St > 7 And St < 10 Then SFF = 1
 1042 If St > 9 And St < 12 Then SFF = 2
 1043 If St > 11 And St < 14 Then SFF = 4
 1044 If St > 13 And St < 16 Then SFF = 7
-1045 If St = 16 Then SF = 1 And SFF = 10 And DA = 1
-1050 If St = 17 Then SF = 1 And SFF = 13 And DA = 1
+1045 If St = 16 Then SF = 1 : SFF = 10: DA = 1
+1050 If St = 17 Then SF = 1: SFF = 13: DA = 1
 Rem there should be a case for non-percentile 18 strength for non-fighters
 Rem Edgiest of edge cases, correction is made after class is chosen.
-1070 If PER > 0 And PER < 51 Then SF = 1 And SFF = 20 And DA = 3
+1070 If PER > 0 And PER < 51 Then SF = 1: SFF = 20: DA = 3
 1080 If PER > 50 And PER < 100 Then SF = 2
-1081 If PER > 50 And PER < 76 Then SFF = 25 And DA = 3
-1082 If PER > 75 And PER < 91 Then SFF = 30 And DA = 4
-1083 If PER > 90 And PER < 100 Then SFF = 35 And DA = 5
-1090 If PER = 100 Then SF = 3 And SFF = 40 And DA = 6
+1081 If PER > 50 And PER < 76 Then SFF = 25: DA = 3
+1082 If PER > 75 And PER < 91 Then SFF = 30: DA = 4
+1083 If PER > 90 And PER < 100 Then SFF = 35: DA = 5
+1090 If PER = 100 Then SF = 3: SFF = 40: DA = 6
 1091 If St < 18 Then Print "CHARACTER'S STRENGTH IS "; St
 1092 If St = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
