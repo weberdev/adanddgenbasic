@@ -188,14 +188,14 @@ Rem Dexterity affects some but not all thief skills.
 Rem for my own sanity in implementation, let me not them them here
 Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
 Rem These are, mercifully, the first five array entries.
-1743 If DX = 9 Then ThiefSkills(1) = ThiefSkills(1) - 15 And ThiefSkills(2) = ThiefSkills(2) - 10 And ThiefSkills(3) = ThiefSkills(3) - 10 And ThiefSkills(4) = ThiefSkills(4) - 20 And ThiefSkills(5) = ThiefSkills(5) - 10
-1744 If DX = 10 Then ThiefSkills(1) = ThiefSkills(1) - 10 And ThiefSkills(2) = ThiefSkills(2) - 5 And ThiefSkills(3) = ThiefSkills(3) - 10 And ThiefSkills(4) = ThiefSkills(4) - 15 And ThiefSkills(5) = ThiefSkills(5) - 5
-1745 If DX = 11 Then ThiefSkills(1) = ThiefSkills(1) - 5 And ThiefSkills(3) = ThiefSkills(3) - 5 And ThiefSkills(4) = ThiefSkills(4) - 10
+1743 If DX = 9 Then ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
+1744 If DX = 10 Then ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
+1745 If DX = 11 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
 1746 If DX = 12 Then ThiefSkills(3) = ThiefSkills(3) - 5
 Rem Dexteriy 13 through 15 have no effect on thief skills
 1747 If DX = 16 Then ThiefSkills(2) = ThiefSkills(2) + 5
-1748 If DX = 17 Then ThiefSkills(1) = ThiefSkills(1) + 5 And ThiefSkills(2) = ThiefSkills(2) + 10
-1749 If DX = 18 Then ThiefSkills(1) = ThiefSkills(1) + 10 And ThiefSkills(2) = ThiefSkills(2) + 15 And ThiefSkills(3) = ThiefSkills(3) + 5 And ThiefSkills(4) = ThiefSkills(4) + 10 And ThiefSkills(5) = ThiefSkills(5) + 10
+1748 If DX = 17 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
+1749 If DX = 18 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
 
 Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
