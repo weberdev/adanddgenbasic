@@ -84,7 +84,7 @@ Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
 1042 If St > 9 And St < 12 Then SFF = 2
 1043 If St > 11 And St < 14 Then SFF = 4
 1044 If St > 13 And St < 16 Then SFF = 7
-1045 If St = 16 Then SF = 1 : SFF = 10: DA = 1
+1045 If St = 16 Then SF = 1: SFF = 10: DA = 1
 1050 If St = 17 Then SF = 1: SFF = 13: DA = 1
 Rem there should be a case for non-percentile 18 strength for non-fighters
 Rem Edgiest of edge cases, correction is made after class is chosen.
@@ -96,8 +96,6 @@ Rem Edgiest of edge cases, correction is made after class is chosen.
 1090 If PER = 100 Then SF = 3: SFF = 40: DA = 6
 1091 If St < 18 Then Print "CHARACTER'S STRENGTH IS "; St
 1092 If St = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
-
-Rem This is not part of the initial code, but a debug.
 
 
 1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
@@ -160,15 +158,15 @@ Rem WISDOM TABLE I. from PHB [1, p. 11]
 
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
 DA = 0
-1610 If DX = 3 Then DF = -3 And DA = 4
-1620 If DX = 4 Then DF = -2 And DA = 3
-1630 If DX = 5 Then DF = -1 And DA = 2
+1610 If DX = 3 Then DF = -3: DA = 4
+1620 If DX = 4 Then DF = -2: DA = 3
+1630 If DX = 5 Then DF = -1: DA = 2
 1631 If DX = 6 Then DA = 1
 1640 If DX > 5 And DX < 16 Then DF = 0
 1641 If DX = 15 Then DA = -1
-1650 If DX = 16 Then DF = 1 And DA = -2
-1670 If DX = 17 Then DF = 2 And DA = -3
-1680 If DX = 18 Then DF = 3 And DA = -4
+1650 If DX = 16 Then DF = 1: DA = -2
+1670 If DX = 17 Then DF = 2: DA = -3
+1680 If DX = 18 Then DF = 3: DA = -4
 1690 If DF = -3 Then GoSub 3600
 1700 If DF = -2 Then GoSub 3620
 1710 If DF = -1 Then GoSub 3640
@@ -399,7 +397,7 @@ Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-3361 If CN > 3 And STR = 18 Then SF = 1 And SFF = 16 And DA = 2 And OD = 3
+3361 If CN > 3 And STR = 18 Then SF = 1 : SFF = 16 : DA = 2 : OD = 3
 3370 CLASS$ = CLASS$(CN)
 3371 RACE$ = RACE$(RA)
 
