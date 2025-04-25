@@ -355,9 +355,10 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 
 
 3120 TY$ = " THIEF'S ABILITIES"
-3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR"
-3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS"
-3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
+3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
+Rem this line removed for maintainability reasons.
+Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
 
 
 3160 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
@@ -402,7 +403,12 @@ Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
 3371 RACE$ = RACE$(RA)
 
 Rem We check if the character is a thief, and then adjust for race.
+Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
+Rem I can trust my logic copying from a table, but scrolling?
+Rem Horrifying.
+rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
+
 
 Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
 3372 If CN = 9 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
@@ -416,10 +422,10 @@ Rem Halfling thieves are good at everything except climbing walls and reading La
 Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
 Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
 Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
-Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB54 window.
+Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
 3376 If CN = 9 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
 Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
-3377 IF CN = 9 AND RA = 6 THEN ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+3377 If CN = 9 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
