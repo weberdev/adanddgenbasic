@@ -397,9 +397,29 @@ Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-3361 If CN > 3 And STR = 18 Then SF = 1 : SFF = 16 : DA = 2 : OD = 3
+3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
 3370 CLASS$ = CLASS$(CN)
 3371 RACE$ = RACE$(RA)
+
+Rem We check if the character is a thief, and then adjust for race.
+Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
+
+Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+3372 If CN = 9 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
+3373 If CN = 9 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
+Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
+3374 If CN = 9 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
+Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
+3375 If CN = 9 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
+Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
+Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
+Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
+Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
+Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB54 window.
+3376 If CN = 9 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
+3377 IF CN = 9 AND RA = 6 THEN ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
@@ -410,7 +430,7 @@ Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
 3430 Print " STRENGTH: ": Print St
 3440 Print SH$
 3441 Print SO$
-3442 If OW > 1 Then Print SW$
+3442 If OW > 1 Then Print WL$
 3450 Print " INTELLIGENCE: ": Print IN
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
