@@ -176,6 +176,20 @@ DA = 0
 1730 If DF = 2 Then GoSub 3680
 1740 If DF = 3 Then GoSub 3700
 
+Rem THIEF FUNCTION TABLE from PHB [1, p. 28] does not include RACIAL ADJUSTMENTS section.
+1741 Dim ThiefSkills(8) As Integer
+1742 For I = 1 To 8
+    Read ThiefSkills(I)
+Next I
+Data 30,25,20,15,10,10,80,0
+
+Rem DEXTERITY TABLE II. from PHB [1, p. 12]
+Rem Dexterity affects some but not all thief skills.
+Rem for my own sanity in implementation, let me not them them here
+Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
+Rem These are, mercifully, the first five array entries.
+1743 If DX = 9 Then  ThiefSkills(1) =  ThiefSkills(1) - 15 AND ThiefSkills(2) = ThiefSkills(2) - 10 and ThiefSkills(3) = ThiefSkills(3) - 10 AND ThiefSkills(4) = ThiefSkills(4) - 20 AND ThiefSkills(5) = ThiefSkills(5) - 10
+
 
 Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
