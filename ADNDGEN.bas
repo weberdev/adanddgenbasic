@@ -514,8 +514,9 @@ Rem The above bastardization of Magic card flavor text is 232 characters long an
 Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
 3377 If TF = 1 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
+Dim ThiefString(8) As String
 3388 If TF = 1 Then
-    Dim ThiefString(8) As String
+
     For J = 1 To 8
         ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
     Next J
@@ -552,8 +553,10 @@ End If
 3580 GoTo 4000
 3590 Print TY$
 3591 Print TA$
-3592 Print TK$
-3593 Print K1$
+3592 Print TK$: ThiefString(8) = "--"
+3593 For I = 1 To 8
+    Print ThiefString(I);
+Next I
 3599 GoTo 4000
 
 3600 X1$ = "ADD "
