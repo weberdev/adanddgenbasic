@@ -494,7 +494,8 @@ Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
 Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-
+TF = 0
+If CN < 10 And CN > 7 Then TF = 1
 
 Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
 3372 If CN = 9 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
@@ -513,6 +514,12 @@ Rem The above bastardization of Magic card flavor text is 232 characters long an
 Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
 3377 If CN = 9 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
+3388 If CN = 9 Then
+    Dim ThiefString(8) As String
+    For J = 1 To 8
+        ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
+    Next J
+End If
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
