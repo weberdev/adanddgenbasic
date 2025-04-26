@@ -66,8 +66,21 @@ Next I
 
 290 RA = Val(RA$)
 300 If RA < 1 Or RA > 7 Then GoTo 210
+310 If RA = 1 Then
 
+    Rem Dwarves have Minimum str and con 8 and 12
+    If AbilityAssignedArray(1) < 8 Then GoTo 190
+    If AbilityAssignedArray(5) < 12 Then GoTo 190
 
+    Rem Dwarves get +1 CON, -1 CHA
+    AbilityAssignedArray(4) = AbilityAssignedArray(5) + 1
+    AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
+
+    Rem Dwarves have MAX DEX 17, MAX CHA 16, MIN CHA (as it's reduced) 3
+    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17 ' Max Dex 17
+    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3 ' Min Charisma 3
+    If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16 ' Max Charisma 16
+End If
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
 999 PER = 0
