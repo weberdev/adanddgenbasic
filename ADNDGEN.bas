@@ -77,9 +77,9 @@ Next I
     AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
 
     Rem Dwarves have MAX DEX 17, MAX CHA 16, MIN CHA (as it's reduced) 3
-    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17 ' Max Dex 17
-    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3 ' Min Charisma 3
-    If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16 ' Max Charisma 16
+    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM DWARF DEXTERITY IS 17"
+    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
+    If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16: Print "MAXIMUM DWARF CHARISMA IS 16"
 End If
 320 If RA = 2 Then
     Rem Elves Have Min INT 8, DEX 7, CON 6, and CHA 8
@@ -125,8 +125,8 @@ End If
     AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
 
     Rem Halflings have max str 17, max wis 17
-    If AbilityAssignedArray(1) > 17 Then AbilityAssignedArray(1) = 17
-    If AbilityAssignedArray(5) > 17 Then AbilityAssignedArray(5) = 17
+    If AbilityAssignedArray(1) > 17 Then AbilityAssignedArray(1) = 17: Print "MAXIMUM HALFLING STRENGTH IS 17"
+    If AbilityAssignedArray(3) > 17 Then AbilityAssignedArray(3) = 17: Print "MAXIMUM HALFLING WISDOM IS 17"
 
     Rem Halflings have min str 6
     If AbilityAssignedArray(1) < 6 Then AbilityAssignedArray(1) = 6
@@ -143,10 +143,10 @@ End If
     AbilityAssignedArray(6) = AbilityAssignedArray(6) - 2
 
     Rem Half Orcs have max 17 int, 14 wis 17 dex, 12 cha
-    If AbilityAssignedArray(2) > 17 Then AbilityAssignedArray(2) = 17
-    If AbilityAssignedArray(3) > 14 Then AbilityAssignedArray(3) = 14
-    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17
-    If AbilityAssignedArray(6) > 12 Then AbilityAssignedArray(6) = 12
+    If AbilityAssignedArray(2) > 17 Then AbilityAssignedArray(2) = 17: Print "MAXIMUM HALF-ORC INTELLIGENCE IS 17"
+    If AbilityAssignedArray(3) > 14 Then AbilityAssignedArray(3) = 14: Print "MAXIMUM HALF-ORC WISDOM IS 14"
+    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM HALF-ORC DEXTERITY IS 17"
+    If AbilityAssignedArray(6) > 12 Then AbilityAssignedArray(6) = 12: Print "MAXIMUM HALF-ORC CHARISMA IS 12"
 
     Rem Half-orcs have min 3 CHA, and that's salient with the penalty
     If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
