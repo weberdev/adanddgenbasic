@@ -515,12 +515,14 @@ Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing
 3377 If TF = 1 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
 Dim ThiefString(8) As String
-3388 If TF = 1 Then
+
+3378 If TF = 1 Then
 
     For J = 1 To 8
         ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
     Next J
 End If
+
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
@@ -549,7 +551,7 @@ End If
 3561 Print CU$
 3562 Print Z1$
 
-3570 If CN = 9 Then GoTo 3590
+3570 If TF = 1 Then GoTo 3590
 3580 GoTo 4000
 3590 Print TY$
 3591 Print TA$
