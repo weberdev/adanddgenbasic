@@ -129,7 +129,27 @@ End If
     If AbilityAssignedArray(5) > 17 Then AbilityAssignedArray(5) = 17
 
     Rem Halflings have min str 6
-    If AbilityAssignedArray(1) < 6 then AbilityAssignedArray(1) = 6
+    If AbilityAssignedArray(1) < 6 Then AbilityAssignedArray(1) = 6
+End If
+
+360 If RA = 6 Then
+    Rem Half-orcs have min 6 str, min 13 con
+    If AbilityAssignedArray(1) < 6 Then GoTo 190
+    If AbilityAssignedArray(5) < 13 Then GoTo 190
+
+    Rem Half-orcs get +1 STR, +1 CON, -2 CHA
+    AbilityAssignedArray(1) = AbilityAssignedArray(1) + 1
+    AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
+    AbilityAssignedArray(6) = AbilityAssignedArray(6) - 2
+
+    Rem Half Orcs have max 17 int, 14 wis 17 dex, 12 cha
+    If AbilityAssignedArray(2) > 17 Then AbilityAssignedArray(2) = 17
+    If AbilityAssignedArray(3) > 14 Then AbilityAssignedArray(3) = 14
+    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17
+    If AbilityAssignedArray(6) > 12 Then AbilityAssignedArray(6) = 12
+
+    Rem Half-orcs have min 3 CHA, and that's salient with the penalty
+    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
 End If
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
@@ -231,336 +251,336 @@ Rem WISDOM TABLE I. from PHB [1, p. 11]
 
 
 1585 DX = AbilityAssignedArray(4)
-    1590 Print "CHARACTER'S DEXTERITY IS "; DX
+1590 Print "CHARACTER'S DEXTERITY IS "; DX
 
 
-    Rem DEXTERITY TABLE I. from PHB [1, p. 11]
-    DA = 0
-    1610 If DX = 3 Then DF = -3: DA = 4
-    1620 If DX = 4 Then DF = -2: DA = 3
-    1630 If DX = 5 Then DF = -1: DA = 2
-    1631 If DX = 6 Then DA = 1
-    1640 If DX > 5 And DX < 16 Then DF = 0
-    1641 If DX = 15 Then DA = -1
-    1650 If DX = 16 Then DF = 1: DA = -2
-    1670 If DX = 17 Then DF = 2: DA = -3
-    1680 If DX = 18 Then DF = 3: DA = -4
-    1690 If DF = -3 Then GoSub 3600
-    1700 If DF = -2 Then GoSub 3620
-    1710 If DF = -1 Then GoSub 3640
-    1720 If DF = 1 Then GoSub 3660
-    1730 If DF = 2 Then GoSub 3680
-    1740 If DF = 3 Then GoSub 3700
+Rem DEXTERITY TABLE I. from PHB [1, p. 11]
+DA = 0
+1610 If DX = 3 Then DF = -3: DA = 4
+1620 If DX = 4 Then DF = -2: DA = 3
+1630 If DX = 5 Then DF = -1: DA = 2
+1631 If DX = 6 Then DA = 1
+1640 If DX > 5 And DX < 16 Then DF = 0
+1641 If DX = 15 Then DA = -1
+1650 If DX = 16 Then DF = 1: DA = -2
+1670 If DX = 17 Then DF = 2: DA = -3
+1680 If DX = 18 Then DF = 3: DA = -4
+1690 If DF = -3 Then GoSub 3600
+1700 If DF = -2 Then GoSub 3620
+1710 If DF = -1 Then GoSub 3640
+1720 If DF = 1 Then GoSub 3660
+1730 If DF = 2 Then GoSub 3680
+1740 If DF = 3 Then GoSub 3700
 
-    Rem THIEF FUNCTION TABLE from PHB [1, p. 28] does not include RACIAL ADJUSTMENTS section.
-    1741 Dim ThiefSkills(8) As Integer
-    1742 For I = 1 To 8
-        Read ThiefSkills(I)
-    Next I
-    Data 30,25,20,15,10,10,80,0
+Rem THIEF FUNCTION TABLE from PHB [1, p. 28] does not include RACIAL ADJUSTMENTS section.
+1741 Dim ThiefSkills(8) As Integer
+1742 For I = 1 To 8
+    Read ThiefSkills(I)
+Next I
+Data 30,25,20,15,10,10,80,0
 
-    Rem DEXTERITY TABLE II. from PHB [1, p. 12]
-    Rem Dexterity affects some but not all thief skills.
-    Rem for my own sanity in implementation, let me not them them here
-    Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
-    Rem These are, mercifully, the first five array entries.
-    1743 If DX = 9 Then ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
-    1744 If DX = 10 Then ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
-    1745 If DX = 11 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
-    1746 If DX = 12 Then ThiefSkills(3) = ThiefSkills(3) - 5
-    Rem Dexteriy 13 through 15 have no effect on thief skills
-    1747 If DX = 16 Then ThiefSkills(2) = ThiefSkills(2) + 5
-    1748 If DX = 17 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
-    1749 If DX = 18 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
+Rem DEXTERITY TABLE II. from PHB [1, p. 12]
+Rem Dexterity affects some but not all thief skills.
+Rem for my own sanity in implementation, let me not them them here
+Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
+Rem These are, mercifully, the first five array entries.
+1743 If DX = 9 Then ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
+1744 If DX = 10 Then ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
+1745 If DX = 11 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
+1746 If DX = 12 Then ThiefSkills(3) = ThiefSkills(3) - 5
+Rem Dexteriy 13 through 15 have no effect on thief skills
+1747 If DX = 16 Then ThiefSkills(2) = ThiefSkills(2) + 5
+1748 If DX = 17 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
+1749 If DX = 18 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
 
-    Rem MF$: Missile fire mod.
-    Rem DG$: Defensive adjustment for reflex saves and armor class
-    1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
-    1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
-    1790 CO = AbilityAssignedArray(5)
-    1820 Print "CHARACTER'S CONSTITUTION IS "; CO
+Rem MF$: Missile fire mod.
+Rem DG$: Defensive adjustment for reflex saves and armor class
+1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
+1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
+1790 CO = AbilityAssignedArray(5)
+1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 
-    1840 CH = AbilityAssignedArray(6)
-    1850 Print "CHARACTER'S CHARISMA IS "; CH
+1840 CH = AbilityAssignedArray(6)
+1850 Print "CHARACTER'S CHARISMA IS "; CH
 
-    Rem CHARISMA TABLE from PHB [1, p. 13]
-    1860 If CH = 3 Then XF = 1
-    1870 If CH = 4 Then XF = 1
-    1880 If CH > 4 And CH < 6 Then XF = 2
-    1890 If CH > 6 And CH < 9 Then XF = 3
-    1900 If CH > 8 And CH < 12 Then XF = 4
-    1910 If CH > 11 And CH < 14 Then XF = 5
-    1920 If CH = 14 Then XF = 6
-    1930 If CH = 15 Then XF = 7
-    1940 If CH = 16 Then XF = 8
-    1950 If CH = 17 Then XF = 10
-    1960 If CH = 18 Then XF = 15
-    1970 Print "CAN HAVE "; XF; " RETAINERS"
-    1980 L = 0
-
-
-    2000 Print "       CLASS LIST"
-    2010 Print " --------------------------"
-    2020 Print " 1 Fighter 2 Paladin"
-    2030 Print " 3 Ranger 4 Cavalier"
-    2040 Print " 5 Magic-User 6 Illusionist"
-    2050 Print " 7 Cleric 8 Druid"
-    2060 Print " 9 Thief 10 Assassin"
-    2070 Print " 11 Monk"
-    2080 Print " SELECT THE CLASS THAT YOU WISH "
-    2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
-    2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
-    2110 CN = Val(CN$)
-    2111 If CN < 1 Or CN > 11 Then GoTo 2000
-
-    2130 If CN = 1 Then 2150
-    2140 GoTo 2210
-    2150 If St < 9 Then GoTo 2170
-    2160 If CO < 7 Then GoTo 2190
-    2170 GoTo 2210
-    2180 Print " STRENGTH TOO LOW FOR A FIGHTER": GoTo 2200
-    2190 Print " CONSTITUTION TOO LOW FOR A FIGHTER"
-    2200 Print " PLEASE SELECT AGAIN": GoTo 2000
-
-    2210 If CN = 5 Then GoTo 2230
-    2220 GoTo 2270
-    2230 If IN < 9 Then GoTo 2250
-    2240 If DX < 6 Then GoTo 2260
-    2250 Print " INTELLIGENCE TOO LOW FOR A MAGIC USER": GoTo 2200
-    2260 Print " DEXTERITY TOO LOW FOR A MAGIC USER": GoTo 2200
-
-    2270 If CN = 2 Then 2290
-    2280 GoTo 2390
-    2290 If St < 12 Then 2340
-    2300 If IN < 9 Then 2350
-    2310 If WI < 13 Then 2360
-    2320 If CO < 9 Then 2370
-    2330 If CH < 17 Then 2380
-    2340 Print " STRENGTH TOO LOW FOR A PALADIN": GoTo 2200
-    2350 Print " INTELLIGENCE TOO LOW FOR A PALADIN": GoTo 2200
-    2360 Print " WISDOM TOO LOW FOR A PALADIN": GoTo 2200
-    2370 Print " CONSTITUTION TOO LOW FOR A PALADIN": GoTo 2200
-    2380 Print " CHARISMA TOO LOW FOR A PALADIN": GoTo 2200
-
-    2390 If CN = 3 Then GoTo 2410
-    2400 GoTo 2480
-    2410 If St < 13 Then GoTo 2440
-    2420 If IN < 13 Then GoTo 2450
-    2430 If WI < 14 Then GoTo 2460
-    2431 If CO < 14 Then GoTo 2470
-    2440 Print " STRENGTH TOO LOW FOR A RANGER": GoTo 2200
-    2450 Print " INTELLIGENCE TOO LOW FOR A RANGER": GoTo 2200
-    2460 Print " WISDOM TOO LOW FOR A RANGER": GoTo 2200
-    2470 Print " CONSTITUTION TOO LOW FOR A RANGER": GoTo 2200
-
-    2480 If CN = 4 Then GoTo 2500
-    2490 GoTo 2630
-    2500 If St < 15 Then GoTo 2580
-    2510 If DX < 15 Then GoTo 2590
-    2520 If CO < 15 Then GoTo 2600
-    2530 If IN < 10 Then GoTo 2610
-    2540 If WI < 10 Then GoTo 2620
-    2580 Print " STRENGTH TOO LOW FOR A CAVALIER": GoTo 2200
-    2590 Print " DEXTERITY TOO LOW FOR A CAVALIER": GoTo 2200
-    2600 Print " CONSTITUTION TOO LOW FOR A CAVALIER": GoTo 2200
-    2610 Print " INTELLIGENCE TOO LOW FOR A CAVALIER": GoTo 2200
-    2620 Print " WISDOM TOO LOW FOR A CAVALIER": GoTo 2200
-
-    2630 If CN = 6 Then GoTo 2650
-    2640 GoTo 2690
-    2650 If IN < 15 Then 2670
-    2660 If DX < 16 Then 2680
-    2670 Print " INTELLIGENCE TOO LOW FOR AN ILLUSIONIST": GoTo 2200
-    2680 Print " DEXTERITY TOO LOW FOR AN ILLUSIONIST": GoTo 2200
-
-    2690 If CN = 7 Then GoTo 2710
-    2700 GoTo 2720
-    2710 If WI < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
-
-    2720 If CN = 8 Then GoTo 2740
-    2730 GoTo 2780
-    2740 If WI < 12 Then GoTo 2760
-    2750 If CH < 15 Then GoTo 2770
-    2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
-    2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
-
-    2780 If CN = 9 Then GoTo 2800
-    2790 GoTo 2810
-    2800 If DX < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
-
-    2810 If CN = 10 Then GoTo 2830
-    2820 GoTo 2870
-    2830 If IN < 11 Then GoTo 2850
-    2840 If DX < 12 Then GoTo 2860
-    2850 Print " INTELLIGENCE TOO LOW FOR AN ASSASSIN": GoTo 2200
-    2860 Print " DEXTERITY TOO LOW FOR AN ASSASSIN": GoTo 2200
-
-    2870 If CN = 11 Then GoTo 2890
-    2880 GoTo 2970
-    2890 If St < 15 Then GoTo 2930
-    2900 If WI < 15 Then GoTo 2940
-    2910 If DX < 15 Then GoTo 2950
-    2920 If CO < 11 Then GoTo 2960
-    2930 Print " STRENGTH TOO LOW FOR A MONK": GoTo 2200
-    2940 Print " WISDOM TOO LOW FOR A MONK": GoTo 2200
-    2950 Print " DEXTERITY TOO LOW FOR A MONK": GoTo 2200
-    2960 Print " CONSTITUTION TOO LOW FOR A MONK": GoTo 2200
+Rem CHARISMA TABLE from PHB [1, p. 13]
+1860 If CH = 3 Then XF = 1
+1870 If CH = 4 Then XF = 1
+1880 If CH > 4 And CH < 6 Then XF = 2
+1890 If CH > 6 And CH < 9 Then XF = 3
+1900 If CH > 8 And CH < 12 Then XF = 4
+1910 If CH > 11 And CH < 14 Then XF = 5
+1920 If CH = 14 Then XF = 6
+1930 If CH = 15 Then XF = 7
+1940 If CH = 16 Then XF = 8
+1950 If CH = 17 Then XF = 10
+1960 If CH = 18 Then XF = 15
+1970 Print "CAN HAVE "; XF; " RETAINERS"
+1980 L = 0
 
 
-    2970 If CN = 1 Then HF(1) = 10
-    2980 If CN = 2 Then HF(2) = 10
-    2990 If CN = 3 Then HF(3) = 16
-    3000 If CN = 4 Then HF(4) = 4
-    3010 If CN = 5 Then HF(5) = 4
-    3020 If CN = 6 Then HF(6) = 4
-    3030 If CN = 7 Then HF(7) = 8
-    3040 If CN = 8 Then HF(8) = 8
-    3050 If CN = 9 Then HF(9) = 6
-    3060 If CN = 10 Then HF(10) = 6
-    3070 If CN = 11 Then HF(11) = 8
+2000 Print "       CLASS LIST"
+2010 Print " --------------------------"
+2020 Print " 1 Fighter 2 Paladin"
+2030 Print " 3 Ranger 4 Cavalier"
+2040 Print " 5 Magic-User 6 Illusionist"
+2050 Print " 7 Cleric 8 Druid"
+2060 Print " 9 Thief 10 Assassin"
+2070 Print " 11 Monk"
+2080 Print " SELECT THE CLASS THAT YOU WISH "
+2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
+2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
+2110 CN = Val(CN$)
+2111 If CN < 1 Or CN > 11 Then GoTo 2000
+
+2130 If CN = 1 Then 2150
+2140 GoTo 2210
+2150 If St < 9 Then GoTo 2170
+2160 If CO < 7 Then GoTo 2190
+2170 GoTo 2210
+2180 Print " STRENGTH TOO LOW FOR A FIGHTER": GoTo 2200
+2190 Print " CONSTITUTION TOO LOW FOR A FIGHTER"
+2200 Print " PLEASE SELECT AGAIN": GoTo 2000
+
+2210 If CN = 5 Then GoTo 2230
+2220 GoTo 2270
+2230 If IN < 9 Then GoTo 2250
+2240 If DX < 6 Then GoTo 2260
+2250 Print " INTELLIGENCE TOO LOW FOR A MAGIC USER": GoTo 2200
+2260 Print " DEXTERITY TOO LOW FOR A MAGIC USER": GoTo 2200
+
+2270 If CN = 2 Then 2290
+2280 GoTo 2390
+2290 If St < 12 Then 2340
+2300 If IN < 9 Then 2350
+2310 If WI < 13 Then 2360
+2320 If CO < 9 Then 2370
+2330 If CH < 17 Then 2380
+2340 Print " STRENGTH TOO LOW FOR A PALADIN": GoTo 2200
+2350 Print " INTELLIGENCE TOO LOW FOR A PALADIN": GoTo 2200
+2360 Print " WISDOM TOO LOW FOR A PALADIN": GoTo 2200
+2370 Print " CONSTITUTION TOO LOW FOR A PALADIN": GoTo 2200
+2380 Print " CHARISMA TOO LOW FOR A PALADIN": GoTo 2200
+
+2390 If CN = 3 Then GoTo 2410
+2400 GoTo 2480
+2410 If St < 13 Then GoTo 2440
+2420 If IN < 13 Then GoTo 2450
+2430 If WI < 14 Then GoTo 2460
+2431 If CO < 14 Then GoTo 2470
+2440 Print " STRENGTH TOO LOW FOR A RANGER": GoTo 2200
+2450 Print " INTELLIGENCE TOO LOW FOR A RANGER": GoTo 2200
+2460 Print " WISDOM TOO LOW FOR A RANGER": GoTo 2200
+2470 Print " CONSTITUTION TOO LOW FOR A RANGER": GoTo 2200
+
+2480 If CN = 4 Then GoTo 2500
+2490 GoTo 2630
+2500 If St < 15 Then GoTo 2580
+2510 If DX < 15 Then GoTo 2590
+2520 If CO < 15 Then GoTo 2600
+2530 If IN < 10 Then GoTo 2610
+2540 If WI < 10 Then GoTo 2620
+2580 Print " STRENGTH TOO LOW FOR A CAVALIER": GoTo 2200
+2590 Print " DEXTERITY TOO LOW FOR A CAVALIER": GoTo 2200
+2600 Print " CONSTITUTION TOO LOW FOR A CAVALIER": GoTo 2200
+2610 Print " INTELLIGENCE TOO LOW FOR A CAVALIER": GoTo 2200
+2620 Print " WISDOM TOO LOW FOR A CAVALIER": GoTo 2200
+
+2630 If CN = 6 Then GoTo 2650
+2640 GoTo 2690
+2650 If IN < 15 Then 2670
+2660 If DX < 16 Then 2680
+2670 Print " INTELLIGENCE TOO LOW FOR AN ILLUSIONIST": GoTo 2200
+2680 Print " DEXTERITY TOO LOW FOR AN ILLUSIONIST": GoTo 2200
+
+2690 If CN = 7 Then GoTo 2710
+2700 GoTo 2720
+2710 If WI < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
+
+2720 If CN = 8 Then GoTo 2740
+2730 GoTo 2780
+2740 If WI < 12 Then GoTo 2760
+2750 If CH < 15 Then GoTo 2770
+2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
+2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
+
+2780 If CN = 9 Then GoTo 2800
+2790 GoTo 2810
+2800 If DX < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
+
+2810 If CN = 10 Then GoTo 2830
+2820 GoTo 2870
+2830 If IN < 11 Then GoTo 2850
+2840 If DX < 12 Then GoTo 2860
+2850 Print " INTELLIGENCE TOO LOW FOR AN ASSASSIN": GoTo 2200
+2860 Print " DEXTERITY TOO LOW FOR AN ASSASSIN": GoTo 2200
+
+2870 If CN = 11 Then GoTo 2890
+2880 GoTo 2970
+2890 If St < 15 Then GoTo 2930
+2900 If WI < 15 Then GoTo 2940
+2910 If DX < 15 Then GoTo 2950
+2920 If CO < 11 Then GoTo 2960
+2930 Print " STRENGTH TOO LOW FOR A MONK": GoTo 2200
+2940 Print " WISDOM TOO LOW FOR A MONK": GoTo 2200
+2950 Print " DEXTERITY TOO LOW FOR A MONK": GoTo 2200
+2960 Print " CONSTITUTION TOO LOW FOR A MONK": GoTo 2200
 
 
-    3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
-    3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
-    3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
-
-    3080 CLASS$ = CLASS$(CN)
-
-
-    3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
-    3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
-    3110 Z1$ = " 7    9    11   --   --   --   --   --  "
-
-
-    3120 TY$ = " THIEF'S ABILITIES"
-    3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
-    3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
-    Rem this line removed for maintainability reasons.
-    Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
-    Rem We'll come back to it after class is chosen.
+2970 If CN = 1 Then HF(1) = 10
+2980 If CN = 2 Then HF(2) = 10
+2990 If CN = 3 Then HF(3) = 16
+3000 If CN = 4 Then HF(4) = 4
+3010 If CN = 5 Then HF(5) = 4
+3020 If CN = 6 Then HF(6) = 4
+3030 If CN = 7 Then HF(7) = 8
+3040 If CN = 8 Then HF(8) = 8
+3050 If CN = 9 Then HF(9) = 6
+3060 If CN = 10 Then HF(10) = 6
+3070 If CN = 11 Then HF(11) = 8
 
 
+3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
+3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
+3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
 
-    Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
-    3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-    3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-    3272 If RA = 3 And Not (CN = 1 Or CN = 7 Or CN = 6 Or CN = 9 Or CN = 10) Then GoTo 3278
-    3273 If RA = 4 And Not (CN = 1 Or CN = 3 Or CN = 5 Or CN = 7 Or CN = 8 Or CN = 9 Or CN = 10) Then GoTo 3278
-    3274 If RA = 5 And Not (CN = 1 Or CN = 8 Or CN = 9) Then GoTo 3278
-    3275 If RA = 6 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-    3276 GoTo 3280
-    3278 Print "Race/class combination not allowed."
-
-    3279 GoTo 2000
-
-    3280 If CN = 1 Then m1 = 150
-    3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
-    3300 If CN > 1 And CN < 5 Then M2 = 50
-    3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
-    3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
-    3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
-    3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
-    3350 GOLD = Int((Rnd(1) * m1) + M2)
-    3360 HP = Int((Rnd(1) * HF(CN)) + 1)
-    Rem This is an edge case for non-fighters with 18 STR.
-    Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-    3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
-    3370 CLASS$ = CLASS$(CN)
-    3371 RACE$ = RACE$(RA)
-
-    Rem We check if the character is a thief, and then adjust for race.
-    Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
-    Rem I can trust my logic copying from a table, but scrolling?
-    Rem Horrifying.
-    Rem We'll ignore vertical space from increasingly deranged comments.
-    Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
+3080 CLASS$ = CLASS$(CN)
 
 
-    Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
-    3372 If CN = 9 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
-    Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
-    3373 If CN = 9 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
-    Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
-    3374 If CN = 9 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
-    Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
-    3375 If CN = 9 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
-    Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
-    Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
-    Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
-    Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
-    Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
-    3376 If CN = 9 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
-    Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
-    3377 If CN = 9 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
+3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
+3110 Z1$ = " 7    9    11   --   --   --   --   --  "
 
-    3380 Print "   SUMMARY OF CHARACTER "
-    3390 Print "   RACE: ", RACE$
-    3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
+
+3120 TY$ = " THIEF'S ABILITIES"
+3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
+3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
+Rem this line removed for maintainability reasons.
+Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+Rem We'll come back to it after class is chosen.
 
 
 
-    3430 Print " STRENGTH: ": Print St
-    3440 Print SH$
-    3441 Print SO$
-    3442 If OW > 1 Then Print WL$
-    3450 Print " INTELLIGENCE: ": Print IN
-    3460 If CN = 5 Then Print IZ$
-    3470 Print lang$
-    3480 Print " WISDOM: ": Print WI
-    3490 If WF = 0 Then GoTo 3510
-    3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
-    3510 Print " CONSTITUTION ": Print CO
-    3520 Print " CHARISMA ": Print CH
-    3530 Print " MAY HAVE "; XF; " RETAINERS"
+Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
+3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
+3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
+3272 If RA = 3 And Not (CN = 1 Or CN = 7 Or CN = 6 Or CN = 9 Or CN = 10) Then GoTo 3278
+3273 If RA = 4 And Not (CN = 1 Or CN = 3 Or CN = 5 Or CN = 7 Or CN = 8 Or CN = 9 Or CN = 10) Then GoTo 3278
+3274 If RA = 5 And Not (CN = 1 Or CN = 8 Or CN = 9) Then GoTo 3278
+3275 If RA = 6 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
+3276 GoTo 3280
+3278 Print "Race/class combination not allowed."
+
+3279 GoTo 2000
+
+3280 If CN = 1 Then m1 = 150
+3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
+3300 If CN > 1 And CN < 5 Then M2 = 50
+3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
+3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
+3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
+3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
+3350 GOLD = Int((Rnd(1) * m1) + M2)
+3360 HP = Int((Rnd(1) * HF(CN)) + 1)
+Rem This is an edge case for non-fighters with 18 STR.
+Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
+3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
+3370 CLASS$ = CLASS$(CN)
+3371 RACE$ = RACE$(RA)
+
+Rem We check if the character is a thief, and then adjust for race.
+Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
+Rem I can trust my logic copying from a table, but scrolling?
+Rem Horrifying.
+Rem We'll ignore vertical space from increasingly deranged comments.
+Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
 
 
-    3540 If CN = 7 Then GoTo 3560
-    3550 GoTo 3570
+Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+3372 If CN = 9 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
+3373 If CN = 9 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
+Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
+3374 If CN = 9 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
+Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
+3375 If CN = 9 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
+Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
+Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
+Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
+Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
+Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
+3376 If CN = 9 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
+3377 If CN = 9 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
 
-    3560 Print CZ$
-    3561 Print CU$
-    3562 Print Z1$
-
-    3570 If CN = 9 Then GoTo 3590
-    3580 GoTo 4000
-    3590 Print TY$
-    3591 Print TA$
-    3592 Print TK$
-    3593 Print K1$
-    3599 GoTo 4000
-
-    3600 X1$ = "ADD "
-    3601 X2$ = "3"
-    3602 X3$ = " TO"
-    3610 Return
-
-    3620 X1$ = "ADD "
-    3621 X2$ = "2"
-    3622 X3$ = " TO"
-    3630 Return
-
-    3640 X1$ = "ADD "
-    3641 X2$ = "2"
-    3642 X3$ = " TO"
-    3650 Return
-
-    3660 X1$ = "SUBTRACT "
-    3661 X2$ = "1"
-    3662 X3$ = " FROM"
-    3670 Return
-
-    3680 X1$ = "SUBTRACT "
-    3681 X2$ = "2"
-    3682 X3$ = " FROM"
-    3690 Return
-
-    3700 X1$ = "SUBTRACT "
-    3701 X2$ = "3"
-    3702 X3$ = " FROM"
-    3710 Return
+3380 Print "   SUMMARY OF CHARACTER "
+3390 Print "   RACE: ", RACE$
+3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
 
 
-    4000 Print "DONE"
+
+3430 Print " STRENGTH: ": Print St
+3440 Print SH$
+3441 Print SO$
+3442 If OW > 1 Then Print WL$
+3450 Print " INTELLIGENCE: ": Print IN
+3460 If CN = 5 Then Print IZ$
+3470 Print lang$
+3480 Print " WISDOM: ": Print WI
+3490 If WF = 0 Then GoTo 3510
+3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
+3510 Print " CONSTITUTION ": Print CO
+3520 Print " CHARISMA ": Print CH
+3530 Print " MAY HAVE "; XF; " RETAINERS"
+
+
+3540 If CN = 7 Then GoTo 3560
+3550 GoTo 3570
+
+3560 Print CZ$
+3561 Print CU$
+3562 Print Z1$
+
+3570 If CN = 9 Then GoTo 3590
+3580 GoTo 4000
+3590 Print TY$
+3591 Print TA$
+3592 Print TK$
+3593 Print K1$
+3599 GoTo 4000
+
+3600 X1$ = "ADD "
+3601 X2$ = "3"
+3602 X3$ = " TO"
+3610 Return
+
+3620 X1$ = "ADD "
+3621 X2$ = "2"
+3622 X3$ = " TO"
+3630 Return
+
+3640 X1$ = "ADD "
+3641 X2$ = "2"
+3642 X3$ = " TO"
+3650 Return
+
+3660 X1$ = "SUBTRACT "
+3661 X2$ = "1"
+3662 X3$ = " FROM"
+3670 Return
+
+3680 X1$ = "SUBTRACT "
+3681 X2$ = "2"
+3682 X3$ = " FROM"
+3690 Return
+
+3700 X1$ = "SUBTRACT "
+3701 X2$ = "3"
+3702 X3$ = " FROM"
+3710 Return
+
+
+4000 Print "DONE"
 
 
 
