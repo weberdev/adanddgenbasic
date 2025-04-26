@@ -94,7 +94,16 @@ End If
 
     Rem Elves have No maximum stats that are salient at this point
     Rem Con might've caught a stray penalty, however.
-    IF AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
+    If AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
+End If
+330 If RA = 3 Then
+    Rem Gnomes have Min STR 6, INT 7, Con 8
+    If AbilityAssignedArray(1) < 6 Then GoTo 190
+    If AbilityAssignedArray(2) < 7 Then GoTo 190
+    If AbilityAssignedArray(5) < 8 Then GoTo 190
+
+    Rem Gnomes get gno ability score modifiers.
+    rem Gnor do they have caps
 End If
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
