@@ -73,13 +73,28 @@ Next I
     If AbilityAssignedArray(5) < 12 Then GoTo 190
 
     Rem Dwarves get +1 CON, -1 CHA
-    AbilityAssignedArray(4) = AbilityAssignedArray(5) + 1
+    AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
     AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
 
     Rem Dwarves have MAX DEX 17, MAX CHA 16, MIN CHA (as it's reduced) 3
     If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17 ' Max Dex 17
     If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3 ' Min Charisma 3
     If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16 ' Max Charisma 16
+End If
+320 If RA = 2 Then
+    Rem Elves Have Min INT 8, DEX 7, CON 6, and CHA 8
+    Rem dear lord those are some restrictions
+    If AbilityAssignedArray(2) < 8 Then GoTo 190
+    If AbilityAssignedArray(4) < 7 Then GoTo 190
+    If AbilityAssignedArray(5) < 6 Then GoTo 190
+
+    Rem Elves Get +1 Dex, -1 Con
+    AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
+    AbilityAssignedArray(5) = AbilityAssignedArray(5) - 1
+
+    Rem Elves have No maximum stats that are salient at this point
+    Rem Con might've caught a stray penalty, however.
+    IF AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
 End If
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
