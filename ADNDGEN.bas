@@ -53,6 +53,21 @@ Next I
 180 Input "Are these Stats okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then GoTo 160
 
+190 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
+200 RACE$(4) = "HALF-ELVEN": RACE$(5) = "HALFLING": RACE$(6) = "HALF-ORC": RACE$(7) = "HUMAN"
+210 Print "         RACE LIST"
+220 Print " 1: DWARVEN  2: ELVEN"
+230 Print " 3: GNOME    4: HALF-ELVEN"
+240 Print " 5: HALFLING 6: HALF-ORC"
+250 Print " 7: HUMAN"
+260 Print " SELECT THE RACE YOU WISH"
+270 Print " YOUR CHARACTER TO BE AND ENTER THE"
+280 Input " NUMBER FROM THE TABLE ABOVE", RA$
+
+290 RA = Val(RA$)
+300 If RA < 1 Or RA > 7 Then GoTo 210
+
+
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
 999 PER = 0
@@ -359,21 +374,9 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
 Rem this line removed for maintainability reasons.
 Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+Rem We'll come back to it after class is chosen.
 
 
-3160 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
-3170 RACE$(4) = "HALF-ELVEN": RACE$(5) = "HALFLING": RACE$(6) = "HALF-ORC": RACE$(7) = "HUMAN"
-3180 Print "         RACE LIST"
-3190 Print " 1: DWARVEN  2: ELVEN"
-3200 Print " 3: GNOME    4: HALF-ELVEN"
-3210 Print " 5: HALFLING 6: HALF-ORC"
-3220 Print " 7: HUMAN"
-3230 Print " SELECT THE RACE YOU WISH"
-3240 Print " YOUR CHARACTER TO BE AND ENTER THE"
-3250 Input " NUMBER FROM THE TABLE ABOVE", RA$
-
-3251 RA = Val(RA$)
-3260 If RA < 1 Or RA > 7 Then GoTo 3180
 
 Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
@@ -406,7 +409,7 @@ Rem We check if the character is a thief, and then adjust for race.
 Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
 Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
-rem We'll ignore vertical space from increasingly deranged comments.
+Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
 
 
