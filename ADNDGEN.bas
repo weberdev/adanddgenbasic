@@ -623,7 +623,7 @@ End Function
 
 Rem Implementation of Method I for Generation of Ability Scores from Dungeon Master's Guide [4, p. 11]
 Sub GenerateSortedStats (stats() As Integer)
-    Dim temp As Integer
+    Rem    Dim temp As Integer
 
     Rem Generate six stats
     For i = 1 To 6
@@ -634,9 +634,9 @@ Sub GenerateSortedStats (stats() As Integer)
 End Sub
 
 Rem Implementation of Method II for Generation of Ability Scores from Dungeon Master's Guide [4, p. 11]
-Sub GenerateSortedStatsMII (stats() As Integer)
-    Rem TODO: Implement this (I am lazy, and this is unpopular)
-End Sub
+Rem Sub GenerateSortedStatsMII (stats() As Integer)
+Rem TODO: Implement this (I am lazy, and this is unpopular)
+rem End Sub
 
 Rem Quicksort adapted from RosettaCode example
 Rem https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#QB64
