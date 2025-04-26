@@ -517,7 +517,6 @@ Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing
 Dim ThiefString(8) As String
 
 3378 If TF = 1 Then
-
     For J = 1 To 8
         ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
     Next J
