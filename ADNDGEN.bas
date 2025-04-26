@@ -103,8 +103,17 @@ End If
     If AbilityAssignedArray(5) < 8 Then GoTo 190
 
     Rem Gnomes get gno ability score modifiers.
-    rem Gnor do they have caps
+    Rem Gnor do they have caps
 End If
+340 If RA = 4 Then
+    Rem Half-elves have Min 4 INT, 6 Dex, 6 CON
+    If AbilityAssignedArray(2) < 4 Then GoTo 190
+    If AbilityAssignedArray(4) < 6 Then GoTo 190
+    If AbilityAssignedArray(5) < 6 Then GoTo 190
+
+    Rem Half Elves have no ability score modifiers, nor salient ability score caps
+End If
+
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
 999 PER = 0
