@@ -27,7 +27,7 @@ Rem Making a secondary system to assign ability scores.
 160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
     If Abilities(I) > 18 Then Print "Something is WRONG. This should not exceed 18.": Abilities(I) = 18
-    If Abilities(I) < 3  Then Print "Something is WRONG. This should not be less than 3.": Abilities(I) = 3
+    If Abilities(I) < 3 Then Print "Something is WRONG. This should not be less than 3.": Abilities(I) = 3
     Print "Assign this score to one of the following unassigned stats:"
 
     Rem Show unassigned abilities
@@ -321,6 +321,11 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
+1981 If RA = 7 Then GoTo 2000
+Rem This is where multiclasssing would go.
+Rem WILL GO.
+Rem SCOPE CREEP? NEVER HEARD OF IT.
+Rem 1982
 
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
@@ -593,6 +598,14 @@ Next I
 3701 X2$ = "3"
 3702 X3$ = " FROM"
 3710 Return
+
+Rem Stonecunning is a thirdism, but that's fine.
+Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1, p. 15]
+3720 If RA = 1 Then Print "DWARVEN STONECUNNING"
+3721 If RA = 1 Then Print " DETECT        OBSERVE   NOTICE  SPOT  INTUIT"
+3722 If RA = 1 Then Print "  SLOPE   CONSTRUCTION   SHIFTS  TRAP   DEPTH"
+3723 If RA = 1 Then Print "    75%            75%      66%   50%     50%"
+Rem I don't think this improves with level.
 
 
 4000 Print "DONE"
