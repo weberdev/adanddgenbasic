@@ -607,6 +607,11 @@ Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1
 3723 If RA = 1 Then Print "    75%            75%      66%   50%     50%"
 Rem I don't think this improves with level.
 
+Rem As it turns out, Gnomes get stonecunning too.
+3724 If RA = 3 Then Print " DETECT    NOTICE   INTUIT  DETERMINE"
+3725 If RA = 3 Then Print "  SLOPE    UNSAFE    DEPTH  DIRECTION"
+3726 If RA = 3 Then Print "    80%       70%      60%        50%"
+
 
 4000 Print "DONE"
 
