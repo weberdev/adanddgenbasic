@@ -87,7 +87,7 @@ End If
     If AbilityAssignedArray(2) < 8 Then GoTo 190
     If AbilityAssignedArray(4) < 7 Then GoTo 190
     If AbilityAssignedArray(5) < 6 Then GoTo 190
-    IF AbilityAssignedArray(6) < 8 THEN GOTO 190
+    If AbilityAssignedArray(6) < 8 Then GoTo 190
 
     Rem Elves Get +1 Dex, -1 Con
     AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
@@ -523,6 +523,7 @@ Dim ThiefString(8) As String
     Next J
 End If
 
+                                                                rem Level up code (if implemented), will set assassins back two levels of thief skills
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
