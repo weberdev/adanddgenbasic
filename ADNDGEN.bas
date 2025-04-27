@@ -87,6 +87,7 @@ End If
     If AbilityAssignedArray(2) < 8 Then GoTo 190
     If AbilityAssignedArray(4) < 7 Then GoTo 190
     If AbilityAssignedArray(5) < 6 Then GoTo 190
+    IF AbilityAssignedArray(6) < 8 THEN GOTO 190
 
     Rem Elves Get +1 Dex, -1 Con
     AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
@@ -636,7 +637,7 @@ End Sub
 Rem Implementation of Method II for Generation of Ability Scores from Dungeon Master's Guide [4, p. 11]
 Rem Sub GenerateSortedStatsMII (stats() As Integer)
 Rem TODO: Implement this (I am lazy, and this is unpopular)
-rem End Sub
+Rem End Sub
 
 Rem Quicksort adapted from RosettaCode example
 Rem https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#QB64
