@@ -345,7 +345,9 @@ If RA = 2 Then
 End If
 
 If RA = 3 Then
-      rem Gnome rules are fuzzy
+    Rem Gnome rules are fuzzy
+    Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
+    REM Multiclassing between Thief ans assassin seems incorrect- we assume that
 End If
 
 
