@@ -26,7 +26,8 @@ Rem Making a secondary system to assign ability scores.
 
 160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
-    IF Abilities(I) > 18 then PRINT "Something is WRONG. This should not exceed 18.":  Abilities(I) = 18
+    If Abilities(I) > 18 Then Print "Something is WRONG. This should not exceed 18.": Abilities(I) = 18
+    If Abilities(I) < 3  Then Print "Something is WRONG. This should not be less than 3.": Abilities(I) = 3
     Print "Assign this score to one of the following unassigned stats:"
 
     Rem Show unassigned abilities
