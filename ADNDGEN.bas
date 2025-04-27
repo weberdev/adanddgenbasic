@@ -322,10 +322,20 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1980 L = 0
 
 1981 If RA = 7 Then GoTo 2000
+Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
+Rem
 Rem This is where multiclasssing would go.
 Rem WILL GO.
 Rem SCOPE CREEP? NEVER HEARD OF IT.
-Rem 1982
+Rem FOR REFERENCE:
+Rem FIGHTER ST >8, CN > 6
+Rem THIEF DX > 8
+Rem MAGIC-USER INT > 8, DX > 5
+
+Rem 1982 Print " WOULD YOU LIKE TO MULTICLASS?"
+Rem IF RA = 1 AND ST > 8 AND CN > 6 AND DX > 8 THEN PRINT "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
+Rem IF RA = 2 AND ST > 8 AND CN > 6 AND DX > 8 THEN PRINT AS A N ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": PRINT "ENTER 1 TO SELECT THIS"
+
 
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
