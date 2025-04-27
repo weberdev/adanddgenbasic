@@ -26,6 +26,7 @@ Rem Making a secondary system to assign ability scores.
 
 160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
+    IF Abilities(I) > 18 then PRINT "Something is WRONG. This should not exceed 18.":  Abilities(I) = 18
     Print "Assign this score to one of the following unassigned stats:"
 
     Rem Show unassigned abilities
@@ -523,7 +524,7 @@ Dim ThiefString(8) As String
     Next J
 End If
 
-                                                                rem Level up code (if implemented), will set assassins back two levels of thief skills
+Rem Level up code (if implemented), will set assassins back two levels of thief skills
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", RACE$
 3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
