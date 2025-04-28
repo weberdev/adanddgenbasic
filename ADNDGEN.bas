@@ -321,12 +321,18 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
+If RA = 7 Or RA = 4 Then
+    Rem bard check
+    IF ST > 14 AND DX > 14 AND CON > 9 AND INT > 11 AND WI > 14 AND CH > 14 THEN PRINT "Bard is available. Begin as fighter."
+End If
+
 Rem I didn't want to do this, man
 Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
 1982 If RA = 7 Then GoTo 2000
+
+
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
-Rem
 Rem This is where multiclasssing would go.
 Rem WILL GO.
 Rem SCOPE CREEP? NEVER HEARD OF IT.
@@ -448,7 +454,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem If all three? Quadruple it.
         Rem As the precondition is necessarily true, we double it again
         If IN > 16 And WI > 16 And CH > 16 Then MD = MD * 2
-        rem add modifier to base
+        Rem add modifier to base
         PA = PA + MD
 
     Else GoTo 2000
@@ -463,6 +469,8 @@ End If
 2050 Print " 7 Cleric 8 Druid"
 2060 Print " 9 Thief 10 Assassin"
 2070 Print " 11 Monk"
+Rem 2075 Print "12 Bard"
+Rem bard is semi out of scope and is half a prestige class
 2080 Print " SELECT THE CLASS THAT YOU WISH "
 2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
 2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
@@ -579,6 +587,7 @@ End If
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
 3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
+Rem 3074 CLASS$(12)
 
 3080 CLASS$ = CLASS$(CN)
 
