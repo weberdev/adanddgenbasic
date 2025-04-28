@@ -322,7 +322,7 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1980 L = 0
 
 Rem I didn't want to do this, man
-
+Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
 1982 If RA = 7 Then GoTo 2000
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
@@ -351,7 +351,7 @@ End If
 If RA = 3 Then
     Rem Gnome rules are fuzzy
     Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
-    Rem Multiclassing between Thief ans assassin seems incorrect- we assume that you can't do that.
+    Rem Multiclassing between Thief and assassin seems incorrect- we assume that you can't do that.
     Rem Multiclassing in general is allowable, however
     Rem thus
     Rem fighter thief
@@ -429,12 +429,26 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
 
     Rem As an aside, even with perfect 18s, chances of psionics are vanishingly low
-    rem 1+5+2+1 = 9% of the top end
+    Rem 1+5+2+1 = 9% of the top end
 
     PsiRoll = Int((Rnd(1) * 1000) + 1)
     If BaseChance > PsiRoll Then
         Print "Psionics available"
         Rem I just want to implement the check for now
+        Rem Please I just want to stop doing this
+        Rem psionic ability is a percentile roll
+        PA = Int((Rnd(1) * 100) + 1)
+        Rem plus one for each point of mental attribute > 12
+        MD = 0
+        If IN > 12 Then MD = MD + (IN - 12)
+        If WI > 12 Then MD = MD + (WI - 12)
+        If CH > 12 Then MD = MD + (CH - 12)
+        Rem If two or more exceed sixteen, double the modifier
+        If (IN > 16 And WI > 16) Or (IN > 16 And CH > 16) Or (WI > 16 And CH > 16) Then MD = MD * 2
+        Rem If all three? Quadruple it.
+        rem As the precondition is necessarily true, we double it again
+        If IN > 16 And WI > 16 And CH > 16 Then MD = MD * 2
+
     Else GoTo 2000
     End If
 End If
