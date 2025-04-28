@@ -377,12 +377,20 @@ If RA = 4 Then
     If St > 12 And IN > 12 And WI > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": Print "PRESS 5 TO SELECT THIS"
     If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 6 to select this"
     If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
-
-
-
-
 End If
-
+If RA = 5 Then
+    Rem Halflings
+    If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
+    Rem THANK GYGAX IT'S EASY
+End If
+If RA = 6 Then
+    Rem half-orcs
+    Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, orfighter/assassin."   [1, p.17]
+    Rem
+    If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 1 to select this"
+    If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": Print "PRESS 2 TO SELECT THIS"
+    IF WI > 8
+End If
 
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
