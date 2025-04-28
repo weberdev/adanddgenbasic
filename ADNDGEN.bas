@@ -347,7 +347,15 @@ End If
 If RA = 3 Then
     Rem Gnome rules are fuzzy
     Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
-    REM Multiclassing between Thief ans assassin seems incorrect- we assume that
+    Rem Multiclassing between Thief ans assassin seems incorrect- we assume that you can't do that.
+    Rem dual classic is allowable, however
+    Rem thus
+    Rem fighter thief
+    Rem fighter illusionist
+    Rem fighter assassin
+    Rem thief illusionist
+    Rem assassin illusionist
+
 End If
 
 
