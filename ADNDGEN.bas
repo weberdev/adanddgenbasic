@@ -52,7 +52,7 @@ Next I
     Print AbilityNames(I); ": "; AbilityAssignedArray(I)
 Next I
 
-180 Input "Are these Stats okay? Enter y if yes, anything else if no.", response$
+180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then GoTo 160
 
 190 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
