@@ -370,11 +370,15 @@ If RA = 4 Then
     Rem Interpretations:
     Rem Druid is not on the list, it can't be multiclassed..
     Rem This makes tonal snse.
-    Rem
     If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE/THIEF": Print "ENTER 2 TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE": Print "ENTER 3 TO SELECT THIS"
     If IN > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGE/THIEF": Print "ENTER 4 TO SELECT THIS"
+    If St > 12 And IN > 12 And WI > 13 And CO > 13 Then Print "Half elf rannger cleric ok": Print "4 if good"
+    If St > 8 And CN > 6 And WI > 8 Then Print "Half elf cleric/fighter okay"
+    If IN > 8 And DX > 5 And WI > 8 Then Print "HALF ELF CLERIC/MU OKAY"
+
+
 
 
 End If
