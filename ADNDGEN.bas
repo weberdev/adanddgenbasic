@@ -416,7 +416,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     Rem we cast this to a shot out of 1000 to avoid floating point interactions
 
     Rem I'm not going to mess around with >= here, we add 1 for a simple greater than check
-    BaseChance = 11
+    BaseChance = 10
     Rem We get a residue of good mental ability scores
     IntRes = IN - 16
     WisRes = WI - 16
@@ -427,6 +427,9 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     If WisRes > 0 Then WisRes = WisRes * 10: BaseChance = BaseChance + WisRes
     Rem for each point of cha above 16, psionics chance increase by 0.5%
     If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
+
+    Rem As an aside, even with perfect 18s, chances of psionics are vanishingly low
+    rem 1+5+2+1 = 9% of the top end
 
     PsiRoll = Int((Rnd(1) * 1000) + 1)
     If BaseChance > PsiRoll Then
