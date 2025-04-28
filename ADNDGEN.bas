@@ -357,8 +357,18 @@ If RA = 3 Then
     Rem assassin illusionist
     Rem IT IS WORTH NOTING
     Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
-    rem It depends on what the definition of is is
+    Rem It depends on what the definition of is is
 
+End If
+
+If RA = 4 Then
+    Rem half elves
+    Rem Half elves can be multiclassed
+    Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
+    Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. clericlfighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
+    Rem It is unclear if this is intended to be exhaustive.
+    Rem Interpretations:
+    rem Paladin is not on the list, thus we cannot multiclass them.
 End If
 
 
