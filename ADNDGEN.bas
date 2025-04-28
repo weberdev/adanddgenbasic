@@ -379,13 +379,21 @@ If RA = 4 Then
     If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
     If IN > 8 And WI > 8 And St > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": Print "PRESS 8 to SELECT THIS"
 
-    Rem We can look at the potential options for half elf multiclassing as a 5d array, with each axis represnting the presence, absence, or variant of a class.
+    Rem We can look at the potential options for half elf multiclassing as a 4d array, with each axis represnting the presence, absence, or variant of a class.
     Rem IDX 1: (Fighter-type): Range 0-2: NONE, FIGHTER RANGER
     Rem IDX 2: (Cleric): Range 0-2: NONE, CLERIC, DRUID
-    Rem IDX 3: Range 0-1: NONE, MAGIC-USER
-    Rem IDX 4: (Thief): Range 0-1: NONE, THIEF
+    Rem IDX 3: (Thief): Range 0-2: NONE, THIEF, ASSASSIN
+    Rem IDX 4: Range 0-1: NONE, MAGIC-USER
     Rem via finger-based combinatorics (borrowing from my Yoshikage Kira collection), we deduce the following:
-    rem absent restrictions, there are 3*3*2*2 class combos, ujntested for validity
+    Rem absent restrictions, there are 3*3*3*2 class combos, untested for validity
+    Rem this means 54 class combos, let's consider validity
+    Rem 0,0,0,0 none classes, 53
+    Rem all variants of 4 classes, of which there are 8: Fighter/Cleric/Thief, Ranger/Cleric/Thief, Fighter/Cleric/Assassin, Ranger/Cleric/Assassin, Fighter/Druid/Thief, Ranger/Druid/Thief, Fighter/Druid/Assassin, Ranger/Druid/Assassin
+    Rem thus 45
+    Rem removing single classed options as they're covered
+    Rem thus 38
+    rem that's a lot more than I have
+
 End If
 If RA = 5 Then
     Rem Halflings
