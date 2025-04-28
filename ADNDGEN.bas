@@ -391,23 +391,6 @@ If RA = 4 Then
     If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
     If IN > 8 And WI > 8 And St > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": Print "PRESS 8 to SELECT THIS"
 
-    Rem We can look at the potential options for half elf multiclassing as a 4d array, with each axis represnting the presence, absence, or variant of a class.
-    Rem IDX 1: (Fighter-type): Range 0-2: NONE, FIGHTER RANGER
-    Rem IDX 2: (Cleric): Range 0-2: NONE, CLERIC, DRUID
-    Rem IDX 3: (Thief): Range 0-2: NONE, THIEF, ASSASSIN
-    Rem IDX 4: Range 0-1: NONE, MAGIC-USER
-    Rem via finger-based combinatorics (borrowing from my Yoshikage Kira collection), we deduce the following:
-    Rem absent restrictions, there are 3*3*3*2 class combos, untested for validity
-    Rem this means 54 class combos, let's consider validity
-    Rem 0,0,0,0 none classes, 53
-    Rem all variants of 4 classes, of which there are 8: Fighter/Cleric/Thief, Ranger/Cleric/Thief, Fighter/Cleric/Assassin, Ranger/Cleric/Assassin, Fighter/Druid/Thief, Ranger/Druid/Thief, Fighter/Druid/Assassin, Ranger/Druid/Assassin
-    Rem thus 45
-    Rem removing single classed options as they're covered
-    Rem thus 38
-    Rem that's a lot more than I have
-
-    Rem modeling htis as a 4d options space is probably excessive
-
 End If
 If RA = 5 Then
     Rem Halflings
@@ -417,7 +400,6 @@ End If
 If RA = 6 Then
     Rem half-orcs
     Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
-    Rem
     If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 1 to select this"
     If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": Print "PRESS 2 TO SELECT THIS"
     If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": Print " PRESS 3TO SELECT THIS"
@@ -449,7 +431,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     PsiRoll = Int((Rnd(1) * 1000) + 1)
     If BaseChance > PsiRoll Then
         Print "Psionics available"
-        rem I just want to implement the check for now
+        Rem I just want to implement the check for now
     Else GoTo 2000
     End If
 End If
