@@ -344,21 +344,30 @@ If RA = 2 Then
     If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGE/THIEF": Print "ENTER 4 TO SELECT THIS"
 End If
 
+
 If RA = 3 Then
     Rem Gnome rules are fuzzy
     Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
     Rem Multiclassing between Thief ans assassin seems incorrect- we assume that you can't do that.
-    Rem dual classic is allowable, however
+    Rem Multiclassing in general is allowable, however
     Rem thus
     Rem fighter thief
+    If St > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
     Rem fighter illusionist
-    Rem fighter assassin
+    If St > 8 And CN > 6 And DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": Print "ENTER 2 TO SELECT THIS"
     Rem thief illusionist
+    If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": Print "ENTER 3 TO SELECT THIS"
+    GoTo GnomeMultSkip
+    Rem The following multiclasses are NOT explicitly authorized
+    Rem fighter assassin
+    If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
     Rem assassin illusionist
+    Rem assassin requirements are fully superceded by illusionist
+    If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
     Rem IT IS WORTH NOTING
     Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
     Rem It depends on what the definition of is is
-
+    GnomeMultSkip:
 End If
 
 If RA = 4 Then
@@ -392,7 +401,9 @@ If RA = 4 Then
     Rem thus 45
     Rem removing single classed options as they're covered
     Rem thus 38
-    rem that's a lot more than I have
+    Rem that's a lot more than I have
+
+    Rem modeling htis as a 4d options space is probably excessive
 
 End If
 If RA = 5 Then
@@ -406,7 +417,7 @@ If RA = 6 Then
     Rem
     If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 1 to select this"
     If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": Print "PRESS 2 TO SELECT THIS"
-    If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC ASSIASSIN": Print " PRESS 3TO SELECT THIS"
+    If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": Print " PRESS 3TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 4 TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 5 TO SELECT THIS"
 
