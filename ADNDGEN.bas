@@ -446,8 +446,10 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem If two or more exceed sixteen, double the modifier
         If (IN > 16 And WI > 16) Or (IN > 16 And CH > 16) Or (WI > 16 And CH > 16) Then MD = MD * 2
         Rem If all three? Quadruple it.
-        rem As the precondition is necessarily true, we double it again
+        Rem As the precondition is necessarily true, we double it again
         If IN > 16 And WI > 16 And CH > 16 Then MD = MD * 2
+        rem add modifier to base
+        PA = PA + MD
 
     Else GoTo 2000
     End If
