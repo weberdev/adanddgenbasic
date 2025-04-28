@@ -355,6 +355,9 @@ If RA = 3 Then
     Rem fighter assassin
     Rem thief illusionist
     Rem assassin illusionist
+    Rem IT IS WORTH NOTING
+    Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
+    rem It depends on what the definition of is is
 
 End If
 
