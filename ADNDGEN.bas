@@ -368,7 +368,7 @@ If RA = 4 Then
     Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
     Rem It is unclear if this is intended to be exhaustive.
     Rem Interpretations:
-    Rem Druid is not on the list, it can't be multiclassed..
+    Rem Druid is not on the list, it can't be multiclassed.
     Rem This makes tonal snse.
     If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
@@ -378,6 +378,14 @@ If RA = 4 Then
     If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 6 to select this"
     If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
     If IN > 8 And WI > 8 And St > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": Print "PRESS 8 to SELECT THIS"
+
+    Rem We can look at the potential options for half elf multiclassing as a 5d array, with each axis represnting the presence, absence, or variant of a class.
+    Rem IDX 1: (Fighter-type): Range 0-2: NONE, FIGHTER RANGER
+    Rem IDX 2: (Cleric): Range 0-2: NONE, CLERIC, DRUID
+    Rem IDX 3: Range 0-1: NONE, MAGIC-USER
+    Rem IDX 4: (Thief): Range 0-1: NONE, THIEF
+    Rem via finger-based combinatorics (borrowing from my Yoshikage Kira collection), we deduce the following:
+    rem absent restrictions, there are 3*3*2*2 class combos, ujntested for validity
 End If
 If RA = 5 Then
     Rem Halflings
