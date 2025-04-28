@@ -432,19 +432,26 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 1990 If IN > 15 Or WI > 15 Or CH > 15 Then
     Rem 1% chance of psionics, +more for good stats
     Rem we cast this to a shot out of 1000 to avoid floating point interactions
-    BaseChance = 10
-    rem
+
+    Rem I'm not going to mess around with >= here, we add 1 for a simple greater than check
+    BaseChance = 11
+    Rem We get a residue of good mental ability scores
     IntRes = IN - 16
     WisRes = WI - 16
     ChaRes = CH - 16
-    IntBonus = IntRes
-    WisBonus = WisRes
-    ChaBonus = ChaRes
-    If IntRes > 0 Then IntRes = IntBonus * 25: BaseChance = BaseChance + IntBonus
-    If WisRes > 0 Then WisRes = WisBonus * 10: BaseChance = BaseChance + WisBonus
-    If ChaRes > 0 Then ChaRes = ChaBonus * 5: BaseChance = BaseChance + ChaBonus
-    Rem psionics go here
+    Rem for each point of int about 16, psionics chance increases by 2.5%
+    If IntRes > 0 Then IntRes = IntRes * 25: BaseChance = BaseChance + IntRes
+    Rem for each point of wis above 16, psionics chance increases by 1%
+    If WisRes > 0 Then WisRes = WisRes * 10: BaseChance = BaseChance + WisRes
+    Rem for each point of cha above 16, psionics chance increase by 0.5%
+    If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
 
+    PsiRoll = Int((Rnd(1) * 1000) + 1)
+    If BaseChance > PsiRoll Then
+        Print "Psionics available"
+        rem I just want to implement the check for now
+    Else GoTo 2000
+    End If
 End If
 
 2000 Print "       CLASS LIST"
