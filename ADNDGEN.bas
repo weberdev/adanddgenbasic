@@ -321,7 +321,10 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
-1981 If RA = 7 Then GoTo 2000
+Rem I didn't want to do this, man
+
+Rem 1981 If RA = 7 Then GoTo 1990
+1982 If RA = 7 Then GoTo 2000
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
 Rem
 Rem This is where multiclasssing would go.
@@ -362,7 +365,7 @@ If RA = 3 Then
     Rem fighter assassin
     If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
     Rem assassin illusionist
-    Rem assassin requirements are fully superceded by illusionist
+    Rem assassin requirements are fully superseded by illusionist
     If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
     Rem IT IS WORTH NOTING
     Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
@@ -420,6 +423,27 @@ If RA = 6 Then
     If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": Print " PRESS 3TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 4 TO SELECT THIS"
     If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 5 TO SELECT THIS"
+
+End If
+GoTo 2000
+
+Rem PSIONICS: PHB Appendix I. [1, p. 110]
+Rem PC must have one or more mental stats at or above 16 to check for psionics
+1990 If IN > 15 Or WI > 15 Or CH > 15 Then
+    Rem 1% chance of psionics, +more for good stats
+    Rem we cast this to a shot out of 1000 to avoid floating point interactions
+    BaseChance = 10
+    rem
+    IntRes = IN - 16
+    WisRes = WI - 16
+    ChaRes = CH - 16
+    IntBonus = IntRes
+    WisBonus = WisRes
+    ChaBonus = ChaRes
+    If IntRes > 0 Then IntRes = IntBonus * 25: BaseChance = BaseChance + IntBonus
+    If WisRes > 0 Then WisRes = WisBonus * 10: BaseChance = BaseChance + WisBonus
+    If ChaRes > 0 Then ChaRes = ChaBonus * 5: BaseChance = BaseChance + ChaBonus
+    Rem psionics go here
 
 End If
 
