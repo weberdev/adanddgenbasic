@@ -365,10 +365,18 @@ If RA = 4 Then
     Rem half elves
     Rem Half elves can be multiclassed
     Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
-    Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. clericlfighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
+    Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
     Rem It is unclear if this is intended to be exhaustive.
     Rem Interpretations:
-    rem Paladin is not on the list, thus we cannot multiclass them.
+    Rem Druid is not on the list, it can't be multiclassed..
+    Rem This makes tonal snse.
+    Rem
+    If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
+    If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE/THIEF": Print "ENTER 2 TO SELECT THIS"
+    If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE": Print "ENTER 3 TO SELECT THIS"
+    If IN > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGE/THIEF": Print "ENTER 4 TO SELECT THIS"
+
+
 End If
 
 
