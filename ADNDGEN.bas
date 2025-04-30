@@ -486,13 +486,38 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
                 AtCt = 5
         End Select
 
+        Dim AttackModes(5) As String
+        AttackModes(1) = "Psionic Blast"
+        AttackModes(2) = "Mind Thrust"
+        AttackModes(3) = "Ego Whip"
+        AttackModes(4) = "Id Insinuation"
+        AttackModes(5) = "Psychic Crush"
 
-        Rem TODO: Give player choice of AtCt options from the following:
-        Rem 1. Psionic Blast
-        Rem 2: Mind Thrust
-        Rem 3: Ego Whip
-        Rem 4: Id Insinuation
-        Rem 5: Psychic Crush
+        Dim Chosen(5) As Integer
+        Dim Selected(5) As String
+
+        Print "You may choose"; AtCt; " psionic attack mode(s):"
+        For I = 1 To AtCt
+            Print "Available modes:"
+            For J = 1 To 5
+                If Chosen(J) = 0 Then Print J; ": "; AttackModes(J)
+            Next J
+
+            Input "Enter number of your choice: ", Pick
+            While Pick < 1 Or Pick > 5 Or Chosen(Pick) = 1
+                Print "Invalid or already chosen. Try again."
+                Input "Enter number of your choice: ", Pick
+            Wend
+
+            Chosen(Pick) = 1
+            Selected(I) = AttackModes(Pick)
+        Next I
+
+        Print
+        Print "You have selected the following psionic attack modes:"
+        For I = 1 To AtCt
+            Print "- "; Selected(I)
+        Next I
 
         Rem Number of psionic defense modes is determined in much the same way.
         Rem The table frequencies differ, though.
