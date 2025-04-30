@@ -520,6 +520,9 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         If MentPer < 56 And MentPer > 40 Then MnD = 2: MjD = 1
         If MentPer < 71 And MentPer > 55 Then MnD = 3: MjD = 1
         If MentPer < 81 And MentPer > 70 Then MnD = 4: MjD = 1
+        If MentPer < 91 And MentPer > 80 Then MnD = 3: MjD = 2
+        If MentPer < 96 And MentPer > 90 Then MnD = 5: MjD = 1
+        IF MentPer > 95 then MnD = 4: MjD = 2
 
     Else GoTo 2000
     End If
