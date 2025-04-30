@@ -323,7 +323,7 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
-    IF ST > 14 AND DX > 14 AND CON > 9 AND INT > 11 AND WI > 14 AND CH > 14 THEN PRINT "Bard is available. Begin as fighter."
+    If St > 14 And DX > 14 And CO > 9 And IN > 11 And WI > 14 And CH > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
 Rem I didn't want to do this, man
