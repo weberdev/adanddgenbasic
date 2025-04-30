@@ -782,7 +782,7 @@ End If
 
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
 Rem We expect users not to choose powers they can't take.
-rem If they do, they get a random choice, as that's fair.
+Rem If they do, they get a random choice, as that's fair.
 PsiCompatibilityCheck:
 If TF = 1 And (MN = 9 Or MN = 18) Then
     MN = Int((Rnd(1) * 22) + 1)
@@ -836,6 +836,10 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3510 Print " CONSTITUTION ": Print CO
 3520 Print " CHARISMA ": Print CH
 3530 Print " MAY HAVE "; XF; " RETAINERS"
+3531 If MN > 1 Then
+    Print "Character is psionic"
+
+End If
 
 
 3540 If CN = 7 Then GoTo 3560
