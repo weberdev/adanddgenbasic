@@ -323,12 +323,14 @@ Rem CHARISMA TABLE from PHB [1, p. 13]
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
-    If St > 14  And IN > 11 And WI > 14 And DX > 14  And CO > 9  And  CH > 14 Then Print "Bard is available. Begin as fighter."
+    If St > 14 And IN > 11 And WI > 14 And DX > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
 Rem I didn't want to do this, man
 Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
+GoTo 2000
+rem cut above line when multiclassing ready
 1982 If RA = 7 Then GoTo 2000
 
 
