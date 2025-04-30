@@ -330,7 +330,7 @@ Rem I didn't want to do this, man
 Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
 GoTo 2000
-rem cut above line when multiclassing ready
+Rem cut above line when multiclassing ready
 1982 If RA = 7 Then GoTo 2000
 
 
@@ -350,9 +350,9 @@ End If
 
 If RA = 2 Then
     If St > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE/THIEF": Print "ENTER 2 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGE": Print "ENTER 3 TO SELECT THIS"
-    If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGE/THIEF": Print "ENTER 4 TO SELECT THIS"
+    If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
+    If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
+    If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
 End If
 
 
