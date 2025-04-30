@@ -562,7 +562,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 
         If MN > 22 Then GoTo RollDiscipline
         If MN < 23 Then DV$ = MinorDiscipline(MN)
-        rem If we have a class mismatch, we can just reroll outside of this mess when classis chosen.
+        Rem If we have a class mismatch, we can just reroll outside of this mess when class is chosen.
 
         Rem
     Else GoTo 2000
@@ -577,8 +577,6 @@ End If
 2050 Print " 7 Cleric 8 Druid"
 2060 Print " 9 Thief 10 Assassin"
 2070 Print " 11 Monk"
-Rem 2075 Print "12 Bard"
-Rem bard is semi out of scope and is half a prestige class
 2080 Print " SELECT THE CLASS THAT YOU WISH "
 2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
 2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
@@ -695,7 +693,13 @@ Rem bard is semi out of scope and is half a prestige class
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
 3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
-Rem 3074 CLASS$(12)
+rem class category check, mainly for psionic abilities
+isFT = 0
+isMU = 0
+isCL = 0
+If CN < 5 Then isFT = 1
+If CN > 4 And CN < 7 Then isMU = 1
+If CN > 6 And CN < 9 Then isCL = 1
 
 3080 CLASS$ = CLASS$(CN)
 
