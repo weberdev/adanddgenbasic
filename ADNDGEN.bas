@@ -838,6 +838,13 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3530 Print " MAY HAVE "; XF; " RETAINERS"
 3531 If MN > 1 Then
     Print "Character is psionic"
+    Print "Psionic Ability: " + Str$(PS)
+    Print "Psionic Attack Strength: " + Str$(PA)
+    Print "Psionic Attack Strength: " + Str$(MD)
+    Print "Number of Psionic Attack Modes: " + Str$(AtCt)
+    Print "Number of Psionic Defense Modes: " + Str$(DfCt)
+
+
 
 End If
 
