@@ -457,7 +457,17 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem As the precondition is necessarily true, we double it again
         If IN > 16 And WI > 16 And CH > 16 Then MD = MD * 2
         Rem add modifier to base
-        PA = PA + MD
+        PS = PA + MD
+
+        Rem Quoth Gygax: "The total is the *psionic strength* of the individual; it is the strength for attack and for defense."
+        Rem Continued: "Psionic ability is double psionic strength, i.e. 10 to 344."
+        Rem Continued: "On-ehalf of *psionic ability* is attack strength, one-half is defense strength."
+        PA = 2 * PS
+        PD = PS
+
+        Rem Each psionicist gets a random number of attack modes, (chosen), a random number of defense modes (chosen), and a random number of psionic disciplines (randomly assigned).
+        Rem Going on a tangent here, and this comment is likely to get pulled out in a later git revision, but working on this program has made me appreciate AD&D a lot more.
+        rem Working on the psionics section has made me dislike psionics.
 
     Else GoTo 2000
     End If
