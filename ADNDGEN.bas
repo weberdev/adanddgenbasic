@@ -485,6 +485,8 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
             Case Else
                 AtCt = 5
         End Select
+
+
         Rem TODO: Give player choice of AtCt options from the following:
         Rem 1. Psionic Blast
         Rem 2: Mind Thrust
@@ -496,10 +498,17 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem The table frequencies differ, though.
         MentPer = Int((Rnd(1) * 100) + 1)
         DfCt = 0
-        If MentPer < 26 Then DfCt = 2
-        If MentPer < 76 And MentPer > 25 Then DfCt = 3
-        If MentPer < 91 And MentPer > 75 Then DfCt = 4
-        If MentPer > 90 Then DfCt = 5
+        Select Case MentPer
+            Case 1 To 25
+                DfCt = 2
+            Case 25 To 75
+                DfCt = 3
+            Case 76 To 90
+                DfCt = 4
+            Case Else
+                DfCt = 5
+        End Select
+
         Rem TODO AS ABOVE with DfCt
         Rem 1. Mind Blank
         Rem 2. Thought Shield
@@ -512,15 +521,32 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         MentPer = Int((Rnd(1) * 100) + 1)
         MnD = 0
         MjD = 0
-        If MentPer < 11 Then MnD = 1
-        If MentPer < 26 And MentPer > 10 Then MnD = 2
-        If MentPer < 41 And MentPer > 25 Then MnD = 3
-        If MentPer < 56 And MentPer > 40 Then MnD = 2: MjD = 1
-        If MentPer < 71 And MentPer > 55 Then MnD = 3: MjD = 1
-        If MentPer < 81 And MentPer > 70 Then MnD = 4: MjD = 1
-        If MentPer < 91 And MentPer > 80 Then MnD = 3: MjD = 2
-        If MentPer < 96 And MentPer > 90 Then MnD = 5: MjD = 1
-        If MentPer > 95 Then MnD = 4: MjD = 2
+        Select Case MentPer
+            Case 1 To 10
+                MnD = 1
+            Case 11 To 25
+                MnD = 2
+            Case 26 To 40
+                MnD = 3
+            Case 41 To 55
+                MnD = 2
+                MjD = 1
+            Case 56 To 70
+                MnD = 3
+                MjD = 1
+            Case 71 To 80
+                MnD = 4
+                MjD = 1
+            Case 81 To 90
+                MnD = 3
+                MjD = 2
+            Case 91 To 95
+                MnD = 5
+                MjD = 1
+            Case Else
+                MnD = 4
+                MjD = 2
+        End Select
 
         Rem We make an executive decision here, one taken for my sanity.
         Rem Choosing powers when rolling? No. We reroll.
