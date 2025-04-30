@@ -473,11 +473,18 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem Number of psionic attack modes is determined by percentile dice and applied to a table.
         MentPer = Int((Rnd(1) * 100) + 1)
         AtCt = 0
-        If MentPer < 26 Then AtCt = 1
-        If MentPer < 51 And MentPer > 25 Then AtCt = 2
-        If MentPer < 76 And MentPer > 50 Then AtCt = 3
-        If MentPer < 96 And MentPer > 75 Then AtCt = 4
-        If MentPer > 95 Then AtCt = 5
+        Select Case MentPer
+            Case 1 To 25
+                AtCt = 1
+            Case 26 To 50
+                AtCt = 2
+            Case 51 To 75
+                AtCt = 3
+            Case 76 To 95
+                AtCt = 4
+            Case Else
+                AtCt = 5
+        End Select
         Rem TODO: Give player choice of AtCt options from the following:
         Rem 1. Psionic Blast
         Rem 2: Mind Thrust
@@ -842,7 +849,9 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
     Print "Psionic Attack Strength: " + Str$(PA)
     Print "Psionic Attack Strength: " + Str$(MD)
     Print "Number of Psionic Attack Modes: " + Str$(AtCt)
+    Rem show list opf psionic attack modes when implemented
     Print "Number of Psionic Defense Modes: " + Str$(DfCt)
+    Rem show list of psionic defense modes when activated.
 
 
 
