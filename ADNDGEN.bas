@@ -937,13 +937,15 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
     Print "Psionic Attack Strength: " + Str$(MD)
     Print "Number of Psionic Attack Modes: " + Str$(AtCt)
     For I = 1 To UBound(Selected)
-        Print MyArray$(I); " ";
+        Print Selected(I); " ";
     Next I
     Print "Number of Psionic Defense Modes: " + Str$(DfCt)
     For I = 1 To UBound(DefSelected)
         Print DefSelected(I); " ";
     Next I
-
+    Print "Number of Minor Disciplines: " + Str$(MnD)
+    If MjD > 0 Then Print "Number of Major Disciplines: " + Str$(MjD)
+    Print "Psychic Discipline" + DV$
 End If
 
 
