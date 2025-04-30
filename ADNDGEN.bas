@@ -534,12 +534,48 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
                 DfCt = 5
         End Select
 
-        Rem TODO AS ABOVE with DfCt
-        Rem 1. Mind Blank
-        Rem 2. Thought Shield
-        Rem 3. Mental Barrier
-        Rem 4. Intellect Fortress
-        Rem 5. Tower of Iron Will
+        Dim DefenseModes(5) As String
+        DefenseModes(1) = "Mind Blank"
+        DefenseModes(2) = "Thought Shield"
+        DefenseModes(3) = "Mental Barrier"
+        DefenseModes(4) = "Intellect Fortress"
+        DefenseModes(5) = "Tower of Iron Will"
+
+        Dim DefChosen(5) As Integer
+        Dim DefSelected(5) As String
+
+        Rem Mind Blank is automatic
+        DefChosen(1) = 1
+        DefSelected(1) = DefenseModes(1)
+
+        Print
+        Print "You automatically gain: Mind Blank"
+
+        DEFct = AtCt ' You gain as many defense modes as attack modes
+        If DEFct > 1 Then
+            Print "You may choose"; DEFct - 1; " additional psionic defense mode(s):"
+            For I = 2 To DEFct
+                Print "Available defense modes:"
+                For J = 2 To 5
+                    If DefChosen(J) = 0 Then Print J; ": "; DefenseModes(J)
+                Next J
+
+                Input "Enter number of your choice: ", Pick
+                While Pick < 2 Or Pick > 5 Or DefChosen(Pick) = 1
+                    Print "Invalid or already chosen. Try again."
+                    Input "Enter number of your choice: ", Pick
+                Wend
+
+                DefChosen(Pick) = 1
+                DefSelected(I) = DefenseModes(Pick)
+            Next I
+        End If
+
+        Print
+        Print "Your psionic defense modes:"
+        For I = 1 To DEFct
+            Print "- "; DefSelected(I)
+        Next I
 
         Rem Number of Psionic Disciplines is PERCENTILE AGAIN
         Rem ON ANOTHER ODDLY SHAPED TABLE
