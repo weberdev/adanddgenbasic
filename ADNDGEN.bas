@@ -478,16 +478,15 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         If MentPer < 76 And MentPer > 50 Then AtCt = 3
         If MentPer < 96 And MentPer > 75 Then AtCt = 4
         If MentPer > 95 Then AtCt = 5
-        Rem TODO: Give player choice of AtCt options from te following:
+        Rem TODO: Give player choice of AtCt options from the following:
         Rem 1. Psionic Blast
         Rem 2: Mind Thrust
         Rem 3: Ego Whip
         Rem 4: Id Insinuation
         Rem 5: Psychic Crush
 
-        Rem Number of psionic defsne modes is determined in much the same way.
+        Rem Number of psionic defense modes is determined in much the same way.
         Rem The table frequencies differ, though.
-        Rem Of course they do.
         MentPer = Int((Rnd(1) * 100) + 1)
         DfCt = 0
         If MentPer < 26 Then DfCt = 2
@@ -503,17 +502,9 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 
         Rem Number of Psionic Disciplines is PERCENTILE AGAIN
         Rem ON ANOTHER ODDLY SHAPED TABLE
-        Rem MINOR AND MAJOR
-        Rem >be psionicist
-        Rem >18 in all mental stats
-        Rem >roll the 9% chance
-        Rem >less than 11
-        Rem >one minor discipline
         MentPer = Int((Rnd(1) * 100) + 1)
         MnD = 0
         MjD = 0
-        Rem willtolive = 0
-        Rem I'm whining.
         If MentPer < 11 Then MnD = 1
         If MentPer < 26 And MentPer > 10 Then MnD = 2
         If MentPer < 41 And MentPer > 25 Then MnD = 3
@@ -522,7 +513,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         If MentPer < 81 And MentPer > 70 Then MnD = 4: MjD = 1
         If MentPer < 91 And MentPer > 80 Then MnD = 3: MjD = 2
         If MentPer < 96 And MentPer > 90 Then MnD = 5: MjD = 1
-        IF MentPer > 95 then MnD = 4: MjD = 2
+        If MentPer > 95 Then MnD = 4: MjD = 2
 
     Else GoTo 2000
     End If
