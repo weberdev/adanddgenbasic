@@ -936,11 +936,13 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
     Print "Psionic Attack Strength: " + Str$(PA)
     Print "Psionic Attack Strength: " + Str$(MD)
     Print "Number of Psionic Attack Modes: " + Str$(AtCt)
-    Rem show list opf psionic attack modes when implemented
+    For I = 1 To UBound(Selected)
+        Print MyArray$(I); " ";
+    Next I
     Print "Number of Psionic Defense Modes: " + Str$(DfCt)
-    Rem show list of psionic defense modes when activated.
-
-
+    For I = 1 To UBound(DefSelected)
+        Print DefSelected(I); " ";
+    Next I
 
 End If
 
@@ -1106,9 +1108,3 @@ Rem [2] G. Gygax, Unearthed Arcana, 1st ed. Lake Geneva, WI: TSR, 1985.
 Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private manuscript, reproduced with indirect permission. Circa 1983-1985 (presumed).
 
 Rem [4] G. Gygax, Advanced Dungeons & Dragons Dungeon Masters Guide, 1st ed. Lake Geneva, WI: TSR Hobbies, Inc., 1979.
-
-
-
-
-
-
