@@ -553,11 +553,16 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem 20: No clerics.
         Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 
+        RollDiscipline:
         Rem MN stands for Minor Number
         MN = Int((Rnd(1) * 24) + 1)
         Rem I've just realized that this code CANNOT be where it is.
-        rem I'm hearing Komm Susser Tod and might pack it in for the night.
+        Rem I'm hearing Komm Susser Tod and might pack it in for the night.
+        Rem NO. I CAN FIX THIS EASILY.
 
+        If MN > 22 Then GoTo RollDiscipline
+        If MN < 23 Then DV$ = MinorDiscipline(MN)
+        rem If we have a class mismatch, we can just reroll outside of this mess when classis chosen.
 
         Rem
     Else GoTo 2000
