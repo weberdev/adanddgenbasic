@@ -336,16 +336,46 @@ Rem cut above line when multiclassing ready
 
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
 Rem 1982 Print " WOULD YOU LIKE TO MULTICLASS?"
+
+Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
+Rem arguments exist about whether or not it's a section or table: it is a section.
+
+Rem let MC = multiclass option
+MC = 0
+Dim MultiClasses(13) As String
+For I = 1 To 13
+    Read MultiClasses(I)
+Next I
+Data "Cleric/Fighter","Cleric/Fighter/Magic-user","Cleric/Ranger","Cleric/Magic-user","Cleric/Thief","Cleric/Assassin","Fighter/Magic-user","Fighter/Illusionist","Fighter/Thief","Fighter/Assassin","Fighter/Magic-user/Thief","Magic-user/Thief","Illusionist/Thief"
+Rem quick reference:
+Rem 1: cleric/fighter
+Rem 2: cleric/fighter/magic-user
+Rem 3: cleric/ranger
+Rem 4: cleric/magic-user
+Rem 5: cleric/thief
+Rem 6: cleric/assassin
+Rem 7: fighter/magic-user
+Rem 8: fighter/illusionist
+Rem 9: fighter/thief
+Rem 10: fighter/assassin
+Rem 11: fighter/magic-user/thief
+Rem 12: magic-user/thief
+Rem 13: illusionist/thief
+Dim AvailMCs(8) As String
+For I = 1 To 8
+    AvailMCs(I) = ""
+Next I
+
 Select Case RA
     Case 1
-        If St > 8 And CN > 6 And DX > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
 
 
     Case 2
-        If St > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
-        If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
-        If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
-        If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
+        If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
+        If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
 
 
 
@@ -356,11 +386,12 @@ Select Case RA
         Rem Multiclassing in general is allowable, however
         Rem thus
         Rem fighter thief
-        If St > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
         Rem fighter illusionist
-        If St > 8 And CN > 6 And DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": Print "ENTER 2 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": AvailMCs(1) = MultiClasses(8)
         Rem thief illusionist
-        If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": Print "ENTER 3 TO SELECT THIS"
+        If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": AvailMCs(3) = MultiClasses(13)
+        rem "NOT explicitly authorized" is an understatement. Skip this.
         GoTo GnomeMultSkip
         Rem The following multiclasses are NOT explicitly authorized
         Rem fighter assassin
@@ -405,7 +436,7 @@ Select Case RA
         If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 4 TO SELECT THIS"
         If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 5 TO SELECT THIS"
     Case Else
-        GOTo 2000
+        GoTo 2000
 End Select
 GoTo 2000
 
