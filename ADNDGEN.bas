@@ -693,13 +693,14 @@ End If
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
 3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
-rem class category check, mainly for psionic abilities
+Rem class category check, mainly for psionic abilities
 isFT = 0
 isMU = 0
 isCL = 0
 If CN < 5 Then isFT = 1
 If CN > 4 And CN < 7 Then isMU = 1
 If CN > 6 And CN < 9 Then isCL = 1
+
 
 3080 CLASS$ = CLASS$(CN)
 
@@ -778,6 +779,42 @@ Dim ThiefString(8) As String
         ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
     Next J
 End If
+
+Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
+Rem We expect users not to choose powers they can't take.
+rem If they do, they get a random choice, as that's fair.
+PsiCompatibilityCheck:
+If TF = 1 And (MN = 9 Or MN = 18) Then
+    MN = Int((Rnd(1) * 22) + 1)
+
+    DV$ = MinorDiscipline(MN)
+    GoTo PsiCompatibilityCheck
+End If
+
+If isFT = 1 And MN = 10 Then
+    MN = Int((Rnd(1) * 22) + 1)
+
+    DV$ = MinorDiscipline(MN)
+    GoTo PsiCompatibilityCheck
+End If
+
+If isCL = 1 And (MN = 12 Or MN = 20) Then
+    MN = Int((Rnd(1) * 22) + 1)
+
+    DV$ = MinorDiscipline(MN)
+    GoTo PsiCompatibilityCheck
+End If
+
+If isMU = 1 And MN = 3 Then
+    MN = Int((Rnd(1) * 22) + 1)
+
+    DV$ = MinorDiscipline(MN)
+    GoTo PsiCompatibilityCheck
+End If
+
+
+
+
 
 Rem Level up code (if implemented), will set assassins back two levels of thief skills
 3380 Print "   SUMMARY OF CHARACTER "
