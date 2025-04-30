@@ -555,6 +555,8 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 
         Rem MN stands for Minor Number
         MN = Int((Rnd(1) * 24) + 1)
+        Rem I've just realized that this code CANNOT be where it is.
+        rem I'm hearing Komm Susser Tod and might pack it in for the night.
 
 
         Rem
