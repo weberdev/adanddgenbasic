@@ -485,7 +485,21 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem 4: Id Insinuation
         Rem 5: Psychic Crush
 
-        Rem Number of psionic defsne modes id dfifasdf
+        Rem Number of psionic defsne modes is determined in much the same way.
+        Rem The table frequencies differ, though.
+        Rem Of course they do.
+        MentPer = Int((Rnd(1) * 100) + 1)
+        DfCt = 0
+        If MentPer < 26 Then DfCt = 2
+        If MentPer < 76 Then DfCt = 3
+        If MentPer < 91 Then DfCt = 4
+        If MentPer > 90 Then DfCt = 5
+        Rem TODO AS ABOVE with DfCt
+        Rem 1. Mind Blank
+        Rem 2. Thought Shield
+        Rem 3. Mental Barrier
+        Rem 4. Intellect Fortress
+        rem 5. Tower of Iron Will
 
     Else GoTo 2000
     End If
