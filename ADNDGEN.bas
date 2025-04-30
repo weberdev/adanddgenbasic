@@ -335,14 +335,6 @@ Rem cut above line when multiclassing ready
 
 
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
-Rem This is where multiclasssing would go.
-Rem WILL GO.
-Rem SCOPE CREEP? NEVER HEARD OF IT.
-Rem FOR REFERENCE:
-Rem FIGHTER ST >8, CN > 6
-Rem THIEF DX > 8
-Rem MAGIC-USER INT > 8, DX > 5
-
 Rem 1982 Print " WOULD YOU LIKE TO MULTICLASS?"
 If RA = 1 And St > 8 And CN > 6 And DX > 8 Then
     Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
