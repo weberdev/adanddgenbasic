@@ -336,77 +336,77 @@ Rem cut above line when multiclassing ready
 
 Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
 Rem 1982 Print " WOULD YOU LIKE TO MULTICLASS?"
-If RA = 1 And St > 8 And CN > 6 And DX > 8 Then
-    Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
-End If
-
-If RA = 2 Then
-    If St > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
-    If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
-End If
+Select Case RA
+    Case 1
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 1 TO SELECT THIS"
 
 
-If RA = 3 Then
-    Rem Gnome rules are fuzzy
-    Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
-    Rem Multiclassing between Thief and assassin seems incorrect- we assume that you can't do that.
-    Rem Multiclassing in general is allowable, however
-    Rem thus
-    Rem fighter thief
-    If St > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
-    Rem fighter illusionist
-    If St > 8 And CN > 6 And DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": Print "ENTER 2 TO SELECT THIS"
-    Rem thief illusionist
-    If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": Print "ENTER 3 TO SELECT THIS"
-    GoTo GnomeMultSkip
-    Rem The following multiclasses are NOT explicitly authorized
-    Rem fighter assassin
-    If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
-    Rem assassin illusionist
-    Rem assassin requirements are fully superseded by illusionist
-    If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
-    Rem IT IS WORTH NOTING
-    Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
-    Rem It depends on what the definition of is is
-    GnomeMultSkip:
-End If
+    Case 2
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
+        If IN > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
 
-If RA = 4 Then
-    Rem half elves
-    Rem Half elves can be multiclassed
-    Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
-    Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
-    Rem It is unclear if this is intended to be exhaustive.
-    Rem Interpretations:
-    Rem Druid is not on the list, it can't be multiclassed.
-    Rem This makes tonal snse.
-    If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
-    If IN > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
-    If St > 12 And IN > 12 And WI > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": Print "PRESS 5 TO SELECT THIS"
-    If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 6 to select this"
-    If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
-    If IN > 8 And WI > 8 And St > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": Print "PRESS 8 to SELECT THIS"
 
-End If
-If RA = 5 Then
-    Rem Halflings
-    If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: ENTER 1 TO SELECT THIS"
-    Rem THANK GYGAX IT'S EASY
-End If
-If RA = 6 Then
-    Rem half-orcs
-    Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
-    If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 1 to select this"
-    If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": Print "PRESS 2 TO SELECT THIS"
-    If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": Print " PRESS 3TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 4 TO SELECT THIS"
-    If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 5 TO SELECT THIS"
 
-End If
+    Case 3
+        Rem Gnome rules are fuzzy
+        Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
+        Rem Multiclassing between Thief and assassin seems incorrect- we assume that you can't do that.
+        Rem Multiclassing in general is allowable, however
+        Rem thus
+        Rem fighter thief
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
+        Rem fighter illusionist
+        If St > 8 And CN > 6 And DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": Print "ENTER 2 TO SELECT THIS"
+        Rem thief illusionist
+        If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": Print "ENTER 3 TO SELECT THIS"
+        GoTo GnomeMultSkip
+        Rem The following multiclasses are NOT explicitly authorized
+        Rem fighter assassin
+        If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
+        Rem assassin illusionist
+        Rem assassin requirements are fully superseded by illusionist
+        If DX > 15 And IN > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
+        Rem IT IS WORTH NOTING
+        Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
+        Rem It depends on what the definition of is is
+        GnomeMultSkip:
+
+    Case 4
+        Rem half elves
+        Rem Half elves can be multiclassed
+        Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
+        Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
+        Rem It is unclear if this is intended to be exhaustive.
+        Rem Interpretations:
+        Rem Druid is not on the list, it can't be multiclassed.
+        Rem This makes tonal snse.
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": Print "ENTER 1 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": Print "ENTER 2 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 5 And IN > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": Print "ENTER 3 TO SELECT THIS"
+        If IN > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": Print "ENTER 4 TO SELECT THIS"
+        If St > 12 And IN > 12 And WI > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": Print "PRESS 5 TO SELECT THIS"
+        If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 6 to select this"
+        If IN > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": Print "PRESS 7 to SELECT THIS"
+        If IN > 8 And WI > 8 And St > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": Print "PRESS 8 to SELECT THIS"
+
+    Case 5
+        Rem Halflings
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: ENTER 1 TO SELECT THIS"
+        Rem THANK GYGAX IT'S EASY
+
+    Case 6
+        Rem half-orcs
+        Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
+        If St > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": Print "PRESS 1 to select this"
+        If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": Print "PRESS 2 TO SELECT THIS"
+        If WI > 8 And IN > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": Print " PRESS 3TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF: PRINT ENTER 4 TO SELECT THIS"
+        If St > 8 And CN > 6 And DX > 12 And IN > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 5 TO SELECT THIS"
+    Case Else
+        GOTo 2000
+End Select
 GoTo 2000
 
 Rem PSIONICS: PHB Appendix I. [1, p. 110]
