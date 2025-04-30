@@ -629,9 +629,8 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem That makes sense in 1978.
         Rem Then in 2012 Joseph Goodman invented the d24.
         Rem What I'm trying to say here:
-        Rem I don't want to geneate a variable between one and twelve, and a variable between one and six.
+        Rem I don't want to generate a variable between one and twelve, and a variable between one and six.
         Rem we'll make one between 1 and 24.
-        Rem This table is 24 entries long. This is where we find out if there's an easier way to do this in QBASIC.
         DV$ = ""
         Dim MinorDiscipline(22) As String
         For I = 1 To 22
