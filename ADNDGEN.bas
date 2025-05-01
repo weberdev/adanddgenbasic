@@ -241,10 +241,7 @@ Select Case RA
 
     Case 1
 
-        Rem Dwarves have Minimum str and con 8 and 12
-        If AbilityAssignedArray(1) < 8 Then GoTo 190
-        If AbilityAssignedArray(5) < 12 Then GoTo 190
-
+        Print "YOU HAVE CHOSEN TO BE A DWARF"
         Rem Dwarves get +1 CON, -1 CHA
         AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
         AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
@@ -254,13 +251,8 @@ Select Case RA
         If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
         If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16: Print "MAXIMUM DWARF CHARISMA IS 16"
     Case 2
+        Print "YOU HAVE CHOSEN TO BE AN ELF"
         Rem Elves Have Min INT 8, DEX 7, CON 6, and CHA 8
-        Rem dear lord those are some restrictions
-        If AbilityAssignedArray(2) < 8 Then GoTo 190
-        If AbilityAssignedArray(4) < 7 Then GoTo 190
-        If AbilityAssignedArray(5) < 6 Then GoTo 190
-        If AbilityAssignedArray(6) < 8 Then GoTo 190
-
         Rem Elves Get +1 Dex, -1 Con
         AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
         AbilityAssignedArray(5) = AbilityAssignedArray(5) - 1
@@ -269,25 +261,17 @@ Select Case RA
         Rem Con might've caught a stray penalty, however.
         If AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
     Case 3 Rem Gnomes have Min STR 6, INT 7, Con 8
-        If AbilityAssignedArray(1) < 6 Then GoTo 190
-        If AbilityAssignedArray(2) < 7 Then GoTo 190
-        If AbilityAssignedArray(5) < 8 Then GoTo 190
-
+        Print "YOU HAVE CHOSEN TO BE A GNOME"
         Rem Gnomes get gno ability score modifiers.
         Rem Gnor do they have caps
     Case 4
+        Print "YOU HAVE CHOSEN TO BE A HALF-ELF"
         Rem Half-elves have Min 4 INT, 6 Dex, 6 CON
-        If AbilityAssignedArray(2) < 4 Then GoTo 190
-        If AbilityAssignedArray(4) < 6 Then GoTo 190
-        If AbilityAssignedArray(5) < 6 Then GoTo 190
 
         Rem Half Elves have no ability score modifiers, nor salient ability score caps
     Case 5
         Rem Halflings have Min 6 str, 6 int, 8 dex, 10 con
-        If AbilityAssignedArray(1) < 6 Then GoTo 190
-        If AbilityAssignedArray(2) < 6 Then GoTo 190
-        If AbilityAssignedArray(4) < 8 Then GoTo 190
-        If AbilityAssignedArray(5) < 10 Then GoTo 190
+        Print "YOU HAVE CHOSEN TO BE A HALFLING"
 
         Rem Halflings Get +1 Dex, -1 str
         AbilityAssignedArray(1) = AbilityAssignedArray(1) - 1
@@ -300,10 +284,8 @@ Select Case RA
         Rem Halflings have min str 6
         If AbilityAssignedArray(1) < 6 Then AbilityAssignedArray(1) = 6
     Case 6
+        Print "YOU HAVE CHOSEN TO BE A HALF-ORC"
         Rem Half-orcs have min 6 str, min 13 con
-        If AbilityAssignedArray(1) < 6 Then GoTo 190
-        If AbilityAssignedArray(5) < 13 Then GoTo 190
-
         Rem Half-orcs get +1 STR, +1 CON, -2 CHA
         AbilityAssignedArray(1) = AbilityAssignedArray(1) + 1
         AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
@@ -317,6 +299,8 @@ Select Case RA
 
         Rem Half-orcs have min 3 CHA, and that's salient with the penalty
         If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
+    Case 7
+        Print "YOU ARE A HUMAN"
 End Select
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
