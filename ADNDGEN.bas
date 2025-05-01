@@ -210,7 +210,7 @@ Next I
 
 Dim AvailRaces(7) As RaceDef
 For I = 1 To UBound(Races)
-    If (AbilityAssignedArray(1) >= Races(I).MinStr) AND (AbilityAssignedArray(2) >= Races(I).MinIN) AND (AbilityAssignedArray(3) >= Races(I).MinWis) AND (AbilityAssignedArray(4) >= Races(I).MinDex) AND (AbilityAssignedArray(5) >= Races(I).MinCon) AND (AbilityAssignedArray(6) >= Races(I).MinCha) THEN AvailRaces(I) = Races(I)
+    If (AbilityAssignedArray(1) >= Races(I).MinStr) AND (AbilityAssignedArray(2) >= Races(I).MinInt) AND (AbilityAssignedArray(3) >= Races(I).MinWis) AND (AbilityAssignedArray(4) >= Races(I).MinDex) AND (AbilityAssignedArray(5) >= Races(I).MinCon) AND (AbilityAssignedArray(6) >= Races(I).MinCha) THEN AvailRaces(I) = Races(I)
 Next I
 
 
