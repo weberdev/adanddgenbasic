@@ -373,7 +373,7 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1840 CH = AbilityAssignedArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 
-Rem XF = exra followers
+Rem XF = extra followers
 Rem LltyBase = loyalty base
 Rem ReactAdj = Reaction Adjustment
 XF = 0
@@ -410,17 +410,6 @@ Select Case CH
     Case 18
         XF = 15: LltyBase = 40: ReactAdj = 35
 End Select
-1860 If CH = 3 Then XF = 1
-1870 If CH = 4 Then XF = 1
-1880 If CH > 4 And CH < 6 Then XF = 2
-1890 If CH > 6 And CH < 9 Then XF = 3
-1900 If CH > 8 And CH < 12 Then XF = 4
-1910 If CH > 11 And CH < 14 Then XF = 5
-1920 If CH = 14 Then XF = 6
-1930 If CH = 15 Then XF = 7
-1940 If CH = 16 Then XF = 8
-1950 If CH = 17 Then XF = 10
-1960 If CH = 18 Then XF = 15
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
