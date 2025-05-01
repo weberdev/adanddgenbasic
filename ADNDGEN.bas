@@ -148,74 +148,47 @@ Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 
 Dim Races(7) As RaceDef
 
-' Dwarf
 Races(1).RaceName = "Dwarf"
 Races(1).RaceIndex = 1
-Races(1).MinStr = 8: Races(1).MaxStr = 18
-Races(1).MinInt = 3: Races(1).MaxInt = 18
-Races(1).MinWis = 3: Races(1).MaxWis = 18
-Races(1).MinDex = 3: Races(1).MaxDex = 17
-Races(1).MinCon = 12: Races(1).MaxCon = 18
-Races(1).MinCha = 3: Races(1).MaxCha = 16
+Races(1).MinStr = 8: Races(1).MaxStr = 18: Races(1).MinInt = 3: Races(1).MaxInt = 18
+Races(1).MinWis = 3: Races(1).MaxWis = 18: Races(1).MinDex = 3: Races(1).MaxDex = 17
+Races(1).MinCon = 12: Races(1).MaxCon = 18: Races(1).MinCha = 3: Races(1).MaxCha = 16
 
-' Elf
 Races(2).RaceName = "Elf"
 Races(2).RaceIndex = 2
-Races(2).MinStr = 3: Races(2).MaxStr = 18
-Races(2).MinInt = 8: Races(2).MaxInt = 18
-Races(2).MinWis = 3: Races(2).MaxWis = 18
-Races(2).MinDex = 7: Races(2).MaxDex = 18
-Races(2).MinCon = 6: Races(2).MaxCon = 18
-Races(2).MinCha = 8: Races(2).MaxCha = 18
+Races(2).MinStr = 3: Races(2).MaxStr = 18: Races(2).MinInt = 8: Races(2).MaxInt = 18
+Races(2).MinWis = 3: Races(2).MaxWis = 18: Races(2).MinDex = 7: Races(2).MaxDex = 18
+Races(2).MinCon = 6: Races(2).MaxCon = 18: Races(2).MinCha = 8: Races(2).MaxCha = 18
 
-' Gnome
 Races(3).RaceName = "Gnome"
 Races(3).RaceIndex = 3
-Races(3).MinStr = 6: Races(3).MaxStr = 18
-Races(3).MinInt = 7: Races(3).MaxInt = 18
-Races(3).MinWis = 3: Races(3).MaxWis = 18
-Races(3).MinDex = 3: Races(3).MaxDex = 18
-Races(3).MinCon = 8: Races(3).MaxCon = 18
-Races(3).MinCha = 3: Races(3).MaxCha = 18
+Races(3).MinStr = 6: Races(3).MaxStr = 18: Races(3).MinInt = 7: Races(3).MaxInt = 18
+Races(3).MinWis = 3: Races(3).MaxWis = 18: Races(3).MinDex = 3: Races(3).MaxDex = 18
+Races(3).MinCon = 8: Races(3).MaxCon = 18: Races(3).MinCha = 3: Races(3).MaxCha = 18
 
-' Half-Elf
 Races(4).RaceName = "Half-Elf"
 Races(4).RaceIndex = 4
-Races(4).MinStr = 3: Races(4).MaxStr = 18
-Races(4).MinInt = 4: Races(4).MaxInt = 18
-Races(4).MinWis = 3: Races(4).MaxWis = 18
-Races(4).MinDex = 6: Races(4).MaxDex = 18
-Races(4).MinCon = 6: Races(4).MaxCon = 18
-Races(4).MinCha = 3: Races(4).MaxCha = 18
+Races(4).MinStr = 3: Races(4).MaxStr = 18: Races(4).MinInt = 4: Races(4).MaxInt = 18
+Races(4).MinWis = 3: Races(4).MaxWis = 18: Races(4).MinDex = 6: Races(4).MaxDex = 18
+Races(4).MinCon = 6: Races(4).MaxCon = 18: Races(4).MinCha = 3: Races(4).MaxCha = 18
 
-' Halfling
 Races(5).RaceName = "Halfling"
 Races(5).RaceIndex = 5
-Races(5).MinStr = 6: Races(5).MaxStr = 17
-Races(5).MinInt = 6: Races(5).MaxInt = 18
-Races(5).MinWis = 3: Races(5).MaxWis = 17
-Races(5).MinDex = 8: Races(5).MaxDex = 18
-Races(5).MinCon = 10: Races(5).MaxCon = 18
-Races(5).MinCha = 3: Races(5).MaxCha = 18
+Races(5).MinStr = 6: Races(5).MaxStr = 17: Races(5).MinInt = 6: Races(5).MaxInt = 18
+Races(5).MinWis = 3: Races(5).MaxWis = 17: Races(5).MinDex = 8: Races(5).MaxDex = 18
+Races(5).MinCon = 10: Races(5).MaxCon = 18: Races(5).MinCha = 3: Races(5).MaxCha = 18
 
-' Half-Orc
 Races(6).RaceName = "Half-Orc"
 Races(6).RaceIndex = 6
-Races(6).MinStr = 6: Races(6).MaxStr = 18
-Races(6).MinInt = 3: Races(6).MaxInt = 17
-Races(6).MinWis = 3: Races(6).MaxWis = 14
-Races(6).MinDex = 3: Races(6).MaxDex = 17
-Races(6).MinCon = 13: Races(6).MaxCon = 18
-Races(6).MinCha = 3: Races(6).MaxCha = 12
+Races(6).MinStr = 6: Races(6).MaxStr = 18: Races(6).MinInt = 3: Races(6).MaxInt = 17
+Races(6).MinWis = 3: Races(6).MaxWis = 14: Races(6).MinDex = 3: Races(6).MaxDex = 17
+Races(6).MinCon = 13: Races(6).MaxCon = 18: Races(6).MinCha = 3: Races(6).MaxCha = 12
 
 Races(7).RaceName = "Human"
 Races(7).RaceIndex = 7
-Races(7).MinStr = 3: Races(7).MaxStr = 18
-Races(7).MinInt = 3: Races(7).MaxInt = 18
-Races(7).MinWis = 3: Races(7).MaxWis = 18
-Races(7).MinDex = 3: Races(7).MaxDex = 18
-Races(7).MinCon = 3: Races(7).MaxCon = 18
-Races(7).MinCha = 3: Races(7).MaxCha = 18
+Races(7).MinStr = 3: Races(7).MaxStr = 18: Races(7).MinInt = 3: Races(7).MaxInt = 18
+Races(7).MinWis = 3: Races(7).MaxWis = 18: Races(7).MinDex = 3: Races(7).MaxDex = 18
+Races(7).MinCon = 3: Races(7).MaxCon = 18: Races(7).MinCha = 3: Races(7).MaxCha = 18
 
 
 
