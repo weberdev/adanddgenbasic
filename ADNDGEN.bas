@@ -55,76 +55,43 @@ Classes(1).ClassName = "FIGHTER"
 Classes(1).ClassIndex = 1
 Classes(1).HitDie = 10
 Classes(1).Category = "Fighter"
-Classes(1).MinStr = 9
-Classes(1).MinInt = 0
-Classes(1).MinWis = 0
-Classes(1).MinDex = 0
-Classes(1).MinCon = 7
-Classes(1).MinCha = 0
+Classes(1).MinStr = 9: Classes(1).MinInt = 0: Classes(1).MinWis = 0
+Classes(1).MinDex = 0: Classes(1).MinCon = 7: Classes(1).MinCha = 0
+Rem Futureproofing for UA barbarian. My honest reaction: >:(
 Classes(1).MaxWis = 18
-Classes(1).RaceDwarf = 1
-Classes(1).RaceElf = 1
-Classes(1).RaceGnome = 1
-Classes(1).RaceHalfElf = 1
-Classes(1).RaceHalfling = 1
-Classes(1).RaceHalfOrc = 1
-Classes(1).RaceHuman = 1
-Classes(1).GoldMin = 50
-Classes(1).GoldMax = 150
+Classes(1).RaceDwarf = 1: Classes(1).RaceElf = 1: Classes(1).RaceGnome = 1
+Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
+Classes(1).RaceHalfOrc = 1: Classes(1).RaceHuman = 1
+Classes(1).GoldMin = 50: Classes(1).GoldMax = 150
 
 Classes(2).ClassName = "PALADIN"
 Classes(2).ClassIndex = 2
 Classes(2).HitDie = 10
 Classes(2).Category = "Fighter"
-Classes(2).MinStr = 12
-Classes(2).MinInt = 9
-Classes(2).MinWis = 13
-Classes(2).MinDex = 0
-Classes(2).MinCon = 9
-Classes(2).MinCha = 17
+Classes(2).MinStr = 12: Classes(2).MinInt = 9: Classes(2).MinWis = 13
+Classes(2).MinDex = 0: Classes(2).MinCon = 9: Classes(2).MinCha = 17
 Classes(2).MaxWis = 18
-Classes(2).RaceDwarf = 0
-Classes(2).RaceElf = 0
-Classes(2).RaceGnome = 0
-Classes(2).RaceHalfElf = 0
-Classes(2).RaceHalfling = 0
-Classes(2).RaceHalfOrc = 0
 Classes(2).RaceHuman = 1
-Classes(2).GoldMin = 50
-Classes(2).GoldMax = 150
+Classes(2).GoldMin = 50: Classes(2).GoldMax = 150
 
 Classes(3).ClassName = "RANGER"
 Classes(3).ClassIndex = 3
 Classes(3).HitDie = 16
 Classes(3).Category = "Fighter"
-Classes(3).MinStr = 13
-Classes(3).MinInt = 13
-Classes(3).MinWis = 14
-Classes(3).MinDex = 0
-Classes(3).MinCon = 14
-Classes(3).MinCha = 0
+Classes(3).MinStr = 13: Classes(3).MinInt = 13: Classes(3).MinWis = 14: Classes(3).MinCon = 14
 Classes(3).MaxWis = 18
-Classes(3).RaceDwarf = 0
-Classes(3).RaceElf = 0
-Classes(3).RaceGnome = 0
-Classes(3).RaceHalfElf = 1
-Classes(3).RaceHalfling = 0
-Classes(3).RaceHalfOrc = 0
-Classes(3).RaceHuman = 1
-Classes(3).GoldMin = 50
-Classes(3).GoldMax = 150
+Rem Elves can't be rangers for some reason.
+Rem Rangers don't have to be dextrous for some reason.
+Classes(3).RaceHalfElf = 1: Classes(3).RaceHuman = 1
+Classes(3).GoldMin = 50: Classes(3).GoldMax = 150
 
 Classes(4).ClassName = "Cavalier"
 Classes(4).ClassIndex = 4
 Classes(4).HitDie = 10
 Classes(4).Category = "Fighter"
-Classes(4).MinStr = 15
-Classes(4).MinInt = 10
-Classes(4).MinWis = 10
-Classes(4).MinDex = 15
-Classes(4).MinCon = 15
-Classes(4).MinCha = 0
-Classes(4).MaxWis = 0
+Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 10
+Classes(4).MinDex = 15: Classes(4).MinCon = 15
+Classes(4).MaxWis = 18
 Classes(4).RaceDwarf = 0
 Classes(4).RaceElf = 0
 Classes(4).RaceGnome = 0
@@ -132,27 +99,16 @@ Classes(4).RaceHalfElf = 0
 Classes(4).RaceHalfling = 0
 Classes(4).RaceHalfOrc = 0
 Classes(4).RaceHuman = 1
-Classes(4).GoldMin = 4
-Classes(4).GoldMax = 4
+Classes(4).GoldMin = 50: Classes(4).GoldMax = 4
 
 Classes(5).ClassName = "Magic-User"
 Classes(5).ClassIndex = 5
 Classes(5).HitDie = 4
 Classes(5).Category = "Magic-User"
-Classes(5).MinStr = 0
 Classes(5).MinInt = 9
-Classes(5).MinWis = 0
 Classes(5).MinDex = 6
-Classes(5).MinCon = 0
-Classes(5).MinCha = 0
-Classes(5).MaxWis = 0
-Classes(5).RaceDwarf = 0
-Classes(5).RaceElf = 1
-Classes(5).RaceGnome = 0
-Classes(5).RaceHalfElf = 1
-Classes(5).RaceHalfling = 0
-Classes(5).RaceHalfOrc = 0
-Classes(5).RaceHuman = 1
+Classes(5).MaxWis = 18
+Classes(5).RaceElf = 1: Classes(5).RaceHalfElf = 1: Classes(5).RaceHuman = 1
 Classes(5).GoldMin = 4
 Classes(5).GoldMax = 4
 
@@ -160,20 +116,9 @@ Classes(6).ClassName = "Illusionist"
 Classes(6).ClassIndex = 6
 Classes(6).HitDie = 4
 Classes(6).Category = "Magic-User"
-Classes(6).MinStr = 0
-Classes(6).MinInt = 15
-Classes(6).MinWis = 0
-Classes(6).MinDex = 16
-Classes(6).MinCon = 0
-Classes(6).MinCha = 0
-Classes(6).MaxWis = 0
-Classes(6).RaceDwarf = 0
-Classes(6).RaceElf = 0
-Classes(6).RaceGnome = 1
-Classes(6).RaceHalfElf = 0
-Classes(6).RaceHalfling = 0
-Classes(6).RaceHalfOrc = 0
-Classes(6).RaceHuman = 1
+Classes(6).MinInt = 15: Classes(6).MinDex = 16
+Classes(6).MaxWis = 18
+Classes(6).RaceGnome = 1: Classes(6).RaceHuman = 1
 Classes(6).GoldMin = 4
 Classes(6).GoldMax = 4
 
@@ -181,42 +126,21 @@ Classes(7).ClassName = "Cleric"
 Classes(7).ClassIndex = 7
 Classes(7).HitDie = 8
 Classes(7).Category = "Cleric"
-Classes(7).MinStr = 0
-Classes(7).MinInt = 0
 Classes(7).MinWis = 9
-Classes(7).MinDex = 0
-Classes(7).MinCon = 0
-Classes(7).MinCha = 0
-Classes(7).MaxWis = 0
-Classes(7).RaceDwarf = 1
-Classes(7).RaceElf = 1
-Classes(7).RaceGnome = 1
-Classes(7).RaceHalfElf = 1
-Classes(7).RaceHalfling = 0
-Classes(7).RaceHalfOrc = 1
-Classes(7).RaceHuman = 1
+Classes(7).MaxWis = 18
+Classes(7).RaceDwarf = 1: Classes(7).RaceElf = 1: Classes(7).RaceGnome = 1
+Classes(7).RaceHalfElf = 1: Classes(7).RaceHalfOrc = 1: Classes(7).RaceHuman = 1
 Classes(7).GoldMin = 3
 Classes(7).GoldMax = 6
 
-' Druid - Index 8
 Classes(8).ClassName = "Druid"
 Classes(8).ClassIndex = 8
 Classes(8).HitDie = 8
 Classes(8).Category = "Cleric"
-Classes(8).MinStr = 0
-Classes(8).MinInt = 0
-Classes(8).MinWis = 12
-Classes(8).MinDex = 0
-Classes(8).MinCon = 0
-Classes(8).MinCha = 15
-Classes(8).MaxWis = 0
-Classes(8).RaceDwarf = 0
-Classes(8).RaceElf = 0
-Classes(8).RaceGnome = 0
-Classes(8).RaceHalfElf = 1
-Classes(8).RaceHalfling = 1
-Classes(8).RaceHalfOrc = 0
-Classes(8).RaceHuman = 1
+Classes(8).MinWis = 12: Classes(8).MinCha = 15
+Classes(8).MaxWis = 18
+Rem the restriction on elves and nature classes comes from Moorcock and Poul Anderson. Elves are not-nearly as Tolkeinian in early D&D.
+Classes(8).RaceHalfElf = 1: Classes(8).RaceHalfling = 1: Classes(8).RaceHuman = 1
 Classes(8).GoldMin = 3
 Classes(8).GoldMax = 6
 
@@ -225,19 +149,10 @@ Classes(9).ClassName = "Thief"
 Classes(9).ClassIndex = 9
 Classes(9).HitDie = 6
 Classes(9).Category = "Thief"
-Classes(9).MinStr = 0
-Classes(9).MinInt = 0
-Classes(9).MinWis = 0
-Classes(9).MinDex = 9
-Classes(9).MinCon = 0
-Classes(9).MinCha = 0
-Classes(9).MaxWis = 0
-Classes(9).RaceDwarf = 1
-Classes(9).RaceElf = 1
-Classes(9).RaceGnome = 1
-Classes(9).RaceHalfElf = 1
-Classes(9).RaceHalfling = 1
-Classes(9).RaceHalfOrc = 1
+Classes(9).MinDex = 9: Classes(9).MaxWis = 18
+Rem everyone can steal
+Classes(9).RaceDwarf = 1: Classes(9).RaceElf = 1: Classes(9).RaceGnome = 1
+Classes(9).RaceHalfElf = 1: Classes(9).RaceHalfling = 1: Classes(9).RaceHalfOrc = 1
 Classes(9).RaceHuman = 1
 Classes(9).GoldMin = 2
 Classes(9).GoldMax = 8
@@ -246,20 +161,10 @@ Classes(10).ClassName = "Assassin"
 Classes(10).ClassIndex = 10
 Classes(10).HitDie = 6
 Classes(10).Category = "Thief"
-Classes(10).MinStr = 0
-Classes(10).MinInt = 11
-Classes(10).MinWis = 0
-Classes(10).MinDex = 12
-Classes(10).MinCon = 0
-Classes(10).MinCha = 0
-Classes(10).MaxWis = 0
-Classes(10).RaceDwarf = 1
-Classes(10).RaceElf = 1
-Classes(10).RaceGnome = 1
-Classes(10).RaceHalfElf = 1
-Classes(10).RaceHalfling = 0
-Classes(10).RaceHalfOrc = 1
-Classes(10).RaceHuman = 1
+Classes(10).MinInt = 11: Classes(10).MinDex = 12
+Classes(10).MaxWis = 18
+Classes(10).RaceDwarf = 1: Classes(10).RaceElf = 1: Classes(10).RaceGnome = 1
+Classes(10).RaceHalfElf = 1: Classes(10).RaceHalfOrc = 1: Classes(10).RaceHuman = 1
 Classes(10).GoldMin = 2
 Classes(10).GoldMax = 8
 
@@ -267,19 +172,9 @@ Classes(11).ClassName = "Monk"
 Classes(11).ClassIndex = 11
 Classes(11).HitDie = 8
 Classes(11).Category = "Monk"
-Classes(11).MinStr = 15
-Classes(11).MinInt = 0
-Classes(11).MinWis = 15
-Classes(11).MinDex = 15
-Classes(11).MinCon = 11
-Classes(11).MinCha = 0
-Classes(11).MaxWis = 0
-Classes(11).RaceDwarf = 0
-Classes(11).RaceElf = 0
-Classes(11).RaceGnome = 0
-Classes(11).RaceHalfElf = 0
-Classes(11).RaceHalfling = 0
-Classes(11).RaceHalfOrc = 0
+Classes(11).MinStr = 15: Classes(11).MinWis = 15
+Classes(11).MinDex = 15: Classes(11).MinCon = 11
+Classes(11).MaxWis = 18
 Classes(11).RaceHuman = 1
 Classes(11).GoldMin = 3
 Classes(11).GoldMax = 6
