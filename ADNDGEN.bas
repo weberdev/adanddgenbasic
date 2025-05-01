@@ -17,7 +17,7 @@ Type ClassDef
     MaxWis As Integer
     RaceDwarf As Integer: RaceElf As Integer: RaceGnome As Integer
     RaceHalfElf As Integer: RaceHalfling As Integer: RaceHalfOrc As Integer: RaceHuman As Integer
-    GoldMin As Integer: GoldMax As Integer
+    GoldDieNum As Integer: GoldDieSize As Integer
 End Type
 
 Type RaceDef
@@ -40,7 +40,7 @@ Classes(1).MaxWis = 18
 Classes(1).RaceDwarf = 1: Classes(1).RaceElf = 1: Classes(1).RaceGnome = 1
 Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
 Classes(1).RaceHalfOrc = 1: Classes(1).RaceHuman = 1
-Classes(1).GoldMin = 50: Classes(1).GoldMax = 150
+Classes(1).GoldDieNum = 5: Classes(1).GoldDieSize = 4
 
 Classes(2).ClassName = "PALADIN"
 Classes(2).ClassIndex = 2
@@ -50,7 +50,7 @@ Classes(2).MinStr = 12: Classes(2).MinInt = 9: Classes(2).MinWis = 13
 Classes(2).MinDex = 0: Classes(2).MinCon = 9: Classes(2).MinCha = 17
 Classes(2).MaxWis = 18
 Classes(2).RaceHuman = 1
-Classes(2).GoldMin = 50: Classes(2).GoldMax = 150
+Classes(2).GoldDieNum = 5: Classes(2).GoldDieSize = 4
 
 Classes(3).ClassName = "RANGER"
 Classes(3).ClassIndex = 3
@@ -61,7 +61,7 @@ Classes(3).MaxWis = 18
 Rem Elves can't be rangers for some reason.
 Rem Rangers don't have to be dextrous for some reason.
 Classes(3).RaceHalfElf = 1: Classes(3).RaceHuman = 1
-Classes(3).GoldMin = 50: Classes(3).GoldMax = 150
+Classes(3).GoldDieNum = 5: Classes(3).GoldDieSize = 4
 
 Classes(4).ClassName = "Cavalier"
 Classes(4).ClassIndex = 4
@@ -73,7 +73,7 @@ Classes(4).MaxWis = 18
 Rem per Dragon Magazine 72 [5], Cavaliers can be human, elven and half-elven
 Rem this will change with Unearthed Arcana
 Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
-Classes(4).GoldMin = 50: Classes(4).GoldMax = 4
+Classes(4).GoldDieNum = 5: Classes(4).GoldDieSize = 4
 
 Classes(5).ClassName = "Magic-User"
 Classes(5).ClassIndex = 5
@@ -82,8 +82,7 @@ Classes(5).Category = "Magic-User"
 Classes(5).MinInt = 9: Classes(5).MinDex = 6
 Classes(5).MaxWis = 18
 Classes(5).RaceElf = 1: Classes(5).RaceHalfElf = 1: Classes(5).RaceHuman = 1
-Classes(5).GoldMin = 4
-Classes(5).GoldMax = 4
+Classes(5).GoldDieNum = 2: Classes(5).GoldDieSize = 4
 
 Classes(6).ClassName = "Illusionist"
 Classes(6).ClassIndex = 6
@@ -92,8 +91,7 @@ Classes(6).Category = "Magic-User"
 Classes(6).MinInt = 15: Classes(6).MinDex = 16
 Classes(6).MaxWis = 18
 Classes(6).RaceGnome = 1: Classes(6).RaceHuman = 1
-Classes(6).GoldMin = 4
-Classes(6).GoldMax = 4
+Classes(6).GoldDieNum = 2: Classes(6).GoldDieSize = 4
 
 Classes(7).ClassName = "Cleric"
 Classes(7).ClassIndex = 7
@@ -103,8 +101,7 @@ Classes(7).MinWis = 9
 Classes(7).MaxWis = 18
 Classes(7).RaceDwarf = 1: Classes(7).RaceElf = 1: Classes(7).RaceGnome = 1
 Classes(7).RaceHalfElf = 1: Classes(7).RaceHalfOrc = 1: Classes(7).RaceHuman = 1
-Classes(7).GoldMin = 3
-Classes(7).GoldMax = 6
+Classes(7).GoldDieNum = 3: Classes(7).GoldDieSize = 6
 
 Classes(8).ClassName = "Druid"
 Classes(8).ClassIndex = 8
@@ -114,8 +111,7 @@ Classes(8).MinWis = 12: Classes(8).MinCha = 15
 Classes(8).MaxWis = 18
 Rem the restriction on elves and nature classes comes from Moorcock and Poul Anderson. Elves are not-nearly as Tolkeinian in early D&D.
 Classes(8).RaceHalfElf = 1: Classes(8).RaceHalfling = 1: Classes(8).RaceHuman = 1
-Classes(8).GoldMin = 3
-Classes(8).GoldMax = 6
+Classes(8).GoldDieNum = 3: Classes(8).GoldDieSize = 6
 
 ' Thief - Index 9
 Classes(9).ClassName = "Thief"
@@ -127,8 +123,7 @@ Rem everyone can steal
 Classes(9).RaceDwarf = 1: Classes(9).RaceElf = 1: Classes(9).RaceGnome = 1
 Classes(9).RaceHalfElf = 1: Classes(9).RaceHalfling = 1: Classes(9).RaceHalfOrc = 1
 Classes(9).RaceHuman = 1
-Classes(9).GoldMin = 2
-Classes(9).GoldMax = 8
+Classes(9).GoldDieNum = 2: Classes(9).GoldDieSize = 6
 
 Classes(10).ClassName = "Assassin"
 Classes(10).ClassIndex = 10
@@ -138,8 +133,7 @@ Classes(10).MinInt = 11: Classes(10).MinDex = 12
 Classes(10).MaxWis = 18
 Classes(10).RaceDwarf = 1: Classes(10).RaceElf = 1: Classes(10).RaceGnome = 1
 Classes(10).RaceHalfElf = 1: Classes(10).RaceHalfOrc = 1: Classes(10).RaceHuman = 1
-Classes(10).GoldMin = 2
-Classes(10).GoldMax = 8
+Classes(10).GoldDieNum = 2: Classes(10).GoldDieSize = 6
 
 Classes(11).ClassName = "Monk"
 Classes(11).ClassIndex = 11
@@ -149,8 +143,8 @@ Classes(11).MinStr = 15: Classes(11).MinWis = 15
 Classes(11).MinDex = 15: Classes(11).MinCon = 11
 Classes(11).MaxWis = 18
 Classes(11).RaceHuman = 1
-Classes(11).GoldMin = 3
-Classes(11).GoldMax = 6
+Rem NOTE TO SELF: check for monk status when generating starting gold: Do not apply tenfold scalar if monk.
+Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 
 Dim Races(7) As RaceDef
 
