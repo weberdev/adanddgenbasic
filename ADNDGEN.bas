@@ -120,6 +120,9 @@ Classes(11).RaceHuman = 1
 Rem NOTE TO SELF: check for monk status when generating starting gold: Do not apply tenfold scalar if monk.
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 
+
+Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
+Rem arguments exist about whether or not it's a section or table: it is a section.
 Dim MultiClasses(13) As ClassDef
 
 MultiClasses(1).ClassName = "Cleric/Fighter": MultiClasses(1).ClassIndex = (12): MultiClasses(1).HitDie = 10: MultiClasses(1).SecondHD = 8
@@ -660,122 +663,9 @@ Rem I didn't want to do this, man
 Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
 GoTo 2000
-Rem cut above line when multiclassing ready
-1982 If RA = 7 Then GoTo 2000
-
-
-Rem Race/class options for multiclassing is buried in race descriptions in the PHB [1, pp.15-17]
-Rem 1982 Print " WOULD YOU LIKE TO MULTICLASS?"
-
-Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
-Rem arguments exist about whether or not it's a section or table: it is a section.
-
-Rem let MC = multiclass option
-MC = 0
-Dim MultiClasses(13) As String
-For I = 1 To 13
-    Read MultiClasses(I)
-Next I
-Data "Cleric/Fighter","Cleric/Fighter/Magic-user","Cleric/Ranger","Cleric/Magic-user","Cleric/Thief","Cleric/Assassin","Fighter/Magic-user","Fighter/Illusionist","Fighter/Thief","Fighter/Assassin","Fighter/Magic-user/Thief","Magic-user/Thief","Illusionist/Thief"
-Rem quick reference:
-Rem 1: cleric/fighter
-Rem 2: cleric/fighter/magic-user
-Rem 3: cleric/ranger
-Rem 4: cleric/magic-user
-Rem 5: cleric/thief
-Rem 6: cleric/assassin
-Rem 7: fighter/magic-user
-Rem 8: fighter/illusionist
-Rem 9: fighter/thief
-Rem 10: fighter/assassin
-Rem 11: fighter/magic-user/thief
-Rem 12: magic-user/thief
-Rem 13: illusionist/thief
-Dim AvailMCs(8) As String
-For I = 1 To 8
-    AvailMCs(I) = ""
-Next I
-
-Select Case RA
-    Case 1
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-
-
-    Case 2
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 5 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
-        If IntelligenceScore > 8 And DexterityScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
 
 
 
-    Case 3
-        Rem Gnome rules are fuzzy
-        Rem Gnomes can be Fighters, Thieves, assassins, or illusionists
-        Rem Multiclassing between Thief and assassin seems incorrect- we assume that you can't do that.
-        Rem Multiclassing in general is allowable, however
-        Rem thus
-        Rem fighter thief
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        Rem fighter illusionist
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": AvailMCs(1) = MultiClasses(8)
-        Rem thief illusionist
-        If DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": AvailMCs(3) = MultiClasses(13)
-        Rem "NOT explicitly authorized" is an understatement. Skip this.
-        GoTo GnomeMultSkip
-        Rem The following multiclasses are NOT explicitly authorized
-        Rem fighter assassin
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 12 And IntelligenceScore > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
-        Rem assassin illusionist
-        Rem assassin requirements are fully superseded by illusionist
-        If DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
-        Rem IT IS WORTH NOTING
-        Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
-        Rem It depends on what the definition of is is
-        GnomeMultSkip:
-
-    Case 4
-        Rem half elves
-        Rem Half elves can be multiclassed
-        Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
-        Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 5 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
-        If IntelligenceScore > 8 And DexterityScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
-        If StrengthScore > 12 And IntelligenceScore > 12 And WisdomScore > 13 And ConstitutionScore > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": AvailMCs(5) = MultiClasses(3)
-        If StrengthScore > 8 And ConstitutionScore > 6 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(6) = MultiClasses(1)
-        If IntelligenceScore > 8 And DexterityScore > 5 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": AvailMCs(7) = MultiClasses(12)
-        If IntelligenceScore > 8 And WisdomScore > 8 And StrengthScore > 8 And ConstitutionScore > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": AvailMCs(8) = MultiClasses(2)
-
-    Case 5
-        Rem Halflings
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        Rem THANK GYGAX IT'S EASY
-
-    Case 6
-        Rem half-orcs
-        Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
-        If StrengthScore > 8 And ConstitutionScore > 6 And WisdomScore > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(1) = MultiClasses(1)
-        If WisdomScore > 8 And DexterityScore > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": AvailMCs(2) = MultiClasses(5)
-        If WisdomScore > 8 And IntelligenceScore > 10 And DexterityScore > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": AvailMCs(3) = MultiClasses(6)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(4) = MultiClasses(9)
-        If StrengthScore > 8 And ConstitutionScore > 6 And DexterityScore > 12 And IntelligenceScore > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": AvailMCs(5) = MultiClasses(10)
-    Case Else
-        GoTo 2000
-End Select
-Print
-Print "AVAILABLE MULTI-CLASS OPTIONS:"
-MC = 0
-For I = 1 To UBound(AvailMCs)
-    If AvailMCs(I) <> "" Then
-        MC = MC + 1
-        Print Str$(MC); ". "; AvailMCs(I)
-    End If
-Next I
-
-
-GoTo 2000
 
 Rem PSIONICS: PHB Appendix I. [1, p. 110]
 Rem PC must have one or more mental stats at or above 16 to check for psionics
@@ -1020,6 +910,14 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     Else GoTo 2000
     End If
 End If
+
+Rem 10 classes PHB
+Rem 13 multiclasses PHB
+Rem 4 classes US
+Rem 10 classes OA
+Rem The Dragon Cavalier is probably getting filter, but later
+Dim AvailClasses(37) As ClassDef
+
 
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
