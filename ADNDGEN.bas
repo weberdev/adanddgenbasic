@@ -8,45 +8,23 @@ Rem This version omits Unearthed Arcana (1985), and such material will be includ
 105 Randomize Timer
 
 Type ClassDef
-    ClassName As String * 20
-    ClassIndex As Integer
-    HitDie As Integer
-    Category As String * 12
-    MinStr As Integer
-    MinInt As Integer
-    MinWis As Integer
-    MinDex As Integer
-    MinCon As Integer
-    MinCha As Integer
+    ClassName As String * 20: ClassIndex As Integer
+    HitDie As Integer: Category As String * 12
+    MinStr As Integer: MinInt As Integer: MinWis As Integer
+    MinDex As Integer: MinCon As Integer: MinCha As Integer
     Rem This next one is needed for one thing. Is it really needed?
     Rem Yes, as it turns out.
     MaxWis As Integer
-    RaceDwarf As Integer
-    RaceElf As Integer
-    RaceGnome As Integer
-    RaceHalfElf As Integer
-    RaceHalfling As Integer
-    RaceHalfOrc As Integer
-    RaceHuman As Integer
-    GoldMin As Integer
-    GoldMax As Integer
+    RaceDwarf As Integer: RaceElf As Integer: RaceGnome As Integer
+    RaceHalfElf As Integer: RaceHalfling As Integer: RaceHalfOrc As Integer: RaceHuman As Integer
+    GoldMin As Integer: GoldMax As Integer
 End Type
 
 Type RaceDef
-    RaceName As String * 20
-    RaceIndex As Integer
-    MinStr As Integer
-    MaxStr As Integer
-    MinInt As Integer
-    MaxInt As Integer
-    MinWis As Integer
-    MaxWis As Integer
-    MinDex As Integer
-    MaxDex As Integer
-    MinCon As Integer
-    MaxCon As Integer
-    MinCha As Integer
-    MaxCha As Integer
+    RaceName As String * 20: RaceIndex As Integer
+    MinStr As Integer: MaxStr As Integer: MinInt As Integer: MaxInt As Integer
+    MinWis As Integer: MaxWis As Integer: MinDex As Integer: MaxDex As Integer
+    MinCon As Integer: MaxCon As Integer: MinCha As Integer: MaxCha As Integer
 End Type
 
 Dim Classes(11) As ClassDef
@@ -92,21 +70,16 @@ Classes(4).Category = "Fighter"
 Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 10
 Classes(4).MinDex = 15: Classes(4).MinCon = 15
 Classes(4).MaxWis = 18
-Classes(4).RaceDwarf = 0
-Classes(4).RaceElf = 0
-Classes(4).RaceGnome = 0
-Classes(4).RaceHalfElf = 0
-Classes(4).RaceHalfling = 0
-Classes(4).RaceHalfOrc = 0
-Classes(4).RaceHuman = 1
+Rem per Dragon Magazine 72 [5], Cavaliers can be human, elven and half-elven
+Rem this will change with Unearthed Arcana
+Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
 Classes(4).GoldMin = 50: Classes(4).GoldMax = 4
 
 Classes(5).ClassName = "Magic-User"
 Classes(5).ClassIndex = 5
 Classes(5).HitDie = 4
 Classes(5).Category = "Magic-User"
-Classes(5).MinInt = 9
-Classes(5).MinDex = 6
+Classes(5).MinInt = 9: Classes(5).MinDex = 6
 Classes(5).MaxWis = 18
 Classes(5).RaceElf = 1: Classes(5).RaceHalfElf = 1: Classes(5).RaceHuman = 1
 Classes(5).GoldMin = 4
