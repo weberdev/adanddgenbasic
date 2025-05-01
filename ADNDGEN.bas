@@ -224,17 +224,30 @@ Rem See PHB 1e, PHB
 1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 
 1140 IN = AbilityAssignedArray(2)
-Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
 1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
-1150 If IN < 9 Then SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
-1160 If IN = 9 Then SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
-1170 If IN > 9 And IN < 13 Then SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
-1180 If IN > 12 And IN < 15 Then SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9"
-1190 If IN > 14 And IN < 17 Then SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11"
-1200 If IN = 17 Then SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
-1210 If IN = 18 Then SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
-
-
+Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
+Select Case IN
+    Case 1 To 8
+        SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
+    Case 9
+        SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
+    Case 10 To 12
+        SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
+    Case 13 To 14
+        SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9"
+    Case 15 To 16
+        SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11"
+    Case 17
+        SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
+    Case 18
+        SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
+End Select
+Select Case IN
+    Case 3
+        lang$ = "DIFFICULT SPEECH - ILLITERATE"
+    Case 4 To 5
+        lang$ = "EASY SPEECH BUT ILLITERATE"
+End Select
 Rem I'm not sure which version of the chart this is.
 1220 If IN = 3 Then GoTo 1240
 1230 GoTo 1250
