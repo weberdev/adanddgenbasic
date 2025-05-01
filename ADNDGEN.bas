@@ -68,92 +68,88 @@ Next I
 
 290 RA = Val(RA$)
 300 If RA < 1 Or RA > 7 Then GoTo 210
-310 If RA = 1 Then
 
-    Rem Dwarves have Minimum str and con 8 and 12
-    If AbilityAssignedArray(1) < 8 Then GoTo 190
-    If AbilityAssignedArray(5) < 12 Then GoTo 190
+Select Case RA
 
-    Rem Dwarves get +1 CON, -1 CHA
-    AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
-    AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
+    Case 1
 
-    Rem Dwarves have MAX DEX 17, MAX CHA 16, MIN CHA (as it's reduced) 3
-    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM DWARF DEXTERITY IS 17"
-    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
-    If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16: Print "MAXIMUM DWARF CHARISMA IS 16"
-End If
-320 If RA = 2 Then
-    Rem Elves Have Min INT 8, DEX 7, CON 6, and CHA 8
-    Rem dear lord those are some restrictions
-    If AbilityAssignedArray(2) < 8 Then GoTo 190
-    If AbilityAssignedArray(4) < 7 Then GoTo 190
-    If AbilityAssignedArray(5) < 6 Then GoTo 190
-    If AbilityAssignedArray(6) < 8 Then GoTo 190
+        Rem Dwarves have Minimum str and con 8 and 12
+        If AbilityAssignedArray(1) < 8 Then GoTo 190
+        If AbilityAssignedArray(5) < 12 Then GoTo 190
 
-    Rem Elves Get +1 Dex, -1 Con
-    AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
-    AbilityAssignedArray(5) = AbilityAssignedArray(5) - 1
+        Rem Dwarves get +1 CON, -1 CHA
+        AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
+        AbilityAssignedArray(6) = AbilityAssignedArray(6) - 1
 
-    Rem Elves have No maximum stats that are salient at this point
-    Rem Con might've caught a stray penalty, however.
-    If AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
-End If
-330 If RA = 3 Then
-    Rem Gnomes have Min STR 6, INT 7, Con 8
-    If AbilityAssignedArray(1) < 6 Then GoTo 190
-    If AbilityAssignedArray(2) < 7 Then GoTo 190
-    If AbilityAssignedArray(5) < 8 Then GoTo 190
+        Rem Dwarves have MAX DEX 17, MAX CHA 16, MIN CHA (as it's reduced) 3
+        If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM DWARF DEXTERITY IS 17"
+        If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
+        If AbilityAssignedArray(6) > 16 Then AbilityAssignedArray(6) = 16: Print "MAXIMUM DWARF CHARISMA IS 16"
+    Case 2
+        Rem Elves Have Min INT 8, DEX 7, CON 6, and CHA 8
+        Rem dear lord those are some restrictions
+        If AbilityAssignedArray(2) < 8 Then GoTo 190
+        If AbilityAssignedArray(4) < 7 Then GoTo 190
+        If AbilityAssignedArray(5) < 6 Then GoTo 190
+        If AbilityAssignedArray(6) < 8 Then GoTo 190
 
-    Rem Gnomes get gno ability score modifiers.
-    Rem Gnor do they have caps
-End If
-340 If RA = 4 Then
-    Rem Half-elves have Min 4 INT, 6 Dex, 6 CON
-    If AbilityAssignedArray(2) < 4 Then GoTo 190
-    If AbilityAssignedArray(4) < 6 Then GoTo 190
-    If AbilityAssignedArray(5) < 6 Then GoTo 190
+        Rem Elves Get +1 Dex, -1 Con
+        AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
+        AbilityAssignedArray(5) = AbilityAssignedArray(5) - 1
 
-    Rem Half Elves have no ability score modifiers, nor salient ability score caps
-End If
-350 If RA = 5 Then
-    Rem Halflings have Min 6 str, 6 int, 8 dex, 10 con
-    If AbilityAssignedArray(1) < 6 Then GoTo 190
-    If AbilityAssignedArray(2) < 6 Then GoTo 190
-    If AbilityAssignedArray(4) < 8 Then GoTo 190
-    If AbilityAssignedArray(5) < 10 Then GoTo 190
+        Rem Elves have No maximum stats that are salient at this point
+        Rem Con might've caught a stray penalty, however.
+        If AbilityAssignedArray(5) < 6 Then AbilityAssignedArray(5) = 6
+    Case 3 Rem Gnomes have Min STR 6, INT 7, Con 8
+        If AbilityAssignedArray(1) < 6 Then GoTo 190
+        If AbilityAssignedArray(2) < 7 Then GoTo 190
+        If AbilityAssignedArray(5) < 8 Then GoTo 190
 
-    Rem Halflings Get +1 Dex, -1 str
-    AbilityAssignedArray(1) = AbilityAssignedArray(1) - 1
-    AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
+        Rem Gnomes get gno ability score modifiers.
+        Rem Gnor do they have caps
+    Case 4
+        Rem Half-elves have Min 4 INT, 6 Dex, 6 CON
+        If AbilityAssignedArray(2) < 4 Then GoTo 190
+        If AbilityAssignedArray(4) < 6 Then GoTo 190
+        If AbilityAssignedArray(5) < 6 Then GoTo 190
 
-    Rem Halflings have max str 17, max wis 17
-    If AbilityAssignedArray(1) > 17 Then AbilityAssignedArray(1) = 17: Print "MAXIMUM HALFLING STRENGTH IS 17"
-    If AbilityAssignedArray(3) > 17 Then AbilityAssignedArray(3) = 17: Print "MAXIMUM HALFLING WISDOM IS 17"
+        Rem Half Elves have no ability score modifiers, nor salient ability score caps
+    Case 5
+        Rem Halflings have Min 6 str, 6 int, 8 dex, 10 con
+        If AbilityAssignedArray(1) < 6 Then GoTo 190
+        If AbilityAssignedArray(2) < 6 Then GoTo 190
+        If AbilityAssignedArray(4) < 8 Then GoTo 190
+        If AbilityAssignedArray(5) < 10 Then GoTo 190
 
-    Rem Halflings have min str 6
-    If AbilityAssignedArray(1) < 6 Then AbilityAssignedArray(1) = 6
-End If
+        Rem Halflings Get +1 Dex, -1 str
+        AbilityAssignedArray(1) = AbilityAssignedArray(1) - 1
+        AbilityAssignedArray(4) = AbilityAssignedArray(4) + 1
 
-360 If RA = 6 Then
-    Rem Half-orcs have min 6 str, min 13 con
-    If AbilityAssignedArray(1) < 6 Then GoTo 190
-    If AbilityAssignedArray(5) < 13 Then GoTo 190
+        Rem Halflings have max str 17, max wis 17
+        If AbilityAssignedArray(1) > 17 Then AbilityAssignedArray(1) = 17: Print "MAXIMUM HALFLING STRENGTH IS 17"
+        If AbilityAssignedArray(3) > 17 Then AbilityAssignedArray(3) = 17: Print "MAXIMUM HALFLING WISDOM IS 17"
 
-    Rem Half-orcs get +1 STR, +1 CON, -2 CHA
-    AbilityAssignedArray(1) = AbilityAssignedArray(1) + 1
-    AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
-    AbilityAssignedArray(6) = AbilityAssignedArray(6) - 2
+        Rem Halflings have min str 6
+        If AbilityAssignedArray(1) < 6 Then AbilityAssignedArray(1) = 6
+    Case 6
+        Rem Half-orcs have min 6 str, min 13 con
+        If AbilityAssignedArray(1) < 6 Then GoTo 190
+        If AbilityAssignedArray(5) < 13 Then GoTo 190
 
-    Rem Half Orcs have max 17 int, 14 wis 17 dex, 12 cha
-    If AbilityAssignedArray(2) > 17 Then AbilityAssignedArray(2) = 17: Print "MAXIMUM HALF-ORC INTELLIGENCE IS 17"
-    If AbilityAssignedArray(3) > 14 Then AbilityAssignedArray(3) = 14: Print "MAXIMUM HALF-ORC WISDOM IS 14"
-    If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM HALF-ORC DEXTERITY IS 17"
-    If AbilityAssignedArray(6) > 12 Then AbilityAssignedArray(6) = 12: Print "MAXIMUM HALF-ORC CHARISMA IS 12"
+        Rem Half-orcs get +1 STR, +1 CON, -2 CHA
+        AbilityAssignedArray(1) = AbilityAssignedArray(1) + 1
+        AbilityAssignedArray(5) = AbilityAssignedArray(5) + 1
+        AbilityAssignedArray(6) = AbilityAssignedArray(6) - 2
 
-    Rem Half-orcs have min 3 CHA, and that's salient with the penalty
-    If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
-End If
+        Rem Half Orcs have max 17 int, 14 wis 17 dex, 12 cha
+        If AbilityAssignedArray(2) > 17 Then AbilityAssignedArray(2) = 17: Print "MAXIMUM HALF-ORC INTELLIGENCE IS 17"
+        If AbilityAssignedArray(3) > 14 Then AbilityAssignedArray(3) = 14: Print "MAXIMUM HALF-ORC WISDOM IS 14"
+        If AbilityAssignedArray(4) > 17 Then AbilityAssignedArray(4) = 17: Print "MAXIMUM HALF-ORC DEXTERITY IS 17"
+        If AbilityAssignedArray(6) > 12 Then AbilityAssignedArray(6) = 12: Print "MAXIMUM HALF-ORC CHARISMA IS 12"
+
+        Rem Half-orcs have min 3 CHA, and that's salient with the penalty
+        If AbilityAssignedArray(6) < 3 Then AbilityAssignedArray(6) = 3
+End Select
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
 999 PER = 0
@@ -377,7 +373,43 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1840 CH = AbilityAssignedArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CH
 
+Rem XF = exra followers
+Rem LltyBase = loyalty base
+Rem ReactAdj = Reaction Adjustment
+XF = 0
+LltyBase = 0
+ReactAdj = 0
 Rem CHARISMA TABLE from PHB [1, p. 13]
+Select Case CH
+    Case 3
+        XF = 1: LltyBase = -30: ReactAdj = -25
+    Case 4
+        XF = 1: LltyBase = -25: ReactAdj = -20
+    Case 5
+        XF = 2: LltyBase = -20: ReactAdj = -15
+    Case 6
+        XF = 2: LltyBase = -15: ReactAdj = -10
+    Case 7
+        XF = 3: LltyBase = -10: ReactAdj = -5
+    Case 8
+        XF = 4: LltyBase = -5:
+    Case 9 To 11
+        XF = 4
+    Case 12
+        XF = 5
+    Case 13
+        XF = 5: ReactAdj = 5
+    Case 14
+        XF = 6: LltyBase = 5: ReactAdj = 10
+    Case 15
+        XF = 7: LltyBase = 15: ReactAdj = 15
+    Case 16
+        XF = 8: LltyBase = 20: ReactAdj = 25
+    Case 17
+        XF = 10: LltyBase = 30: ReactAdj = 30
+    Case 18
+        XF = 15: LltyBase = 40: ReactAdj = 35
+End Select
 1860 If CH = 3 Then XF = 1
 1870 If CH = 4 Then XF = 1
 1880 If CH > 4 And CH < 6 Then XF = 2
