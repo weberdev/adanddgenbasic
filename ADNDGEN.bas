@@ -208,6 +208,12 @@ Next I
 180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then GoTo 160
 
+Dim AvailRaces(7) As RaceDef
+For I = 1 To UBound(Races)
+    If (AbilityAssignedArray(1) >= Races(I).MinStr) AND (AbilityAssignedArray(2) >= Races(I).MinIN) AND (AbilityAssignedArray(3) >= Races(I).MinWis) AND (AbilityAssignedArray(4) >= Races(I).MinDex) AND (AbilityAssignedArray(5) >= Races(I).MinCon) AND (AbilityAssignedArray(6) >= Races(I).MinCha) THEN AvailRaces(I) = Races(I)
+Next I
+
+
 190 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
 200 RACE$(4) = "HALF-ELVEN": RACE$(5) = "HALFLING": RACE$(6) = "HALF-ORC": RACE$(7) = "HUMAN"
 210 Print "         RACE LIST"
