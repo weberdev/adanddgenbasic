@@ -250,6 +250,7 @@ Select Case IN
 End Select
 
 Rem I'm not sure which version of the chart this is.
+Rem It was included in the originaal manuscript.
 Select Case IN
     Case 3
         lang$ = "DIFFICULT SPEECH - ILLITERATE"
@@ -271,16 +272,27 @@ End Select
 
 Rem WISDOM TABLE I. from PHB [1, p. 11]
 1480 Print "CHARACTER'S WISDOM IS "; WI
-1490 If WI = 3 Then WF = -3
-1500 If WI = 4 Then WF = -2
-1510 If WI > 4 And WI < 8 Then WF = -1
-1520 If WI > 7 And WI < 15 Then WF = 0
-1530 If WI = 15 Then WF = 1
-1540 If WI = 16 Then WF = 2
-1550 If WI = 17 Then WF = 3
-1560 If WI = 18 Then WF = 4
-1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
 
+Select Case WI
+    Case 3
+        WF = -3
+    Case 4
+        WF = -2
+    Case 5 To 7
+        WF = -1
+    Case 8 To 14
+        WF = 0
+    Case 15
+        WF = 1
+    Case 16
+        WF = 2
+    Case 17
+        WF = 3
+    Case 18
+        WF = 4
+End Select
+
+1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
 
 1585 DX = AbilityAssignedArray(4)
 1590 Print "CHARACTER'S DEXTERITY IS "; DX
