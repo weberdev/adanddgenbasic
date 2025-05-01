@@ -720,8 +720,8 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1790 CO = AbilityAssignedArray(5)
 1820 Print "CHARACTER'S CONSTITUTION IS "; CO
 
-1840 CH = AbilityAssignedArray(6)
-1850 Print "CHARACTER'S CHARISMA IS "; CH
+1840 CharismaScore = AbilityAssignedArray(6)
+1850 Print "CHARACTER'S CHARISMA IS "; CharismaScore
 
 Rem XF = extra followers
 Rem LltyBase = loyalty base
@@ -730,7 +730,7 @@ XF = 0
 LltyBase = 0
 ReactAdj = 0
 Rem CHARISMA TABLE from PHB [1, p. 13]
-Select Case CH
+Select Case CharismaScore
     Case 3
         XF = 1: LltyBase = -30: ReactAdj = -25
     Case 4
@@ -765,7 +765,7 @@ End Select
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
-    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
+    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And CO > 9 And CharismaScore > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
 Rem I didn't want to do this, man
@@ -891,7 +891,7 @@ GoTo 2000
 
 Rem PSIONICS: PHB Appendix I. [1, p. 110]
 Rem PC must have one or more mental stats at or above 16 to check for psionics
-1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CH > 15 Then
+1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CharismaScore > 15 Then
     Rem 1% chance of psionics, +more for good stats
     Rem we cast this to a shot out of 1000 to avoid floating point interactions
 
@@ -900,7 +900,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     Rem We get a residue of good mental ability scores
     IntRes = IntelligenceScore - 16
     WisRes = WisdomScore - 16
-    ChaRes = CH - 16
+    ChaRes = CharismaScore - 16
     Rem for each point of int about 16, psionics chance increases by 2.5%
     If IntRes > 0 Then IntRes = IntRes * 25: BaseChance = BaseChance + IntRes
     Rem for each point of wis above 16, psionics chance increases by 1%
@@ -922,12 +922,12 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         MD = 0
         If IntelligenceScore > 12 Then MD = MD + (IntelligenceScore - 12)
         If WisdomScore > 12 Then MD = MD + (WisdomScore - 12)
-        If CH > 12 Then MD = MD + (CH - 12)
+        If CharismaScore > 12 Then MD = MD + (CharismaScore - 12)
         Rem If two or more exceed sixteen, double the modifier
-        If (IntelligenceScore > 16 And WisdomScore > 16) Or (IntelligenceScore > 16 And CH > 16) Or (WisdomScore > 16 And CH > 16) Then MD = MD * 2
+        If (IntelligenceScore > 16 And WisdomScore > 16) Or (IntelligenceScore > 16 And CharismaScore > 16) Or (WisdomScore > 16 And CharismaScore > 16) Then MD = MD * 2
         Rem If all three? Quadruple it.
         Rem As the precondition is necessarily true, we double it again
-        If IntelligenceScore > 16 And WisdomScore > 16 And CH > 16 Then MD = MD * 2
+        If IntelligenceScore > 16 And WisdomScore > 16 And CharismaScore > 16 Then MD = MD * 2
         Rem add modifier to base
         PS = PA + MD
 
@@ -1169,7 +1169,7 @@ End If
 2300 If IntelligenceScore < 9 Then 2350
 2310 If WisdomScore < 13 Then 2360
 2320 If CO < 9 Then 2370
-2330 If CH < 17 Then 2380
+2330 If CharismaScore < 17 Then 2380
 2340 Print " STRENGTH TOO LOW FOR A PALADIN": GoTo 2200
 2350 Print " INTELLIGENCE TOO LOW FOR A PALADIN": GoTo 2200
 2360 Print " WISDOM TOO LOW FOR A PALADIN": GoTo 2200
@@ -1214,7 +1214,7 @@ End If
 2720 If CN = 8 Then GoTo 2740
 2730 GoTo 2780
 2740 If WisdomScore < 12 Then GoTo 2760
-2750 If CH < 15 Then GoTo 2770
+2750 If CharismaScore < 15 Then GoTo 2770
 2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
 2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
 
@@ -1398,7 +1398,7 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3490 If WF = 0 Then GoTo 3510
 3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 3510 Print " CONSTITUTION ": Print CO
-3520 Print " CHARISMA ": Print CH
+3520 Print " CHARISMA ": Print CharismaScore
 3530 Print " MAY HAVE "; XF; " RETAINERS"
 3531 If MN > 1 Then
     Print "Character is psionic"
