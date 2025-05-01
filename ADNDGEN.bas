@@ -7,6 +7,49 @@ Rem This version omits Unearthed Arcana (1985), and such material will be includ
 101 Option Base 1
 105 Randomize Timer
 
+Type ClassDef
+    ClassName As String * 20
+    ClassIndex As Integer
+    HitDie As Integer
+    Category As String * 12
+    MinStr As Integer
+    MinInt As Integer
+    MinWis As Integer
+    MinDex As Integer
+    MinCon As Integer
+    MinCha As Integer
+    Rem This next one is needed for one thing. Is it really needed?
+    Rem Yes, as t turns out.
+    MaxWis As Integer
+    RaceDwarf As Integer
+    RaceElf As Integer
+    RaceGnome As Integer
+    RaceHalfElf As Integer
+    RaceHalfling As Integer
+    RaceHalfOrc As Integer
+    RaceHuman As Integer
+    GoldMin As Integer
+    GoldMax As Integer
+End Type
+
+Type RaceDef
+    RaceName As String * 20
+    RaceIndex As Integer
+    MinStr As Integer
+    MaxStr As Integer
+    MinInt As Integer
+    MaxInt As Integer
+    MinWis As Integer
+    MaxWis As Integer
+    MinDex As Integer
+    MaxDex As Integer
+    MinCon As Integer
+    MaxCon As Integer
+    MinCha As Integer
+    MaxCha As Integer
+End Type
+
+
 Rem Making a secondary system to assign ability scores.
 110 Dim Abilities(6) As Integer
 120 GenerateSortedStats Abilities()
@@ -772,7 +815,6 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem MN stands for Minor Number
         MN = Int((Rnd(1) * 24) + 1)
         Rem I've just realized that this code CANNOT be where it is.
-        Rem I'm hearing Komm Susser Tod and might pack it in for the night.
         Rem NO. I CAN FIX THIS EASILY.
 
         If MN > 22 Then GoTo RollDiscipline
