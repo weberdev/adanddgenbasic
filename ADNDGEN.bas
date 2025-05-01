@@ -18,6 +18,8 @@ Type ClassDef
     RaceDwarf As Integer: RaceElf As Integer: RaceGnome As Integer
     RaceHalfElf As Integer: RaceHalfling As Integer: RaceHalfOrc As Integer: RaceHuman As Integer
     GoldDieNum As Integer: GoldDieSize As Integer
+    Rem these can be left empty
+    IsMultiClass As Integer: SecondHD As Integer: ThirdHD As Integer
 End Type
 
 Type RaceDef
@@ -117,6 +119,22 @@ Classes(11).MaxWis = 18
 Classes(11).RaceHuman = 1
 Rem NOTE TO SELF: check for monk status when generating starting gold: Do not apply tenfold scalar if monk.
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
+
+Dim MultiClasses(13) As ClassDef
+
+MultiClasses(1).ClassName = "Cleric/Fighter": MultiClasses(1).ClassIndex = (12): MultiClasses(1).HitDie = 10: MultiClasses(1).SecondHD = 8
+MultiClasses(1).Category = "Cleric/Fighter"
+MultiClasses(1).MinStr = 9: MultiClasses(1).MinCon = 7: MultiClasses(1).MinWis = 9: MultiClasses(1).MaxWis = 18
+MultiClasses(1).RaceHalfElf = 1: MultiClasses(1).RaceHalfOrc = 1
+MultiClasses(1).GoldDieNum = 5: MultiClasses(1).GoldDieSize = 4
+
+MultiClasses(2).ClassName = "Cleric/Fighter/Magic-User": MultiClasses(2).ClassIndex = (13): MultiClasses(2).HitDie = 10: MultiClasses(2).SecondHD = 8: MultiClasses(2).ThirdHD = 4
+MultiClasses(2).Category = "Cleric/Fighter/Magic-User"
+MultiClasses(2).MinStr = 9: MultiClasses(2).MinCon = 7: MultiClasses(2).MinWis = 9: MultiClasses(2).MaxWis = 18
+MultiClasses(2).RaceHalfElf = 1
+MultiClasses(2).GoldDieNum = 5: MultiClasses(2).GoldDieSize = 4
+
+
 
 Dim Races(7) As RaceDef
 
