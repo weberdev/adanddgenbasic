@@ -170,8 +170,50 @@ Rem OW = Open wizard locked doors on 1d6
 1002 DA = 0
 1003 OD = 1
 1004 OW = 0
+1005 SF = 0
+
+
 
 Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
+Select Case St
+    Case 3
+        SF = -3: SFF = 0: DA = -1
+    Case 4 To 5
+        SF = -2: SFF = 0: DA = -1
+    Case 6 To 7
+        SF = -1: SFF = 0: DA = 0
+    Case 8 To 9
+        OD = 2: SFF = 1
+    Case 10 To 11
+        OD = 2: SFF = 2
+    Case 12 To 13
+        OD = 2: SFF = 4
+    Case 14 To 15
+        OD = 2: SFF = 7
+    Case 16
+        SF = 1: SFF = 10: DA = 1
+    Case 17
+        SF = 1: SFF = 13: DA = 1
+    Case 18
+        Select Case PER
+            Case 1 To 50
+                SF = 1: DA = 3: OD = 3: SFF = 20
+            Case 51 To 75
+                SF = 2: DA = 3: OD = 4: SFF = 25
+            Case 76 To 90
+                SF = 2: DA = 4: OD = 4: SFF = 30
+            Case 91 To 99
+                SF = 2: DA = 5: OD = 4: OW = 1: SFF = 35
+            Case 100
+                SF = 3: DA = 6: OD = 5: OW = 2: SFF = 40
+            Case Else
+                SF = 1: DA = 2: OD = 3: SFF = 16
+        End Select
+    Case Else
+        SF = 0: SFF = 0: DA = 0
+End Select
+
+
 1010 If St = 3 Then SF = -3: SFF = 0: DA = -1
 1020 If St > 3 And St < 6 Then SF = -2: SFF = 0: DA = -1
 1030 If St > 5 And St < 8 Then SF = -1: SFF = 0
@@ -258,16 +300,16 @@ Rem WISDOM TABLE I. from PHB [1, p. 11]
 
 
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
-DA = 0
-1610 If DX = 3 Then DF = -3: DA = 4
-1620 If DX = 4 Then DF = -2: DA = 3
-1630 If DX = 5 Then DF = -1: DA = 2
-1631 If DX = 6 Then DA = 1
+DefAdj = 0
+1610 If DX = 3 Then DF = -3: DefAdj = 4
+1620 If DX = 4 Then DF = -2: DefAdj = 3
+1630 If DX = 5 Then DF = -1: DefAdj = 2
+1631 If DX = 6 Then DefAdj = 1
 1640 If DX > 5 And DX < 16 Then DF = 0
-1641 If DX = 15 Then DA = -1
-1650 If DX = 16 Then DF = 1: DA = -2
-1670 If DX = 17 Then DF = 2: DA = -3
-1680 If DX = 18 Then DF = 3: DA = -4
+1641 If DX = 15 Then DefAdj = -1
+1650 If DX = 16 Then DF = 1: DefAdj = -2
+1670 If DX = 17 Then DF = 2: DefAdj = -3
+1680 If DX = 18 Then DF = 3: DefAdj = -4
 1690 If DF = -3 Then GoSub 3600
 1700 If DF = -2 Then GoSub 3620
 1710 If DF = -1 Then GoSub 3640
@@ -434,6 +476,15 @@ Select Case RA
     Case Else
         GoTo 2000
 End Select
+Print
+Print "AVAILABLE MULTI-CLASS OPTIONS:"
+MC = 0
+For I = 1 To UBound(AvailMCs)
+    If AvailMCs(I) <> "" Then
+        MC = MC + 1
+        Print Str$(MC); ". "; AvailMCs(I)
+    End If
+Next I
 
 
 GoTo 2000
