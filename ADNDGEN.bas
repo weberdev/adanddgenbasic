@@ -226,21 +226,27 @@ Rem See PHB 1e, PHB
 1140 IN = AbilityAssignedArray(2)
 1141 Print "CHARACTER'S INTELLIGENCE IS "; IN
 Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
+SpCh = 0
+MnSp = 0
+MxSp = 0
 Select Case IN
     Case 1 To 8
         SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
     Case 9
-        SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6"
+        SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6": SpCh = 35: MnSp = 4: MxSp = 6
     Case 10 To 12
-        SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7"
+        SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7": SpCh = 45: MnSp = 5: MxSp = 7
     Case 13 To 14
-        SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9"
+        SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9": SpCh = 55: MnSp = 6: MxSp = 9
     Case 15 To 16
-        SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11"
+        SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11": SpCh = 65: MnSp = 7: MxSp = 11
     Case 17
-        SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14"
+        SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14": SpCh = 75: MnSp = 8: MxSp = 14
     Case 18
-        SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
+        SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 85: MnSp = 9: MxSp = 18
+    Case Else
+        SP$ = "95% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 95: MnSp = 10: MxSp = 100
+
 End Select
 
 Rem I'm not sure which version of the chart this is.
