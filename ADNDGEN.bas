@@ -614,12 +614,12 @@ Select Case IntelligenceScore
         lang$ = "LITERATE AND FLUENT IN FOUR LANGUAGES"
 End Select
 
-1450 WI = AbilityAssignedArray(3)
+1450 WisdomScore = AbilityAssignedArray(3)
 
 Rem WISDOM TABLE I. from PHB [1, p. 11]
-1480 Print "CHARACTER'S WISDOM IS "; WI
+1480 Print "CHARACTER'S WISDOM IS "; WisdomScore
 
-Select Case WI
+Select Case WisdomScore
     Case 3
         WF = -3
     Case 4
@@ -765,7 +765,7 @@ End Select
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
-    If StrengthScore > 14 And IntelligenceScore > 11 And WI > 14 And DX > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
+    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DX > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
 Rem I didn't want to do this, man
@@ -855,10 +855,10 @@ Select Case RA
         If StrengthScore > 8 And CN > 6 And DX > 8 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
         If StrengthScore > 8 And CN > 6 And DX > 5 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
         If IntelligenceScore > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
-        If StrengthScore > 12 And IntelligenceScore > 12 And WI > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": AvailMCs(5) = MultiClasses(3)
-        If StrengthScore > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(6) = MultiClasses(1)
-        If IntelligenceScore > 8 And DX > 5 And WI > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": AvailMCs(7) = MultiClasses(12)
-        If IntelligenceScore > 8 And WI > 8 And StrengthScore > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": AvailMCs(8) = MultiClasses(2)
+        If StrengthScore > 12 And IntelligenceScore > 12 And WisdomScore > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": AvailMCs(5) = MultiClasses(3)
+        If StrengthScore > 8 And CN > 6 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(6) = MultiClasses(1)
+        If IntelligenceScore > 8 And DX > 5 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": AvailMCs(7) = MultiClasses(12)
+        If IntelligenceScore > 8 And WisdomScore > 8 And StrengthScore > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": AvailMCs(8) = MultiClasses(2)
 
     Case 5
         Rem Halflings
@@ -868,9 +868,9 @@ Select Case RA
     Case 6
         Rem half-orcs
         Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
-        If StrengthScore > 8 And CN > 6 And WI > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(1) = MultiClasses(1)
-        If WI > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": AvailMCs(2) = MultiClasses(5)
-        If WI > 8 And IntelligenceScore > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": AvailMCs(3) = MultiClasses(6)
+        If StrengthScore > 8 And CN > 6 And WisdomScore > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(1) = MultiClasses(1)
+        If WisdomScore > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": AvailMCs(2) = MultiClasses(5)
+        If WisdomScore > 8 And IntelligenceScore > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": AvailMCs(3) = MultiClasses(6)
         If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(4) = MultiClasses(9)
         If StrengthScore > 8 And CN > 6 And DX > 12 And IntelligenceScore > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": AvailMCs(5) = MultiClasses(10)
     Case Else
@@ -891,7 +891,7 @@ GoTo 2000
 
 Rem PSIONICS: PHB Appendix I. [1, p. 110]
 Rem PC must have one or more mental stats at or above 16 to check for psionics
-1990 If IntelligenceScore > 15 Or WI > 15 Or CH > 15 Then
+1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CH > 15 Then
     Rem 1% chance of psionics, +more for good stats
     Rem we cast this to a shot out of 1000 to avoid floating point interactions
 
@@ -899,7 +899,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     BaseChance = 10
     Rem We get a residue of good mental ability scores
     IntRes = IntelligenceScore - 16
-    WisRes = WI - 16
+    WisRes = WisdomScore - 16
     ChaRes = CH - 16
     Rem for each point of int about 16, psionics chance increases by 2.5%
     If IntRes > 0 Then IntRes = IntRes * 25: BaseChance = BaseChance + IntRes
@@ -921,13 +921,13 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem plus one for each point of mental attribute > 12
         MD = 0
         If IntelligenceScore > 12 Then MD = MD + (IntelligenceScore - 12)
-        If WI > 12 Then MD = MD + (WI - 12)
+        If WisdomScore > 12 Then MD = MD + (WisdomScore - 12)
         If CH > 12 Then MD = MD + (CH - 12)
         Rem If two or more exceed sixteen, double the modifier
-        If (IntelligenceScore > 16 And WI > 16) Or (IntelligenceScore > 16 And CH > 16) Or (WI > 16 And CH > 16) Then MD = MD * 2
+        If (IntelligenceScore > 16 And WisdomScore > 16) Or (IntelligenceScore > 16 And CH > 16) Or (WisdomScore > 16 And CH > 16) Then MD = MD * 2
         Rem If all three? Quadruple it.
         Rem As the precondition is necessarily true, we double it again
-        If IntelligenceScore > 16 And WI > 16 And CH > 16 Then MD = MD * 2
+        If IntelligenceScore > 16 And WisdomScore > 16 And CH > 16 Then MD = MD * 2
         Rem add modifier to base
         PS = PA + MD
 
@@ -1167,7 +1167,7 @@ End If
 2280 GoTo 2390
 2290 If StrengthScore < 12 Then 2340
 2300 If IntelligenceScore < 9 Then 2350
-2310 If WI < 13 Then 2360
+2310 If WisdomScore < 13 Then 2360
 2320 If CO < 9 Then 2370
 2330 If CH < 17 Then 2380
 2340 Print " STRENGTH TOO LOW FOR A PALADIN": GoTo 2200
@@ -1180,7 +1180,7 @@ End If
 2400 GoTo 2480
 2410 If StrengthScore < 13 Then GoTo 2440
 2420 If IntelligenceScore < 13 Then GoTo 2450
-2430 If WI < 14 Then GoTo 2460
+2430 If WisdomScore < 14 Then GoTo 2460
 2431 If CO < 14 Then GoTo 2470
 2440 Print " STRENGTH TOO LOW FOR A RANGER": GoTo 2200
 2450 Print " INTELLIGENCE TOO LOW FOR A RANGER": GoTo 2200
@@ -1193,7 +1193,7 @@ End If
 2510 If DX < 15 Then GoTo 2590
 2520 If CO < 15 Then GoTo 2600
 2530 If IntelligenceScore < 10 Then GoTo 2610
-2540 If WI < 10 Then GoTo 2620
+2540 If WisdomScore < 10 Then GoTo 2620
 2580 Print " STRENGTH TOO LOW FOR A CAVALIER": GoTo 2200
 2590 Print " DEXTERITY TOO LOW FOR A CAVALIER": GoTo 2200
 2600 Print " CONSTITUTION TOO LOW FOR A CAVALIER": GoTo 2200
@@ -1209,11 +1209,11 @@ End If
 
 2690 If CN = 7 Then GoTo 2710
 2700 GoTo 2720
-2710 If WI < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
+2710 If WisdomScore < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
 
 2720 If CN = 8 Then GoTo 2740
 2730 GoTo 2780
-2740 If WI < 12 Then GoTo 2760
+2740 If WisdomScore < 12 Then GoTo 2760
 2750 If CH < 15 Then GoTo 2770
 2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
 2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
@@ -1232,7 +1232,7 @@ End If
 2870 If CN = 11 Then GoTo 2890
 2880 GoTo 2970
 2890 If StrengthScore < 15 Then GoTo 2930
-2900 If WI < 15 Then GoTo 2940
+2900 If WisdomScore < 15 Then GoTo 2940
 2910 If DX < 15 Then GoTo 2950
 2920 If CO < 11 Then GoTo 2960
 2930 Print " STRENGTH TOO LOW FOR A MONK": GoTo 2200
@@ -1394,7 +1394,7 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3450 Print " INTELLIGENCE: ": Print IntelligenceScore
 3460 If CN = 5 Then Print IZ$
 3470 Print lang$
-3480 Print " WISDOM: ": Print WI
+3480 Print " WISDOM: ": Print WisdomScore
 3490 If WF = 0 Then GoTo 3510
 3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 3510 Print " CONSTITUTION ": Print CO
