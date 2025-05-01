@@ -242,33 +242,24 @@ Select Case IN
     Case 18
         SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18"
 End Select
+
+Rem I'm not sure which version of the chart this is.
 Select Case IN
     Case 3
         lang$ = "DIFFICULT SPEECH - ILLITERATE"
     Case 4 To 5
         lang$ = "EASY SPEECH BUT ILLITERATE"
+    Case 6 To 8
+        lang$ = "BARELY LITERATE"
+    Case 9 To 12
+        lang$ = "LITERATE IN NATIVE TONGUE"
+    Case 13 To 15
+        lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
+    Case 16 To 17
+        lang$ = "LITERATE AND FLUENT IN THREE LANGUAGES"
+    Case 18
+        lang$ = "LITERATE AND FLUENT IN FOUR LANGUAGES"
 End Select
-Rem I'm not sure which version of the chart this is.
-1220 If IN = 3 Then GoTo 1240
-1230 GoTo 1250
-1240 lang$ = "DIFFICULT SPEECH - ILLITERATE"
-1250 If IN > 3 And IN < 6 Then GoTo 1270
-1260 GoTo 1280
-1270 lang$ = "EASY SPEECH BUT ILLITERATE"
-1280 If IN > 5 And IN < 9 Then GoTo 1300
-1290 GoTo 1310
-1300 lang$ = "BARELY LITERATE"
-1310 If IN > 8 And IN < 13 Then GoTo 1330
-1320 GoTo 1340
-1330 lang$ = "LITERATE IN NATIVE TONGUE"
-1340 GoTo 1360
-1350 lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
-1360 If IN > 15 And IN < 18 Then GoTo 1380
-1370 GoTo 1390
-1380 lang$ = "LITERATE AND FLUENT IN 3 LANGUAGES"
-1390 If IN = 18 Then GoTo 1410
-1400 GoTo 1450
-1410 lang$ = "LITERATE AND FLUENT IN 4 LANGUAGES"
 
 1450 WI = AbilityAssignedArray(3)
 
