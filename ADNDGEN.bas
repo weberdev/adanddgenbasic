@@ -210,23 +210,15 @@ Next I
 
 Dim AvailRaces(7) As RaceDef
 For I = 1 To UBound(Races)
-    If (AbilityAssignedArray(1) >= Races(I).MinStr) AND (AbilityAssignedArray(2) >= Races(I).MinInt) AND (AbilityAssignedArray(3) >= Races(I).MinWis) AND (AbilityAssignedArray(4) >= Races(I).MinDex) AND (AbilityAssignedArray(5) >= Races(I).MinCon) AND (AbilityAssignedArray(6) >= Races(I).MinCha) THEN AvailRaces(I) = Races(I)
+    If (AbilityAssignedArray(1) >= Races(I).MinStr) And (AbilityAssignedArray(2) >= Races(I).MinInt) And (AbilityAssignedArray(3) >= Races(I).MinWis) And (AbilityAssignedArray(4) >= Races(I).MinDex) And (AbilityAssignedArray(5) >= Races(I).MinCon) And (AbilityAssignedArray(6) >= Races(I).MinCha) Then AvailRaces(I) = Races(I)
 Next I
 
 
-190 RACE$(1) = "DWARVEN": RACE$(2) = "ELVEN": RACE$(3) = "GNOME"
-200 RACE$(4) = "HALF-ELVEN": RACE$(5) = "HALFLING": RACE$(6) = "HALF-ORC": RACE$(7) = "HUMAN"
-210 Print "         RACE LIST"
-220 Print " 1: DWARVEN  2: ELVEN"
-230 Print " 3: GNOME    4: HALF-ELVEN"
-240 Print " 5: HALFLING 6: HALF-ORC"
-250 Print " 7: HUMAN"
-260 Print " SELECT THE RACE YOU WISH"
-270 Print " YOUR CHARACTER TO BE AND ENTER THE"
-280 Input " NUMBER FROM THE TABLE ABOVE", RA$
+190 Print "RACE LIST"
+280 Input "ENTER THE NUMBER OF YOUR CHOSEN RACE", RA$
 
 290 RA = Val(RA$)
-300 If RA < 1 Or RA > 7 Then GoTo 210
+300 If RA < 1 Or RA > 7 Then GoTo 190
 
 Select Case RA
 
