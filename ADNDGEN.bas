@@ -640,13 +640,13 @@ End Select
 
 1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
 
-1585 DX = AbilityAssignedArray(4)
-1590 Print "CHARACTER'S DEXTERITY IS "; DX
+1585 DexterityScore = AbilityAssignedArray(4)
+1590 Print "CHARACTER'S DEXTERITY IS "; DexterityScore
 
 
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
 DefAdj = 0
-Select Case DX
+Select Case DexterityScore
 
     Case 3
         DF = -3: DefAdj = 4
@@ -695,7 +695,7 @@ Rem Dexterity affects some but not all thief skills.
 Rem for my own sanity in implementation, let me not them them here
 Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
 Rem These are, mercifully, the first five array entries.
-Select Case DX
+Select Case DexterityScore
     Case 9
         ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
     Case 10
@@ -765,7 +765,7 @@ End Select
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
-    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DX > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
+    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And CO > 9 And CH > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
 Rem I didn't want to do this, man
@@ -810,14 +810,14 @@ Next I
 
 Select Case RA
     Case 1
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS A DWARF WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
 
 
     Case 2
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        If StrengthScore > 8 And CN > 6 And DX > 8 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
-        If StrengthScore > 8 And CN > 6 And DX > 5 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
-        If IntelligenceScore > 8 And DX > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 5 And IntelligenceScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
+        If IntelligenceScore > 8 And DexterityScore > 8 Then Print "AS AN ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
 
 
 
@@ -828,19 +828,19 @@ Select Case RA
         Rem Multiclassing in general is allowable, however
         Rem thus
         Rem fighter thief
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
         Rem fighter illusionist
-        If StrengthScore > 8 And CN > 6 And DX > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": AvailMCs(1) = MultiClasses(8)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/ILLUSIONIST": AvailMCs(1) = MultiClasses(8)
         Rem thief illusionist
-        If DX > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": AvailMCs(3) = MultiClasses(13)
+        If DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE A THIEF/ILLUSIONIST": AvailMCs(3) = MultiClasses(13)
         Rem "NOT explicitly authorized" is an understatement. Skip this.
         GoTo GnomeMultSkip
         Rem The following multiclasses are NOT explicitly authorized
         Rem fighter assassin
-        If StrengthScore > 8 And CN > 6 And DX > 12 And IntelligenceScore > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 12 And IntelligenceScore > 10 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": Print "ENTER 4 TO SELECT THIS"
         Rem assassin illusionist
         Rem assassin requirements are fully superseded by illusionist
-        If DX > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
+        If DexterityScore > 15 And IntelligenceScore > 14 Then Print "AS A GNOME WITH REQUIRED ATTRIBUTES YOU MAY BE AN ASSASSIN/ILLUSIONIST": Print "ENTER 5 TO SELECT THIS"
         Rem IT IS WORTH NOTING
         Rem the book only lists fighter illusionist, fighter thief, and illusionist thief as acceptable classes
         Rem It depends on what the definition of is is
@@ -851,28 +851,28 @@ Select Case RA
         Rem Half elves can be multiclassed
         Rem QUOTH PHB Half-elf section, Paragraph 2 [1, p. 17]
         Rem A character of half-elven race can also opt to become a multiclassed individual, i.e. cleric/fighter, cleric/ranger, cleric/magic-user, fighter/magic-user, fighte/thief, magic-user/thief, cleric/fighter/magicuser, or a fighter/magic-user/thief.
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
-        If StrengthScore > 8 And CN > 6 And DX > 8 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
-        If StrengthScore > 8 And CN > 6 And DX > 5 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
-        If IntelligenceScore > 8 And DX > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/THIEF": AvailMCs(2) = MultiClasses(11)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 5 And IntelligenceScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER": AvailMCs(3) = MultiClasses(7)
+        If IntelligenceScore > 8 And DexterityScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/THIEF": AvailMCs(4) = MultiClasses(12)
         If StrengthScore > 12 And IntelligenceScore > 12 And WisdomScore > 13 And CO > 13 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/RANGER": AvailMCs(5) = MultiClasses(3)
         If StrengthScore > 8 And CN > 6 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(6) = MultiClasses(1)
-        If IntelligenceScore > 8 And DX > 5 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": AvailMCs(7) = MultiClasses(12)
+        If IntelligenceScore > 8 And DexterityScore > 5 And WisdomScore > 8 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A MAGIC-USER/CLERIC": AvailMCs(7) = MultiClasses(12)
         If IntelligenceScore > 8 And WisdomScore > 8 And StrengthScore > 8 And CN > 6 Then Print "AS A HALF ELF WITH REQUIRED ATTRIBUTES YOU MAY BE A FIGHTER/MAGIC-USER/CLERIC": AvailMCs(8) = MultiClasses(2)
 
     Case 5
         Rem Halflings
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS A HALFLING WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(1) = MultiClasses(9)
         Rem THANK GYGAX IT'S EASY
 
     Case 6
         Rem half-orcs
         Rem Quoth Gygax: It is also possible for a half-orc character to operate in two classes at the same time: cleric/fighter, cleric/thief, cleric/assassin, fighter/thief, or fighter/assassin."   [1, p.17]
         If StrengthScore > 8 And CN > 6 And WisdomScore > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES YOU MAY BE A CLERIC/FIGHTER": AvailMCs(1) = MultiClasses(1)
-        If WisdomScore > 8 And DX > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": AvailMCs(2) = MultiClasses(5)
-        If WisdomScore > 8 And IntelligenceScore > 10 And DX > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": AvailMCs(3) = MultiClasses(6)
-        If StrengthScore > 8 And CN > 6 And DX > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(4) = MultiClasses(9)
-        If StrengthScore > 8 And CN > 6 And DX > 12 And IntelligenceScore > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": AvailMCs(5) = MultiClasses(10)
+        If WisdomScore > 8 And DexterityScore > 8 Then Print "AS A HALF OR WITH REQUIRED ATTRIBVUTES YOU MAY BE A CLERIC/THIEF": AvailMCs(2) = MultiClasses(5)
+        If WisdomScore > 8 And IntelligenceScore > 10 And DexterityScore > 12 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTESYOU MAY BE A CLERIC/ASSASSIN": AvailMCs(3) = MultiClasses(6)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 8 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/THIEF": AvailMCs(4) = MultiClasses(9)
+        If StrengthScore > 8 And CN > 6 And DexterityScore > 12 And IntelligenceScore > 10 Then Print "AS A HALF ORC WITH REQUIRED ATTRIBUTES, YOU MAY BE A FIGHTER/ASSASSIN": AvailMCs(5) = MultiClasses(10)
     Case Else
         GoTo 2000
 End Select
@@ -1159,7 +1159,7 @@ End If
 2210 If CN = 5 Then GoTo 2230
 2220 GoTo 2270
 2230 If IntelligenceScore < 9 Then GoTo 2250
-2240 If DX < 6 Then GoTo 2260
+2240 If DexterityScore < 6 Then GoTo 2260
 2250 Print " INTELLIGENCE TOO LOW FOR A MAGIC USER": GoTo 2200
 2260 Print " DEXTERITY TOO LOW FOR A MAGIC USER": GoTo 2200
 
@@ -1190,7 +1190,7 @@ End If
 2480 If CN = 4 Then GoTo 2500
 2490 GoTo 2630
 2500 If StrengthScore < 15 Then GoTo 2580
-2510 If DX < 15 Then GoTo 2590
+2510 If DexterityScore < 15 Then GoTo 2590
 2520 If CO < 15 Then GoTo 2600
 2530 If IntelligenceScore < 10 Then GoTo 2610
 2540 If WisdomScore < 10 Then GoTo 2620
@@ -1203,7 +1203,7 @@ End If
 2630 If CN = 6 Then GoTo 2650
 2640 GoTo 2690
 2650 If IntelligenceScore < 15 Then 2670
-2660 If DX < 16 Then 2680
+2660 If DexterityScore < 16 Then 2680
 2670 Print " INTELLIGENCE TOO LOW FOR AN ILLUSIONIST": GoTo 2200
 2680 Print " DEXTERITY TOO LOW FOR AN ILLUSIONIST": GoTo 2200
 
@@ -1220,12 +1220,12 @@ End If
 
 2780 If CN = 9 Then GoTo 2800
 2790 GoTo 2810
-2800 If DX < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
+2800 If DexterityScore < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
 
 2810 If CN = 10 Then GoTo 2830
 2820 GoTo 2870
 2830 If IntelligenceScore < 11 Then GoTo 2850
-2840 If DX < 12 Then GoTo 2860
+2840 If DexterityScore < 12 Then GoTo 2860
 2850 Print " INTELLIGENCE TOO LOW FOR AN ASSASSIN": GoTo 2200
 2860 Print " DEXTERITY TOO LOW FOR AN ASSASSIN": GoTo 2200
 
@@ -1233,7 +1233,7 @@ End If
 2880 GoTo 2970
 2890 If StrengthScore < 15 Then GoTo 2930
 2900 If WisdomScore < 15 Then GoTo 2940
-2910 If DX < 15 Then GoTo 2950
+2910 If DexterityScore < 15 Then GoTo 2950
 2920 If CO < 11 Then GoTo 2960
 2930 Print " STRENGTH TOO LOW FOR A MONK": GoTo 2200
 2940 Print " WISDOM TOO LOW FOR A MONK": GoTo 2200
