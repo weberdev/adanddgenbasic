@@ -300,21 +300,42 @@ End Select
 
 Rem DEXTERITY TABLE I. from PHB [1, p. 11]
 DefAdj = 0
-1610 If DX = 3 Then DF = -3: DefAdj = 4
-1620 If DX = 4 Then DF = -2: DefAdj = 3
-1630 If DX = 5 Then DF = -1: DefAdj = 2
-1631 If DX = 6 Then DefAdj = 1
-1640 If DX > 5 And DX < 16 Then DF = 0
-1641 If DX = 15 Then DefAdj = -1
-1650 If DX = 16 Then DF = 1: DefAdj = -2
-1670 If DX = 17 Then DF = 2: DefAdj = -3
-1680 If DX = 18 Then DF = 3: DefAdj = -4
-1690 If DF = -3 Then GoSub 3600
-1700 If DF = -2 Then GoSub 3620
-1710 If DF = -1 Then GoSub 3640
-1720 If DF = 1 Then GoSub 3660
-1730 If DF = 2 Then GoSub 3680
-1740 If DF = 3 Then GoSub 3700
+Select Case DX
+
+    Case 3
+        DF = -3: DefAdj = 4
+    Case 4
+        DF = -2: DefAdj = 3
+    Case 5
+        DF = -1: DefAdj = 2
+    Case 6
+        DefAdj = 1
+    Case 7 To 14
+        DF = 0: DefAdj = 0
+    Case 15
+        DF = 0: DefAdj = -1
+    Case 16
+        DF = 1: DefAdj = -2
+    Case 17
+        DF = 2: DefAdj = -3
+    Case 18
+        DF = 3: DefAdj = 4
+
+End Select
+Select Case DF
+    Case -3
+        GoSub 3600
+    Case -2
+        GoSub 3620
+    Case -1
+        GoSub 3640
+    Case 1
+        GoSub 3660
+    Case 2
+        GoSub 3680
+    Case 3
+        GoSub 3700
+End Select
 
 Rem THIEF FUNCTION TABLE from PHB [1, p. 28] does not include RACIAL ADJUSTMENTS section.
 1741 Dim ThiefSkills(8) As Integer
@@ -328,17 +349,26 @@ Rem Dexterity affects some but not all thief skills.
 Rem for my own sanity in implementation, let me not them them here
 Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
 Rem These are, mercifully, the first five array entries.
-1743 If DX = 9 Then ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
-1744 If DX = 10 Then ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
-1745 If DX = 11 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
-1746 If DX = 12 Then ThiefSkills(3) = ThiefSkills(3) - 5
-Rem Dexteriy 13 through 15 have no effect on thief skills
-1747 If DX = 16 Then ThiefSkills(2) = ThiefSkills(2) + 5
-1748 If DX = 17 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
-1749 If DX = 18 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
+Select Case DX
+    Case 9
+        ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
+    Case 10
+        ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
+    Case 11
+        ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
+    Case 12
+        ThiefSkills(3) = ThiefSkills(3) - 5
+    Case 16
+        ThiefSkills(2) = ThiefSkills(2) + 5
+    Case 17
+        ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
+    Case 18
+        ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
+End Select
 
 Rem MF$: Missile fire mod.
 Rem DG$: Defensive adjustment for reflex saves and armor class
+
 1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 1790 CO = AbilityAssignedArray(5)
