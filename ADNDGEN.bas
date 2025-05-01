@@ -214,12 +214,29 @@ For I = 1 To UBound(Races)
 Next I
 
 
-190 Print "RACE LIST"
-280 Input "ENTER THE NUMBER OF YOUR CHOSEN RACE", RA$
+190 Print
+Do
+    Print "Available Races:"
+    For I = 1 To UBound(Races)
+        Print I; ". "; Races(I).RaceName;
+        If AvailRaces(I).RaceIndex = 0 Then
+            Print " (Not Eligible)"
+        Else
+            Print
+        End If
+    Next I
 
-290 RA = Val(RA$)
-300 If RA < 1 Or RA > 7 Then GoTo 190
-
+    Input "Enter the number of your chosen race: ", RA
+    If RA >= 1 And RA <= UBound(Races) Then
+        If AvailRaces(RA).RaceIndex <> 0 Then
+            Exit Do
+        Else
+            Print "That race is not eligible based on your ability scores. Choose again."
+        End If
+    Else
+        Print "Invalid input. Please enter a number from 1 to "; UBound(Races)
+    End If
+Loop
 Select Case RA
 
     Case 1
