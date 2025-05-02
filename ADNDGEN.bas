@@ -530,7 +530,7 @@ Select Case WisdomScore
         WF = 4
 End Select
 
-1570 Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
+1570 If WF <> 0 Then Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
 
 1585 DexterityScore = AbilityAssignedArray(4)
 1590 Print "CHARACTER'S DEXTERITY IS "; DexterityScore
@@ -974,7 +974,7 @@ For I = 1 To 37
 Next I
 
 Rem Debug statement to break after class eligibilty was displayed
-rem Input "I think this breaks things?", DEBUG_VAR
+Rem Input "I think this breaks things?", DEBUG_VAR
 Dim CleanedClasses(CurIdx) As ClassDef
 For I = 1 To CurIdx
     CleanedClasses(I) = AvailClasses(I)
@@ -990,113 +990,6 @@ Input "Enter the number of your chosen class: ", CN
 
 
 2110 CN = Val(CN$)
-2111 If CN < 1 Or CN > 11 Then GoTo 2000
-
-2130 If CN = 1 Then 2150
-2140 GoTo 2210
-2150 If StrengthScore < 9 Then GoTo 2170
-2160 If ConstitutionScore < 7 Then GoTo 2190
-2170 GoTo 2210
-2180 Print " STRENGTH TOO LOW FOR A FIGHTER": GoTo 2200
-2190 Print " CONSTITUTION TOO LOW FOR A FIGHTER"
-2200 Print " PLEASE SELECT AGAIN": GoTo 2000
-
-2210 If CN = 5 Then GoTo 2230
-2220 GoTo 2270
-2230 If IntelligenceScore < 9 Then GoTo 2250
-2240 If DexterityScore < 6 Then GoTo 2260
-2250 Print " INTELLIGENCE TOO LOW FOR A MAGIC USER": GoTo 2200
-2260 Print " DEXTERITY TOO LOW FOR A MAGIC USER": GoTo 2200
-
-2270 If CN = 2 Then 2290
-2280 GoTo 2390
-2290 If StrengthScore < 12 Then 2340
-2300 If IntelligenceScore < 9 Then 2350
-2310 If WisdomScore < 13 Then 2360
-2320 If ConstitutionScore < 9 Then 2370
-2330 If CharismaScore < 17 Then 2380
-2340 Print " STRENGTH TOO LOW FOR A PALADIN": GoTo 2200
-2350 Print " INTELLIGENCE TOO LOW FOR A PALADIN": GoTo 2200
-2360 Print " WISDOM TOO LOW FOR A PALADIN": GoTo 2200
-2370 Print " CONSTITUTION TOO LOW FOR A PALADIN": GoTo 2200
-2380 Print " CHARISMA TOO LOW FOR A PALADIN": GoTo 2200
-
-2390 If CN = 3 Then GoTo 2410
-2400 GoTo 2480
-2410 If StrengthScore < 13 Then GoTo 2440
-2420 If IntelligenceScore < 13 Then GoTo 2450
-2430 If WisdomScore < 14 Then GoTo 2460
-2431 If ConstitutionScore < 14 Then GoTo 2470
-2440 Print " STRENGTH TOO LOW FOR A RANGER": GoTo 2200
-2450 Print " INTELLIGENCE TOO LOW FOR A RANGER": GoTo 2200
-2460 Print " WISDOM TOO LOW FOR A RANGER": GoTo 2200
-2470 Print " CONSTITUTION TOO LOW FOR A RANGER": GoTo 2200
-
-2480 If CN = 4 Then GoTo 2500
-2490 GoTo 2630
-2500 If StrengthScore < 15 Then GoTo 2580
-2510 If DexterityScore < 15 Then GoTo 2590
-2520 If ConstitutionScore < 15 Then GoTo 2600
-2530 If IntelligenceScore < 10 Then GoTo 2610
-2540 If WisdomScore < 10 Then GoTo 2620
-2580 Print " STRENGTH TOO LOW FOR A CAVALIER": GoTo 2200
-2590 Print " DEXTERITY TOO LOW FOR A CAVALIER": GoTo 2200
-2600 Print " CONSTITUTION TOO LOW FOR A CAVALIER": GoTo 2200
-2610 Print " INTELLIGENCE TOO LOW FOR A CAVALIER": GoTo 2200
-2620 Print " WISDOM TOO LOW FOR A CAVALIER": GoTo 2200
-
-2630 If CN = 6 Then GoTo 2650
-2640 GoTo 2690
-2650 If IntelligenceScore < 15 Then 2670
-2660 If DexterityScore < 16 Then 2680
-2670 Print " INTELLIGENCE TOO LOW FOR AN ILLUSIONIST": GoTo 2200
-2680 Print " DEXTERITY TOO LOW FOR AN ILLUSIONIST": GoTo 2200
-
-2690 If CN = 7 Then GoTo 2710
-2700 GoTo 2720
-2710 If WisdomScore < 9 Then Print "WISDOM TOO LOW FOR A CLERIC": GoTo 2200
-
-2720 If CN = 8 Then GoTo 2740
-2730 GoTo 2780
-2740 If WisdomScore < 12 Then GoTo 2760
-2750 If CharismaScore < 15 Then GoTo 2770
-2760 Print " WISDOM TOO LOW FOR A DRUID": GoTo 2200
-2770 Print " CHARISMA TOO LOW FOR A DRUID": GoTo 2200
-
-2780 If CN = 9 Then GoTo 2800
-2790 GoTo 2810
-2800 If DexterityScore < 9 Then Print " DEXTERITY TOO LOW FOR A THIEF": GoTo 2200
-
-2810 If CN = 10 Then GoTo 2830
-2820 GoTo 2870
-2830 If IntelligenceScore < 11 Then GoTo 2850
-2840 If DexterityScore < 12 Then GoTo 2860
-2850 Print " INTELLIGENCE TOO LOW FOR AN ASSASSIN": GoTo 2200
-2860 Print " DEXTERITY TOO LOW FOR AN ASSASSIN": GoTo 2200
-
-2870 If CN = 11 Then GoTo 2890
-2880 GoTo 2970
-2890 If StrengthScore < 15 Then GoTo 2930
-2900 If WisdomScore < 15 Then GoTo 2940
-2910 If DexterityScore < 15 Then GoTo 2950
-2920 If ConstitutionScore < 11 Then GoTo 2960
-2930 Print " STRENGTH TOO LOW FOR A MONK": GoTo 2200
-2940 Print " WISDOM TOO LOW FOR A MONK": GoTo 2200
-2950 Print " DEXTERITY TOO LOW FOR A MONK": GoTo 2200
-2960 Print " CONSTITUTION TOO LOW FOR A MONK": GoTo 2200
-
-
-2970 If CN = 1 Then HF(1) = 10
-2980 If CN = 2 Then HF(2) = 10
-2990 If CN = 3 Then HF(3) = 16
-3000 If CN = 4 Then HF(4) = 4
-3010 If CN = 5 Then HF(5) = 4
-3020 If CN = 6 Then HF(6) = 4
-3030 If CN = 7 Then HF(7) = 8
-3040 If CN = 8 Then HF(8) = 8
-3050 If CN = 9 Then HF(9) = 6
-3060 If CN = 10 Then HF(10) = 6
-3070 If CN = 11 Then HF(11) = 8
 
 
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
