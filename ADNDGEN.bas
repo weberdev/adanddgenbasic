@@ -9,7 +9,7 @@ Screen _FullScreen
 105 Randomize Timer
 
 Type ClassDef
-    ClassName As String * 20: ClassIndex As Integer
+    ClassName As String * 30: ClassIndex As Integer
     HitDie As Integer: Category As String * 12
     MinStr As Integer: MinInt As Integer: MinWis As Integer
     MinDex As Integer: MinCon As Integer: MinCha As Integer
