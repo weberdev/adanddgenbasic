@@ -962,7 +962,10 @@ For I = 1 To 13
     End Select
 Next I
 
-
+For I = 1 To 37
+    If FirstPassClassHolder(I).ClassName <> "NIL" Then
+IF StrengthScore < FirstPassClassHolder(I).MinStr OR IntelligenceScore< FirstPassClassHolder(I).MinInt OR WisdomScore < FirstPassClassHolder(I).MinWis OR DexterityScore < FirstPassClassHolder(I).MinDex OR ConstitutionScore < FirstPassClassHolder(I).MinCon OR CharismaScore < FirstPassClassHolder(I).MinCha OR WisdomScore > FirstPassClassHolder(I).MaxWis THEN AvailClasses(I) = FirstPassClassArray(I)
+Next I
 
 
 2000 Print "       CLASS LIST"
