@@ -973,6 +973,18 @@ For I = 1 To 37
 Next I
 
 
+Dim CleanedClasses(37) As ClassDef
+Dim NextIndex As Integer
+NextIndex = 1
+
+For I = 1 To 37
+    If AvailClasses(I).ClassName <> "NIL" And AvailClasses(I).ClassName <> "" Then
+        CleanedClasses(NextIndex) = AvailClasses(I)
+        NextIndex = NextIndex + 1
+    End If
+Next I
+
+
 2000 Print "       CLASS LIST"
 2010 Print " --------------------------"
 2020 Print " 1 Fighter 2 Paladin"
