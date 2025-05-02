@@ -920,7 +920,7 @@ Rem It goes in the fighter section of the first phb array for now
 1999 Dim AvailClasses(37) As ClassDef
 Dim FirstPassClassHolder(37) As ClassDef
 For I = 1 To 37
-    FirstPassClassHolder(I).ClassName = "NIL"
+    FirstPassClassHolder(I).ClassName = ""
 Next I
 
 For I = 1 To 11
@@ -941,35 +941,38 @@ For I = 1 To 11
             If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
     End Select
 Next I
-
-Select Case RA
-    Case 1
-        If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 2
-        If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 3
-        If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 4
-        If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 5
-        If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 6
-        If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    Case 7
-        If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-End Select
+For I = 1 To 13
+    K = I + 11
+    Select Case RA
+        Case 1
+            If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 2
+            If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 3
+            If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 4
+            If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 5
+            If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 6
+            If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 7
+            If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    End Select
+Next I
 For I = 1 To 37
-    If FirstPassClassHolder(I).ClassName <> "NIL" Then
+    If FirstPassClassHolder(I).ClassName <> "" Then
         If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
-            Print "Not eligible for " + FirstPassClassHolder(I).ClassName
         Else
-            Print "Eligible for " + FirstPassClassHolder(I).ClassName
+            Rem debug statement
+            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
             AvailClasses(I) = FirstPassClassHolder(I)
         End If
     End If
 Next I
 
-
+    rem Debug statement to break after class eligibilty was displayed
+Rem Input "I think this breaks things?", DEBUG_VAR
 Dim CleanedClasses(37) As ClassDef
 Dim NextIndex As Integer
 NextIndex = 1
@@ -985,7 +988,7 @@ Next I
 2000
 Print "Available Classes:"
 For I = 1 To NextIndex - 1
-    Print I; ". "; CleanedClasses(I).ClassName
+    If CleanedClasses(I).ClassName <> "" Then Print I; ". "; CleanedClasses(I).ClassName
 Next I
 Input "Enter the number of your chosen class: ", CN
 
