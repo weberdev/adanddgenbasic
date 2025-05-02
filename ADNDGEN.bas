@@ -964,7 +964,12 @@ Next I
 
 For I = 1 To 37
     If FirstPassClassHolder(I).ClassName <> "NIL" Then
-IF StrengthScore < FirstPassClassHolder(I).MinStr OR IntelligenceScore< FirstPassClassHolder(I).MinInt OR WisdomScore < FirstPassClassHolder(I).MinWis OR DexterityScore < FirstPassClassHolder(I).MinDex OR ConstitutionScore < FirstPassClassHolder(I).MinCon OR CharismaScore < FirstPassClassHolder(I).MinCha OR WisdomScore > FirstPassClassHolder(I).MaxWis THEN AvailClasses(I) = FirstPassClassArray(I)
+        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore > FirstPassClassHolder(I).MaxWis Then
+            J = 0
+        Else
+            AvailClasses(I) = FirstPassClassHolder(I)
+        End If
+    End If
 Next I
 
 
