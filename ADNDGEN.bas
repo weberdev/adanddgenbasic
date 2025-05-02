@@ -31,7 +31,7 @@ End Type
 
 Dim Classes(11) As ClassDef
 
-Classes(1).ClassName = "FIGHTER": Classes(1).ClassIndex = 1: Classes(1).HitDie = 10
+Classes(1).ClassName = "Fighter": Classes(1).ClassIndex = 1: Classes(1).HitDie = 10
 Classes(1).Category = "Fighter"
 Classes(1).MinStr = 9: Classes(1).MinInt = 0: Classes(1).MinWis = 0
 Classes(1).MinDex = 0: Classes(1).MinCon = 7: Classes(1).MinCha = 0
@@ -42,7 +42,7 @@ Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
 Classes(1).RaceHalfOrc = 1: Classes(1).RaceHuman = 1
 Classes(1).GoldDieNum = 5: Classes(1).GoldDieSize = 4
 
-Classes(2).ClassName = "PALADIN": Classes(2).ClassIndex = 2: Classes(2).HitDie = 10
+Classes(2).ClassName = "Paladin": Classes(2).ClassIndex = 2: Classes(2).HitDie = 10
 Classes(2).Category = "Fighter"
 Classes(2).MinStr = 12: Classes(2).MinInt = 9: Classes(2).MinWis = 13
 Classes(2).MinDex = 0: Classes(2).MinCon = 9: Classes(2).MinCha = 17
@@ -667,6 +667,170 @@ GoTo 1999
 
 
 
+
+Rem 10 classes PHB
+Rem 13 multiclasses PHB
+Rem 4 classes US
+Rem 10 classes OA
+Rem The Dragon Cavalier is probably getting filtered, but later,
+Rem It goes in the fighter section of the first phb array for now
+1999 Dim AvailClasses(37) As ClassDef
+Dim FirstPassClassHolder(37) As ClassDef
+For I = 1 To 37
+    FirstPassClassHolder(I).ClassName = ""
+Next I
+
+Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
+For I = 1 To 11
+    Select Case RA
+        Case 1
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 2
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 3
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 4
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 5
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 6
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 7
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
+    End Select
+Next I
+For I = 1 To 13
+    K = I + 11
+    Select Case RA
+        Case 1
+            If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 2
+            If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 3
+            If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 4
+            If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 5
+            If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 6
+            If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 7
+            If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    End Select
+Next I
+
+CurIdx = 1
+For I = 1 To 37
+    If FirstPassClassHolder(I).ClassName <> "" Then
+        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
+        Else
+            Rem debug statement
+            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
+            AvailClasses(CurIdx) = FirstPassClassHolder(I)
+            CurIdx = CurIdx + 1
+        End If
+    End If
+Next I
+
+Rem Debug statement to break after class eligibilty was displayed
+Rem Input "I think this breaks things?", DEBUG_VAR
+Dim CleanedClasses(CurIdx) As ClassDef
+For I = 1 To CurIdx
+    CleanedClasses(I) = AvailClasses(I)
+Next I
+
+2000
+Print "Available Classes:"
+For I = 1 To CurIdx - 1
+    Print I; ". "; CleanedClasses(I).ClassName
+Next I
+
+Dim ChosenClass As ClassDef
+Input "Enter the number of your chosen class: ", CN
+ChosenClass = CleanedClasses(CN)
+
+
+3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
+3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
+3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
+Rem class category check, mainly for psionic abilities
+If InStr(ChosenClass.Category, "CLERIC") Then isCL = 1 Else isCL = 0
+If InStr(ChosenClass.Category, "FIGHTER") Then isFT = 1 Else isFT = 0
+If InStr(ChosenClass.Category, "MAGIC-USER") Then isMU = 1 Else isMU = 0
+If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
+
+
+3080 CLASS$ = CLASS$(CN)
+
+
+3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
+3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
+3110 Z1$ = " 7    9    11   --   --   --   --   --  "
+
+
+3120 TY$ = " THIEF'S ABILITIES"
+3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
+3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
+Rem this line removed for maintainability reasons.
+Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+Rem We'll come back to it after class is chosen.
+
+
+
+3279 GoTo 2000
+
+3280 If CN = 1 Then m1 = 150
+3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
+3300 If CN > 1 And CN < 5 Then M2 = 50
+3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
+3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
+3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
+3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
+3350 GOLD = Int((Rnd(1) * m1) + M2)
+3360 HP = Int((Rnd(1) * HF(CN)) + 1)
+Rem This is an edge case for non-fighters with 18 STR.
+Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
+3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
+3370 CLASS$ = CLASS$(CN)
+3371 RACE$ = RACE$(RA)
+
+Rem We check if the character is a thief, and then adjust for race.
+Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
+Rem I can trust my logic copying from a table, but scrolling?
+Rem Horrifying.
+Rem We'll ignore vertical space from increasingly deranged comments.
+Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
+TF = 0
+If CN < 10 And CN > 7 Then TF = 1
+
+Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+3372 If TF = 1 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
+3373 If TF = 1 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
+Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
+3374 If TF = 1 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
+Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
+3375 If TF = 1 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
+Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
+Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
+Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
+Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
+Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
+3376 If TF = 1 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
+Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
+3377 If TF = 1 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+
+Dim ThiefString(8) As String
+
+3378 If TF = 1 Then
+    For J = 1 To 8
+        ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
+    Next J
+End If
+
+Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
+Rem We expect users not to choose powers they can't take.
+Rem If they do, they get a random choice, as that's fair.
 Rem PSIONICS: PHB Appendix I. [1, p. 110]
 Rem PC must have one or more mental stats at or above 16 to check for psionics
 1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CharismaScore > 15 Then
@@ -901,204 +1065,16 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         MN = Int((Rnd(1) * 24) + 1)
 
         If MN > 22 Then GoTo RollDiscipline
+        If isFT And MN = 10 Then GoTo RollDiscipline
+        If isCL And (MN = 12 Or MN = 20) Then GoTo RollDiscipline
+        If isMU And MN = 3 Then GoTo RollDiscipline
+        If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
         If MN < 23 Then DV$ = MinorDiscipline(MN)
         Rem If we have a class mismatch, we can just reroll outside of this mess when class is chosen.
 
         Rem
-    Else GoTo 1999
+    Else GoTo 3380
     End If
-End If
-
-Rem 10 classes PHB
-Rem 13 multiclasses PHB
-Rem 4 classes US
-Rem 10 classes OA
-Rem The Dragon Cavalier is probably getting filtered, but later,
-Rem It goes in the fighter section of the first phb array for now
-1999 Dim AvailClasses(37) As ClassDef
-Dim FirstPassClassHolder(37) As ClassDef
-For I = 1 To 37
-    FirstPassClassHolder(I).ClassName = ""
-Next I
-
-Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
-For I = 1 To 11
-    Select Case RA
-        Case 1
-            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 2
-            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 3
-            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 4
-            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 5
-            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 6
-            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
-        Case 7
-            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
-    End Select
-Next I
-For I = 1 To 13
-    K = I + 11
-    Select Case RA
-        Case 1
-            If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 2
-            If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 3
-            If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 4
-            If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 5
-            If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 6
-            If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 7
-            If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-    End Select
-Next I
-
-CurIdx = 1
-For I = 1 To 37
-    If FirstPassClassHolder(I).ClassName <> "" Then
-        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
-        Else
-            Rem debug statement
-            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
-            AvailClasses(CurIdx) = FirstPassClassHolder(I)
-            CurIdx = CurIdx + 1
-        End If
-    End If
-Next I
-
-Rem Debug statement to break after class eligibilty was displayed
-Rem Input "I think this breaks things?", DEBUG_VAR
-Dim CleanedClasses(CurIdx) As ClassDef
-For I = 1 To CurIdx
-    CleanedClasses(I) = AvailClasses(I)
-Next I
-
-2000
-Print "Available Classes:"
-For I = 1 To CurIdx - 1
-    Print I; ". "; CleanedClasses(I).ClassName
-Next I
-
-Dim ChosenClass As ClassDef
-Input "Enter the number of your chosen class: ", CN
-ChosenClass = CleanedClasses(CN)
-
-
-3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
-3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
-3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
-Rem class category check, mainly for psionic abilities
-If InStr(ChosenClass.Category, "CLERIC") Then isCL = 1 Else isCL = 0
-If InStr(ChosenClass.Category, "FIGHTER") Then isFT = 1 Else isFT = 0
-If InStr(ChosenClass.Category, "MAGIC-USER") Then isMU = 1 Else isMU = 0
-If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
-
-
-3080 CLASS$ = CLASS$(CN)
-
-
-3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
-3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
-3110 Z1$ = " 7    9    11   --   --   --   --   --  "
-
-
-3120 TY$ = " THIEF'S ABILITIES"
-3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
-3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
-Rem this line removed for maintainability reasons.
-Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
-Rem We'll come back to it after class is chosen.
-
-
-
-3279 GoTo 2000
-
-3280 If CN = 1 Then m1 = 150
-3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
-3300 If CN > 1 And CN < 5 Then M2 = 50
-3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
-3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
-3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
-3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
-3350 GOLD = Int((Rnd(1) * m1) + M2)
-3360 HP = Int((Rnd(1) * HF(CN)) + 1)
-Rem This is an edge case for non-fighters with 18 STR.
-Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
-3370 CLASS$ = CLASS$(CN)
-3371 RACE$ = RACE$(RA)
-
-Rem We check if the character is a thief, and then adjust for race.
-Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
-Rem I can trust my logic copying from a table, but scrolling?
-Rem Horrifying.
-Rem We'll ignore vertical space from increasingly deranged comments.
-Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-TF = 0
-If CN < 10 And CN > 7 Then TF = 1
-
-Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
-3372 If TF = 1 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
-Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
-3373 If TF = 1 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
-Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
-3374 If TF = 1 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
-Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
-3375 If TF = 1 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
-Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
-Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
-Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
-Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
-Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
-3376 If TF = 1 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
-Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
-3377 If TF = 1 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
-
-Dim ThiefString(8) As String
-
-3378 If TF = 1 Then
-    For J = 1 To 8
-        ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
-    Next J
-End If
-
-Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
-Rem We expect users not to choose powers they can't take.
-Rem If they do, they get a random choice, as that's fair.
-PsiCompatibilityCheck:
-If TF = 1 And (MN = 9 Or MN = 18) Then
-    MN = Int((Rnd(1) * 22) + 1)
-
-    DV$ = MinorDiscipline(MN)
-    GoTo PsiCompatibilityCheck
-End If
-
-If isFT = 1 And MN = 10 Then
-    MN = Int((Rnd(1) * 22) + 1)
-
-    DV$ = MinorDiscipline(MN)
-    GoTo PsiCompatibilityCheck
-End If
-
-If isCL = 1 And (MN = 12 Or MN = 20) Then
-    MN = Int((Rnd(1) * 22) + 1)
-
-    DV$ = MinorDiscipline(MN)
-    GoTo PsiCompatibilityCheck
-End If
-
-If isMU = 1 And MN = 3 Then
-    MN = Int((Rnd(1) * 22) + 1)
-
-    DV$ = MinorDiscipline(MN)
-    GoTo PsiCompatibilityCheck
 End If
 
 
