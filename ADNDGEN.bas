@@ -3,7 +3,6 @@ Rem Most likely written between 1983 and 1985, but 1983 is the minimum year.
 Rem It's an archival piece, at least in some ways.
 Rem I expanded on some features, implementing functionality from D&D volumes of the era.
 Rem This version omits Unearthed Arcana (1985), and such material will be included in a later fork.
-Screen _FullScreen
 
 101 Option Base 1
 105 Randomize Timer
@@ -139,7 +138,7 @@ MultiClasses(2).RaceHalfElf = 1
 MultiClasses(2).GoldDieNum = 5: MultiClasses(2).GoldDieSize = 4
 
 MultiClasses(3).ClassName = "Cleric/Ranger": MultiClasses(3).ClassIndex = 14: MultiClasses(3).HitDie = 10: MultiClasses(3).SecondHD = 8
-MultiClasses(3).Category = "Cleric/Ranger"
+MultiClasses(3).Category = "Cleric/Fighter"
 MultiClasses(3).MinStr = 13: MultiClasses(3).MinInt = 13: MultiClasses(3).MinWis = 14: MultiClasses(3).MinCon = 14: MultiClasses(3).MaxWis = 18
 MultiClasses(3).RaceHalfElf = 1
 MultiClasses(3).GoldDieNum = 5: MultiClasses(3).GoldDieSize = 4
@@ -157,7 +156,7 @@ MultiClasses(5).RaceHalfElf = 1: MultiClasses(5).RaceHalfOrc = 1
 MultiClasses(5).GoldDieNum = 3: MultiClasses(5).GoldDieSize = 5
 
 MultiClasses(6).ClassName = "Cleric/Assassin": MultiClasses(6).ClassIndex = 17: MultiClasses(6).HitDie = 8: MultiClasses(6).SecondHD = 6
-MultiClasses(6).Category = "Cleric/Assassin"
+MultiClasses(6).Category = "Cleric/Thief"
 MultiClasses(6).MinWis = 9: MultiClasses(6).MinDex = 13: MultiClasses(6).MinInt = 11: MultiClasses(6).MaxWis = 18
 MultiClasses(6).RaceHalfOrc = 1
 MultiClasses(6).GoldDieNum = 3: MultiClasses(6).GoldDieSize = 5
@@ -169,7 +168,7 @@ MultiClasses(7).RaceElf = 1: MultiClasses(7).RaceHalfElf = 1
 MultiClasses(7).GoldDieNum = 4: MultiClasses(7).GoldDieSize = 4
 
 MultiClasses(8).ClassName = "Fighter/Illusionist": MultiClasses(8).ClassIndex = 19: MultiClasses(8).HitDie = 10: MultiClasses(8).SecondHD = 4
-MultiClasses(8).Category = "Fighter/Illusionist"
+MultiClasses(8).Category = "Fighter/Magic-User"
 MultiClasses(8).MinStr = 9: MultiClasses(8).MinCon = 7: MultiClasses(8).MinDex = 16: MultiClasses(8).MinInt = 15
 MultiClasses(8).RaceGnome = 1
 MultiClasses(8).GoldDieNum = 4: MultiClasses(8).GoldDieSize = 4
@@ -182,7 +181,7 @@ MultiClasses(9).RaceHalfElf = 1: MultiClasses(9).RaceHalfling = 1: MultiClasses(
 MultiClasses(9).GoldDieNum = 4: MultiClasses(9).GoldDieSize = 4
 
 MultiClasses(10).ClassName = "Fighter/Assassin": MultiClasses(10).ClassIndex = 21: MultiClasses(10).HitDie = 10: MultiClasses(10).SecondHD = 6
-MultiClasses(10).Category = "Fighter/Assassin"
+MultiClasses(10).Category = "Fighter/Thief"
 MultiClasses(10).MinStr = 9: MultiClasses(10).MinCon = 7: MultiClasses(10).MinDex = 13: MultiClasses(10).MinInt = 11
 MultiClasses(10).RaceHalfOrc = 1
 MultiClasses(10).GoldDieNum = 4: MultiClasses(10).GoldDieSize = 4
@@ -200,7 +199,7 @@ MultiClasses(12).RaceElf = 1: MultiClasses(12).RaceHalfElf = 1
 MultiClasses(12).GoldDieNum = 3: MultiClasses(12).GoldDieSize = 4
 
 MultiClasses(13).ClassName = "Illusionist/Thief": MultiClasses(13).ClassIndex = 24: MultiClasses(13).HitDie = 4: MultiClasses(13).SecondHD = 6
-MultiClasses(13).Category = "Illusionist/Thief"
+MultiClasses(13).Category = "Magic-User/Thief"
 MultiClasses(13).MinInt = 15: MultiClasses(13).MinDex = 16
 MultiClasses(13).RaceGnome = 1
 MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
@@ -922,6 +921,7 @@ For I = 1 To 37
     FirstPassClassHolder(I).ClassName = ""
 Next I
 
+Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
 For I = 1 To 11
     Select Case RA
         Case 1
@@ -985,23 +985,20 @@ Print "Available Classes:"
 For I = 1 To CurIdx - 1
     Print I; ". "; CleanedClasses(I).ClassName
 Next I
+
+Dim ChosenClass As ClassDef
 Input "Enter the number of your chosen class: ", CN
-
-
-
-2110 CN = Val(CN$)
+ChosenClass = CleanedClasses(CN)
 
 
 3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
 3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
 3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
 Rem class category check, mainly for psionic abilities
-isFT = 0
-isMU = 0
-isCL = 0
-If CN < 5 Then isFT = 1
-If CN > 4 And CN < 7 Then isMU = 1
-If CN > 6 And CN < 9 Then isCL = 1
+If InStr(ChosenClass.Category, "CLERIC") Then isCL = 1 Else isCL = 0
+If InStr(ChosenClass.Category, "FIGHTER") Then isFT = 1 Else isFT = 0
+If InStr(ChosenClass.Category, "MAGIC-USER") Then isMU = 1 Else isMU = 0
+If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
 
 
 3080 CLASS$ = CLASS$(CN)
@@ -1020,16 +1017,6 @@ Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
 Rem We'll come back to it after class is chosen.
 
 
-
-Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
-3270 If RA = 1 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-3271 If RA = 2 And Not (CN = 1 Or CN = 5 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-3272 If RA = 3 And Not (CN = 1 Or CN = 7 Or CN = 6 Or CN = 9 Or CN = 10) Then GoTo 3278
-3273 If RA = 4 And Not (CN = 1 Or CN = 3 Or CN = 5 Or CN = 7 Or CN = 8 Or CN = 9 Or CN = 10) Then GoTo 3278
-3274 If RA = 5 And Not (CN = 1 Or CN = 8 Or CN = 9) Then GoTo 3278
-3275 If RA = 6 And Not (CN = 1 Or CN = 7 Or CN = 9 Or CN = 10) Then GoTo 3278
-3276 GoTo 3280
-3278 Print "Race/class combination not allowed."
 
 3279 GoTo 2000
 
