@@ -326,6 +326,7 @@ Do
         Print "Invalid input. Please enter a number from 1 to "; UBound(Races)
     End If
 Loop
+Dim ChosenRace As RaceDef
 Select Case RA
 
     Case 1
@@ -391,6 +392,7 @@ Select Case RA
     Case 7
         Print "YOU ARE A HUMAN"
 End Select
+ChosenRace = Races(RA)
 Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
 Rem It's not, honestly, a great mechanic.
 999 PER = 0
@@ -659,14 +661,6 @@ If RA = 7 Or RA = 4 Then
     If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And ConstitutionScore > 9 And CharismaScore > 14 Then Print "Bard is available. Begin as fighter."
 End If
 
-Rem I didn't want to do this, man
-Rem line 1990 is the psionics section
-Rem 1981 If RA = 7 Then GoTo 1990
-GoTo 1999
-
-
-
-
 
 Rem 10 classes PHB
 Rem 13 multiclasses PHB
@@ -749,18 +743,11 @@ Dim ChosenClass As ClassDef
 Input "Enter the number of your chosen class: ", CN
 ChosenClass = CleanedClasses(CN)
 
-
-3071 CLASS$(1) = "FIGHTER": CLASS$(2) = "PALADIN": CLASS$(3) = "RANGER": CLASS$(4) = "CAVALIER"
-3072 CLASS$(5) = "MAGIC-USER": CLASS$(6) = "ILLUSIONIST": CLASS$(7) = "CLERIC": CLASS$(8) = "DRUID"
-3073 CLASS$(9) = "THIEF": CLASS$(10) = "ASSASSIN": CLASS$(11) = "MONK"
 Rem class category check, mainly for psionic abilities
 If InStr(ChosenClass.Category, "CLERIC") Then isCL = 1 Else isCL = 0
 If InStr(ChosenClass.Category, "FIGHTER") Then isFT = 1 Else isFT = 0
 If InStr(ChosenClass.Category, "MAGIC-USER") Then isMU = 1 Else isMU = 0
 If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
-
-
-3080 CLASS$ = CLASS$(CN)
 
 
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
@@ -774,25 +761,21 @@ If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
 Rem this line removed for maintainability reasons.
 Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
 Rem We'll come back to it after class is chosen.
+GOLD = 0
+For I = 1 To ChosenClass.GoldDieNum
+    goldRoll = Int((Rnd(1) * GoldDieSize) + 1)
+    GOLD = GOLD + goldRoll
+Next I
 
+Rem Monks need little money
+If ChosenClass.ClassName <> "MONK" Then
+    GOLD = GOLD * 10
+End If
 
-
-3279 GoTo 2000
-
-3280 If CN = 1 Then m1 = 150
-3290 If CN > 1 And CN < 5 Then m1 = 150: If CN = 1 Then M2 = 50
-3300 If CN > 1 And CN < 5 Then M2 = 50
-3310 If CN > 4 And CN < 7 Then m1 = 60: If CN > 4 And CN < 7 Then M2 = 20
-3320 If CN > 5 And CN < 9 Then m1 = 150: If CN > 5 And CN < 9 Then M2 = 30
-3330 If CN > 8 And CN < 11 Then m1 = 100: If CN > 8 And CN < 11 Then M2 = 20
-3340 If CN = 11 Then m1 = 15: If CN = 11 Then M2 = 5
-3350 GOLD = Int((Rnd(1) * m1) + M2)
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-3361 If CN > 3 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
-3370 CLASS$ = CLASS$(CN)
-3371 RACE$ = RACE$(RA)
+3361 If isFT = 0 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
 
 Rem We check if the character is a thief, and then adjust for race.
 Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
@@ -800,32 +783,42 @@ Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
 Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-TF = 0
-If CN < 10 And CN > 7 Then TF = 1
+If isTF Then
+    Select Case RA
 
-Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
-3372 If TF = 1 And RA = 1 Then ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
-Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
-3373 If TF = 1 And RA = 2 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
-Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
-3374 If TF = 1 And RA = 3 Then ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
-Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
-3375 If TF = 1 And RA = 4 Then ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
-Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
-Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
-Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
-Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
-Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
-3376 If TF = 1 And RA = 5 Then ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
-Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
-3377 If TF = 1 And RA = 6 Then ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+        Case 1
+            Rem Dwarf Thieves are good at locks and traps, but bad at climbing wallsRem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+            ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
+        Case 2
+            Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
+            ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
 
-Dim ThiefString(8) As String
+        Case 3
+            Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
+            ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
 
-3378 If TF = 1 Then
+        Case 4
+            Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
+            ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
+        Case 5
+            Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
+            Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
+            Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
+            Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
+            Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
+            ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
+
+        Case 6
+            Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
+            ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+    End Select
+    Dim ThiefString(8) As String
+
+
     For J = 1 To 8
         ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
     Next J
+
 End If
 
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
