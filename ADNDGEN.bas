@@ -977,12 +977,12 @@ Rem Debug statement to break after class eligibilty was displayed
 Input "I think this breaks things?", DEBUG_VAR
 Dim CleanedClasses(CurIdx) As ClassDef
 For I = 1 To CurIdx
-    CleanedClasses(I) = AvailClasses(CurIdx)
+    CleanedClasses(I) = AvailClasses(I)
 Next I
 
 2000
 Print "Available Classes:"
-For I = 1 To CurIdx
+For I = 1 To CurIdx - 1
     Print I; ". "; CleanedClasses(I).ClassName
 Next I
 Input "Enter the number of your chosen class: ", CN
