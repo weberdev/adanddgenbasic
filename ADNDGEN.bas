@@ -915,8 +915,54 @@ Rem 10 classes PHB
 Rem 13 multiclasses PHB
 Rem 4 classes US
 Rem 10 classes OA
-Rem The Dragon Cavalier is probably getting filter, but later
+Rem The Dragon Cavalier is probably getting filtered, but later,
+Rem It goes in the fighter section of the first phb array for now
 Dim AvailClasses(37) As ClassDef
+Dim FirstPassClassHolder(37) As ClassDef
+For I = 1 To 37
+    FirstPassClassHolder(I).ClassName = "NIL"
+Next I
+
+For I = 1 To 11
+    Select Case RA
+        Case 1
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 2
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 3
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 4
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 5
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 6
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
+        Case 7
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
+    End Select
+Next I
+
+For I = 1 To 13
+    K = I + 11
+    Select Case RA
+        Case 1
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 2
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 3
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(K) = Classes(I)
+        Case 4
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = Classes(I)
+        Case 5
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = Classes(I)
+        Case 6
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = Classes(I)
+        Case 7
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(K) = Classes(I)
+    End Select
+Next I
+
+
 
 
 2000 Print "       CLASS LIST"
