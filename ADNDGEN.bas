@@ -295,7 +295,7 @@ Next I
 Next I
 
 180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
-181 If LCase$(response$) <> "y" Then GoTo 160
+181 If LCase$(response$) <> "y" Then GoTo 150
 
 Dim AvailRaces(7) As RaceDef
 For I = 1 To UBound(Races)
@@ -926,47 +926,44 @@ Next I
 For I = 1 To 11
     Select Case RA
         Case 1
-            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 2
-            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 3
-            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 4
-            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 5
-            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 6
-            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
         Case 7
-            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
     End Select
 Next I
 
-For I = 1 To 13
-    K = I + 11
-    Select Case RA
-        Case 1
-            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 2
-            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        Case 3
-            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(K) = Classes(I)
-        Case 4
-            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = Classes(I)
-        Case 5
-            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = Classes(I)
-        Case 6
-            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = Classes(I)
-        Case 7
-            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(K) = Classes(I)
-    End Select
-Next I
-
+Select Case RA
+    Case 1
+        If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 2
+        If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 3
+        If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 4
+        If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 5
+        If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 6
+        If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+    Case 7
+        If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+End Select
 For I = 1 To 37
     If FirstPassClassHolder(I).ClassName <> "NIL" Then
-        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore > FirstPassClassHolder(I).MaxWis Then
-            J = 0
+        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
+            Print "Not eligible for " + FirstPassClassHolder(I).ClassName
         Else
+            Print "Eligible for " + FirstPassClassHolder(I).ClassName
             AvailClasses(I) = FirstPassClassHolder(I)
         End If
     End If
@@ -985,17 +982,15 @@ For I = 1 To 37
 Next I
 
 
-2000 Print "       CLASS LIST"
-2010 Print " --------------------------"
-2020 Print " 1 Fighter 2 Paladin"
-2030 Print " 3 Ranger 4 Cavalier"
-2040 Print " 5 Magic-User 6 Illusionist"
-2050 Print " 7 Cleric 8 Druid"
-2060 Print " 9 Thief 10 Assassin"
-2070 Print " 11 Monk"
-2080 Print " SELECT THE CLASS THAT YOU WISH "
-2090 Print " YOUR CHARACTER TO HAVE AND ENTER THE "
-2100 Input " NUMBER FROM THE TABLE ABOVE ", CN$
+2000
+Print "Available Classes:"
+For I = 1 To NextIndex - 1
+    Print I; ". "; CleanedClasses(I).ClassName
+Next I
+Input "Enter the number of your chosen class: ", CN
+
+
+
 2110 CN = Val(CN$)
 2111 If CN < 1 Or CN > 11 Then GoTo 2000
 
