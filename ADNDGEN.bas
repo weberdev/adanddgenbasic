@@ -662,7 +662,7 @@ End If
 Rem I didn't want to do this, man
 Rem line 1990 is the psionics section
 Rem 1981 If RA = 7 Then GoTo 1990
-GoTo 2000
+GoTo 1999
 
 
 
@@ -907,7 +907,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem If we have a class mismatch, we can just reroll outside of this mess when class is chosen.
 
         Rem
-    Else GoTo 2000
+    Else GoTo 1999
     End If
 End If
 
@@ -917,7 +917,7 @@ Rem 4 classes US
 Rem 10 classes OA
 Rem The Dragon Cavalier is probably getting filtered, but later,
 Rem It goes in the fighter section of the first phb array for now
-Dim AvailClasses(37) As ClassDef
+1999 Dim AvailClasses(37) As ClassDef
 Dim FirstPassClassHolder(37) As ClassDef
 For I = 1 To 37
     FirstPassClassHolder(I).ClassName = "NIL"
@@ -926,19 +926,19 @@ Next I
 For I = 1 To 11
     Select Case RA
         Case 1
-            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 2
-            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 3
-            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 4
-            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 5
-            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 6
-            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 7
-            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I): Print "ok"
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
     End Select
 Next I
 
