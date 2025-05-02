@@ -3,6 +3,7 @@ Rem Most likely written between 1983 and 1985, but 1983 is the minimum year.
 Rem It's an archival piece, at least in some ways.
 Rem I expanded on some features, implementing functionality from D&D volumes of the era.
 Rem This version omits Unearthed Arcana (1985), and such material will be included in a later fork.
+Screen _FullScreen
 
 101 Option Base 1
 105 Randomize Timer
@@ -899,8 +900,6 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         RollDiscipline:
         Rem MN stands for Minor Number
         MN = Int((Rnd(1) * 24) + 1)
-        Rem I've just realized that this code CANNOT be where it is.
-        Rem NO. I CAN FIX THIS EASILY.
 
         If MN > 22 Then GoTo RollDiscipline
         If MN < 23 Then DV$ = MinorDiscipline(MN)
@@ -960,35 +959,31 @@ For I = 1 To 13
             If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
     End Select
 Next I
+
+CurIdx = 1
 For I = 1 To 37
     If FirstPassClassHolder(I).ClassName <> "" Then
         If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
         Else
             Rem debug statement
-            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
-            AvailClasses(I) = FirstPassClassHolder(I)
+            Print "Eligible for "; FirstPassClassHolder(I).ClassName
+            AvailClasses(CurIdx) = FirstPassClassHolder(I)
+            CurIdx = CurIdx + 1
         End If
     End If
 Next I
 
-    rem Debug statement to break after class eligibilty was displayed
-Rem Input "I think this breaks things?", DEBUG_VAR
-Dim CleanedClasses(37) As ClassDef
-Dim NextIndex As Integer
-NextIndex = 1
-
-For I = 1 To 37
-    If AvailClasses(I).ClassName <> "NIL" And AvailClasses(I).ClassName <> "" Then
-        CleanedClasses(NextIndex) = AvailClasses(I)
-        NextIndex = NextIndex + 1
-    End If
+Rem Debug statement to break after class eligibilty was displayed
+Input "I think this breaks things?", DEBUG_VAR
+Dim CleanedClasses(CurIdx) As ClassDef
+For I = 1 To CurIdx
+    CleanedClasses(I) = AvailClasses(CurIdx)
 Next I
-
 
 2000
 Print "Available Classes:"
-For I = 1 To NextIndex - 1
-    If CleanedClasses(I).ClassName <> "" Then Print I; ". "; CleanedClasses(I).ClassName
+For I = 1 To CurIdx
+    Print I; ". "; CleanedClasses(I).ClassName
 Next I
 Input "Enter the number of your chosen class: ", CN
 
