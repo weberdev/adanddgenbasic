@@ -966,7 +966,7 @@ For I = 1 To 37
         If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
         Else
             Rem debug statement
-            Print "Eligible for "; FirstPassClassHolder(I).ClassName
+            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
             AvailClasses(CurIdx) = FirstPassClassHolder(I)
             CurIdx = CurIdx + 1
         End If
@@ -974,7 +974,7 @@ For I = 1 To 37
 Next I
 
 Rem Debug statement to break after class eligibilty was displayed
-Input "I think this breaks things?", DEBUG_VAR
+rem Input "I think this breaks things?", DEBUG_VAR
 Dim CleanedClasses(CurIdx) As ClassDef
 For I = 1 To CurIdx
     CleanedClasses(I) = AvailClasses(I)
