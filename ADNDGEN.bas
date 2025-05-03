@@ -744,10 +744,10 @@ Input "Enter the number of your chosen class: ", CN
 ChosenClass = CleanedClasses(CN)
 
 Rem class category check, mainly for psionic abilities
-If InStr(ChosenClass.Category, "CLERIC") Then isCL = 1 Else isCL = 0
-If InStr(ChosenClass.Category, "FIGHTER") Then isFT = 1 Else isFT = 0
-If InStr(ChosenClass.Category, "MAGIC-USER") Then isMU = 1 Else isMU = 0
-If InStr(ChosenClass.Category, "THIEF") Then isTF = 1 Else isTF = 0
+If InStr(ChosenClass.Category, "Cleric") Then isCL = 1: Print "IS A CLERIC"
+If InStr(ChosenClass.Category, "Fighter") Then isFT = 1: Print "IS A FIGHTER"
+If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1: Print "IS A MAGIC-USER"
+If InStr(ChosenClass.Category, "Thief") Then isTF = 1: Print "IS A THIEF"
 
 
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
@@ -763,7 +763,7 @@ Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
 Rem We'll come back to it after class is chosen.
 GOLD = 0
 For I = 1 To ChosenClass.GoldDieNum
-    goldRoll = Int((Rnd(1) * GoldDieSize) + 1)
+    goldRoll = Int((Rnd * ChosenClass.GoldDieSize) + 1)
     GOLD = GOLD + goldRoll
 Next I
 
