@@ -169,38 +169,38 @@ MultiClasses(7).GoldDieNum = 4: MultiClasses(7).GoldDieSize = 4
 
 MultiClasses(8).ClassName = "Fighter/Illusionist": MultiClasses(8).ClassIndex = 19: MultiClasses(8).HitDie = 10: MultiClasses(8).SecondHD = 4
 MultiClasses(8).Category = "Fighter/Magic-User"
-MultiClasses(8).MinStr = 9: MultiClasses(8).MinCon = 7: MultiClasses(8).MinDex = 16: MultiClasses(8).MinInt = 15
+MultiClasses(8).MinStr = 9: MultiClasses(8).MinCon = 7: MultiClasses(8).MinDex = 16: MultiClasses(8).MinInt = 15: MaxWis = 18
 MultiClasses(8).RaceGnome = 1
 MultiClasses(8).GoldDieNum = 4: MultiClasses(8).GoldDieSize = 4
 
 MultiClasses(9).ClassName = "Fighter/Thief": MultiClasses(9).ClassIndex = 20: MultiClasses(9).HitDie = 10: MultiClasses(9).SecondHD = 6
 MultiClasses(9).Category = "Fighter/Thief"
-MultiClasses(9).MinStr = 9: MultiClasses(9).MinCon = 7: MultiClasses(9).MinDex = 9
+MultiClasses(9).MinStr = 9: MultiClasses(9).MinCon = 7: MultiClasses(9).MinDex = 9: MaxWis = 18
 MultiClasses(9).RaceDwarf = 1: MultiClasses(9).RaceElf = 1: MultiClasses(9).RaceGnome = 1
 MultiClasses(9).RaceHalfElf = 1: MultiClasses(9).RaceHalfling = 1: MultiClasses(9).RaceHalfOrc = 1
 MultiClasses(9).GoldDieNum = 4: MultiClasses(9).GoldDieSize = 4
 
 MultiClasses(10).ClassName = "Fighter/Assassin": MultiClasses(10).ClassIndex = 21: MultiClasses(10).HitDie = 10: MultiClasses(10).SecondHD = 6
 MultiClasses(10).Category = "Fighter/Thief"
-MultiClasses(10).MinStr = 9: MultiClasses(10).MinCon = 7: MultiClasses(10).MinDex = 13: MultiClasses(10).MinInt = 11
+MultiClasses(10).MinStr = 9: MultiClasses(10).MinCon = 7: MultiClasses(10).MinDex = 13: MultiClasses(10).MinInt = 11: MaxWis = 18
 MultiClasses(10).RaceHalfOrc = 1
 MultiClasses(10).GoldDieNum = 4: MultiClasses(10).GoldDieSize = 4
 
 MultiClasses(11).ClassName = "Fighter/Magic-User/Thief": MultiClasses(11).ClassIndex = 22: MultiClasses(11).HitDie = 10: MultiClasses(11).SecondHD = 4: MultiClasses(11).ThirdHD = 6
 MultiClasses(11).Category = "Fighter/Magic-User/Thief"
-MultiClasses(11).MinStr = 9: MultiClasses(11).MinCon = 7: MultiClasses(11).MinInt = 9: MultiClasses(11).MinDex = 9
+MultiClasses(11).MinStr = 9: MultiClasses(11).MinCon = 7: MultiClasses(11).MinInt = 9: MultiClasses(11).MinDex = 9: MultiClasses(11).MaxWis = 18
 MultiClasses(11).RaceElf = 1: MultiClasses(11).RaceHalfElf = 1
 MultiClasses(11).GoldDieNum = 4: MultiClasses(11).GoldDieSize = 4
 
 MultiClasses(12).ClassName = "Magic-User/Thief": MultiClasses(12).ClassIndex = 23: MultiClasses(12).HitDie = 4: MultiClasses(12).SecondHD = 6
 MultiClasses(12).Category = "Magic-User/Thief"
-MultiClasses(12).MinInt = 9: MultiClasses(12).MinDex = 9
+MultiClasses(12).MinInt = 9: MultiClasses(12).MinDex = 9: MaxWis = 18
 MultiClasses(12).RaceElf = 1: MultiClasses(12).RaceHalfElf = 1
 MultiClasses(12).GoldDieNum = 3: MultiClasses(12).GoldDieSize = 4
 
 MultiClasses(13).ClassName = "Illusionist/Thief": MultiClasses(13).ClassIndex = 24: MultiClasses(13).HitDie = 4: MultiClasses(13).SecondHD = 6
 MultiClasses(13).Category = "Magic-User/Thief"
-MultiClasses(13).MinInt = 15: MultiClasses(13).MinDex = 16
+MultiClasses(13).MinInt = 15: MultiClasses(13).MinDex = 16: MaxWis = 18
 MultiClasses(13).RaceGnome = 1
 MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
 
@@ -1076,8 +1076,8 @@ End If
 
 Rem Level up code (if implemented), will set assassins back two levels of thief skills
 3380 Print "   SUMMARY OF CHARACTER "
-3390 Print "   RACE: ", RACE$
-3400 Print "   CLASS: ", CLASS$; Tab(22); "GOLD: "; GOLD
+3390 Print "   RACE: ", ChosenRace.RaceName
+3400 Print "   CLASS: ", ChosenClass.ClassName; Tab(22); "GOLD: "; GOLD
 
 
 
