@@ -776,8 +776,6 @@ If ChosenClass.ClassName <> "MONK" Then
 End If
 
 
-Rem generate HP
-3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
 3361 If isFT = 0 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
