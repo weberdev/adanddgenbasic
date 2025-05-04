@@ -1090,7 +1090,6 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3450 Print " INTELLIGENCE: ": Print IntelligenceScore
 3470 Print lang$
 3480 Print " WISDOM: ": Print WisdomScore
-3490 If WF = 0 Then GoTo 3510
 If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 3510 Print " CONSTITUTION ": Print ConstitutionScore
 3520 Print " CHARISMA ": Print CharismaScore
