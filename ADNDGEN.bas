@@ -1083,16 +1083,17 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 
 
 
-3430 Print " STRENGTH: ": Print StrengthScore
+3430 Print " STRENGTH: ";: Print StrengthScore
 3440 Print SH$
 3441 Print SO$
 3442 If OW > 1 Then Print WL$
-3450 Print " INTELLIGENCE: ": Print IntelligenceScore
+3450 Print " INTELLIGENCE: ";: Print IntelligenceScore
 3470 Print lang$
 3480 Print " WISDOM: ": Print WisdomScore
 If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
-3510 Print " CONSTITUTION ": Print ConstitutionScore
-3520 Print " CHARISMA ": Print CharismaScore
+PRINT " DEXTERITY";: print DexterityScore
+3510 Print " CONSTITUTION ";: Print ConstitutionScore
+3520 Print " CHARISMA ";: Print CharismaScore
 3530 Print " MAY HAVE "; XF; " RETAINERS"
 3531 If MN > 0 Then
     Print "Character is psionic"
@@ -1177,10 +1178,12 @@ GoTo 3720
 
 Rem Stonecunning is a thirdism, but that's fine.
 Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1, p. 15]
-3720 If RA = 1 Then Print "DWARVEN STONECUNNING"
-3721 If RA = 1 Then Print " DETECT        OBSERVE   NOTICE  SPOT  INTUIT"
-3722 If RA = 1 Then Print "  SLOPE   CONSTRUCTION   SHIFTS  TRAP   DEPTH"
-3723 If RA = 1 Then Print "    75%            75%      66%   50%     50%"
+3720 If RA = 1 Then
+    Print "DWARVEN STONECUNNING"
+    Print " DETECT        OBSERVE   NOTICE  SPOT  INTUIT"
+    Print "  SLOPE   CONSTRUCTION   SHIFTS  TRAP   DEPTH"
+    Print "    75%            75%      66%   50%     50%"
+End If
 Rem I don't think this improves with level.
 
 Rem As it turns out, Gnomes get stonecunning too.
