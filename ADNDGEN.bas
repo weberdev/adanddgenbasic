@@ -9,7 +9,7 @@ Rem This version omits Unearthed Arcana (1985), and such material will be includ
 
 Type ClassDef
     ClassName As String * 30: ClassIndex As Integer
-    HitDie As Integer: Category As String * 12
+    HitDie As Integer: Category As String * 30
     MinStr As Integer: MinInt As Integer: MinWis As Integer
     MinDex As Integer: MinCon As Integer: MinCha As Integer
     Rem This next one is needed for one thing. Is it really needed?
@@ -748,6 +748,8 @@ If InStr(ChosenClass.Category, "Cleric") Then isCL = 1: Print "IS A CLERIC"
 If InStr(ChosenClass.Category, "Fighter") Then isFT = 1: Print "IS A FIGHTER"
 If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1: Print "IS A MAGIC-USER"
 If InStr(ChosenClass.Category, "Thief") Then isTF = 1: Print "IS A THIEF"
+Print ChosenClass.Category
+Input "WHAT CLASSES ARE THEY", CLASS$
 
 
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
@@ -1089,9 +1091,9 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3442 If OW > 1 Then Print WL$
 3450 Print " INTELLIGENCE: ";: Print IntelligenceScore
 3470 Print lang$
-3480 Print " WISDOM: ": Print WisdomScore
+3480 Print " WISDOM: ";: Print WisdomScore
 If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
-PRINT " DEXTERITY";: print DexterityScore
+Print " DEXTERITY";: Print DexterityScore
 3510 Print " CONSTITUTION ";: Print ConstitutionScore
 3520 Print " CHARISMA ";: Print CharismaScore
 3530 Print " MAY HAVE "; XF; " RETAINERS"
