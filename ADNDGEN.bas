@@ -1092,7 +1092,7 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3470 Print lang$
 3480 Print " WISDOM: ": Print WisdomScore
 3490 If WF = 0 Then GoTo 3510
-3500 Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
+If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 3510 Print " CONSTITUTION ": Print ConstitutionScore
 3520 Print " CHARISMA ": Print CharismaScore
 3530 Print " MAY HAVE "; XF; " RETAINERS"
@@ -1130,17 +1130,21 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
     Print "Psychic Discipline: " + DV$
 End If
 
-3560 Print CZ$
-3561 Print CU$
-3562 Print Z1$
-
+If isCL = 1 Then
+    Print CZ$
+    Print CU$
+    Print Z1$
+End If
 If isTF = 1 Then
 
-    Print TK$: ThiefString(8) = "--"
+    Print TY$: Print TA$: Print TB$
+    ThiefString(8) = " --"
+    Print "  ";
     For I = 1 To 8
         Print ThiefString(I);
         Print "  ";
     Next I
+    print ""
 End If
 GoTo 3720
 3600 X1$ = "ADD "
@@ -1182,10 +1186,12 @@ Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1
 Rem I don't think this improves with level.
 
 Rem As it turns out, Gnomes get stonecunning too.
-3724 If RA = 3 Then Print " DETECT    NOTICE   INTUIT  DETERMINE"
-3725 If RA = 3 Then Print "  SLOPE    UNSAFE    DEPTH  DIRECTION"
-3726 If RA = 3 Then Print "    80%       70%      60%        50%"
-
+If RA = 3 Then
+    Print "Gnomish Stonecunning"
+    Print " DETECT    NOTICE   INTUIT  DETERMINE"
+    Print "  SLOPE    UNSAFE    DEPTH  DIRECTION"
+    Print "    80%       70%      60%        50%"
+End If
 
 4000 Print "DONE"
 
