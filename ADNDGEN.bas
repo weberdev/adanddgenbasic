@@ -50,7 +50,7 @@ Classes(2).MaxWis = 18
 Classes(2).RaceHuman = 1
 Classes(2).GoldDieNum = 5: Classes(2).GoldDieSize = 4
 
-Classes(3).ClassName = "RANGER": Classes(3).ClassIndex = 3: Classes(3).HitDie = 16
+Classes(3).ClassName = "Ranger": Classes(3).ClassIndex = 3: Classes(3).HitDie = 16
 Classes(3).Category = "Fighter"
 Classes(3).MinStr = 13: Classes(3).MinInt = 13: Classes(3).MinWis = 14: Classes(3).MinCon = 14
 Classes(3).MaxWis = 18
