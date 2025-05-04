@@ -1132,7 +1132,9 @@ If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
     Print Z1$
 End If
 
-Rem
+Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
+Rem if a  10 is rolled, they pick on that table
+rem Read Magic is also free.
 If InStr(ChosenClass.ClassName, "Magic-User") Then
 
     Dim StarterSpells(4) As String
@@ -1191,7 +1193,7 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
         End If
     Next I
 End If
-
+Rem Illusioinists generate three random spells, rerolling duplicates. [2, p. 39]
 If InStr(ChosenClass.ClassName, "Illusionist") Then
     Dim SpellsKnown(3) As String
     Dim IllusL1Spells(12) As String
@@ -1214,7 +1216,7 @@ End If
 
 If isMU = 1 Then
     Rem idiomatically print spell list
-    rem here
+    Rem here
 End If
 
 If isTF = 1 Then
