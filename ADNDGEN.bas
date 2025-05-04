@@ -1198,8 +1198,18 @@ If InStr(ChosenClass.ClassName, "Illusionist") Then
     For I = 1 To 12
         Read IllusL1Spells(I)
     Next I
-        Rem List of Level 1 Illusionist spells [1. pp.94-95]
+    Rem List of Level 1 Illusionist spells [1. pp.94-95]
     Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
+    idx1 = 0
+    idx2 = 0
+    For I = 1 To 3
+        IlluStart:
+        spellNum = Int(Rnd * 12) + 1
+        If spellNum = idx1 Or spellNum = idx2 Then GoTo IlluStart
+    Else SpellsKnown(I) = IllusL1Spells(spellNum)
+        If I = 1 Then idx1 = spellNum
+        if I = 2 then idx2 = spellNum
+    Next I
 End If
 
 If isTF = 1 Then
