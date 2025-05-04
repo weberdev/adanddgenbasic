@@ -1193,8 +1193,12 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
 End If
 
 If InStr(ChosenClass.ClassName, "Illusionist") Then
-dim SpellsKnown(3) as string
-
+    Dim SpellsKnown(3) As String
+    Dim IllusL1Spells(12) As String
+    For I = 1 To 12
+        Read IllusL1Spells(I)
+    Next I
+        Rem List of Level 1 Illusionist spells [1. pp.94-95]
     Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
 End If
 
