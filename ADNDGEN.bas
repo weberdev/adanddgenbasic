@@ -772,6 +772,8 @@ If ChosenClass.ClassName <> "MONK" Then
     GOLD = GOLD * 10
 End If
 
+
+Rem generate HP
 3360 HP = Int((Rnd(1) * HF(CN)) + 1)
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
@@ -783,7 +785,7 @@ Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
 Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-If isTF Then
+If isTF = 1 Then
     Select Case RA
 
         Case 1
@@ -1094,7 +1096,7 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3510 Print " CONSTITUTION ": Print ConstitutionScore
 3520 Print " CHARISMA ": Print CharismaScore
 3530 Print " MAY HAVE "; XF; " RETAINERS"
-3531 If MN > 1 Then
+3531 If MN > 0 Then
     Print "Character is psionic"
     Print "Psionic Ability: " + Str$(PS)
     Print "Psionic Attack Strength: " + Str$(PA)
@@ -1128,23 +1130,19 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
     Print "Psychic Discipline: " + DV$
 End If
 
-3540 If CN = 7 Then GoTo 3560
-3550 GoTo 3570
-
 3560 Print CZ$
 3561 Print CU$
 3562 Print Z1$
 
-3570 If TF = 1 Then GoTo 3590
-3580 GoTo 4000
-3590 Print TY$
-3591 Print TA$
-3592 Print TK$: ThiefString(8) = "--"
-3593 For I = 1 To 8
-    Print ThiefString(I);
-Next I
-3599 GoTo 4000
+If isTF = 1 Then
 
+    Print TK$: ThiefString(8) = "--"
+    For I = 1 To 8
+        Print ThiefString(I);
+        Print "  ";
+    Next I
+End If
+GoTo 3720
 3600 X1$ = "ADD "
 3601 X2$ = "3"
 3602 X3$ = " TO"
