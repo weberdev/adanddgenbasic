@@ -1190,8 +1190,12 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
             StarterSpells(I + 1) = SpellLists(I, spellNum)
         End If
     Next I
+End If
 
+If InStr(ChosenClass.ClassName, "Illusionist") Then
+dim SpellsKnown(3) as string
 
+    Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
 End If
 
 If isTF = 1 Then
