@@ -1077,8 +1077,16 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", ChosenRace.RaceName
 3400 Print "   CLASS: ", ChosenClass.ClassName; Tab(22); "GOLD: "; GOLD
-
-
+Dim HitPoints As Integer
+If ChosenClass.SecondHD > 0 Then
+    If ChosenClass.ThirdHD > 0 Then
+        HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.ThirdHD) + 1)) / 3)
+    Else
+        HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
+    End If
+    HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
+End If
+print HitPoints
 
 3430 Print " STRENGTH: ";: Print StrengthScore
 3440 Print SH$
@@ -1134,7 +1142,7 @@ End If
 
 Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
 Rem if a  10 is rolled, they pick on that table
-rem Read Magic is also free.
+Rem Read Magic is also free.
 If InStr(ChosenClass.ClassName, "Magic-User") Then
 
     Dim StarterSpells(4) As String
