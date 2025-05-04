@@ -1161,6 +1161,44 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
     Data "Comprehend Languages","Detect Magic","Erase","Find Familiar","Identify","Mending","Message","Unseen Servant","Write"
 
 
+    Rem this is either bad style or Gygaxian style.
+    Rem We define three spell lists (above), and then load them into an array.
+    Dim SpellLists(3, 9) As String
+    For I = 1 To 9
+        SpellLists(1, I) = OffensiveSpells(I)
+    Next I
+    For I = 1 To 9
+        SpellLists(2, I) = DefensiveSpells(I)
+    Next I
+    For I = 1 To 9
+        SpellLists(3, I) = MiscSpells(I)
+    Next I
+
+    Rem iterate through lists
+    For I = 1 To 3
+        spellNum = Int(Rnd * 10) + 1
+
+        If spellNum = 10 Then
+            Print "Available spells in category "; I
+            For K = 1 To 9
+                Print K; ". "; SpellLists(I, K)
+            Next K
+
+            Do
+                Input "You get to CHOOSE a spell (1-9): ", SPnum
+                If SPnum < 1 Or SPnum > 9 Then
+                    Print "Invalid choice. Please choose a number from 1 to 9."
+                End If
+            Loop While SPnum < 1 Or SPnum > 9
+
+            StarterSpells(I + 1) = SpellLists(I, SPnum)
+
+        Else
+            StarterSpells(I + 1) = SpellLists(I, spellNum)
+        End If
+    Next I
+
+
 End If
 
 If isTF = 1 Then
