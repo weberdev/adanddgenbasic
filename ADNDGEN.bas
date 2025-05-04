@@ -1208,8 +1208,13 @@ If InStr(ChosenClass.ClassName, "Illusionist") Then
         If spellNum = idx1 Or spellNum = idx2 Then GoTo IlluStart
     Else SpellsKnown(I) = IllusL1Spells(spellNum)
         If I = 1 Then idx1 = spellNum
-        if I = 2 then idx2 = spellNum
+        If I = 2 Then idx2 = spellNum
     Next I
+End If
+
+If isMU = 1 Then
+    Rem idiomatically print spell list
+    rem here
 End If
 
 If isTF = 1 Then
