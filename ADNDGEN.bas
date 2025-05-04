@@ -1088,7 +1088,6 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3441 Print SO$
 3442 If OW > 1 Then Print WL$
 3450 Print " INTELLIGENCE: ": Print IntelligenceScore
-3460 If CN = 5 Then Print IZ$
 3470 Print lang$
 3480 Print " WISDOM: ": Print WisdomScore
 3490 If WF = 0 Then GoTo 3510
@@ -1130,7 +1129,7 @@ If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
     Print "Psychic Discipline: " + DV$
 End If
 
-If isCL = 1 Then
+If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
     Print CZ$
     Print CU$
     Print Z1$
@@ -1144,7 +1143,7 @@ If isTF = 1 Then
         Print ThiefString(I);
         Print "  ";
     Next I
-    print ""
+    Print ""
 End If
 GoTo 3720
 3600 X1$ = "ADD "
