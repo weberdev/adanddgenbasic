@@ -626,6 +626,7 @@ Select Case ConstitutionScore
     Case 6
         HPMod = -1: SystemShockSurvival = 50: ResurrectionSurvival = 55
     Case 7 To 13
+    HPMod = 0: SystemShockSurvival = 20 + (5*ConstitutionScore): ResurrectionSurvival = 25 + (5*ConstitutionScore)
     Case 14
     Case 15
     Case 16
