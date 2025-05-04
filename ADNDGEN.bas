@@ -876,10 +876,6 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         PD = PS
 
         Rem Each psionicist gets a random number of attack modes, (chosen), a random number of defense modes (chosen), and a random number of psionic disciplines (randomly assigned).
-        Rem Going on a tangent here, and this comment is likely to get pulled out in a later git revision, but working on this program has made me appreciate AD&D a lot more.
-        Rem Working on the psionics section has made me dislike psionics.
-
-
         Rem Number of psionic attack modes is determined by percentile dice and applied to a table.
         MentPer = Int((Rnd(1) * 100) + 1)
         AtCt = 0
