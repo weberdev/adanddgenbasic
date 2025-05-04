@@ -611,9 +611,27 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 1790 ConstitutionScore = AbilityAssignedArray(5)
 1820 Print "CHARACTER'S CONSTITUTION IS "; ConstitutionScore
-Rem Skipped Con Table eEarlier.
+Rem Skipped Con Table Earlier.
 Rem CONSTITUTION TABLE FROM PHB [1, p. 12]
-
+Select Case ConstitutionScore
+    Case 3
+    Case 4
+    Case 5
+    Case 6
+    Case 7
+    Case 8
+    Case 9
+    Case 10
+    Case 11
+    Case 12
+    Case 13
+    Case 14
+    Case 15
+    Case 16
+    Case 17
+    Case 18
+    Case 19
+End Select
 
 
 1840 CharismaScore = AbilityAssignedArray(6)
