@@ -611,6 +611,10 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 1790 ConstitutionScore = AbilityAssignedArray(5)
 1820 Print "CHARACTER'S CONSTITUTION IS "; ConstitutionScore
+Rem Skipped Con Table eEarlier.
+Rem CONSTITUTION TABLE FROM PHB [1, p. 12]
+
+
 
 1840 CharismaScore = AbilityAssignedArray(6)
 1850 Print "CHARACTER'S CHARISMA IS "; CharismaScore
@@ -1084,9 +1088,10 @@ If ChosenClass.SecondHD > 0 Then
     Else
         HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
     End If
+Else
     HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
 End If
-print HitPoints
+Print HitPoints
 
 3430 Print " STRENGTH: ";: Print StrengthScore
 3440 Print SH$
