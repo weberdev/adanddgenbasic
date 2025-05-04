@@ -1143,7 +1143,23 @@ Rem
 If InStr(ChosenClass.ClassName, "Magic-User") Then
 
     Dim StarterSpells(4) As String
-StarterSpells(1) = "Read Magic"
+    StarterSpells(1) = "Read Magic"
+    Dim OffensiveSpells(9) As String
+    For I = 1 To 9
+        Read OffensiveSpells(I)
+    Next I
+    Data "Burning Hands","Charm Person","Enlarge","Friends","Light","Magic Missile","Push","Shocking Grasp","Sleep"
+    Dim DefensiveSpells(9) As String
+    For I = 1 To 9
+        Read DefensiveSpells(I)
+    Next I
+    Data "Affect Normal Fires","Dancing LIghts","Feather Fall","Hold Portal","Jump","Protection From Evil","Shield","Spider Climb","Ventriloquism"
+    Dim MiscSpells(9) As String
+    For I = 1 To 9
+        Read MiscSpells(I)
+    Next I
+    Data "Comprehend Languages","Detect Magic","Erase","Find Familiar","Identify","Mending","Message","Unseen Servant","Write"
+
 
 End If
 
