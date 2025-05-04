@@ -744,12 +744,14 @@ Input "Enter the number of your chosen class: ", CN
 ChosenClass = CleanedClasses(CN)
 
 Rem class category check, mainly for psionic abilities
-If InStr(ChosenClass.Category, "Cleric") Then isCL = 1: Print "IS A CLERIC"
-If InStr(ChosenClass.Category, "Fighter") Then isFT = 1: Print "IS A FIGHTER"
-If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1: Print "IS A MAGIC-USER"
-If InStr(ChosenClass.Category, "Thief") Then isTF = 1: Print "IS A THIEF"
-Print ChosenClass.Category
-Input "WHAT CLASSES ARE THEY", CLASS$
+If InStr(ChosenClass.Category, "Cleric") Then isCL = 1 ':  Print "IS A CLERIC"
+If InStr(ChosenClass.Category, "Fighter") Then isFT = 1 ':  Print "IS A FIGHTER"
+If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1 ': Print "IS A MAGIC-USER"
+If InStr(ChosenClass.Category, "Thief") Then isTF = 1 'H: Print "IS A THIEF"
+Rem holding these debug statements for later
+
+Rem Print ChosenClass.Category
+Rem Input "WHAT CLASSES ARE THEY", CLASS$
 
 
 3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
@@ -1136,6 +1138,15 @@ If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
     Print CU$
     Print Z1$
 End If
+
+Rem
+If InStr(ChosenClass.ClassName, "Magic-User") Then
+
+    Dim StarterSpells(4) As String
+StarterSpells(1) = "Read Magic"
+
+End If
+
 If isTF = 1 Then
 
     Print TY$: Print TA$: Print TB$
