@@ -117,7 +117,6 @@ Classes(11).Category = "Monk"
 Classes(11).MinStr = 15: Classes(11).MinWis = 15: Classes(11).MinDex = 15: Classes(11).MinCon = 11
 Classes(11).MaxWis = 18
 Classes(11).RaceHuman = 1
-Rem NOTE TO SELF: check for monk status when generating starting gold: Do not apply tenfold scalar if monk.
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 
 
