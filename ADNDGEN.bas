@@ -611,20 +611,21 @@ Rem DG$: Defensive adjustment for reflex saves and armor class
 1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
 1790 ConstitutionScore = AbilityAssignedArray(5)
 1820 Print "CHARACTER'S CONSTITUTION IS "; ConstitutionScore
+HPMod = 0
+SystemShockSurvival = 0
+ResurectionSurvival = 0
 Rem Skipped Con Table Earlier.
 Rem CONSTITUTION TABLE FROM PHB [1, p. 12]
 Select Case ConstitutionScore
     Case 3
+        HPMod = -2: SystemShockSurvival = 35: ResurrectionSurvival = 40
     Case 4
+        HPMod = -1: SystemShockSurvival = 40: ResurrectionSurvival = 45
     Case 5
+        HPMod = -1: SystemShockSurvival = 45: ResurrectionSurvival = 50
     Case 6
-    Case 7
-    Case 8
-    Case 9
-    Case 10
-    Case 11
-    Case 12
-    Case 13
+        HPMod = -1: SystemShockSurvival = 50: ResurrectionSurvival = 55
+    Case 7 To 13
     Case 14
     Case 15
     Case 16
