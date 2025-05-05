@@ -1173,6 +1173,19 @@ If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
     Next I
 End If
 
+Dim FinalSaves(5) As Integer
+
+For I = 1 To 5
+    MinSave = saveChecker(I, 1)
+    For J = 2 To 4
+        If saveChecker(I, J) < MinSave Then
+            MinSave = saveChecker(I, J)
+        End If
+    Next J
+    FinalSaves(I) = MinSave
+Next I
+
+
 
 3430 Print " STRENGTH: ";: Print StrengthScore
 3440 Print SH$
