@@ -819,7 +819,7 @@ If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
     Select Case RA
 
         Case 1
-            Rem Dwarf Thieves are good at locks and traps, but bad at climbing wallsRem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+            Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
             ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
         Case 2
             Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
@@ -1136,7 +1136,7 @@ SaveTypes(1) = "Paralysis, Poison, and Death": SaveTypes(2) = "Petrification or 
 Dim saveChecker(5, 4) As Integer
 Rem make a 5x4 array and fill it with 20s
 Rem sort of vibing my way to best saves for multiclassed characters
-rem the intent is to find the minimum and put it in the corresponding save array slot.
+Rem the intent is to find the minimum and put it in the corresponding save array slot.
 For I = 1 To 5
     For J = 1 To 4
         saveChecker(I, J) = 20
