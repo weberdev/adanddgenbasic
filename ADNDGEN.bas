@@ -1122,6 +1122,17 @@ HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
 Print HitPoints
 
+Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
+Dim ClericSaves(5) As Integer
+ClericSaves(1) = 10: ClericSaves(2) = 13: ClericSaves(3) = 14: ClericSaves(4) = 16: ClericSaves(5) = 15
+Dim FighterSaves(5) As Integer
+FighterSaves(1) = 14: FighterSaves(2) = 17: FighterSaves(3) = 18: FighterSaves(4) = 20: FighterSaves(5) = 19
+Dim MUSaves(5) As Integer
+MUSaves(1) = 14: MUSaves(2) = 13: MUSaves(3) = 11: MUSaves(4) = 15: MUSaves(5) = 12
+Dim TFSaves(5) As Integer
+TFSaves(1) = 13: TFSaves(2) = 12: TFSaves(3) = 14: TFSaves(4) = 16: TFSaves(5) = 15
+
+
 3430 Print " STRENGTH: ";: Print StrengthScore
 3440 Print SH$
 3441 Print SO$
