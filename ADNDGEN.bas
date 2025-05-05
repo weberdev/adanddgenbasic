@@ -1116,6 +1116,10 @@ If ChosenClass.SecondHD > 0 Then
 Else
     HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
 End If
+If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
+
+HitPoints = HitPoints + HPMod
+If HitPoints < 1 then HitPoints = 1
 Print HitPoints
 
 3430 Print " STRENGTH: ";: Print StrengthScore
