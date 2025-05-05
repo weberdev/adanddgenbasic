@@ -815,7 +815,7 @@ Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
 Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-If isTF = 1 Then
+If isTF = 1 OR InStr(ChosenClass.ClassName, "Monk")   Then
     Select Case RA
 
         Case 1
@@ -1278,6 +1278,16 @@ If isTF = 1 Then
         Print "  ";
     Next I
     Print ""
+End If
+
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Print "  ";
+    For I = 1 To 6
+        Print ThiefString(I);
+        Print "  ";
+    Next I
+    Print ""
+
 End If
 GoTo 3720
 3600 X1$ = "ADD "
