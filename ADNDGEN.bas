@@ -815,7 +815,7 @@ Rem I can trust my logic copying from a table, but scrolling?
 Rem Horrifying.
 Rem We'll ignore vertical space from increasingly deranged comments.
 Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-If isTF = 1 OR InStr(ChosenClass.ClassName, "Monk")   Then
+If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
     Select Case RA
 
         Case 1
@@ -1246,6 +1246,8 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
         End If
     Next I
 End If
+
+
 Rem Illusioinists generate three random spells, rerolling duplicates. [2, p. 39]
 If InStr(ChosenClass.ClassName, "Illusionist") Then
     Dim SpellsKnown(3) As String
@@ -1281,10 +1283,18 @@ If isTF = 1 Then
 End If
 
 If InStr(ChosenClass.ClassName, "Monk") Then
+    Rem We remove PICK PCKT from the thief skills, because monks don't pick pockets.
+    Rem We also remove READ LANG, because you don't read any old dusty tomes in ancient languages in monasteries.
+    Rem Thank you Gary, very cool.
+    Rem This isn't a level one skill even for thieves, but still.
+    TA$ = " PICK REMV MOVE CLIM HIDE NEAR READ"
+    TB$ = " LOCK TRAP SILT SURF SHDW NOIS LANG"
+
+    Print "MONK SKILLS": Print TA$: Print TB$
     Print "  ";
-    For I = 1 To 6
-        Print ThiefString(I);
-        Print "  ";
+    For I = 1 To 7
+        If I <> 3 Then Print ThiefString(I);
+        If I <> 3 Then Print "  ";
     Next I
     Print ""
 
