@@ -626,13 +626,18 @@ Select Case ConstitutionScore
     Case 6
         HPMod = -1: SystemShockSurvival = 50: ResurrectionSurvival = 55
     Case 7 To 13
-    HPMod = 0: SystemShockSurvival = 20 + (5*ConstitutionScore): ResurrectionSurvival = 25 + (5*ConstitutionScore)
+        Rem and for one, fleeting, beautiful moment, we have a clear scalar expression
+        HPMod = 0: SystemShockSurvival = 20 + (5 * ConstitutionScore): ResurrectionSurvival = 25 + (5 * ConstitutionScore)
     Case 14
+        HPMod = 0: SystemShockSurvival = 88: ResurrectionSurvival = 92
     Case 15
+        HPMod = 1: SystemShockSurvival = 91: ResurrectionSurvival = 94
     Case 16
+        HPMod = 2: SystemShockSurvival = 95: ResurrectionSurvival = 96
     Case 17
+        HPMod = 3: SystemShockSurvival = 97: ResurrectionSurvival = 98
     Case 18
-    Case 19
+        HPMod = 4: SystemShockSurvival = 99: ResurrectionSurvival = 100
 End Select
 
 
