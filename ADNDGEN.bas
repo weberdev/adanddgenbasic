@@ -1131,6 +1131,47 @@ Dim MUSaves(5) As Integer
 MUSaves(1) = 14: MUSaves(2) = 13: MUSaves(3) = 11: MUSaves(4) = 15: MUSaves(5) = 12
 Dim TFSaves(5) As Integer
 TFSaves(1) = 13: TFSaves(2) = 12: TFSaves(3) = 14: TFSaves(4) = 16: TFSaves(5) = 15
+Dim SaveTypes(5) As String
+SaveTypes(1) = "Paralysis, Poison, and Death": SaveTypes(2) = "Petrification or Polymorph": SaveTypes(3) = "Rod, Staff, or Wand": SaveTypes(4) = "Breath Weapon": SaveTypes(5) = "Spell"
+Dim saveChecker(5, 4) As Integer
+Rem make a 5x4 array and fill it with 20s
+Rem sort of vibing my way to best saves for multiclassed characters
+rem the intent is to find the minimum and put it in the corresponding save array slot.
+For I = 1 To 5
+    For J = 1 To 4
+        saveChecker(I, J) = 20
+    Next J
+Next I
+
+Rem if a cleric, fill line 1 with cleric saves
+If isCL Then
+    For I = 1 To 5
+        saveChecker(I, 1) = ClericSaves(I)
+    Next I
+End If
+
+Rem if a fighter, fill line 2 with fighter saves
+If isFT Then
+    For I = 1 To 5
+        saveChecker(I, 2) = FighterSaves(I)
+    Next I
+End If
+
+Rem if a magic-user, fill line 3 with mu saves
+Rem astute readers will notice a pattern
+If isMU Then
+    For I = 1 To 5
+        saveChecker(I, 3) = MUSaves(I)
+    Next I
+End If
+
+Rem if a theif, fill line 4 with thief saves
+Rem SURPRISE THOUGH: ALSO IF A MONK
+If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
+    For I = 1 To 5
+        saveChecker(I, 4) = ThiefSaves(I)
+    Next I
+End If
 
 
 3430 Print " STRENGTH: ";: Print StrengthScore
@@ -1248,7 +1289,7 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
 End If
 
 
-Rem Illusioinists generate three random spells, rerolling duplicates. [2, p. 39]
+Rem Illusionists generate three random spells, rerolling duplicates. [2, p. 39]
 If InStr(ChosenClass.ClassName, "Illusionist") Then
     Dim SpellsKnown(3) As String
     Dim IllusL1Spells(12) As String
