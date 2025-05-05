@@ -1250,7 +1250,7 @@ If InStr(ChosenClass.ClassName, "Illusionist") Then
         IlluStart:
         spellNum = Int(Rnd * 12) + 1
         If spellNum = idx1 Or spellNum = idx2 Then GoTo IlluStart
-    Else SpellsKnown(I) = IllusL1Spells(spellNum)
+        SpellsKnown(I) = IllusL1Spells(spellNum)
         If I = 1 Then idx1 = spellNum
         If I = 2 Then idx2 = spellNum
     Next I
