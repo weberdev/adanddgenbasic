@@ -1102,8 +1102,9 @@ End If
 
 Rem SET ALIGNMENT
 Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
+Dim alignment As String
 Dim Alignments(9) As String
-Data "LAWFUL GOOD","NEUTRAL GOOD","CHAOTIC GOOD","LAWFUL NEUTRAL","TRUE NEUTRAL","CHAOTIC NEUTRAL","LAWFUL EVIL","NEUTRAL EVIL","CHAOTIC EVIL"
+Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","TRUE NEUTRAL","CHAOTIC NEUTRAL","LAWFUL EVIL","NEUTRAL EVIL","CHAOTIC EVIL"
 For I = 1 To 9
     Read Alignments(I)
 Next I
@@ -1120,7 +1121,37 @@ Rem QB64's input delay makes me yearn for 2 character varnames.
 Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
 Rem we went backwards, wheeee
 
-rem We DO NOT make 1d alignment arrays for the paladin and the druid.
+Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
+
+If InStr(ChosenClass.ClassName, "Monk") Then
+    For I = 1 To 3
+        Print I; ". "; MonkAlignments(I)
+    Next I
+    Input "Enter the number of your alignment: ", A$
+    alignment = MonkAlignments(Val(A$))
+
+ElseIf InStr(ChosenClass.ClassName, "Monk") Then
+    Print "As an Assassin, your alignment must be Evil:"
+    For I = 1 To 3
+        Print I; ". "; Asslignments(I)
+    Next I
+    Input "Enter the number of your alignment: ", A$
+    alignment = Asslignments(Val(A$))
+
+ElseIf InStr(ChosenClass.ClassName, "Druid") Then
+    alignment = "True Neutral"
+ElseIf InStr(ChosenClass.ClassName, "Paladin") Then
+    alignment = "Lawful Good"
+Else
+    Print "Choose your alignment:"
+    For I = 1 To 9
+        Print I; ". "; Alignments(I)
+    Next I
+    Input "Enter the number of your alignment: ", A$
+    alignment = Alignments(Val(A$))
+
+End If
+
 
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
 3380 Print "   SUMMARY OF CHARACTER "
