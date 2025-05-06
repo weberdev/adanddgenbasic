@@ -1104,7 +1104,7 @@ Rem SET ALIGNMENT
 Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
 Dim alignment As String
 Dim Alignments(9) As String
-Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","TRUE NEUTRAL","CHAOTIC NEUTRAL","LAWFUL EVIL","NEUTRAL EVIL","CHAOTIC EVIL"
+Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
 For I = 1 To 9
     Read Alignments(I)
 Next I
@@ -1124,6 +1124,7 @@ Rem we went backwards, wheeee
 Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
 
 If InStr(ChosenClass.ClassName, "Monk") Then
+    Print "As a Monk, your alignment must be Lawful:"
     For I = 1 To 3
         Print I; ". "; MonkAlignments(I)
     Next I
