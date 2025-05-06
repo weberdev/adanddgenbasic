@@ -1178,7 +1178,6 @@ For I = 1 To 5
 Next I
 
 
-
 Print " STRENGTH: ";: Print StrengthScore
 Print SH$;: Print SO$;: If OW > 1 Then Print WL$
 Print " INTELLIGENCE: ";: Print IntelligenceScore
@@ -1189,6 +1188,10 @@ Print " DEXTERITY";: Print DexterityScore
 Print " CONSTITUTION ";: Print ConstitutionScore
 Print " CHARISMA ";: Print CharismaScore
 Print " MAY HAVE "; XF; " RETAINERS"
+For I = 1 To 5
+    Print SaveTypes(I);: Print FinalSaves(I);: Print ". ";:
+Next I
+
 If MN > 0 Then
     Print "Character is psionic"
     Print "Psionic Ability: " + Str$(PS)
