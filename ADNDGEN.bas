@@ -1118,7 +1118,7 @@ If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
 HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
-Print: "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print BaseAC
+Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print BaseAC
 
 Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
 Dim ClericSaves(5) As Integer
