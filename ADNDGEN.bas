@@ -1232,6 +1232,26 @@ If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
     Print CU$
     Print Z1$
 End If
+Rem dwarf constitution spell modifier
+Rem there was no variable name that wasn't *afflicted*
+DfCnSpMd = 0
+Rem SAVES GO HERE
+
+rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
+If RA = 1 Then
+    Select Case ConstitutionScore
+        Case 7 To 10
+            DfCnSpMd = 2
+        Case 11 To 13
+            DfCnSpMd = 3
+        Case 14 To 17
+            DfCnSpMd = 4
+        Case 18
+            DfCnSpMd = 5
+    End Select
+    FinalSaves(3) = FinalSaves(3) - DfCnSpMd: FinalSaves(5) = FinalSaves(5) - DfCnSpMd
+End If
+If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 
 Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
 Rem if a  10 is rolled, they pick on that table
