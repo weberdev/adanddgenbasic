@@ -1237,8 +1237,10 @@ Rem there was no variable name that wasn't *afflicted*
 DfCnSpMd = 0
 Rem SAVES GO HERE
 
-rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
-If RA = 1 Then
+Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
+Rem This applies to gnomes as well. [1, p.16]
+
+If RA = 1 Or RA = 3 Then
     Select Case ConstitutionScore
         Case 7 To 10
             DfCnSpMd = 2
