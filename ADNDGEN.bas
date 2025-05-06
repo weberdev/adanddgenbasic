@@ -457,7 +457,6 @@ End Select
 
 
 1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
-Rem See PHB 1e, PHB
 1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
 1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 
@@ -575,7 +574,7 @@ Select Case DF
         GoSub 3700
 End Select
 
-Rem THIEF FUNCTION TABLE from PHB [1, p. 28] does not include RACIAL ADJUSTMENTS section.
+Rem THIEF FUNCTION TABLE from PHB [1, p. 28], does not include RACIAL ADJUSTMENTS section.
 1741 Dim ThiefSkills(8) As Integer
 1742 For I = 1 To 8
     Read ThiefSkills(I)
@@ -1091,9 +1090,6 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         If isMU And MN = 3 Then GoTo RollDiscipline
         If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
         If MN < 23 Then DV$ = MinorDiscipline(MN)
-        Rem If we have a class mismatch, we can just reroll outside of this mess when class is chosen.
-
-        Rem
     Else GoTo 3380
     End If
 End If
