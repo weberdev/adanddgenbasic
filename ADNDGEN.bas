@@ -1239,8 +1239,9 @@ Rem SAVES GO HERE
 
 Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
 Rem This applies to gnomes as well. [1, p.16]
+rem Furthermore, halflings[1, p.17]
 
-If RA = 1 Or RA = 3 Then
+If RA = 1 Or RA = 3 Or RA = 5 Then
     Select Case ConstitutionScore
         Case 7 To 10
             DfCnSpMd = 2
