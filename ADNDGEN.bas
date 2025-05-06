@@ -1249,9 +1249,16 @@ If MN > 0 Then
 End If
 
 If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
+    Print "Cleric Spells Per Day: "
+    Print "Level 1: 1"
     Print CZ$
     Print CU$
     Print Z1$
+End If
+
+If ChosenClass.ClassName = "Druid" Then
+    Print "Druid Spells Per Day: "
+    Print "Level 1: 2"
 End If
 
 Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
@@ -1314,6 +1321,12 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
             StarterSpells(I + 1) = SpellLists(I, spellNum)
         End If
     Next I
+    Print "Spells Known:"
+    For I = 1 To 4
+        Print StarterSpells(I)
+    Next I
+    Print "Magic-User Spells Per Day"
+    Print "Level 1: 1"
 End If
 
 
@@ -1336,6 +1349,12 @@ If InStr(ChosenClass.ClassName, "Illusionist") Then
         If I = 1 Then idx1 = spellNum
         If I = 2 Then idx2 = spellNum
     Next I
+    Print "Spells Known:"
+    For I = 1 To 4
+        Print SpellsKnown(I)
+    Next I
+    Print "Illusionist Spells Per Day"
+    Print "Level 1: 1"
 End If
 
 
