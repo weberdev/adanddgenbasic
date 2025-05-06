@@ -1103,10 +1103,10 @@ End If
 
 
 
-
+If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "RACE: ", ChosenRace.RaceName;:
-3400 Print " CLASS: ", ChosenClass.ClassName; " TITLE: "
+3400 Print " CLASS: ", ChosenClass.ClassName; " TITLE: ", ChosenClass.Title
 
 Print "GOLD: "; GOLD
 Print "Equipment can be found on pages 35-36 of the PHB."
