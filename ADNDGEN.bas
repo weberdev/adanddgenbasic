@@ -1100,8 +1100,27 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     End If
 End If
 
+Rem SET ALIGNMENT
+Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
+Dim Alignments(9) As String
+Data "LAWFUL GOOD","NEUTRAL GOOD","CHAOTIC GOOD","LAWFUL NEUTRAL","TRUE NEUTRAL","CHAOTIC NEUTRAL","LAWFUL EVIL","NEUTRAL EVIL","CHAOTIC EVIL"
+For I = 1 To 9
+    Read Alignments(I)
+Next I
 
+Rem two alignment charts for monks and assassins
+Rem monks are lawful
+Dim MonkAlignments(3) As String
+MonkAlignments(1) = Alignments(1): MonkAlignments(2) = Alignments(4): MonkAlignments(3) = Alignments(7)
 
+Rem asssassins are evil
+Rem Saieth Gygax: "perforce, as  the killing of humans and other intelligent life forms for the purpose of profit is basically held to be the antithesis of weal" [1, p.28]
+Dim Asslignments(3) As String
+Rem QB64's input delay makes me yearn for 2 character varnames.
+Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
+Rem we went backwards, wheeee
+
+rem We DO NOT make 1d alignment arrays for the paladin and the druid.
 
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
 3380 Print "   SUMMARY OF CHARACTER "
