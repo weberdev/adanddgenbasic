@@ -1024,23 +1024,17 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
             Case 26 To 40
                 MnD = 3
             Case 41 To 55
-                MnD = 2
-                MjD = 1
+                MnD = 2: MjD = 1
             Case 56 To 70
-                MnD = 3
-                MjD = 1
+                MnD = 3: MjD = 1
             Case 71 To 80
-                MnD = 4
-                MjD = 1
+                MnD = 4: MjD = 1
             Case 81 To 90
-                MnD = 3
-                MjD = 2
+                MnD = 3: MjD = 2
             Case 91 To 95
-                MnD = 5
-                MjD = 1
+                MnD = 5: MjD = 1
             Case Else
-                MnD = 4
-                MjD = 2
+                MnD = 4: MjD = 2
         End Select
 
         Rem We make an executive decision here, one taken for my sanity.
