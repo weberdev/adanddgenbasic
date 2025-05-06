@@ -1183,19 +1183,17 @@ Next I
 
 
 
-3430 Print " STRENGTH: ";: Print StrengthScore
-3440 Print SH$
-3441 Print SO$
-3442 If OW > 1 Then Print WL$
-3450 Print " INTELLIGENCE: ";: Print IntelligenceScore
-3470 Print lang$
-3480 Print " WISDOM: ";: Print WisdomScore
+Print " STRENGTH: ";: Print StrengthScore
+Print SH$;: Print SO$;: If OW > 1 Then Print WL$
+Print " INTELLIGENCE: ";: Print IntelligenceScore
+Print lang$
+Print " WISDOM: ";: Print WisdomScore
 If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 Print " DEXTERITY";: Print DexterityScore
-3510 Print " CONSTITUTION ";: Print ConstitutionScore
-3520 Print " CHARISMA ";: Print CharismaScore
-3530 Print " MAY HAVE "; XF; " RETAINERS"
-3531 If MN > 0 Then
+Print " CONSTITUTION ";: Print ConstitutionScore
+Print " CHARISMA ";: Print CharismaScore
+Print " MAY HAVE "; XF; " RETAINERS"
+If MN > 0 Then
     Print "Character is psionic"
     Print "Psionic Ability: " + Str$(PS)
     Print "Psionic Attack Strength: " + Str$(PA)
