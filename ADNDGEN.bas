@@ -1092,7 +1092,6 @@ End If
 
 
 
-Rem Level up code (if implemented), will set assassins back two levels of thief skills
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", ChosenRace.RaceName
 3400 Print "   CLASS: ", ChosenClass.ClassName; Tab(22); "GOLD: "; GOLD
