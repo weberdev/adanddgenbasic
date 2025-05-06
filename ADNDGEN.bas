@@ -1095,6 +1095,8 @@ End If
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", ChosenRace.RaceName
 3400 Print "   CLASS: ", ChosenClass.ClassName; Tab(22); "GOLD: "; GOLD
+Print "Equipment can be found on pages 35-36 of the PHB."
+
 Dim BaseAC As Integer
 BaseAC = 10 + DefAdj
 Dim HitPoints As Integer
