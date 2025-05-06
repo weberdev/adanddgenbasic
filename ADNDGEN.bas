@@ -1102,6 +1102,8 @@ Rem Level up code (if implemented), will set assassins back two levels of thief 
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "   RACE: ", ChosenRace.RaceName
 3400 Print "   CLASS: ", ChosenClass.ClassName; Tab(22); "GOLD: "; GOLD
+Dim BaseAC As Integer
+BaseAC = 10 + DefAdj
 Dim HitPoints As Integer
 If ChosenClass.SecondHD > 0 Then
     If ChosenClass.ThirdHD > 0 Then
@@ -1116,7 +1118,7 @@ If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
 HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
-Print HitPoints
+Print: "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print BaseAC
 
 Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
 Dim ClericSaves(5) As Integer
@@ -1239,7 +1241,7 @@ Rem SAVES GO HERE
 
 Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
 Rem This applies to gnomes as well. [1, p.16]
-rem Furthermore, halflings[1, p.17]
+Rem Furthermore, halflings[1, p.17]
 
 If RA = 1 Or RA = 3 Or RA = 5 Then
     Select Case ConstitutionScore
