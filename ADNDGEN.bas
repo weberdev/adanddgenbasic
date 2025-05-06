@@ -1113,6 +1113,12 @@ HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
 Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print BaseAC
 
+
+Rem dwarf constitution spell modifier
+Rem there was no variable name that wasn't *afflicted*
+DfCnSpMd = 0
+Rem SAVES GO HERE
+
 Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
 Dim ClericSaves(5) As Integer
 ClericSaves(1) = 10: ClericSaves(2) = 13: ClericSaves(3) = 14: ClericSaves(4) = 16: ClericSaves(5) = 15
@@ -1175,6 +1181,23 @@ For I = 1 To 5
     Next J
     FinalSaves(I) = MinSave
 Next I
+Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
+Rem This applies to gnomes as well. [1, p.16]
+Rem Furthermore, halflings[1, p.17]
+
+If RA = 1 Or RA = 3 Or RA = 5 Then
+    Select Case ConstitutionScore
+        Case 7 To 10
+            DfCnSpMd = 2
+        Case 11 To 13
+            DfCnSpMd = 3
+        Case 14 To 17
+            DfCnSpMd = 4
+        Case 18
+            DfCnSpMd = 5
+    End Select
+    FinalSaves(3) = FinalSaves(3) - DfCnSpMd: FinalSaves(5) = FinalSaves(5) - DfCnSpMd
+End If
 
 
 Print " STRENGTH: ";: Print StrengthScore
@@ -1230,29 +1253,6 @@ If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
     Print CU$
     Print Z1$
 End If
-Rem dwarf constitution spell modifier
-Rem there was no variable name that wasn't *afflicted*
-DfCnSpMd = 0
-Rem SAVES GO HERE
-
-Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
-Rem This applies to gnomes as well. [1, p.16]
-Rem Furthermore, halflings[1, p.17]
-
-If RA = 1 Or RA = 3 Or RA = 5 Then
-    Select Case ConstitutionScore
-        Case 7 To 10
-            DfCnSpMd = 2
-        Case 11 To 13
-            DfCnSpMd = 3
-        Case 14 To 17
-            DfCnSpMd = 4
-        Case 18
-            DfCnSpMd = 5
-    End Select
-    FinalSaves(3) = FinalSaves(3) - DfCnSpMd: FinalSaves(5) = FinalSaves(5) - DfCnSpMd
-End If
-If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
 
 Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
 Rem if a  10 is rolled, they pick on that table
