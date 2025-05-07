@@ -1208,6 +1208,7 @@ LangList(18) = "Doppelganger"
 
 Dim KnownLangs(10) As String
 KnownLangs(1) = "Common"
+KnownLangs(2) = alignment
 
 
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
