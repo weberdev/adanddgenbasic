@@ -1358,7 +1358,7 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
     For I = 1 To 9
         Read DefensiveSpells(I)
     Next I
-    Data "Affect Normal Fires","Dancing LIghts","Feather Fall","Hold Portal","Jump","Protection From Evil","Shield","Spider Climb","Ventriloquism"
+    Data "Affect Normal Fires","Dancing Lights","Feather Fall","Hold Portal","Jump","Protection From Evil","Shield","Spider Climb","Ventriloquism"
     Dim MiscSpells(9) As String
     For I = 1 To 9
         Read MiscSpells(I)
