@@ -882,6 +882,7 @@ If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
 
 End If
 
+
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
 Rem We expect users not to choose powers they can't take.
 Rem If they do, they get a random choice, as that's fair.
@@ -1182,6 +1183,31 @@ Else
     alignment = Alignments(A)
 
 End If
+
+
+Rem Language Determination
+Dim LangList(18) As String
+LangList(1) = "Dwarvish"
+LangList(2) = "Elvish"
+LangList(3) = "Gnome"
+LangList(4) = "Goblin"
+LangList(5) = "Gnoll"
+LangList(6) = "Halfling"
+LangList(7) = "Hobgoblin"
+LangList(8) = "Kobold"
+LangList(9) = "Orc"
+LangList(10) = "Dragon"
+LangList(11) = "Giant"
+LangList(12) = "Ogre"
+LangList(13) = "Troll"
+LangList(14) = "Pixie"
+LangList(15) = "Lizard Man"
+LangList(16) = "Minotaur"
+LangList(17) = "Centaur"
+LangList(18) = "Doppelganger"
+
+Dim KnownLangs(10) As String
+KnownLangs(1) = "Common"
 
 
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
