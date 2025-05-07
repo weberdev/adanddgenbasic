@@ -1128,16 +1128,24 @@ If InStr(ChosenClass.ClassName, "Monk") Then
     For I = 1 To 3
         Print I; ". "; MonkAlignments(I)
     Next I
-    Input "Enter the number of your alignment: ", A$
-    alignment = MonkAlignments(Val(A$))
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = MonkAlignments(A)
 
 ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
     Print "As an Assassin, your alignment must be Evil:"
     For I = 1 To 3
         Print I; ". "; Asslignments(I)
     Next I
-    Input "Enter the number of your alignment: ", A$
-    alignment = Asslignments(Val(A$))
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = Asslignments(A)
 
 ElseIf InStr(ChosenClass.ClassName, "Druid") Then
     alignment = "True Neutral"
@@ -1148,8 +1156,12 @@ Else
     For I = 1 To 9
         Print I; ". "; Alignments(I)
     Next I
-    Input "Enter the number of your alignment: ", A$
-    alignment = Alignments(Val(A$))
+    Do
+        Input "Enter the number of your alignment (1-9): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 9 Then Print "Invalid choice. Please choose a number from 1 to 9."
+    Loop While A < 1 Or A > 9
+    alignment = Alignments(A)
 
 End If
 
