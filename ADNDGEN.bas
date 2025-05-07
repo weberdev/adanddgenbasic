@@ -1187,65 +1187,6 @@ End If
 
 Dim baseAC As Integer
 baseAC = 10
-Print "Suggested Armor Setup:"
-
-If isMU Then
-    Print "  - None (Magic-Users and Illusionists cannot wear armor)"
-
-ElseIf InStr(ChosenClass.ClassName, "Monk") Then
-    Print "  - None (Monks cannot wear armor)"
-
-ElseIf InStr(ChosenClass.ClassName, "Thief") Or InStr(ChosenClass.ClassName, "Assassin") Then
-    If GOLD >= 15 Then
-        Print "  - Leather Armor (AC 8)": baseAC = 8
-    Else
-        Print "  - None (cannot afford even leather armor)"
-    End If
-
-ElseIf InStr(ChosenClass.ClassName, "Druid") Then
-    If GOLD >= 15 Then
-        Print "  - Leather Armor + Wooden Shield (AC 7)"
-        baseAC = 7
-    ElseIf GOLD >= 5 Then
-        Print "  - Leather Armor only (AC 8)"
-        baseAC = 8
-    ElseIf GOLD >= 3 Then
-        Print "  - Wooden Shield only (AC 9)"
-        baseAC = 9
-    Else
-        Print "  - None (cannot afford legal armor)"
-    End If
-
-ElseIf isCL Or isFT Then
-    If GOLD >= 415 Then
-        Print "  - Plate Mail + Shield (AC 2)"
-        baseAC = 2
-    ElseIf GOLD >= 100 Then
-        Print "  - Banded Mail + Shield (AC 3)"
-        baseAC = 3
-    ElseIf GOLD >= 85 Then
-        Print "  - Chain Mail + Shield (AC 4)"
-        baseAC = 4
-    ElseIf GOLD >= 75 Then
-        Print "  - Scale Mail + Shield (AC 5)"
-        baseAC = 5
-    ElseIf GOLD >= 45 Then
-        Print "  - Studded Leather + Shield (AC 6)"
-        baseAC = 6
-    ElseIf GOLD >= 15 Then
-        Print "  - Leather Armor + Shield (AC 7)"
-        baseAC = 7
-    ElseIf GOLD >= 10 Then
-        Print "  - Shield only (AC 9)"
-        baseAC = 9
-    Else
-        Print "  - None (AC 10)"
-    End If
-
-Else
-    Print "  - No logic written for this class (fallback: Leather Armor if affordable)"
-End If
-
 
 Rem Language Determination
 Dim LangList(18) As String
