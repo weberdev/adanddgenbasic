@@ -1209,6 +1209,49 @@ LangList(18) = "Doppelganger"
 Dim KnownLangs(10) As String
 KnownLangs(1) = "Common"
 KnownLangs(2) = alignment
+Dim KL As Integer
+KL = 2
+Select Case RA
+    Case 1
+        KL = KL + 1: KnownLangs(KL) = "Dwarvish"
+    Case 2
+        KL = KL + 1: KnownLangs(KL) = "Elvish"
+    Case 3
+        KL = KL + 1: KnownLangs(KL) = "Gnome"
+    Case 4
+        KL = KL + 1: KnownLangs(KL) = "Half-Elvish"
+    Case 5
+        KL = KL + 1: KnownLangs(KL) = "Halfling"
+End Select
+
+If isCL And ChosenClass.ClassName = "Druid" Then
+    KL = KL + 1: KnownLangs(KL) = "Druidic"
+End If
+
+If isTF Then
+    KL = KL + 1: KnownLangs(KL) = "Thieves' Cant"
+End If
+Dim Pick As Integer
+Dim LangChosen(18) As Integer
+Print "You may choose"; bonusLangCount; " additional language(s):"
+For I = 1 To bonusLangCount
+    Print "Available languages:"
+    For J = 1 To 18
+        If LangChosen(J) = 0 Then Print J; ". "; LangList(J)
+    Next J
+
+    Do
+        Input "Enter the number of your choice: ", Pick
+        If Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1 Then
+            Print "Invalid or already chosen. Try again."
+        End If
+    Loop While Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1
+
+    KL = KL + 1
+    KnownLangs(KL) = LangList(Pick)
+    LangChosen(Pick) = 1
+Next I
+
 
 
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
