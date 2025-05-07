@@ -1243,7 +1243,7 @@ If isMU Then
     Next I
 End If
 
-Rem if a theif, fill line 4 with thief saves
+Rem if a thief, fill line 4 with thief saves
 Rem SURPRISE THOUGH: ALSO IF A MONK
 If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
     For I = 1 To 5
