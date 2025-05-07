@@ -497,6 +497,24 @@ Select Case IntelligenceScore
         SP$ = "95% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 95: MnSp = 10: MxSp = 100
 
 End Select
+Dim bonusLangCount As Integer
+Rem Languages Column of INTELLIGENCE TABLE I. [1, p.10]
+Select Case IntelligenceScore
+    Case 8 To 9
+        bonusLangCount = 1
+    Case 10 To 11
+        bonusLangCount = 2
+    Case 12 To 13
+        bonusLangCount = 3
+    Case 14 To 15
+        bonusLangCount = 4
+    Case 16
+        bonusLangCount = 5
+    Case 17
+        bonusLangCount = 6
+    Case 18
+        bonusLangCount = 7
+End Select
 
 Rem I'm not sure which version of the chart this is.
 Rem It was included in the originaal manuscript.
