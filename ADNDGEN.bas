@@ -1131,7 +1131,7 @@ If InStr(ChosenClass.ClassName, "Monk") Then
     Input "Enter the number of your alignment: ", A$
     alignment = MonkAlignments(Val(A$))
 
-ElseIf InStr(ChosenClass.ClassName, "Monk") Then
+ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
     Print "As an Assassin, your alignment must be Evil:"
     For I = 1 To 3
         Print I; ". "; Asslignments(I)
@@ -1161,7 +1161,7 @@ If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
 
 Print "GOLD: "; GOLD
 Print "Equipment can be found on pages 35-36 of the PHB."
-Print "ALIGNMENT: Paladins must be LG, monks must be lawful"
+Print "ALIGNMENT: "; alignment
 
 
 Dim BaseAC As Integer
