@@ -1,13 +1,6 @@
-        _                 _  _  _          
-  /\  | \ \  / /\  |\ | /  |_ | \         
- /--\ |_/  \/ /--\ | \| \_ |_ |_/         
-  _            __  _  _        __         
- | \ | | |\ | /__ |_ / \ |\ | (_    ()    
- |_/ |_| | \| \_| |_ \_/ | \|___)   (_X
-   
- | \ |_)  /\  /__ / \ |\ | (_             
- |_/ | \ /--\ \_| \_/ | \| __)            
-                                                              
+AD&D Character Creator:
+
+I had some really nice ASCII art here, but it displays very differently on my text editor than it does on the github readme.                      
                                                                                                                                               
 Once you drag out the ASCII art, you've hit 1.0. Can you imagine that people used to do that by hand? 
 
