@@ -1690,6 +1690,17 @@ If isTF = 1 Then
     Next I
     Print #1, ""
 End If
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Print #1, "== MONK SKILLS ==": Print #1, TA$: Print #1, TB$
+    Print #1, "  ";
+    For I = 1 To 7
+        If I <> 3 Then Print #1, ThiefString(I);
+        If I <> 3 Then Print #1, "  ";
+    Next I
+    Print #1, ""
+
+End If
+
 
 If MN > 0 Then
     Print #1, "Character is psionic"
