@@ -1,8 +1,21 @@
-  O  o-o   o   o   O  o   o   o-o o--o o-o       o-o   o   o o   o  o-o  o--o  o-o  o   o  o-o              o-o   o--o    O   o-o   o-o  o   o  o-o  
- / \ |  \  |   |  / \ |\  |  /    |    |  \      |  \  |   | |\  | o     |    o   o |\  | |           o     |  \  |   |  / \ o     o   o |\  | |     
-o---o|   O o   o o---o| \ | O     O-o  |   O     |   O |   | | \ | |  -o O-o  |   | | \ |  o-o       /|     |   O O-Oo  o---o|  -o |   | | \ |  o-o  
-|   ||  /   \ /  |   ||  \|  \    |    |  /      |  /  |   | |  \| o   | |    o   o |  \|     |     o-O-    |  /  |  \  |   |o   | o   o |  \|     | 
-o   oo-o     o   o   oo   o   o-o o--o o-o       o-o    o-o  o   o  o-o  o--o  o-o  o   o o--o        |     o-o   o   o o   o o-o   o-o  o   o o--o                               
+     o      ooooooooo  ooooo  oooo  o      oooo   oooo  oooooooo8 ooooooooooo ooooooooo                         
+    888      888    88o 888    88  888      8888o  88 o888     88  888    88   888    88o                       
+   8  88     888    888  888  88  8  88     88 888o88 888          888ooo8     888    888                       
+  8oooo88    888    888   88888  8oooo88    88   8888 888o     oo  888    oo   888    888                       
+o88o  o888o o888ooo88      888 o88o  o888o o88o    88  888oooo88  o888ooo8888 o888ooo88                         
+                                                                                                                
+ooooooooo  ooooo  oooo oooo   oooo  ooooooo8 ooooooooooo  ooooooo  oooo   oooo oooooooo8        oooooo          
+ 888    88o 888    88   8888o  88 o888    88  888    88 o888   888o 8888o  88 888              888  888         
+ 888    888 888    88   88 888o88 888    oooo 888ooo8   888     888 88 888o88  888oooooo        88o88  o88      
+ 888    888 888    88   88   8888 888o    88  888    oo 888o   o888 88   8888         888      888  88o8        
+o888ooo88    888oo88   o88o    88  888ooo888 o888ooo8888  88ooo88  o88o    88 o88oooo888        888o88 88o      
+                                                                                                                
+ooooooooo  oooooooooo       o       ooooooo8    ooooooo  oooo   oooo oooooooo8                                  
+ 888    88o 888    888     888    o888    88  o888   888o 8888o  88 888                                         
+ 888    888 888oooo88     8  88   888    oooo 888     888 88 888o88  888oooooo                                  
+ 888    888 888  88o     8oooo88  888o    88  888o   o888 88   8888         888                                 
+o888ooo88  o888o  88o8 o88o  o888o 888ooo888    88ooo88  o88o    88 o88oooo888                                  
+                                                                                                                                              
 
 Once you drag out the ASCII art, you've hit 1.0. Can you imagine that people used to do that by hand? 
 
