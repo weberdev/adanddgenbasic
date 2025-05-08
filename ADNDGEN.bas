@@ -1258,7 +1258,7 @@ Select Case RA
     Case 3
         KL = KL + 1: KnownLangs(KL) = "Gnome"
     Case 4
-        KL = KL + 1: KnownLangs(KL) = "Half-Elvish"
+        KL = KL + 1: KnownLangs(KL) = "Elvish"
     Case 5
         KL = KL + 1: KnownLangs(KL) = "Halfling"
 End Select
@@ -1281,7 +1281,7 @@ For I = 1 To bonusLangCount
 
     Do
         Input "Enter the number of your choice: ", Pick
-        If Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1 Then
+        If Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1 Or KnownLangs(3) = LangList(Pick) Then
             Print "Invalid or already chosen. Try again."
         End If
     Loop While Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1
