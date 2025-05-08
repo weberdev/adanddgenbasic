@@ -905,6 +905,8 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
     Rem for each point of cha above 16, psionics chance increase by 0.5%
     If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
 
+    If BaseChance Mod 10 = 5 Then BaseChance = BaseChance - 5
+
     Rem As an aside, even with perfect 18s, chances of psionics are vanishingly low
     Rem 1+5+2+1 = 9% of the top end
 
