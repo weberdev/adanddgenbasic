@@ -1558,11 +1558,8 @@ End If
 
 If InStr(ChosenClass.ClassName, "Monk") Then
     Rem We remove PICK PCKT from the thief skills, because monks don't pick pockets.
-    Rem We also remove READ LANG, because you don't read any old dusty tomes in ancient languages in monasteries.
-    Rem Thank you Gary, very cool.
-    Rem This isn't a level one skill even for thieves, but still.
-    TA$ = " PICK REMV MOVE CLIM HIDE NEAR READ"
-    TB$ = " LOCK TRAP SILT SURF SHDW NOIS LANG"
+    TA$ = " PICK REMV MOVE CLIM HIDE NEAR"
+    TB$ = " LOCK TRAP SILT SURF SHDW NOIS"
 
     Print "MONK SKILLS": Print TA$: Print TB$
     Print "  ";
