@@ -306,8 +306,12 @@ Next I
 Next I
 
 180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
-181 If LCase$(response$) <> "y" Then GoTo 150
-
+181 If LCase$(response$) <> "y" Then
+    For I = 1 To 6
+        UsedAbilityArray(I) = 0
+    Next I
+    GoTo 150
+End If
 Dim AvailRaces(7) As RaceDef
 For I = 1 To UBound(Races)
     If (AbilityAssignedArray(1) >= Races(I).MinStr) And (AbilityAssignedArray(2) >= Races(I).MinInt) And (AbilityAssignedArray(3) >= Races(I).MinWis) And (AbilityAssignedArray(4) >= Races(I).MinDex) And (AbilityAssignedArray(5) >= Races(I).MinCon) And (AbilityAssignedArray(6) >= Races(I).MinCha) Then AvailRaces(I) = Races(I)
@@ -1684,6 +1688,8 @@ End If
 
 If isTF = 1 Then
     Print #1, "== THIEF SKILLS =="
+
+    Print #1, TY$: Print #1, TA$: Print #1, TB$
     For I = 1 To 8
         Print #1, ThiefString(I);
         If I < 8 Then Print #1, " | ";
@@ -1719,7 +1725,7 @@ If MN > 0 Then
     Next I
     Print #1,
 
-    Print "Number of Psionic Defense Modes: " + Str$(DfCt)
+    Print #1, "Number of Psionic Defense Modes: " + Str$(DfCt)
 
     Print #1, "Psionic Defense Modes: ";
     For I = 1 To UBound(DefSelected$)
@@ -1729,7 +1735,7 @@ If MN > 0 Then
             Print #1, DefSelected$(I); ".";
         End If
     Next I
-    Print #1,
+
 
     Print #1, "Number of Minor Disciplines: " + Str$(MnD)
     If MjD > 0 Then Print #1, "Number of Major Disciplines: " + Str$(MjD)
