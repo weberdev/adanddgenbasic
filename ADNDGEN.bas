@@ -30,6 +30,21 @@ Type RaceDef
     MinCon As Integer: MaxCon As Integer: MinCha As Integer: MaxCha As Integer
 End Type
 
+Dim MinorDiscipline(22) As String
+For I = 1 To 22
+    Read MinorDiscipline(I)
+Next I
+Rem 3: reroll if magic-user
+Data "Animal Telepathy","Body Equilibrium","Body Weaponry","Cell Adjustment","Clairaudience","Clairvoyance"
+Rem 9: no thieves. 10: no Fighters. 12: no clerics.
+Rem Why? no idea. Gygax says so..
+Data "Detection of Good or Evil","Detection of Magic","Domination","Empathy","ESP","Expansion"
+Rem 18: No Thieves
+Data "Hypnosis","Invisibility","Levitation","Mind Over Body","Molecular Agitation","Object Reading"
+Rem 20: No clerics.
+Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
+
+
 Dim Classes(11) As ClassDef
 
 Classes(1).ClassName = "Fighter": Classes(1).ClassIndex = 1: Classes(1).HitDie = 10
@@ -887,6 +902,74 @@ If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
 End If
 
 
+
+Rem SET ALIGNMENT
+Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
+Dim alignment As String
+Dim Alignments(9) As String
+
+For I = 1 To 9
+    Read Alignments(I)
+Next I
+Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
+Rem two alignment charts for monks and assassins
+Rem monks are lawful
+Dim MonkAlignments(3) As String
+MonkAlignments(1) = Alignments(1): MonkAlignments(2) = Alignments(4): MonkAlignments(3) = Alignments(7)
+
+Rem asssassins are evil
+Rem Saieth Gygax: "perforce, as  the killing of humans and other intelligent life forms for the purpose of profit is basically held to be the antithesis of weal" [1, p.28]
+Dim Asslignments(3) As String
+Rem QB64's input delay makes me yearn for 2 character varnames.
+Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
+Rem we went backwards, wheeee
+
+Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
+
+
+
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Print "As a Monk, your alignment must be Lawful:"
+    For I = 1 To 3
+        Print I; ". "; MonkAlignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = MonkAlignments(A)
+
+ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
+    Print "As an Assassin, your alignment must be Evil:"
+    For I = 1 To 3
+        Print I; ". "; Asslignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = Asslignments(A)
+
+ElseIf InStr(ChosenClass.ClassName, "Druid") Then
+    alignment = "True Neutral"
+ElseIf InStr(ChosenClass.ClassName, "Paladin") Then
+    alignment = "Lawful Good"
+Else
+    Print "Choose your alignment:"
+    For I = 1 To 9
+        Print I; ". "; Alignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-9): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 9 Then Print "Invalid choice. Please choose a number from 1 to 9."
+    Loop While A < 1 Or A > 9
+    alignment = Alignments(A)
+
+End If
+
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
 Rem We expect users not to choose powers they can't take.
 Rem If they do, they get a random choice, as that's fair.
@@ -1097,19 +1180,6 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Rem I don't want to generate a variable between one and twelve, and a variable between one and six.
         Rem we'll make one between 1 and 24.
         DV$ = ""
-        Dim MinorDiscipline(22) As String
-        For I = 1 To 22
-            Read MinorDiscipline(I)
-        Next I
-        Rem 3: reroll if magic-user
-        Data "Animal Telepathy","Body Equilibrium","Body Weaponry","Cell Adjustment","Clairaudience","Clairvoyance"
-        Rem 9: no thieves. 10: no Fighters. 12: no clerics.
-        Rem Why? no idea. Gygax says so..
-        Data "Detection of Good or Evil","Detection of Magic","Domination","Empathy","ESP","Expansion"
-        Rem 18: No Thieves
-        Data "Hypnosis","Invisibility","Levitation","Mind Over Body","Molecular Agitation","Object Reading"
-        Rem 20: No clerics.
-        Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 
         RollDiscipline:
         Rem MN stands for Minor Number
@@ -1121,74 +1191,9 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         If isMU And MN = 3 Then GoTo RollDiscipline
         If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
         If MN < 23 Then DV$ = MinorDiscipline(MN)
-    Else GoTo 3380
     End If
 End If
 
-Rem SET ALIGNMENT
-Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
-Dim alignment As String
-Dim Alignments(9) As String
-
-For I = 1 To 9
-    Read Alignments(I)
-Next I
-Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
-Rem two alignment charts for monks and assassins
-Rem monks are lawful
-Dim MonkAlignments(3) As String
-MonkAlignments(1) = Alignments(1): MonkAlignments(2) = Alignments(4): MonkAlignments(3) = Alignments(7)
-
-Rem asssassins are evil
-Rem Saieth Gygax: "perforce, as  the killing of humans and other intelligent life forms for the purpose of profit is basically held to be the antithesis of weal" [1, p.28]
-Dim Asslignments(3) As String
-Rem QB64's input delay makes me yearn for 2 character varnames.
-Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
-Rem we went backwards, wheeee
-
-Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
-
-If InStr(ChosenClass.ClassName, "Monk") Then
-    Print "As a Monk, your alignment must be Lawful:"
-    For I = 1 To 3
-        Print I; ". "; MonkAlignments(I)
-    Next I
-    Do
-        Input "Enter the number of your alignment (1-3): ", A$
-        A = Val(A$)
-        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
-    Loop While A < 1 Or A > 3
-    alignment = MonkAlignments(A)
-
-ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
-    Print "As an Assassin, your alignment must be Evil:"
-    For I = 1 To 3
-        Print I; ". "; Asslignments(I)
-    Next I
-    Do
-        Input "Enter the number of your alignment (1-3): ", A$
-        A = Val(A$)
-        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
-    Loop While A < 1 Or A > 3
-    alignment = Asslignments(A)
-
-ElseIf InStr(ChosenClass.ClassName, "Druid") Then
-    alignment = "True Neutral"
-ElseIf InStr(ChosenClass.ClassName, "Paladin") Then
-    alignment = "Lawful Good"
-Else
-    Print "Choose your alignment:"
-    For I = 1 To 9
-        Print I; ". "; Alignments(I)
-    Next I
-    Do
-        Input "Enter the number of your alignment (1-9): ", A$
-        A = Val(A$)
-        If A < 1 Or A > 9 Then Print "Invalid choice. Please choose a number from 1 to 9."
-    Loop While A < 1 Or A > 9
-    alignment = Alignments(A)
-
-End If
 
 
 Dim baseAC As Integer
