@@ -1129,11 +1129,11 @@ Rem SET ALIGNMENT
 Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
 Dim alignment As String
 Dim Alignments(9) As String
-Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
+
 For I = 1 To 9
     Read Alignments(I)
 Next I
-
+Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
 Rem two alignment charts for monks and assassins
 Rem monks are lawful
 Dim MonkAlignments(3) As String
