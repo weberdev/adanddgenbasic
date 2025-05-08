@@ -1691,6 +1691,41 @@ If isTF = 1 Then
     Print #1, ""
 End If
 
+If MN > 0 Then
+    Print #1, "Character is psionic"
+    Print #1, "Psionic Ability: " + Str$(PS)
+    Print #1, "Psionic Attack Strength: " + Str$(PA)
+    Print #1, "Psionic Defense Strength: " + Str$(MD)
+    Print #1, "Number of Psionic Attack Modes: " + Str$(AtCt)
+
+    Print #1, "Psionic Attack Modes: ";
+    For I = 1 To UBound(Selected$)
+        If I < UBound(Selected$) Then
+            Print #1, Selected$(I); ", ";
+        Else
+            Print #1, Selected$(I); ".";
+        End If
+    Next I
+    Print #1,
+
+    Print "Number of Psionic Defense Modes: " + Str$(DfCt)
+
+    Print #1, "Psionic Defense Modes: ";
+    For I = 1 To UBound(DefSelected$)
+        If I < UBound(DefSelected$) Then
+            Print #1, DefSelected$(I); ", ";
+        Else
+            Print #1, DefSelected$(I); ".";
+        End If
+    Next I
+    Print #1,
+
+    Print #1, "Number of Minor Disciplines: " + Str$(MnD)
+    If MjD > 0 Then Print #1, "Number of Major Disciplines: " + Str$(MjD)
+    Print #1, "Psychic Discipline: " + DV$
+End If
+
+
 Print #1, ""
 Print #1, "=== END OF CHARACTER SHEET ==="
 Print #1, "Generated: "; Date$; " "; Time$
