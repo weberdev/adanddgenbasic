@@ -1613,9 +1613,91 @@ For I = 1 To KL
     Print "- "; KnownLangs(I)
 Next I
 
+Input "What is your character's name?", name$
+Dim filename As String
+filename = "character_" + Date$ + "_" + Time$
+
+For I = 1 To Len(filename)
+    Select Case Mid$(filename, I, 1)
+        Case "/", ":"
+            Mid$(filename, I, 1) = "_"
+    End Select
+Next I
+filename = filename + ".txt"
+
+Open filename For Output As #1
+
+Print #1, "=== ADVANCED DUNGEONS & DRAGONS CHARACTER ==="
+Print #1, ""
+Print #1, "Name: "; name$
+Print #1, "Race: "; ChosenRace.RaceName
+Print #1, "Class: "; ChosenClass.ClassName; " (Title: "; ChosenClass.Title; ")"
+Print #1, "Alignment: "; alignment
+Print #1, "Gold: "; GOLD
+Print #1, "Hit Points: "; HitPoints
+Print #1, "Base Armor Class: "; baseAC
+Print #1, ""
+Print #1, "== ABILITY SCORES =="
+Print #1, "STR: "; StrengthScore
+Print #1, "INT: "; IntelligenceScore
+Print #1, "WIS: "; WisdomScore
+Print #1, "DEX: "; DexterityScore
+Print #1, "CON: "; ConstitutionScore
+Print #1, "CHA: "; CharismaScore
+Print #1, ""
+Print #1, "== SAVING THROWS =="
+For I = 1 To 5
+    Print #1, SaveTypes(I); ": "; FinalSaves(I)
+Next I
+Print #1, ""
+Print #1, "== LANGUAGES =="
+For I = 1 To KL
+    Print #1, "- "; KnownLangs(I)
+Next I
+Print #1, ""
+
+If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
+    Print #1, "Cleric Spells Per Day: Level 1: 1"
+End If
+
+If ChosenClass.ClassName = "Druid" Then
+    Print #1, "Druid Spells Per Day: Level 1: 2"
+End If
+
+If InStr(ChosenClass.ClassName, "Magic-User") Then
+    Print #1, "Magic-User Spells Per Day: Level 1: 1"
+    Print #1, "Known Spells:"
+    For I = 1 To 4
+        Print #1, "- "; StarterSpells(I)
+    Next I
+End If
+
+If InStr(ChosenClass.ClassName, "Illusionist") Then
+    Print #1, "Illusionist Spells Per Day: Level 1: 1"
+    Print #1, "Known Spells:"
+    For I = 1 To 3
+        Print #1, "- "; SpellsKnown(I)
+    Next I
+End If
+
+If isTF = 1 Then
+    Print #1, "== THIEF SKILLS =="
+    For I = 1 To 8
+        Print #1, ThiefString(I);
+        If I < 8 Then Print #1, " | ";
+    Next I
+    Print #1, ""
+End If
+
+Print #1, ""
+Print #1, "=== END OF CHARACTER SHEET ==="
+Print #1, "Generated: "; Date$; " "; Time$
+
+Close #1
+
+Print "Character written to: "; filename
 
 4000 Print "DONE"
-
 
 
 Function ROLLDIERESULT
