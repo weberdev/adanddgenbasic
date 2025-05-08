@@ -1374,7 +1374,7 @@ Rem if a thief, fill line 4 with thief saves
 Rem SURPRISE THOUGH: ALSO IF A MONK
 If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
     For I = 1 To 5
-        saveChecker(I, 4) = ThiefSaves(I)
+        saveChecker(I, 4) = TFSaves(I)
     Next I
 End If
 
