@@ -42,3 +42,7 @@ It's a nod to the first manuscript, which contained the ten default classes and 
 Why are most definitions just jammed into the start of the program?
 
 READs buried in IF statements seem to make QB64 grumpy. While an alignment system based on the first 9 minor psychic disciplines would be fun, it's also not within the scope of classic AD&D. I'll tidy it up soon, idiomatic BASIC and program organization is not really what I was trained in.  
+
+How do I run it?
+
+To run: download QB64, above, and install it. Download the code from the repository by clicking the green "<> Code" button, and then selecting "Download ZIP". Unzip the file, and open the ADNDGEN.bas with QB64. Click run in the QBASIC window or press F5. The program will compile into an executable and then run. Output characters will be posted in the same directory you have QB64 in.
