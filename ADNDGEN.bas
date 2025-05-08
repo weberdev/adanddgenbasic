@@ -30,6 +30,31 @@ Type RaceDef
     MinCon As Integer: MaxCon As Integer: MinCha As Integer: MaxCha As Integer
 End Type
 
+Dim OffensiveSpells(9) As String
+For I = 1 To 9
+    Read OffensiveSpells(I)
+Next I
+Data "Burning Hands","Charm Person","Enlarge","Friends","Light","Magic Missile","Push","Shocking Grasp","Sleep"
+Dim DefensiveSpells(9) As String
+For I = 1 To 9
+    Read DefensiveSpells(I)
+Next I
+Data "Affect Normal Fires","Dancing Lights","Feather Fall","Hold Portal","Jump","Protection From Evil","Shield","Spider Climb","Ventriloquism"
+Dim MiscSpells(9) As String
+For I = 1 To 9
+    Read MiscSpells(I)
+Next I
+Data "Comprehend Languages","Detect Magic","Erase","Find Familiar","Identify","Mending","Message","Unseen Servant","Write"
+
+
+Dim IllusL1Spells(12) As String
+For I = 1 To 12
+    Read IllusL1Spells(I)
+Next I
+Rem List of Level 1 Illusionist spells [1. pp.94-95]
+Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
+
+
 Dim MinorDiscipline(22) As String
 For I = 1 To 22
     Read MinorDiscipline(I)
@@ -1451,22 +1476,6 @@ If InStr(ChosenClass.ClassName, "Magic-User") Then
 
     Dim StarterSpells(4) As String
     StarterSpells(1) = "Read Magic"
-    Dim OffensiveSpells(9) As String
-    For I = 1 To 9
-        Read OffensiveSpells(I)
-    Next I
-    Data "Burning Hands","Charm Person","Enlarge","Friends","Light","Magic Missile","Push","Shocking Grasp","Sleep"
-    Dim DefensiveSpells(9) As String
-    For I = 1 To 9
-        Read DefensiveSpells(I)
-    Next I
-    Data "Affect Normal Fires","Dancing Lights","Feather Fall","Hold Portal","Jump","Protection From Evil","Shield","Spider Climb","Ventriloquism"
-    Dim MiscSpells(9) As String
-    For I = 1 To 9
-        Read MiscSpells(I)
-    Next I
-    Data "Comprehend Languages","Detect Magic","Erase","Find Familiar","Identify","Mending","Message","Unseen Servant","Write"
-
 
     Rem this is either bad style or Gygaxian style.
     Rem We define three spell lists (above), and then load them into an array.
@@ -1516,12 +1525,6 @@ End If
 Rem Illusionists generate three random spells, rerolling duplicates. [2, p. 39]
 If InStr(ChosenClass.ClassName, "Illusionist") Then
     Dim SpellsKnown(3) As String
-    Dim IllusL1Spells(12) As String
-    For I = 1 To 12
-        Read IllusL1Spells(I)
-    Next I
-    Rem List of Level 1 Illusionist spells [1. pp.94-95]
-    Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
     idx1 = 0
     idx2 = 0
     For I = 1 To 3
@@ -1533,7 +1536,7 @@ If InStr(ChosenClass.ClassName, "Illusionist") Then
         If I = 2 Then idx2 = spellNum
     Next I
     Print "Spells Known:"
-    For I = 1 To 4
+    For I = 1 To 3
         Print SpellsKnown(I)
     Next I
     Print "Illusionist Spells Per Day"
