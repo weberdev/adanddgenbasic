@@ -1314,12 +1314,14 @@ If ChosenClass.SecondHD > 0 Then
     End If
 ElseIf InStr(ChosenClass.ClassName, "Monk") Then
     HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
-else
+Else
     HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
 End If
 If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
 HitPoints = HitPoints + HPMod
+rem monks are edgy edge case boys.
+If InStr(ChosenClass.ClassName, "Monk") Then HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
 Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print baseAC
 
