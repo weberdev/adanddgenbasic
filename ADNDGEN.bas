@@ -164,7 +164,7 @@ Classes(10).RaceHalfElf = 1: Classes(10).RaceHalfOrc = 1: Classes(10).RaceHuman 
 Classes(10).GoldDieNum = 2: Classes(10).GoldDieSize = 6
 Classes(10).Title = "Bravo (Apprentice)"
 
-Classes(11).ClassName = "Monk": Classes(11).ClassIndex = 11: Classes(11).HitDie = 8
+Classes(11).ClassName = "Monk": Classes(11).ClassIndex = 11: Classes(11).HitDie = 4
 Classes(11).Category = "Monk"
 Classes(11).MinStr = 15: Classes(11).MinWis = 15: Classes(11).MinDex = 15: Classes(11).MinCon = 11
 Classes(11).MaxWis = 18
@@ -1312,7 +1312,9 @@ If ChosenClass.SecondHD > 0 Then
     Else
         HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
     End If
-Else
+ElseIf InStr(ChosenClass.ClassName, "Monk") Then
+    HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
+else
     HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
 End If
 If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
