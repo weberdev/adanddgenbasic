@@ -1220,9 +1220,15 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 End If
 
 
-
+Rem monks, unarmored nimble fighters, do not get their dexterity to AC
+Rem I cannot tell how this class works.
 Dim baseAC As Integer
-baseAC = 10
+If Not InStr(ChosenClass.ClassName, "Monk") Then
+    baseAC = 10 - DefAdj
+Else baseAC = 0
+End If
+
+
 
 Rem Language Determination
 Dim LangList(18) As String
@@ -1314,14 +1320,17 @@ If ChosenClass.SecondHD > 0 Then
     End If
 ElseIf InStr(ChosenClass.ClassName, "Monk") Then
     HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
+ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
+    HitPoints = Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)
 Else
     HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
 End If
 If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
 HitPoints = HitPoints + HPMod
-rem monks are edgy edge case boys.
-If InStr(ChosenClass.ClassName, "Monk") Then HitPoints = HitPoints + HPMod
+Rem monks are edgy edge case boys.
+rem rangers get this too
+If InStr(ChosenClass.ClassName, "Monk") Or InStr(ChosenClass.ClassName, "Ranger") Then HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
 Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print baseAC
 
@@ -1395,7 +1404,7 @@ For I = 1 To 5
 Next I
 Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
 Rem This applies to gnomes as well. [1, p.16]
-Rem Furthermore, halflings[1, p.17]
+Rem Furthermore, halflings [1, p.17]
 
 If RA = 1 Or RA = 3 Or RA = 5 Then
     Select Case ConstitutionScore
