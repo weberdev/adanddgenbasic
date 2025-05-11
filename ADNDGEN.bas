@@ -188,7 +188,7 @@ MultiClasses(2).MinStr = 9: MultiClasses(2).MinCon = 7: MultiClasses(2).MinWis =
 MultiClasses(2).RaceHalfElf = 1
 MultiClasses(2).GoldDieNum = 5: MultiClasses(2).GoldDieSize = 4
 
-MultiClasses(3).ClassName = "Cleric/Ranger": MultiClasses(3).ClassIndex = 14: MultiClasses(3).HitDie = 10: MultiClasses(3).SecondHD = 8
+MultiClasses(3).ClassName = "Cleric/Ranger": MultiClasses(3).ClassIndex = 14: MultiClasses(3).HitDie = 8: MultiClasses(3).SecondHD = 8
 MultiClasses(3).Category = "Cleric/Fighter"
 MultiClasses(3).MinStr = 13: MultiClasses(3).MinInt = 13: MultiClasses(3).MinWis = 14: MultiClasses(3).MinCon = 14: MultiClasses(3).MaxWis = 18
 MultiClasses(3).RaceHalfElf = 1
@@ -1316,7 +1316,11 @@ If ChosenClass.SecondHD > 0 Then
     If ChosenClass.ThirdHD > 0 Then
         HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.ThirdHD) + 1)) / 3)
     Else
-        HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
+        If ChosenClass.ClassName = "Cleric/Ranger" Then
+            HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.HitDie) + 1)) / 2)
+        Else
+            HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
+        End If
     End If
 ElseIf InStr(ChosenClass.ClassName, "Monk") Then
     HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
@@ -1329,7 +1333,7 @@ If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
 HitPoints = HitPoints + HPMod
 Rem monks are edgy edge case boys.
-rem rangers get this too
+Rem rangers get this too
 If InStr(ChosenClass.ClassName, "Monk") Or InStr(ChosenClass.ClassName, "Ranger") Then HitPoints = HitPoints + HPMod
 If HitPoints < 1 Then HitPoints = 1
 Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print baseAC
