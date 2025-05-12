@@ -232,4 +232,4 @@ Print "Successful: ": Print psiCount
 Print "Success ratio of eligible: ": Print (psiCount / eligible)
 Print "Failed: ": Print (total - psiCount)
 Print "Success ratio: ": Print (psiCount / total)
-DrPrint "Ineligible powers: ": Print collisions
+Print "Ineligible powers: ": Print collisions
