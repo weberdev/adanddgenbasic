@@ -1,3 +1,8 @@
+Rem This is a testing program copied from the main generator.
+Rem It exists to generate every possibly race/dex combination and check their skills.
+rem This does not autovalidate. I'm going to hand check skills from the PHB later to validate.
+
+
 Rem THIEF FUNCTION TABLE from PHB [1, p. 28], does not include RACIAL ADJUSTMENTS section.
 1741 Dim ThiefSkills(8) As Integer
 Restore BaseSkills
