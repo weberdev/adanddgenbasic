@@ -1405,6 +1405,12 @@ For I = 1 To 5
     Next J
     FinalSaves(I) = MinSave
 Next I
+If ChosenClass.ClassName = "Paladin" Then
+    For I = 1 To 5
+        FinalSaves(I) = FinalSaves(I) - 2
+    Next I
+End If
+
 Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
 Rem This applies to gnomes as well. [1, p.16]
 Rem Furthermore, halflings [1, p.17]
@@ -1663,7 +1669,8 @@ Print #1, "Alignment: "; alignment
 Print #1, "Gold: "; GOLD
 Print #1, "Hit Points: "; HitPoints
 Print #1, "Base Armor Class: "; baseAC
-Print #1, SF; " to hit in melee, "; DA " to damage."
+Print #1, "Add "; SF; " to hit in melee, "; DA; " to damage."
+
 Print #1, ""
 Print #1, "== ABILITY SCORES =="
 Print #1, "STR: "; StrengthScore
