@@ -873,7 +873,7 @@ For I = 1 To ChosenClass.GoldDieNum
 Next I
 
 Rem Monks need little money
-If ChosenClass.ClassName <> "MONK" Then
+If ChosenClass.ClassName <> "Monk" Then
     GOLD = GOLD * 10
 End If
 
@@ -1223,11 +1223,10 @@ End If
 Rem monks, unarmored nimble fighters, do not get their dexterity to AC
 Rem I cannot tell how this class works.
 Dim baseAC As Integer
-If Not InStr(ChosenClass.ClassName, "Monk") Then
-    baseAC = 10 - DefAdj
-Else baseAC = 0
-End If
 
+baseAC = 10 + DefAdj
+
+If InStr(ChosenClass.ClassName, "Monk") Then baseAC = 10
 
 
 Rem Language Determination
