@@ -217,10 +217,10 @@ For I = 3 To 18
                             MN = Int((Rnd(1) * 24) + 1)
 
                             If MN > 22 Then GoTo RollDiscipline
-                            If isFT And MN = 10 Then GoTo RollDiscipline
-                            If isCL And (MN = 12 Or MN = 20) Then GoTo RollDiscipline
-                            If isMU And MN = 3 Then GoTo RollDiscipline
-                            If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
+                            If isFT And MN = 10 Then collisions = collisions + 1: GoTo RollDiscipline
+                            If isCL And (MN = 12 Or MN = 20) Then collisions = collisions + 1: GoTo RollDiscipline
+                            If isMU And MN = 3 Then collisions = collisions + 1: GoTo RollDiscipline
+                            If isTF And (MN = 9 Or MN = 18) Then collisions = collisions + 1: GoTo RollDiscipline
                             If MN < 23 Then DV$ = MinorDiscipline(MN)
                         End If
                     End If
@@ -230,4 +230,4 @@ For I = 3 To 18
     Next w
 Next I
 Print psiCount
-print Collisions
+Print collisions
