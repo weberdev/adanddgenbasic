@@ -13,6 +13,8 @@ Rem 20: No clerics.
 Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 psiCount = 0
 collisions = 0
+eligible = 0
+total = 0
 Randomize Timer
 
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
@@ -25,6 +27,7 @@ For I = 3 To 18
         For c = 3 To 18
             For archetype = 1 To 4
                 For count = 1 To 50
+                    total = total + 1
                     Select Case archetype
                         Case 1:
                             isCL = 1
@@ -53,6 +56,7 @@ For I = 3 To 18
                     WisdomScore = w
                     CharismaScore = c
                     If IntelligenceScore > 15 Or WisdomScore > 15 Or CharismaScore > 15 Then
+                        eligible = eligible + 1
                         Rem 1% chance of psionics, +more for good stats
                         Rem we cast this to a shot out of 1000 to avoid floating point interactions
 
@@ -216,11 +220,11 @@ For I = 3 To 18
                             MN = Int((Rnd(1) * 24) + 1)
 
                             If MN > 22 Then GoTo RollDiscipline
-                            If isFT And MN = 10 Then collisions = collisions + 1: GoTo RollDiscipline
-                            If isCL And (MN = 12 Or MN = 20) Then collisions = collisions + 1: GoTo RollDiscipline
+                            If isFT And MN = 10 Then Print "Collision: Fighter and ";: Print MinorDiscipline(MN): Print collisions = collisions + 1: GoTo RollDiscipline
+                            If isCL And (MN = 12 Or MN = 20) Then Print "Collision: Cleric and ";: Print MinorDiscipline(MN): collisions = collisions + 1: GoTo RollDiscipline
                             If isMU And MN = 3 Then collisions = collisions + 1: GoTo RollDiscipline
                             If isTF And (MN = 9 Or MN = 18) Then collisions = collisions + 1: GoTo RollDiscipline
-                            If MN < 23 Then DV$ = MinorDiscipline(MN)
+                            If MN < 23 Then DV$ = MinorDiscipline(MN): Print MinorDiscipline(MN)
                         End If
                     End If
                 Next count
@@ -228,5 +232,8 @@ For I = 3 To 18
         Next c
     Next w
 Next I
-Print psiCount
-Print collisions
+Print "Total: ": Print total
+Print "Successful: ": Print psiCount
+Print "Failed: ": Print (total - psiCount)
+Print "Success ratio: ": Print (psiCount / total)
+Print "Ineligible powers: ": Print collisions
