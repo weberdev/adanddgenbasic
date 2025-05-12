@@ -1663,6 +1663,7 @@ Print #1, "Alignment: "; alignment
 Print #1, "Gold: "; GOLD
 Print #1, "Hit Points: "; HitPoints
 Print #1, "Base Armor Class: "; baseAC
+Print #1, SF; " to hit in melee, "; DA " to damage."
 Print #1, ""
 Print #1, "== ABILITY SCORES =="
 Print #1, "STR: "; StrengthScore
