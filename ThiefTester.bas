@@ -1,6 +1,6 @@
 Rem This is a testing program copied from the main generator.
 Rem It exists to generate every possibly race/dex combination and check their skills.
-rem This does not autovalidate. I'm going to hand check skills from the PHB later to validate.
+Rem This does not autovalidate. I'm going to hand check skills from the PHB later to validate.
 
 
 Rem THIEF FUNCTION TABLE from PHB [1, p. 28], does not include RACIAL ADJUSTMENTS section.
@@ -25,12 +25,12 @@ Rem for my own sanity in implementation, let me not them them here
 Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
 Rem These are, mercifully, the first five array entries.
 For RA = 1 To 6
-    Restore BaseSkills
-    For I = 1 To 8
-        Read ThiefSkills(I)
-    Next I
-
     For DexterityScore = 9 To 18
+        Restore BaseSkills
+        For I = 1 To 8
+            Read ThiefSkills(I)
+        Next I
+
 
         Select Case DexterityScore
             Case 9
