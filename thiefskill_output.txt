@@ -1,0 +1,600 @@
+Race: Dwarf, DEX:  9 
+Pick Pockets:  15 
+Open Locks:  25 
+Find/Remove Traps:  25 
+Move Silently: -5 
+Hide in Shadows:  0 
+Hear Noise:  10 
+Climb Walls:  70 
+Read Languages: -5 
+
+Race: Dwarf, DEX:  10 
+Pick Pockets:  5 
+Open Locks:  30 
+Find/Remove Traps:  30 
+Move Silently: -20 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  60 
+Read Languages: -10 
+
+Race: Dwarf, DEX:  11 
+Pick Pockets:  0 
+Open Locks:  40 
+Find/Remove Traps:  40 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  50 
+Read Languages: -15 
+
+Race: Dwarf, DEX:  12 
+Pick Pockets:  0 
+Open Locks:  50 
+Find/Remove Traps:  50 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  40 
+Read Languages: -20 
+
+Race: Dwarf, DEX:  13 
+Pick Pockets:  0 
+Open Locks:  60 
+Find/Remove Traps:  65 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  30 
+Read Languages: -25 
+
+Race: Dwarf, DEX:  14 
+Pick Pockets:  0 
+Open Locks:  70 
+Find/Remove Traps:  80 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  20 
+Read Languages: -30 
+
+Race: Dwarf, DEX:  15 
+Pick Pockets:  0 
+Open Locks:  80 
+Find/Remove Traps:  95 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  10 
+Read Languages: -35 
+
+Race: Dwarf, DEX:  16 
+Pick Pockets:  0 
+Open Locks:  95 
+Find/Remove Traps:  110 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls:  0 
+Read Languages: -40 
+
+Race: Dwarf, DEX:  17 
+Pick Pockets:  5 
+Open Locks:  115 
+Find/Remove Traps:  125 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  10 
+Climb Walls: -10 
+Read Languages: -45 
+
+Race: Dwarf, DEX:  18 
+Pick Pockets:  15 
+Open Locks:  140 
+Find/Remove Traps:  145 
+Move Silently: -20 
+Hide in Shadows:  5 
+Hear Noise:  10 
+Climb Walls: -20 
+Read Languages: -50 
+
+Race: Elf, DEX:  9 
+Pick Pockets:  20 
+Open Locks:  10 
+Find/Remove Traps:  10 
+Move Silently:  0 
+Hide in Shadows:  10 
+Hear Noise:  15 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  10 
+Pick Pockets:  15 
+Open Locks:  0 
+Find/Remove Traps:  0 
+Move Silently: -10 
+Hide in Shadows:  15 
+Hear Noise:  20 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  11 
+Pick Pockets:  15 
+Open Locks: -5 
+Find/Remove Traps: -5 
+Move Silently: -15 
+Hide in Shadows:  25 
+Hear Noise:  25 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  12 
+Pick Pockets:  20 
+Open Locks: -10 
+Find/Remove Traps: -10 
+Move Silently: -10 
+Hide in Shadows:  35 
+Hear Noise:  30 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  13 
+Pick Pockets:  25 
+Open Locks: -15 
+Find/Remove Traps: -10 
+Move Silently: -5 
+Hide in Shadows:  45 
+Hear Noise:  35 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  14 
+Pick Pockets:  30 
+Open Locks: -20 
+Find/Remove Traps: -10 
+Move Silently:  0 
+Hide in Shadows:  55 
+Hear Noise:  40 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  15 
+Pick Pockets:  35 
+Open Locks: -25 
+Find/Remove Traps: -10 
+Move Silently:  5 
+Hide in Shadows:  65 
+Hear Noise:  45 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  16 
+Pick Pockets:  40 
+Open Locks: -25 
+Find/Remove Traps: -10 
+Move Silently:  10 
+Hide in Shadows:  75 
+Hear Noise:  50 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  17 
+Pick Pockets:  50 
+Open Locks: -20 
+Find/Remove Traps: -10 
+Move Silently:  15 
+Hide in Shadows:  85 
+Hear Noise:  55 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Elf, DEX:  18 
+Pick Pockets:  65 
+Open Locks: -10 
+Find/Remove Traps: -5 
+Move Silently:  30 
+Hide in Shadows:  105 
+Hear Noise:  60 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Gnome, DEX:  9 
+Pick Pockets:  15 
+Open Locks:  20 
+Find/Remove Traps:  20 
+Move Silently:  0 
+Hide in Shadows:  5 
+Hear Noise:  15 
+Climb Walls:  65 
+Read Languages:  0 
+
+Race: Gnome, DEX:  10 
+Pick Pockets:  5 
+Open Locks:  20 
+Find/Remove Traps:  20 
+Move Silently: -10 
+Hide in Shadows:  5 
+Hear Noise:  20 
+Climb Walls:  50 
+Read Languages:  0 
+
+Race: Gnome, DEX:  11 
+Pick Pockets:  0 
+Open Locks:  25 
+Find/Remove Traps:  25 
+Move Silently: -15 
+Hide in Shadows:  10 
+Hear Noise:  25 
+Climb Walls:  35 
+Read Languages:  0 
+
+Race: Gnome, DEX:  12 
+Pick Pockets:  0 
+Open Locks:  30 
+Find/Remove Traps:  30 
+Move Silently: -10 
+Hide in Shadows:  15 
+Hear Noise:  30 
+Climb Walls:  20 
+Read Languages:  0 
+
+Race: Gnome, DEX:  13 
+Pick Pockets:  0 
+Open Locks:  35 
+Find/Remove Traps:  40 
+Move Silently: -5 
+Hide in Shadows:  20 
+Hear Noise:  35 
+Climb Walls:  5 
+Read Languages:  0 
+
+Race: Gnome, DEX:  14 
+Pick Pockets:  0 
+Open Locks:  40 
+Find/Remove Traps:  50 
+Move Silently:  0 
+Hide in Shadows:  25 
+Hear Noise:  40 
+Climb Walls: -10 
+Read Languages:  0 
+
+Race: Gnome, DEX:  15 
+Pick Pockets:  0 
+Open Locks:  45 
+Find/Remove Traps:  60 
+Move Silently:  5 
+Hide in Shadows:  30 
+Hear Noise:  45 
+Climb Walls: -25 
+Read Languages:  0 
+
+Race: Gnome, DEX:  16 
+Pick Pockets:  0 
+Open Locks:  55 
+Find/Remove Traps:  70 
+Move Silently:  10 
+Hide in Shadows:  35 
+Hear Noise:  50 
+Climb Walls: -40 
+Read Languages:  0 
+
+Race: Gnome, DEX:  17 
+Pick Pockets:  5 
+Open Locks:  70 
+Find/Remove Traps:  80 
+Move Silently:  15 
+Hide in Shadows:  40 
+Hear Noise:  55 
+Climb Walls: -55 
+Read Languages:  0 
+
+Race: Gnome, DEX:  18 
+Pick Pockets:  15 
+Open Locks:  90 
+Find/Remove Traps:  95 
+Move Silently:  30 
+Hide in Shadows:  55 
+Hear Noise:  60 
+Climb Walls: -70 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  9 
+Pick Pockets:  25 
+Open Locks:  15 
+Find/Remove Traps:  10 
+Move Silently: -5 
+Hide in Shadows:  5 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  10 
+Pick Pockets:  25 
+Open Locks:  10 
+Find/Remove Traps:  0 
+Move Silently: -20 
+Hide in Shadows:  5 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  11 
+Pick Pockets:  30 
+Open Locks:  10 
+Find/Remove Traps: -5 
+Move Silently: -30 
+Hide in Shadows:  10 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  12 
+Pick Pockets:  40 
+Open Locks:  10 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  15 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  13 
+Pick Pockets:  50 
+Open Locks:  10 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  20 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  14 
+Pick Pockets:  60 
+Open Locks:  10 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  25 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  15 
+Pick Pockets:  70 
+Open Locks:  10 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  30 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  16 
+Pick Pockets:  80 
+Open Locks:  15 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  35 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  17 
+Pick Pockets:  95 
+Open Locks:  25 
+Find/Remove Traps: -10 
+Move Silently: -30 
+Hide in Shadows:  40 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Half-elf, DEX:  18 
+Pick Pockets:  115 
+Open Locks:  40 
+Find/Remove Traps: -5 
+Move Silently: -20 
+Hide in Shadows:  55 
+Hear Noise:  10 
+Climb Walls:  80 
+Read Languages:  0 
+
+Race: Halfling, DEX:  9 
+Pick Pockets:  20 
+Open Locks:  20 
+Find/Remove Traps:  15 
+Move Silently:  5 
+Hide in Shadows:  15 
+Hear Noise:  15 
+Climb Walls:  65 
+Read Languages: -5 
+
+Race: Halfling, DEX:  10 
+Pick Pockets:  15 
+Open Locks:  20 
+Find/Remove Traps:  10 
+Move Silently:  0 
+Hide in Shadows:  25 
+Hear Noise:  20 
+Climb Walls:  50 
+Read Languages: -10 
+
+Race: Halfling, DEX:  11 
+Pick Pockets:  15 
+Open Locks:  25 
+Find/Remove Traps:  10 
+Move Silently:  0 
+Hide in Shadows:  40 
+Hear Noise:  25 
+Climb Walls:  35 
+Read Languages: -15 
+
+Race: Halfling, DEX:  12 
+Pick Pockets:  20 
+Open Locks:  30 
+Find/Remove Traps:  10 
+Move Silently:  10 
+Hide in Shadows:  55 
+Hear Noise:  30 
+Climb Walls:  20 
+Read Languages: -20 
+
+Race: Halfling, DEX:  13 
+Pick Pockets:  25 
+Open Locks:  35 
+Find/Remove Traps:  15 
+Move Silently:  20 
+Hide in Shadows:  70 
+Hear Noise:  35 
+Climb Walls:  5 
+Read Languages: -25 
+
+Race: Halfling, DEX:  14 
+Pick Pockets:  30 
+Open Locks:  40 
+Find/Remove Traps:  20 
+Move Silently:  30 
+Hide in Shadows:  85 
+Hear Noise:  40 
+Climb Walls: -10 
+Read Languages: -30 
+
+Race: Halfling, DEX:  15 
+Pick Pockets:  35 
+Open Locks:  45 
+Find/Remove Traps:  25 
+Move Silently:  40 
+Hide in Shadows:  100 
+Hear Noise:  45 
+Climb Walls: -25 
+Read Languages: -35 
+
+Race: Halfling, DEX:  16 
+Pick Pockets:  40 
+Open Locks:  55 
+Find/Remove Traps:  30 
+Move Silently:  50 
+Hide in Shadows:  115 
+Hear Noise:  50 
+Climb Walls: -40 
+Read Languages: -40 
+
+Race: Halfling, DEX:  17 
+Pick Pockets:  50 
+Open Locks:  70 
+Find/Remove Traps:  35 
+Move Silently:  60 
+Hide in Shadows:  130 
+Hear Noise:  55 
+Climb Walls: -55 
+Read Languages: -45 
+
+Race: Halfling, DEX:  18 
+Pick Pockets:  65 
+Open Locks:  90 
+Find/Remove Traps:  45 
+Move Silently:  80 
+Hide in Shadows:  155 
+Hear Noise:  60 
+Climb Walls: -70 
+Read Languages: -50 
+
+Race: Half-orc, DEX:  9 
+Pick Pockets:  10 
+Open Locks:  20 
+Find/Remove Traps:  15 
+Move Silently: -5 
+Hide in Shadows:  0 
+Hear Noise:  15 
+Climb Walls:  85 
+Read Languages: -10 
+
+Race: Half-orc, DEX:  10 
+Pick Pockets: -5 
+Open Locks:  20 
+Find/Remove Traps:  10 
+Move Silently: -20 
+Hide in Shadows: -5 
+Hear Noise:  20 
+Climb Walls:  90 
+Read Languages: -20 
+
+Race: Half-orc, DEX:  11 
+Pick Pockets: -15 
+Open Locks:  25 
+Find/Remove Traps:  10 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  25 
+Climb Walls:  95 
+Read Languages: -30 
+
+Race: Half-orc, DEX:  12 
+Pick Pockets: -20 
+Open Locks:  30 
+Find/Remove Traps:  10 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  30 
+Climb Walls:  100 
+Read Languages: -40 
+
+Race: Half-orc, DEX:  13 
+Pick Pockets: -25 
+Open Locks:  35 
+Find/Remove Traps:  15 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  35 
+Climb Walls:  105 
+Read Languages: -50 
+
+Race: Half-orc, DEX:  14 
+Pick Pockets: -30 
+Open Locks:  40 
+Find/Remove Traps:  20 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  40 
+Climb Walls:  110 
+Read Languages: -60 
+
+Race: Half-orc, DEX:  15 
+Pick Pockets: -35 
+Open Locks:  45 
+Find/Remove Traps:  25 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  45 
+Climb Walls:  115 
+Read Languages: -70 
+
+Race: Half-orc, DEX:  16 
+Pick Pockets: -40 
+Open Locks:  55 
+Find/Remove Traps:  30 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  50 
+Climb Walls:  120 
+Read Languages: -80 
+
+Race: Half-orc, DEX:  17 
+Pick Pockets: -40 
+Open Locks:  70 
+Find/Remove Traps:  35 
+Move Silently: -30 
+Hide in Shadows: -5 
+Hear Noise:  55 
+Climb Walls:  125 
+Read Languages: -90 
+
+Race: Half-orc, DEX:  18 
+Pick Pockets: -35 
+Open Locks:  90 
+Find/Remove Traps:  45 
+Move Silently: -20 
+Hide in Shadows:  5 
+Hear Noise:  60 
+Climb Walls:  130 
+Read Languages: -100 
+
