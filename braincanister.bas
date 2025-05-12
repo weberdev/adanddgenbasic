@@ -13,7 +13,7 @@ Rem 20: No clerics.
 Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 psiCount = 0
 collisions = 0
-randomize timer
+Randomize Timer
 
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
 Rem We expect users not to choose powers they can't take.
@@ -159,8 +159,6 @@ For I = 3 To 18
                             DefSelected(1) = DefenseModes(1)
 
                             Print
-                            Print "You automatically gain: Mind Blank"
-
                             DEFct = AtCt ' You gain as many defense modes as attack modes
 
                             Rem Number of Psionic Disciplines is PERCENTILE AGAIN
