@@ -1685,10 +1685,35 @@ For I = 1 To 5
     Print #1, SaveTypes(I); ": "; FinalSaves(I)
 Next I
 
+Print #1, ""
 Print #1, "== DERIVED ATTRIBUTES =="
+Print #1, "Strength: "
 Print #1, "Bend Bars/Lift Gates: "; SFF; "%"
 Print #1, "Open sealed doors: "; OD; "/6"
-IF OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
+If OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
+If isMU > 1 Then
+    Print #1, "Intelligence: "
+    Print #1, SP$
+End If
+
+If WF <> 0 Then
+    Print #1, "Wisdom: "
+    Print #1, "Add "; WF; " to saves against mental attacks."
+End If
+
+Print #1, "Dexterity: "
+Print #1, "Defensive Adjustment: "; DefAdj
+Print #1, "Reaction/Attacking Adjustment: "; DF
+
+Print #1, "Constitution: "
+Print #1, "HP modifier per HD: "; HPMod
+Print #1, "System Shock Survival: "; SystemShockSurvival; "%"
+Print #1, "Resurrection Survival: "; ResurrectionSurvival; "%"
+
+Print #1, "Charisma: "
+Print #1, "Maximum Retainerss: "; XF
+Print #1, "Base Loyalty: "; LltyBase
+Print #1, "Reaction Adjustment: "; ReactAdj
 
 Print #1, ""
 Print #1, "== LANGUAGES =="
