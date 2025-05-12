@@ -13,6 +13,7 @@ Rem 20: No clerics.
 Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 psiCount = 0
 collisions = 0
+randomize timer
 
 Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
 Rem We expect users not to choose powers they can't take.
