@@ -1699,7 +1699,7 @@ For I = 1 To 15
 Next I
 
 Print #1, "== TO HIT ARMOR CLASS =="
-Print #1, "AC:     "; ' AC labels from 10 to -4
+Print #1, "AC:     ";
 For I = 1 To 15
     Print #1, Using "## "; MatrixNumbers(I);
 Next I
@@ -1720,7 +1720,11 @@ Print #1, ""
 
 Print #1, ""
 Print #1, "== ABILITY SCORES =="
-Print #1, "STR: "; StrengthScore
+If PER > 0 Then
+    Print #1, "STR: "; StrengthScore; " ("; PER; "%)"
+Else
+    Print #1, "STR: "; StrengthScore
+End If
 Print #1, "INT: "; IntelligenceScore
 Print #1, "WIS: "; WisdomScore
 Print #1, "DEX: "; DexterityScore
