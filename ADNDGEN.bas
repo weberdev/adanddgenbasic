@@ -1684,6 +1684,12 @@ Print #1, "== SAVING THROWS =="
 For I = 1 To 5
     Print #1, SaveTypes(I); ": "; FinalSaves(I)
 Next I
+
+Print #1, "== DERIVED ATTRIBUTES =="
+Print #1, "Bend Bars/Lift Gates: "; SFF; "%"
+Print #1, "Open sealed doors: "; OD; "/6"
+IF OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
+
 Print #1, ""
 Print #1, "== LANGUAGES =="
 For I = 1 To KL
