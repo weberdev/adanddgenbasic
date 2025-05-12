@@ -1296,8 +1296,23 @@ For I = 1 To bonusLangCount
     LangChosen(Pick) = 1
 Next I
 
-
-
+Dim AttackMatrix(15) As Integer
+If isFT = 1 Or isCL = 1 Or ChosenClass.ClassName = "Monk" Then
+    For I = 1 To 11
+        AttackMatrix(I) = 9 + I
+    Next I
+    For I = 1 To 5
+        AttackMatrix(10 + I) = 20
+    Next I
+Else
+    For I = 1 To 10
+        AttackMatrix(I) = 10 + I
+    Next I
+    For I = 1 To 6
+        AttackMatrix(10 + I) = 20
+    Next I
+End If
+If InStr(ChosenClass.ClassName, "Monk") Then GOLD = GOLD / 10
 If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
 3380 Print "   SUMMARY OF CHARACTER "
 3390 Print "RACE: ", ChosenRace.RaceName;:
@@ -1670,6 +1685,38 @@ Print #1, "Gold: "; GOLD
 Print #1, "Hit Points: "; HitPoints
 Print #1, "Base Armor Class: "; baseAC
 Print #1, "Add "; SF; " to hit in melee, "; DA; " to damage."
+Dim MeleeMatrix(15) As Integer
+For I = 1 To 15
+    MeleeMatrix(I) = AttackMatrix(I) - SF
+Next I
+Dim RangedMatrix(15) As Integer
+For I = 1 To 15
+    RangedMatrix(I) = AttackMatrix(I) - DF
+Next I
+Dim MatrixNumbers(15) As Integer
+For I = 1 To 15
+    MatrixNumbers(I) = 11 - I
+Next I
+
+Print #1, "== TO HIT ARMOR CLASS =="
+Print #1, "AC:     "; ' AC labels from 10 to -4
+For I = 1 To 15
+    Print #1, Using "## "; MatrixNumbers(I);
+Next I
+Print #1, ""
+
+Print #1, "Melee:  ";
+For I = 1 To 15
+    Print #1, Using "## "; MeleeMatrix(I);
+Next I
+Print #1, ""
+
+Print #1, "Ranged: ";
+For I = 1 To 15
+    Print #1, Using "## "; RangedMatrix(I);
+Next I
+Print #1, ""
+
 
 Print #1, ""
 Print #1, "== ABILITY SCORES =="
@@ -1688,32 +1735,32 @@ Next I
 Print #1, ""
 Print #1, "== DERIVED ATTRIBUTES =="
 Print #1, "Strength: "
-Print #1, "Bend Bars/Lift Gates: "; SFF; "%"
-Print #1, "Open sealed doors: "; OD; "/6"
+Print #1, "- Bend Bars/Lift Gates: "; SFF; "%"
+Print #1, "- Open sealed doors: "; OD; "/6"
 If OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
-If isMU > 1 Then
+If isMU = 1 Then
     Print #1, "Intelligence: "
-    Print #1, SP$
+    Print #1, "- "; SP$
 End If
 
 If WF <> 0 Then
     Print #1, "Wisdom: "
-    Print #1, "Add "; WF; " to saves against mental attacks."
+    Print #1, "- Add "; WF; " to saves against mental attacks."
 End If
 
 Print #1, "Dexterity: "
-Print #1, "Defensive Adjustment: "; DefAdj
-Print #1, "Reaction/Attacking Adjustment: "; DF
+Print #1, "- Defensive Adjustment: "; DefAdj
+Print #1, "- Reaction/Attacking Adjustment: "; DF
 
 Print #1, "Constitution: "
-Print #1, "HP modifier per HD: "; HPMod
-Print #1, "System Shock Survival: "; SystemShockSurvival; "%"
-Print #1, "Resurrection Survival: "; ResurrectionSurvival; "%"
+Print #1, "- HP modifier per HD: "; HPMod
+Print #1, "- System Shock Survival: "; SystemShockSurvival; "%"
+Print #1, "- Resurrection Survival: "; ResurrectionSurvival; "%"
 
 Print #1, "Charisma: "
-Print #1, "Maximum Retainerss: "; XF
-Print #1, "Base Loyalty: "; LltyBase
-Print #1, "Reaction Adjustment: "; ReactAdj
+Print #1, "- Maximum Retainerss: "; XF
+Print #1, "- Base Loyalty: "; LltyBase
+Print #1, "- Reaction Adjustment: "; ReactAdj
 
 Print #1, ""
 Print #1, "== LANGUAGES =="
