@@ -2,6 +2,8 @@ Rem This is a copy/paste from the main program for testing purposes.
 Rem User interaction was removed.
 Rem the code runs for every possible int/wis/cha combination, and within that loop flags each class as active in turn.
 Rem it then checks for psionics 50 times.
+Rem For the curious, the file name is a reference to HP Lovecraft's Mi-Go.
+Rem I'm generating a bunch of mental stats (brains) and testing them.
 
 Dim MinorDiscipline(22) As String
 For I = 1 To 22
@@ -230,4 +232,4 @@ Print "Successful: ": Print psiCount
 Print "Success ratio of eligible: ": Print (psiCount / eligible)
 Print "Failed: ": Print (total - psiCount)
 Print "Success ratio: ": Print (psiCount / total)
-Print "Ineligible powers: ": Print collisions
+DrPrint "Ineligible powers: ": Print collisions
