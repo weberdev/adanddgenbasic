@@ -52,7 +52,7 @@ For I = 1 To 12
     Read IllusL1Spells(I)
 Next I
 Rem List of Level 1 Illusionist spells [1. pp.94-95]
-Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hyypnotism","Light","Phantasmal Force","Wall of Fog"
+Data "Audible Glamer","Change Self","Color Spray","Dancing Lights","Darkness","Detect Illusion","Detect Invisibility","Gaze Reflection","Hypnotism","Light","Phantasmal Force","Wall of Fog"
 
 
 Dim MinorDiscipline(22) As String
@@ -1308,7 +1308,7 @@ Else
     For I = 1 To 10
         AttackMatrix(I) = 10 + I
     Next I
-    For I = 1 To 6
+    For I = 1 To 5
         AttackMatrix(10 + I) = 20
     Next I
 End If
@@ -1331,7 +1331,8 @@ If ChosenClass.SecondHD > 0 Then
         HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.ThirdHD) + 1)) / 3)
     Else
         If ChosenClass.ClassName = "Cleric/Ranger" Then
-            HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.HitDie) + 1)) / 2)
+            HitPoints = Int((Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)) / 2)
+
         Else
             HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
         End If
