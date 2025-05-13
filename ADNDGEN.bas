@@ -1239,6 +1239,8 @@ Rem I cannot tell how this class works.
 Dim baseAC As Integer
 
 baseAC = 10 + DefAdj
+Rem "Armor class below 10 is not possibble except through cursed items." [2, p.73]
+If baseAC > 10 Then baseAC = 10
 
 If InStr(ChosenClass.ClassName, "Monk") Then baseAC = 10
 
