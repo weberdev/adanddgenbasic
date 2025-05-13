@@ -951,7 +951,8 @@ Rem we went backwards, wheeee
 
 Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
 
-
+Dim GoodAlignments(3) As String
+GoodAlignments(1) = Alignments(1): GoodAlignments(2) = Alignments(2): GoodAlignments(3) = Alignments(3)
 
 If InStr(ChosenClass.ClassName, "Monk") Then
     Print "As a Monk, your alignment must be Lawful:"
@@ -964,6 +965,19 @@ If InStr(ChosenClass.ClassName, "Monk") Then
         If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
     Loop While A < 1 Or A > 3
     alignment = MonkAlignments(A)
+
+
+ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
+    Print "As a Ranger, your alignment must be good:"
+    For I = 1 To 3
+        Print I; ". "; GoodAlignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = GoodAlignments(A)
 
 ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
     Print "As an Assassin, your alignment must be Evil:"
