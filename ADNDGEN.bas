@@ -2,7 +2,7 @@ Rem This is an archival and expansion of some handwritten code I was shown.
 Rem Most likely written between 1983 and 1985, but 1983 is the minimum year.
 Rem It's an archival piece, at least in some ways.
 Rem I expanded on some features, implementing functionality from D&D volumes of the era.
-Rem This version omits Unearthed Arcana (1985), and such material will be included in a later fork.
+Rem This version is the second of four planned revisions and includes Unearthed Arcana (1985), but does not include Oriental Adventures (1985).
 
 101 Option Base 1
 105 Randomize Timer
