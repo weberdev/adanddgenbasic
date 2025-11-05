@@ -311,9 +311,9 @@ Rem Making a secondary system to assign ability scores.
     131 Print Str$(I) + "." + Str$(Abilities(I)) + "  ";
 132 Next I
 140 Print " "
-150 Dim AbilityAssignedArray(6) As Integer
-151 Dim UsedAbilityArray(6) As Integer
-152 Dim AbilityNames(6) As String
+150 Dim AbilityAssignedArray(7) As Integer
+151 Dim UsedAbilityArray(7) As Integer
+152 Dim AbilityNames(7) As String
 AbilityNames(1) = "Strength": AbilityNames(2) = "Intelligence": AbilityNames(3) = "Wisdom"
 AbilityNames(4) = "Dexterity": AbilityNames(5) = "Constitution": AbilityNames(6) = "Charisma"
 AbilityNames(7) = "Comeliness"
