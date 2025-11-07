@@ -318,20 +318,20 @@ AbilityNames(1) = "Strength": AbilityNames(2) = "Intelligence": AbilityNames(3) 
 AbilityNames(4) = "Dexterity": AbilityNames(5) = "Constitution": AbilityNames(6) = "Charisma"
 AbilityNames(7) = "Comeliness"
 
-160 For I = 1 To 6
+160 For I = 1 To 7
     Print "You rolled a "; Abilities(I)
     If Abilities(I) > 18 Then Print "Something is WRONG. This should not exceed 18.": Abilities(I) = 18
     If Abilities(I) < 3 Then Print "Something is WRONG. This should not be less than 3.": Abilities(I) = 3
     Print "Assign this score to one of the following unassigned stats:"
 
     Rem Show unassigned abilities
-    For J = 1 To 6
+    For J = 1 To 7
         If UsedAbilityArray(J) = 0 Then Print J; ". "; AbilityNames(J)
     Next J
 
     Input "Enter the number of the stat to assign this to: ", choice
 
-    While choice < 1 Or choice > 6 Or UsedAbilityArray(choice) = 1
+    While choice < 1 Or choice > 7 Or UsedAbilityArray(choice) = 1
         Print "Invalid choice. Try again."
         Input "Enter the number of the stat to assign this to: ", choice
     Wend
