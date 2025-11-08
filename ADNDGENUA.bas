@@ -342,13 +342,13 @@ Next I
 
 170 Print
 171 Print "Final Assigned Stats:"
-172 For I = 1 To 6
+172 For I = 1 To 7
     Print AbilityNames(I); ": "; AbilityAssignedArray(I)
 Next I
 
 180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then
-    For I = 1 To 6
+    For I = 1 To 7
         UsedAbilityArray(I) = 0
     Next I
     GoTo 150
