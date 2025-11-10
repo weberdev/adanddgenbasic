@@ -305,9 +305,9 @@ Races(7).MinCon = 3: Races(7).MaxCon = 18: Races(7).MinCha = 3: Races(7).MaxCha 
 
 
 Rem Making a secondary system to assign ability scores.
-110 Dim Abilities(6) As Integer
+110 Dim Abilities(7) As Integer
 120 GenerateSortedStats Abilities()
-130 For I = 1 To 6
+130 For I = 1 To 7
     131 Print Str$(I) + "." + Str$(Abilities(I)) + "  ";
 132 Next I
 140 Print " "
@@ -316,6 +316,7 @@ Rem Making a secondary system to assign ability scores.
 152 Dim AbilityNames(6) As String
 AbilityNames(1) = "Strength": AbilityNames(2) = "Intelligence": AbilityNames(3) = "Wisdom"
 AbilityNames(4) = "Dexterity": AbilityNames(5) = "Constitution": AbilityNames(6) = "Charisma"
+AbilityNames(7) = "Comeliness"
 
 160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
