@@ -1,6 +1,6 @@
 Rem AD&DGEN v1.2: Unearthed Arcana
 Rem Update began November 9, 2025
-rem Ian Weber
+Rem Ian Weber
 101 Option Base 1
 105 Randomize Timer
 
@@ -81,14 +81,14 @@ Classes(1).RaceHalfOrc = 1: Classes(1).RaceHuman = 1
 Classes(1).GoldDieNum = 5: Classes(1).GoldDieSize = 4
 Classes(1).Title = "Veteran"
 
-Classes(2).ClassName = "Paladin": Classes(2).ClassIndex = 2: Classes(2).HitDie = 10
+Classes(2).ClassName = "Barbarian": Classes(2).ClassIndex = 2: Classes(2).HitDie = 12
 Classes(2).Category = "Fighter"
 Classes(2).MinStr = 12: Classes(2).MinInt = 9: Classes(2).MinWis = 13
 Classes(2).MinDex = 0: Classes(2).MinCon = 9: Classes(2).MinCha = 17
 Classes(2).MaxWis = 18
 Classes(2).RaceHuman = 1
 Classes(2).GoldDieNum = 5: Classes(2).GoldDieSize = 4
-Classes(2).Title = "Gallant"
+Classes(2).Title = "Barbarian"
 
 Classes(3).ClassName = "Ranger": Classes(3).ClassIndex = 3: Classes(3).HitDie = 16
 Classes(3).Category = "Fighter"
