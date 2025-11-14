@@ -67,7 +67,7 @@ Rem 20: No clerics.
 Data "Precognition","Reduction","Sensitivity to Psychic Impressions","Suspend Animation"
 
 
-Dim Classes(11) As ClassDef
+Dim Classes(13) As ClassDef
 
 Classes(1).ClassName = "Fighter": Classes(1).ClassIndex = 1: Classes(1).HitDie = 10
 Classes(1).Category = "Fighter"
@@ -107,6 +107,7 @@ Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 10
 Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 18
 Rem per Dragon Magazine 72 [5], Cavaliers can be human, elven and half-elven
 Rem this will change with Unearthed Arcana
+Rem It did not.
 Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
 Classes(4).GoldDieNum = 5: Classes(4).GoldDieSize = 4
 Classes(4).Title = "Probably cutting this"
@@ -168,6 +169,12 @@ Classes(11).MaxWis = 18
 Classes(11).RaceHuman = 1
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 Classes(11).Title = "Novice"
+
+Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
+Classes(12).Category = "Cavalier"
+Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
+Classes(12).MinInt = 10: Classes(12).MinWis = 10
+Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 
 Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
 Rem arguments exist about whether or not it's a section or table: it is a section.
