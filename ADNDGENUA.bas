@@ -173,7 +173,7 @@ Classes(11).Title = "Novice"
 Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
 Classes(12).Category = "Cavalier"
 Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
-Classes(12).MinInt = 10: Classes(12).MinWis = 10
+Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 18
 Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 
 Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
