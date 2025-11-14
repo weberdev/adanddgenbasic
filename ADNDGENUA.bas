@@ -100,11 +100,11 @@ Classes(3).RaceHalfElf = 1: Classes(3).RaceHuman = 1
 Classes(3).GoldDieNum = 5: Classes(3).GoldDieSize = 4
 Classes(3).Title = "Runner"
 
-
-Classes(4).ClassName = "Cavalier": Classes(4).ClassIndex = 4: Classes(4).HitDie = 10
-Classes(4).Category = "Fighter"
-Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 10
+Classes(4).ClassName = "Paladin": Classes(4).ClassIndex = 4: Classes(4).HitDie = 10
+Classes(4).Category = "Cavalier"
+Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 13
 Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 18
+Classes(4).MinCha = 17
 Rem per Dragon Magazine 72 [5], Cavaliers can be human, elven and half-elven
 Rem this will change with Unearthed Arcana
 Rem It did not.
