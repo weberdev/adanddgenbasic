@@ -83,9 +83,8 @@ Classes(1).Title = "Veteran"
 
 Classes(2).ClassName = "Barbarian": Classes(2).ClassIndex = 2: Classes(2).HitDie = 12
 Classes(2).Category = "Fighter"
-Classes(2).MinStr = 12: Classes(2).MinInt = 9: Classes(2).MinWis = 13
-Classes(2).MinDex = 0: Classes(2).MinCon = 9: Classes(2).MinCha = 17
-Classes(2).MaxWis = 18
+Classes(2).MinStr = 15: Classes(2).MinDex = 14
+Classes(2).MinCon = 15: Classes(2).MaxWis = 16
 Classes(2).RaceHuman = 1
 Classes(2).GoldDieNum = 5: Classes(2).GoldDieSize = 4
 Classes(2).Title = "Barbarian"
