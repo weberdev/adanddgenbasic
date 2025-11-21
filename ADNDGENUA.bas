@@ -1987,4 +1987,3 @@ Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private ma
 
 Rem [4] G. Gygax, Advanced Dungeons & Dragons Dungeon Masters Guide, 1st ed., Lake Geneva, WI: TSR Hobbies, Inc., 1979.
 
-Rem [5] G. Gygax, "From the Sorcerer's Scroll: The Chivalrous Cavalier," Dragon, no. 72, pp. 6-13, Apr. 1983.
