@@ -171,6 +171,7 @@ Classes(11).RaceHuman = 1
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 Classes(11).Title = "Novice"
 
+                                                                   rem Cavalier from Unearthed Arcana [4, p. 14]
 Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
 Classes(12).Category = "Cavalier"
 Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
