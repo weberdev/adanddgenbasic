@@ -76,6 +76,7 @@ Classes(1).Category = "Fighter"
 Classes(1).MinStr = 9: Classes(1).MinInt = 0: Classes(1).MinWis = 0
 Classes(1).MinDex = 0: Classes(1).MinCon = 7: Classes(1).MinCha = 0
 Rem Futureproofing for UA barbarian. My honest reaction: >:(
+rem Futureproofing paid off.
 Classes(1).MaxWis = 18
 Classes(1).RaceDwarf = 1: Classes(1).RaceElf = 1: Classes(1).RaceGnome = 1
 Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
@@ -171,7 +172,7 @@ Classes(11).RaceHuman = 1
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 Classes(11).Title = "Novice"
 
-                                                                   rem Cavalier from Unearthed Arcana [4, p. 14]
+Rem Cavalier from Unearthed Arcana [4, p. 14]
 Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
 Classes(12).Category = "Cavalier"
 Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
