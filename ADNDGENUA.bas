@@ -1,8 +1,8 @@
 Rem AD&DGEN v1.2: Unearthed Arcana
 Rem Update began November 9, 2025
 Rem Ian Weber
-Rem Status Nov 14:
-Rem Comeliness assignment, classess.
+Rem Status Nov 24:
+Rem Scaffolding UA races.
 Option Base 1
 Randomize Timer
 
@@ -76,7 +76,7 @@ Classes(1).Category = "Fighter"
 Classes(1).MinStr = 9: Classes(1).MinInt = 0: Classes(1).MinWis = 0
 Classes(1).MinDex = 0: Classes(1).MinCon = 7: Classes(1).MinCha = 0
 Rem Futureproofing for UA barbarian. My honest reaction: >:(
-rem Futureproofing paid off.
+Rem Futureproofing paid off.
 Classes(1).MaxWis = 18
 Classes(1).RaceDwarf = 1: Classes(1).RaceElf = 1: Classes(1).RaceGnome = 1
 Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
