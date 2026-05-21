@@ -265,7 +265,14 @@ MultiClasses(13).RaceGnome = 1
 MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
 
 
+Rem TODO:
+Rem Races are split into subraces in unearthed arcana.
+Rem Subraces are as follows:
+Rem Dwarf: Gray, Hill, Mountain
+Rem Elf: Dark, Gray, High, Valley, Wild, Wood
+Rem Gnomes: Deep, Surface
 
+Rem Thankfully, these are the only races with subraces, nothing for any other.
 
 Dim Races(7) As RaceDef
 
@@ -766,6 +773,8 @@ Select Case CharismaScore
 End Select
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
+
+Rem Comelineness: 3d6, generated after all ability scores.
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
