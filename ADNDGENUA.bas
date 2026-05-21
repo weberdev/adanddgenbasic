@@ -267,7 +267,7 @@ MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
 
 Rem TODO:
 Rem Races are split into subraces in Unearthed Arcana.
-Rem Subraces are as follows [4, p. 7]:
+Rem Subraces are as follows [2, p. 7]:
 Rem Dwarf: Gray, Hill, Mountain
 Rem Elf: Dark, Gray, High, Valley, Wild, Wood
 Rem Gnomes: Deep, Surface
@@ -774,7 +774,7 @@ End Select
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
-Rem Comelineness: 3d6, generated after all ability scores. [4, p. 6]
+Rem Comelineness: 3d6, generated after all ability scores. [2, p. 6]
 ComelinessScore = ROLLDIERESULT + ROLLDIERESULT + ROLLDIERESULT
 Select Case CharismaScore
     Case 3
