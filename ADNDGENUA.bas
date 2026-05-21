@@ -1,8 +1,8 @@
 Rem AD&DGEN v1.2: Unearthed Arcana
 Rem Update began November 9, 2025
 Rem Ian Weber
-Rem Status Nov 24:
-Rem Scaffolding UA races.
+Rem Status May 21:
+Rem Scaffolding UA races, Comeliness.
 Option Base 1
 Randomize Timer
 
@@ -266,8 +266,8 @@ MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
 
 
 Rem TODO:
-Rem Races are split into subraces in unearthed arcana.
-Rem Subraces are as follows:
+Rem Races are split into subraces in Unearthed Arcana.
+Rem Subraces are as follows [4, p. 7]:
 Rem Dwarf: Gray, Hill, Mountain
 Rem Elf: Dark, Gray, High, Valley, Wild, Wood
 Rem Gnomes: Deep, Surface
@@ -774,7 +774,26 @@ End Select
 1970 Print "CAN HAVE "; XF; " RETAINERS"
 1980 L = 0
 
-Rem Comelineness: 3d6, generated after all ability scores.
+Rem Comelineness: 3d6, generated after all ability scores. [4, p. 6]
+ComelinessScore = ROLLDIERESULT + ROLLDIERESULT + ROLLDIERESULT
+Select Case CharismaScore
+    Case 3
+        ComelinessScore = ComelinessScore - 8
+    Case 4 To 5
+        ComelinessScore = ComelinessScore - 3
+    Case 6 To 8
+        ComelinessScore = ComelinessScore - 1
+    Case 13 To 15
+        ComelinessScore = ComelinessScore + 1
+    Case 16 To 17
+        ComelinessScore = ComelinessScore + 2
+    Case 18
+        ComelinessScore = ComelinessScore + 3
+    Case Is > 18
+        ComelinessScore = ComelinessScore + 5
+End Select
+
+
 
 If RA = 7 Or RA = 4 Then
     Rem bard check
