@@ -269,8 +269,19 @@ Rem TODO:
 Rem Races are split into subraces in Unearthed Arcana.
 Rem Subraces are as follows [2, p. 7]:
 Rem Dwarf: Gray, Hill, Mountain
+Rem Gray: Cleric, Fighter, Thief, Acrobat, Assassin
+Rem Hill: Cleric, Fighter, Thief, Acrobat, Aassassin
+Rem Mountain: Cleric, Fighter, Thief, Acrobat, Assassin
 Rem Elf: Dark, Gray, High, Valley, Wild, Wood
+Rem Dark: Cavalier, Cleric, Figher, Ranger, Magic-user, Thief, Acrobat, Assassin
+Rem Gray: Cavalier, Cleric, Druid, Fighter, Ranger, Magic-User, Thief, Acrobat, Assassin
+Rem High: Cavalier, Cleric, Druid, Fighter, Ranger, Magic-User, Thief, Acrobat, Assassin
+Rem Valley: Cleric, Druid, Fighter, Ranger, Magic-User, Thief, Acrobat, Assassin
+Rem Wild: Druid, Fighter, Thief, Acrobat, Assassin
+Rem Wood: Cleric, Druid, Fighter, Ranger, Thief, Acrobat, Assassin
 Rem Gnomes: Deep, Surface
+Rem Deep: Cleric, Fighter, Illusionist, Thieft, Acrobat, Assassin
+Rem Surface: Cleric, Fighter, Thief, Acrobat, Assassin
 
 Rem Thankfully, these are the only races with subraces, nothing for any other.
 
