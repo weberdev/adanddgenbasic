@@ -106,10 +106,7 @@ Classes(4).ClassName = "Paladin": Classes(4).ClassIndex = 4: Classes(4).HitDie =
 Classes(4).Category = "Cavalier"
 Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 13
 Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 18
-Classes(4).MinCha = 17
-Rem per Dragon Magazine 72 [5], Cavaliers can be human, elven and half-elven
-Rem this will change with Unearthed Arcana
-Rem It did not.
+Classes(4).MinCha = 17 Rem It did not.
 Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
 Classes(4).GoldDieNum = 5: Classes(4).GoldDieSize = 4
 Classes(4).Title = "Gallant"
@@ -141,7 +138,7 @@ Classes(7).Title = "Acolyte"
 Classes(8).ClassName = "Druid": Classes(8).ClassIndex = 8: Classes(8).HitDie = 8
 Classes(8).Category = "Cleric"
 Classes(8).MinWis = 12: Classes(8).MinCha = 15: Classes(8).MaxWis = 18
-Rem the restriction on elves and nature classes comes from Moorcock and Poul Anderson. Elves are not-nearly as Tolkeinian in early D&D.
+Rem the restriction on elves and nature classes comes from Moorcock and Poul Anderson. Elves are not nearly as Tolkeinian in early D&D.
 Classes(8).RaceHalfElf = 1: Classes(8).RaceHalfling = 1: Classes(8).RaceHuman = 1
 Classes(8).GoldDieNum = 3: Classes(8).GoldDieSize = 6
 Classes(8).Title = "Aspirant"
@@ -180,6 +177,15 @@ Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 18
 Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 Classes(12).GoldDieNum = 5: Classes(12).GoldDieSize = 4
 Classes(12).Title = "Armiger"
+
+Classes(13).ClassName = "Barbarian": Classes(13).ClassIndex = 13: Classes(13).HitDie = 12
+Classes(13).Category = "Fighter"
+Classes(13).MinStr = 15: Classes(13).MinDex = 14: Classes(13).MinCon = 15: Classes(13).MaxWis = 16
+Classes(13).RaceHuman = 1
+Rem Only humans can be barbarians, which is a very weird form of exclusivity.
+Rem Gold is not immediately available, we'll assume ranger as a basis.
+Classes(13).GoldDieNum = 5: Classes(13).GoldDieSize = 4
+Classes(13).Title = "Barbarian"
 
 Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
 Rem arguments exist about whether or not it's a section or table: it is a section.
