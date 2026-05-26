@@ -178,14 +178,6 @@ Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 Classes(12).GoldDieNum = 5: Classes(12).GoldDieSize = 4
 Classes(12).Title = "Armiger"
 
-Classes(13).ClassName = "Barbarian": Classes(13).ClassIndex = 13: Classes(13).HitDie = 12
-Classes(13).Category = "Fighter"
-Classes(13).MinStr = 15: Classes(13).MinDex = 14: Classes(13).MinCon = 15: Classes(13).MaxWis = 16
-Classes(13).RaceHuman = 1
-Rem Only humans can be barbarians, which is a very weird form of exclusivity.
-Rem Gold is not immediately available, we'll assume ranger as a basis.
-Classes(13).GoldDieNum = 5: Classes(13).GoldDieSize = 4
-Classes(13).Title = "Barbarian"
 
 Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
 Rem arguments exist about whether or not it's a section or table: it is a section.
