@@ -27,6 +27,7 @@ Type RaceDef
     MinStr As Integer: MaxStr As Integer: MinInt As Integer: MaxInt As Integer
     MinWis As Integer: MaxWis As Integer: MinDex As Integer: MaxDex As Integer
     MinCon As Integer: MaxCon As Integer: MinCha As Integer: MaxCha As Integer
+    HasSubRaces as Integer
 End Type
 
 Dim OffensiveSpells(9) As String
