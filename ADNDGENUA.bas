@@ -27,7 +27,7 @@ Type RaceDef
     MinStr As Integer: MaxStr As Integer: MinInt As Integer: MaxInt As Integer
     MinWis As Integer: MaxWis As Integer: MinDex As Integer: MaxDex As Integer
     MinCon As Integer: MaxCon As Integer: MinCha As Integer: MaxCha As Integer
-    HasSubRaces as Integer
+    HasSubRaces As Integer
 End Type
 
 Dim OffensiveSpells(9) As String
@@ -291,18 +291,21 @@ Races(1).RaceIndex = 1
 Races(1).MinStr = 8: Races(1).MaxStr = 18: Races(1).MinInt = 3: Races(1).MaxInt = 18
 Races(1).MinWis = 3: Races(1).MaxWis = 18: Races(1).MinDex = 3: Races(1).MaxDex = 17
 Races(1).MinCon = 12: Races(1).MaxCon = 18: Races(1).MinCha = 3: Races(1).MaxCha = 16
+Races(1).HasSubRaces = 1
 
 Races(2).RaceName = "Elf"
 Races(2).RaceIndex = 2
 Races(2).MinStr = 3: Races(2).MaxStr = 18: Races(2).MinInt = 8: Races(2).MaxInt = 18
 Races(2).MinWis = 3: Races(2).MaxWis = 18: Races(2).MinDex = 7: Races(2).MaxDex = 18
 Races(2).MinCon = 6: Races(2).MaxCon = 18: Races(2).MinCha = 8: Races(2).MaxCha = 18
+Races(2).HasSubRaces = 1
 
 Races(3).RaceName = "Gnome"
 Races(3).RaceIndex = 3
 Races(3).MinStr = 6: Races(3).MaxStr = 18: Races(3).MinInt = 7: Races(3).MaxInt = 18
 Races(3).MinWis = 3: Races(3).MaxWis = 18: Races(3).MinDex = 3: Races(3).MaxDex = 18
 Races(3).MinCon = 8: Races(3).MaxCon = 18: Races(3).MinCha = 3: Races(3).MaxCha = 18
+Races(3).HasSubRaces = 1
 
 Races(4).RaceName = "Half-Elf"
 Races(4).RaceIndex = 4
