@@ -487,6 +487,21 @@ If ChosenRace.HasSubRaces = 1 Then
             Print "3. Gray Dwarf (Duergar)"
             Input "Select your chosen subrace.", SR
 
+        Case 2
+            Print "1. Dark Elf"
+            Print "2. Gray Elf"
+            Print "3. High Elf"
+            Print "4. Valley Elf"
+            Print "5. Wild Elf"
+            Print "6. Wood Elf"
+            Input "Select your chosen subrace. ", SR
+
+        Case 3
+            Print "1. Deep Gnome"
+            Print "2. Surface Gnome"
+            Input "Select your chosen subrace. ", SR
+
+
             Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
             Rem It's not, honestly, a great mechanic.
             999 PER = 0
