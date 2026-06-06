@@ -170,7 +170,7 @@ Classes(11).RaceHuman = 1
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 Classes(11).Title = "Novice"
 
-Rem Cavalier from Unearthed Arcana [4, p. 14]
+Rem Cavalier from Unearthed Arcana [2, p. 14]
 Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
 Classes(12).Category = "Cavalier"
 Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
@@ -493,7 +493,7 @@ If ChosenRace.HasSubRaces = 1 Then
                     ChosenRace.RaceName = "Mountain Dwarf"
                 Case 3
                     ChosenRace.RaceName = "Gray Dwarf (Duergar)"
-                    Rem "Gray dwarves may be multi-classed as fighter/clerics, fighter/thieves, cleric/thieves, or cleric/assassins" [4, pp. 10]
+                    Rem "Gray dwarves may be multi-classed as fighter/clerics, fighter/thieves, cleric/thieves, or cleric/assassins" [2, pp. 10]
                     MultiClasses(1).RaceDwarf = 1: MultiClasses(5).RaceDwarf = 1: MultiClasses(6).RaceDwarf = 1
                     Rem Fighter/Thieves are already allowed.
                     Rem RacialTraits = "Duergar racial traits here"
@@ -517,13 +517,13 @@ If ChosenRace.HasSubRaces = 1 Then
                 Case 2
                     ChosenRace.RaceName = "Gray Elf"
                     IntelligenceScore = IntelligenceScore + 1
-                    Rem Gray elves get a free point of int for no cost [4, p. 10]. This was considered fair and balanced.
+                    Rem Gray elves get a free point of int for no cost [2, p. 10]. This was considered fair and balanced.
                 Case 3
                     ChosenRace.RaceName = "High Elf"
                 Case 4
                     ChosenRace.RaceName = "Valley Elf"
                     IntelligenceScore = IntelligenceScore + 1
-                    Rem Valley elves get a free point of int for no cost [4, p. 10]. This was considered fair and balanced.
+                    Rem Valley elves get a free point of int for no cost [2, p. 10]. This was considered fair and balanced.
                     Rem Valley Elves also get gnomish as a language. Gray elves have been power crept on the same page.
                 Case 5
                     ChosenRace.RaceName = "Wild Elf"
@@ -2101,3 +2101,6 @@ Rem [3] Howard, "Untitled handwritten character generator," c. 1980s. Private ma
 
 Rem [4] G. Gygax, Advanced Dungeons & Dragons Dungeon Masters Guide, 1st ed., Lake Geneva, WI: TSR Hobbies, Inc., 1979.
 
+Rem [5] D. Turnbull, Ed., Fiend Folio. Lake Geneva, WI, USA: TSR Hobbies, Inc., 1981.
+
+rem [6] J. M. Ward and R. J. Kuntz, Deities & Demigods. 4th printing. Lake Geneva, WI, USA: TSR Hobbies, Inc., 1981.
