@@ -488,18 +488,21 @@ If ChosenRace.HasSubRaces = 1 Then
             Input "Select your chosen subrace.", SR
             Select Case SR
                 Case 1
-                    Races(1).RaceName = "Hill Dwarf"
+                    ChosenRace.RaceName = "Hill Dwarf"
                 Case 2
-                    Races(1).RaceName = "Mountain Dwarf"
+                    ChosenRace.RaceName = "Mountain Dwarf"
                 Case 3
-                    Races(1).RaceName = "Gray Dwarf (Duergar)"
-                    Rem "Gray dwarves may be multil-classed as fighter/clerics, fighter/thieves, cleric/thieves, or cleric/assassins" [4, pp. 10]
+                    ChosenRace.RaceName = "Gray Dwarf (Duergar)"
+                    Rem "Gray dwarves may be multi-classed as fighter/clerics, fighter/thieves, cleric/thieves, or cleric/assassins" [4, pp. 10]
                     MultiClasses(1).RaceDwarf = 1: MultiClasses(5).RaceDwarf = 1: MultiClasses(6).RaceDwarf = 1
                     Rem Fighter/Thieves are already allowed.
+                    Rem RacialTraits = "Duergar racial traits here"
 
             End Select
 
         Case 2
+            Rem Astute observers of the tex will notice that that race descriptions on page 10 are in a different order than are in the chart on page 9.
+            Rem Gary, please.
             Print "1. Dark Elf"
             Print "2. Gray Elf"
             Print "3. High Elf"
@@ -507,1467 +510,1498 @@ If ChosenRace.HasSubRaces = 1 Then
             Print "5. Wild Elf"
             Print "6. Wood Elf"
             Input "Select your chosen subrace. ", SR
+            Select Case SR
+                Case 1
+                    ChosenRace.RaceName = "Dark Elf"
+                    Rem There are half a dozen traits that dark elves get, will need to return to this.
+                Case 2
+                    ChosenRace.RaceName = "Gray Elf"
+                    IntelligenceScore = IntelligenceScore + 1
+                    Rem Gray elves get a free point of int for no cost [4, p. 10]. This was considered fair and balanced.
+                Case 3
+                    ChosenRace.RaceName = "High Elf"
+                Case 4
+                    ChosenRace.RaceName = "Valley Elf"
+                    IntelligenceScore = IntelligenceScore + 1
+                    Rem Valley elves get a free point of int for no cost [4, p. 10]. This was considered fair and balanced.
+                    Rem Valley Elves also get gnomish as a language. Gray elves have been power crept on the same page.
+                Case 5
+                    ChosenRace.RaceName = "Wild Elf"
+                    StrengthScore = StrengthScore + 2
+                    Rem Wild: Druid, Fighter, Thief, Acrobat, Assassin
+                    Classes(4).RaceElf = 0: Classes(5).RaceElf = 0: Classes(7).RaceElf = 0
+                    Classes(8).RaceElf = 1: Classes(12).RaceElf = 0
+                    Rem classes are limited, but that's a huge boost
+
+                Case 6
+                    ChosenRace.RaceName = "Wood Elf"
+                    IntelligenceScore = IntelligenceScore - 1
+                    StrengthScore = StrengthScore + 1
+                    Rem Wood elves speak the tongue of woodland mammals.
+                    Rem I'll patch that in to languages later.
+            End Select
 
         Case 3
             Print "1. Deep Gnome"
             Print "2. Surface Gnome"
             Input "Select your chosen subrace. ", SR
     End Select
+End If
 
 
-    Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
-    Rem It's not, honestly, a great mechanic.
-    999 PER = 0
+Rem This is for percentile strength, something that dtwentials and 5e zoomers missed.
+Rem It's not, honestly, a great mechanic.
+999 PER = 0
 
-    Rem ST = strength score
-    Rem PER = percentile value on 18 str
-    Rem SF = Hit probability
-    Rem SFF = Bend Bars/Lift Gates percentage
-    Rem DA = Damage Adjustment
-    Rem OD = Open sealed doors on 1d6
-    Rem OW = Open wizard locked doors on 1d6
-    1000 StrengthScore = AbilityAssignedArray(1)
-    1001 If StrengthScore = 18 Then PER = Int((Rnd(1) * 100) + 1)
-    1002 DA = 0
-    1003 OD = 1
-    1004 OW = 0
-    1005 SF = 0
-
-
-
-    Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
-    Select Case StrengthScore
-        Case 3
-            SF = -3: SFF = 0: DA = -1
-        Case 4 To 5
-            SF = -2: SFF = 0: DA = -1
-        Case 6 To 7
-            SF = -1: SFF = 0: DA = 0
-        Case 8 To 9
-            OD = 2: SFF = 1
-        Case 10 To 11
-            OD = 2: SFF = 2
-        Case 12 To 13
-            OD = 2: SFF = 4
-        Case 14 To 15
-            OD = 2: SFF = 7
-        Case 16
-            SF = 1: SFF = 10: DA = 1
-        Case 17
-            SF = 1: SFF = 13: DA = 1
-        Case 18
-            Select Case PER
-                Case 1 To 50
-                    SF = 1: DA = 3: OD = 3: SFF = 20
-                Case 51 To 75
-                    SF = 2: DA = 3: OD = 4: SFF = 25
-                Case 76 To 90
-                    SF = 2: DA = 4: OD = 4: SFF = 30
-                Case 91 To 99
-                    SF = 2: DA = 5: OD = 4: OW = 1: SFF = 35
-                Case 100
-                    SF = 3: DA = 6: OD = 5: OW = 2: SFF = 40
-                Case Else
-                    SF = 1: DA = 2: OD = 3: SFF = 16
-            End Select
-        Case Else
-            SF = 0: SFF = 0: DA = 0
-    End Select
+Rem ST = strength score
+Rem PER = percentile value on 18 str
+Rem SF = Hit probability
+Rem SFF = Bend Bars/Lift Gates percentage
+Rem DA = Damage Adjustment
+Rem OD = Open sealed doors on 1d6
+Rem OW = Open wizard locked doors on 1d6
+1000 StrengthScore = AbilityAssignedArray(1)
+1001 If StrengthScore = 18 Then PER = Int((Rnd(1) * 100) + 1)
+1002 DA = 0
+1003 OD = 1
+1004 OW = 0
+1005 SF = 0
 
 
-    1091 If StrengthScore < 18 Then Print "CHARACTER'S STRENGTH IS "; StrengthScore
-    1092 If StrengthScore = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
+
+Rem  Strength Table II.: Ability Adjustments from Player's Handbook [1, p. 9]
+Select Case StrengthScore
+    Case 3
+        SF = -3: SFF = 0: DA = -1
+    Case 4 To 5
+        SF = -2: SFF = 0: DA = -1
+    Case 6 To 7
+        SF = -1: SFF = 0: DA = 0
+    Case 8 To 9
+        OD = 2: SFF = 1
+    Case 10 To 11
+        OD = 2: SFF = 2
+    Case 12 To 13
+        OD = 2: SFF = 4
+    Case 14 To 15
+        OD = 2: SFF = 7
+    Case 16
+        SF = 1: SFF = 10: DA = 1
+    Case 17
+        SF = 1: SFF = 13: DA = 1
+    Case 18
+        Select Case PER
+            Case 1 To 50
+                SF = 1: DA = 3: OD = 3: SFF = 20
+            Case 51 To 75
+                SF = 2: DA = 3: OD = 4: SFF = 25
+            Case 76 To 90
+                SF = 2: DA = 4: OD = 4: SFF = 30
+            Case 91 To 99
+                SF = 2: DA = 5: OD = 4: OW = 1: SFF = 35
+            Case 100
+                SF = 3: DA = 6: OD = 5: OW = 2: SFF = 40
+            Case Else
+                SF = 1: DA = 2: OD = 3: SFF = 16
+        End Select
+    Case Else
+        SF = 0: SFF = 0: DA = 0
+End Select
 
 
-    1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
-    1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
-    1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
-
-    1140 IntelligenceScore = AbilityAssignedArray(2)
-    1141 Print "CHARACTER'S INTELLIGENCE IS "; IntelligenceScore
-    Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
-    SpCh = 0
-    MnSp = 0
-    MxSp = 0
-    Select Case IntelligenceScore
-        Case 1 To 8
-            SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
-        Case 9
-            SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6": SpCh = 35: MnSp = 4: MxSp = 6
-        Case 10 To 12
-            SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7": SpCh = 45: MnSp = 5: MxSp = 7
-        Case 13 To 14
-            SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9": SpCh = 55: MnSp = 6: MxSp = 9
-        Case 15 To 16
-            SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11": SpCh = 65: MnSp = 7: MxSp = 11
-        Case 17
-            SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14": SpCh = 75: MnSp = 8: MxSp = 14
-        Case 18
-            SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 85: MnSp = 9: MxSp = 18
-        Case Else
-            SP$ = "95% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 95: MnSp = 10: MxSp = 100
-
-    End Select
-    Dim bonusLangCount As Integer
-    Rem Languages Column of INTELLIGENCE TABLE I. [1, p.10]
-    Select Case IntelligenceScore
-        Case 8 To 9
-            bonusLangCount = 1
-        Case 10 To 11
-            bonusLangCount = 2
-        Case 12 To 13
-            bonusLangCount = 3
-        Case 14 To 15
-            bonusLangCount = 4
-        Case 16
-            bonusLangCount = 5
-        Case 17
-            bonusLangCount = 6
-        Case 18
-            bonusLangCount = 7
-    End Select
-
-    Rem I'm not sure which version of the chart this is.
-    Rem It was included in the originaal manuscript.
-    Select Case IntelligenceScore
-        Case 3
-            lang$ = "DIFFICULT SPEECH - ILLITERATE"
-        Case 4 To 5
-            lang$ = "EASY SPEECH BUT ILLITERATE"
-        Case 6 To 8
-            lang$ = "BARELY LITERATE"
-        Case 9 To 12
-            lang$ = "LITERATE IN NATIVE TONGUE"
-        Case 13 To 15
-            lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
-        Case 16 To 17
-            lang$ = "LITERATE AND FLUENT IN THREE LANGUAGES"
-        Case 18
-            lang$ = "LITERATE AND FLUENT IN FOUR LANGUAGES"
-    End Select
-
-    1450 WisdomScore = AbilityAssignedArray(3)
-
-    Rem WISDOM TABLE I. from PHB [1, p. 11]
-    1480 Print "CHARACTER'S WISDOM IS "; WisdomScore
-
-    Select Case WisdomScore
-        Case 3
-            WF = -3
-        Case 4
-            WF = -2
-        Case 5 To 7
-            WF = -1
-        Case 8 To 14
-            WF = 0
-        Case 15
-            WF = 1
-        Case 16
-            WF = 2
-        Case 17
-            WF = 3
-        Case 18
-            WF = 4
-    End Select
-
-    1570 If WF <> 0 Then Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
-
-    1585 DexterityScore = AbilityAssignedArray(4)
-    1590 Print "CHARACTER'S DEXTERITY IS "; DexterityScore
+1091 If StrengthScore < 18 Then Print "CHARACTER'S STRENGTH IS "; StrengthScore
+1092 If StrengthScore = 18 Then Print "CHARACTER'S STRENGTH IS 18, WITH "; PER; "% EXCEPTIONAL STRENGTH IF A FIGHTER"
 
 
-    Rem DEXTERITY TABLE I. from PHB [1, p. 11]
-    DefAdj = 0
-    Select Case DexterityScore
+1110 SH$ = "ADD " + LTrim$(Str$(SF)) + " TO ROLLS TO HIT ROLLS, " + LTrim$(Str$(DA)) + " TO DAMAGE ROLLS"
+1120 SO$ = "AND " + LTrim$(Str$(SFF)) + "% TO BEND BARS OR LIFT GATES. SEALED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OD)) + " OR LESS ON 1D6"
+1121 If OW > 0 Then WL$ = "WIZARD LOCKED DOORS CAN BE OPENED ON A " + LTrim$(Str$(OW)) + " OR LESS ON 1D6. ONE TRY."
 
-        Case 3
-            DF = -3: DefAdj = 4
-        Case 4
-            DF = -2: DefAdj = 3
-        Case 5
-            DF = -1: DefAdj = 2
-        Case 6
-            DefAdj = 1
-        Case 7 To 14
-            DF = 0: DefAdj = 0
-        Case 15
-            DF = 0: DefAdj = -1
-        Case 16
-            DF = 1: DefAdj = -2
-        Case 17
-            DF = 2: DefAdj = -3
-        Case 18
-            DF = 3: DefAdj = 4
+1140 IntelligenceScore = AbilityAssignedArray(2)
+1141 Print "CHARACTER'S INTELLIGENCE IS "; IntelligenceScore
+Rem  Intelligence Table II. from Player's Handbook [1, p. 10]
+SpCh = 0
+MnSp = 0
+MxSp = 0
+Select Case IntelligenceScore
+    Case 1 To 8
+        SP$ = "INTELLIGENCE TOO LOW FOR MAGIC USER"
+    Case 9
+        SP$ = "35% to KNOW SPELL -- MIN/MAX PER LVL 4/6": SpCh = 35: MnSp = 4: MxSp = 6
+    Case 10 To 12
+        SP$ = "45% TO KNOW SPELL -- MIN/MAX PER LVL 5/7": SpCh = 45: MnSp = 5: MxSp = 7
+    Case 13 To 14
+        SP$ = "55% TO KNOW SPELL -- MIN/MAX PER LEVEL 6/9": SpCh = 55: MnSp = 6: MxSp = 9
+    Case 15 To 16
+        SP$ = "65% TO KNOW SPELL -- MIN/MAX PER LEVEL 7/11": SpCh = 65: MnSp = 7: MxSp = 11
+    Case 17
+        SP$ = "75% TO KNOW SPELL -- MIN/MAX PER LVL 8/14": SpCh = 75: MnSp = 8: MxSp = 14
+    Case 18
+        SP$ = "85% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 85: MnSp = 9: MxSp = 18
+    Case Else
+        SP$ = "95% TO KNOW SPELL -- MIN/MAX PER LVL 9/18": SpCh = 95: MnSp = 10: MxSp = 100
 
-    End Select
-    Select Case DF
-        Case -3
-            GoSub 3600
-        Case -2
-            GoSub 3620
-        Case -1
-            GoSub 3640
+End Select
+Dim bonusLangCount As Integer
+Rem Languages Column of INTELLIGENCE TABLE I. [1, p.10]
+Select Case IntelligenceScore
+    Case 8 To 9
+        bonusLangCount = 1
+    Case 10 To 11
+        bonusLangCount = 2
+    Case 12 To 13
+        bonusLangCount = 3
+    Case 14 To 15
+        bonusLangCount = 4
+    Case 16
+        bonusLangCount = 5
+    Case 17
+        bonusLangCount = 6
+    Case 18
+        bonusLangCount = 7
+End Select
+
+Rem I'm not sure which version of the chart this is.
+Rem It was included in the originaal manuscript.
+Select Case IntelligenceScore
+    Case 3
+        lang$ = "DIFFICULT SPEECH - ILLITERATE"
+    Case 4 To 5
+        lang$ = "EASY SPEECH BUT ILLITERATE"
+    Case 6 To 8
+        lang$ = "BARELY LITERATE"
+    Case 9 To 12
+        lang$ = "LITERATE IN NATIVE TONGUE"
+    Case 13 To 15
+        lang$ = "LITERATE AND FLUENT IN TWO LANGUAGES"
+    Case 16 To 17
+        lang$ = "LITERATE AND FLUENT IN THREE LANGUAGES"
+    Case 18
+        lang$ = "LITERATE AND FLUENT IN FOUR LANGUAGES"
+End Select
+
+1450 WisdomScore = AbilityAssignedArray(3)
+
+Rem WISDOM TABLE I. from PHB [1, p. 11]
+1480 Print "CHARACTER'S WISDOM IS "; WisdomScore
+
+Select Case WisdomScore
+    Case 3
+        WF = -3
+    Case 4
+        WF = -2
+    Case 5 To 7
+        WF = -1
+    Case 8 To 14
+        WF = 0
+    Case 15
+        WF = 1
+    Case 16
+        WF = 2
+    Case 17
+        WF = 3
+    Case 18
+        WF = 4
+End Select
+
+1570 If WF <> 0 Then Print "ADD "; WF; " TO ROLL MAGIC BASED SAVING THROW"
+
+1585 DexterityScore = AbilityAssignedArray(4)
+1590 Print "CHARACTER'S DEXTERITY IS "; DexterityScore
+
+
+Rem DEXTERITY TABLE I. from PHB [1, p. 11]
+DefAdj = 0
+Select Case DexterityScore
+
+    Case 3
+        DF = -3: DefAdj = 4
+    Case 4
+        DF = -2: DefAdj = 3
+    Case 5
+        DF = -1: DefAdj = 2
+    Case 6
+        DefAdj = 1
+    Case 7 To 14
+        DF = 0: DefAdj = 0
+    Case 15
+        DF = 0: DefAdj = -1
+    Case 16
+        DF = 1: DefAdj = -2
+    Case 17
+        DF = 2: DefAdj = -3
+    Case 18
+        DF = 3: DefAdj = 4
+
+End Select
+Select Case DF
+    Case -3
+        GoSub 3600
+    Case -2
+        GoSub 3620
+    Case -1
+        GoSub 3640
+    Case 1
+        GoSub 3660
+    Case 2
+        GoSub 3680
+    Case 3
+        GoSub 3700
+End Select
+
+Rem THIEF FUNCTION TABLE from PHB [1, p. 28], does not include RACIAL ADJUSTMENTS section.
+1741 Dim ThiefSkills(8) As Integer
+1742 For I = 1 To 8
+    Read ThiefSkills(I)
+Next I
+Data 30,25,20,15,10,10,80,0
+
+Rem DEXTERITY TABLE II. from PHB [1, p. 12]
+Rem Dexterity affects some but not all thief skills.
+Rem for my own sanity in implementation, let me not them them here
+Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
+Rem These are, mercifully, the first five array entries.
+Select Case DexterityScore
+    Case 9
+        ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
+    Case 10
+        ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
+    Case 11
+        ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
+    Case 12
+        ThiefSkills(3) = ThiefSkills(3) - 5
+    Case 16
+        ThiefSkills(2) = ThiefSkills(2) + 5
+    Case 17
+        ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
+    Case 18
+        ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
+End Select
+
+Rem MF$: Missile fire mod.
+Rem DG$: Defensive adjustment for reflex saves and armor class
+
+1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
+1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
+1790 ConstitutionScore = AbilityAssignedArray(5)
+1820 Print "CHARACTER'S CONSTITUTION IS "; ConstitutionScore
+HPMod = 0
+SystemShockSurvival = 0
+ResurectionSurvival = 0
+Rem Skipped Con Table Earlier.
+Rem CONSTITUTION TABLE FROM PHB [1, p. 12]
+Select Case ConstitutionScore
+    Case 3
+        HPMod = -2: SystemShockSurvival = 35: ResurrectionSurvival = 40
+    Case 4
+        HPMod = -1: SystemShockSurvival = 40: ResurrectionSurvival = 45
+    Case 5
+        HPMod = -1: SystemShockSurvival = 45: ResurrectionSurvival = 50
+    Case 6
+        HPMod = -1: SystemShockSurvival = 50: ResurrectionSurvival = 55
+    Case 7 To 13
+        Rem and for one, fleeting, beautiful moment, we have a clear scalar expression
+        HPMod = 0: SystemShockSurvival = 20 + (5 * ConstitutionScore): ResurrectionSurvival = 25 + (5 * ConstitutionScore)
+    Case 14
+        HPMod = 0: SystemShockSurvival = 88: ResurrectionSurvival = 92
+    Case 15
+        HPMod = 1: SystemShockSurvival = 91: ResurrectionSurvival = 94
+    Case 16
+        HPMod = 2: SystemShockSurvival = 95: ResurrectionSurvival = 96
+    Case 17
+        HPMod = 3: SystemShockSurvival = 97: ResurrectionSurvival = 98
+    Case 18
+        HPMod = 4: SystemShockSurvival = 99: ResurrectionSurvival = 100
+End Select
+
+
+1840 CharismaScore = AbilityAssignedArray(6)
+1850 Print "CHARACTER'S CHARISMA IS "; CharismaScore
+
+Rem XF = extra followers
+Rem LltyBase = loyalty base
+Rem ReactAdj = Reaction Adjustment
+XF = 0
+LltyBase = 0
+ReactAdj = 0
+Rem CHARISMA TABLE from PHB [1, p. 13]
+Select Case CharismaScore
+    Case 3
+        XF = 1: LltyBase = -30: ReactAdj = -25
+    Case 4
+        XF = 1: LltyBase = -25: ReactAdj = -20
+    Case 5
+        XF = 2: LltyBase = -20: ReactAdj = -15
+    Case 6
+        XF = 2: LltyBase = -15: ReactAdj = -10
+    Case 7
+        XF = 3: LltyBase = -10: ReactAdj = -5
+    Case 8
+        XF = 4: LltyBase = -5:
+    Case 9 To 11
+        XF = 4
+    Case 12
+        XF = 5
+    Case 13
+        XF = 5: ReactAdj = 5
+    Case 14
+        XF = 6: LltyBase = 5: ReactAdj = 10
+    Case 15
+        XF = 7: LltyBase = 15: ReactAdj = 15
+    Case 16
+        XF = 8: LltyBase = 20: ReactAdj = 25
+    Case 17
+        XF = 10: LltyBase = 30: ReactAdj = 30
+    Case 18
+        XF = 15: LltyBase = 40: ReactAdj = 35
+End Select
+1970 Print "CAN HAVE "; XF; " RETAINERS"
+1980 L = 0
+
+Rem Comelineness: 3d6, generated after all ability scores. [2, p. 6]
+ComelinessScore = ROLLDIERESULT + ROLLDIERESULT + ROLLDIERESULT
+Select Case CharismaScore
+    Case 3
+        ComelinessScore = ComelinessScore - 8
+    Case 4 To 5
+        ComelinessScore = ComelinessScore - 3
+    Case 6 To 8
+        ComelinessScore = ComelinessScore - 1
+    Case 13 To 15
+        ComelinessScore = ComelinessScore + 1
+    Case 16 To 17
+        ComelinessScore = ComelinessScore + 2
+    Case 18
+        ComelinessScore = ComelinessScore + 3
+    Case Is > 18
+        ComelinessScore = ComelinessScore + 5
+End Select
+
+
+
+If RA = 7 Or RA = 4 Then
+    Rem bard check
+    If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And ConstitutionScore > 9 And CharismaScore > 14 Then Print "Bard is available. Begin as fighter."
+End If
+
+
+Rem 10 classes PHB
+Rem 13 multiclasses PHB
+Rem 4 classes US
+Rem 10 classes OA
+Rem The Dragon Cavalier is probably getting filtered, but later,
+Rem It goes in the fighter section of the first phb array for now
+1999 Dim AvailClasses(37) As ClassDef
+Dim FirstPassClassHolder(37) As ClassDef
+For I = 1 To 37
+    FirstPassClassHolder(I).ClassName = ""
+Next I
+
+Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
+For I = 1 To 11
+    Select Case RA
         Case 1
-            GoSub 3660
+            If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 2
-            GoSub 3680
+            If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 3
-            GoSub 3700
-    End Select
-
-    Rem THIEF FUNCTION TABLE from PHB [1, p. 28], does not include RACIAL ADJUSTMENTS section.
-    1741 Dim ThiefSkills(8) As Integer
-    1742 For I = 1 To 8
-        Read ThiefSkills(I)
-    Next I
-    Data 30,25,20,15,10,10,80,0
-
-    Rem DEXTERITY TABLE II. from PHB [1, p. 12]
-    Rem Dexterity affects some but not all thief skills.
-    Rem for my own sanity in implementation, let me not them them here
-    Rem Picking Pockets, Opening Locks, Finding/Removing Traps, Moving Silently, and Hiding in Shadows
-    Rem These are, mercifully, the first five array entries.
-    Select Case DexterityScore
-        Case 9
-            ThiefSkills(1) = ThiefSkills(1) - 15: ThiefSkills(2) = ThiefSkills(2) - 10: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 20: ThiefSkills(5) = ThiefSkills(5) - 10
-        Case 10
-            ThiefSkills(1) = ThiefSkills(1) - 10: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(3) = ThiefSkills(3) - 10: ThiefSkills(4) = ThiefSkills(4) - 15: ThiefSkills(5) = ThiefSkills(5) - 5
-        Case 11
-            ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(3) = ThiefSkills(3) - 5: ThiefSkills(4) = ThiefSkills(4) - 10
-        Case 12
-            ThiefSkills(3) = ThiefSkills(3) - 5
-        Case 16
-            ThiefSkills(2) = ThiefSkills(2) + 5
-        Case 17
-            ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 10
-        Case 18
-            ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(2) = ThiefSkills(2) + 15: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 10
-    End Select
-
-    Rem MF$: Missile fire mod.
-    Rem DG$: Defensive adjustment for reflex saves and armor class
-
-    1760 MF$ = "Add " + LTrim$(Str$(DF)) + " TO MISSILE FIRE ROLLS 'TO HIT'"
-    1770 DG$ = "ADD " + LTrim$(Str$(DA)) + " TO ARMOR CLASS"
-    1790 ConstitutionScore = AbilityAssignedArray(5)
-    1820 Print "CHARACTER'S CONSTITUTION IS "; ConstitutionScore
-    HPMod = 0
-    SystemShockSurvival = 0
-    ResurectionSurvival = 0
-    Rem Skipped Con Table Earlier.
-    Rem CONSTITUTION TABLE FROM PHB [1, p. 12]
-    Select Case ConstitutionScore
-        Case 3
-            HPMod = -2: SystemShockSurvival = 35: ResurrectionSurvival = 40
+            If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 4
-            HPMod = -1: SystemShockSurvival = 40: ResurrectionSurvival = 45
+            If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 5
-            HPMod = -1: SystemShockSurvival = 45: ResurrectionSurvival = 50
+            If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 6
-            HPMod = -1: SystemShockSurvival = 50: ResurrectionSurvival = 55
-        Case 7 To 13
-            Rem and for one, fleeting, beautiful moment, we have a clear scalar expression
-            HPMod = 0: SystemShockSurvival = 20 + (5 * ConstitutionScore): ResurrectionSurvival = 25 + (5 * ConstitutionScore)
-        Case 14
-            HPMod = 0: SystemShockSurvival = 88: ResurrectionSurvival = 92
-        Case 15
-            HPMod = 1: SystemShockSurvival = 91: ResurrectionSurvival = 94
-        Case 16
-            HPMod = 2: SystemShockSurvival = 95: ResurrectionSurvival = 96
-        Case 17
-            HPMod = 3: SystemShockSurvival = 97: ResurrectionSurvival = 98
-        Case 18
-            HPMod = 4: SystemShockSurvival = 99: ResurrectionSurvival = 100
-    End Select
-
-
-    1840 CharismaScore = AbilityAssignedArray(6)
-    1850 Print "CHARACTER'S CHARISMA IS "; CharismaScore
-
-    Rem XF = extra followers
-    Rem LltyBase = loyalty base
-    Rem ReactAdj = Reaction Adjustment
-    XF = 0
-    LltyBase = 0
-    ReactAdj = 0
-    Rem CHARISMA TABLE from PHB [1, p. 13]
-    Select Case CharismaScore
-        Case 3
-            XF = 1: LltyBase = -30: ReactAdj = -25
-        Case 4
-            XF = 1: LltyBase = -25: ReactAdj = -20
-        Case 5
-            XF = 2: LltyBase = -20: ReactAdj = -15
-        Case 6
-            XF = 2: LltyBase = -15: ReactAdj = -10
+            If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
         Case 7
-            XF = 3: LltyBase = -10: ReactAdj = -5
-        Case 8
-            XF = 4: LltyBase = -5:
-        Case 9 To 11
-            XF = 4
-        Case 12
-            XF = 5
-        Case 13
-            XF = 5: ReactAdj = 5
-        Case 14
-            XF = 6: LltyBase = 5: ReactAdj = 10
-        Case 15
-            XF = 7: LltyBase = 15: ReactAdj = 15
-        Case 16
-            XF = 8: LltyBase = 20: ReactAdj = 25
-        Case 17
-            XF = 10: LltyBase = 30: ReactAdj = 30
-        Case 18
-            XF = 15: LltyBase = 40: ReactAdj = 35
+            If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
     End Select
-    1970 Print "CAN HAVE "; XF; " RETAINERS"
-    1980 L = 0
-
-    Rem Comelineness: 3d6, generated after all ability scores. [2, p. 6]
-    ComelinessScore = ROLLDIERESULT + ROLLDIERESULT + ROLLDIERESULT
-    Select Case CharismaScore
+Next I
+For I = 1 To 13
+    K = I + 11
+    Select Case RA
+        Case 1
+            If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 2
+            If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
         Case 3
-            ComelinessScore = ComelinessScore - 8
-        Case 4 To 5
-            ComelinessScore = ComelinessScore - 3
-        Case 6 To 8
-            ComelinessScore = ComelinessScore - 1
-        Case 13 To 15
-            ComelinessScore = ComelinessScore + 1
-        Case 16 To 17
-            ComelinessScore = ComelinessScore + 2
-        Case 18
-            ComelinessScore = ComelinessScore + 3
-        Case Is > 18
-            ComelinessScore = ComelinessScore + 5
+            If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 4
+            If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 5
+            If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 6
+            If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
+        Case 7
+            If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
     End Select
+Next I
 
-
-
-    If RA = 7 Or RA = 4 Then
-        Rem bard check
-        If StrengthScore > 14 And IntelligenceScore > 11 And WisdomScore > 14 And DexterityScore > 14 And ConstitutionScore > 9 And CharismaScore > 14 Then Print "Bard is available. Begin as fighter."
-    End If
-
-
-    Rem 10 classes PHB
-    Rem 13 multiclasses PHB
-    Rem 4 classes US
-    Rem 10 classes OA
-    Rem The Dragon Cavalier is probably getting filtered, but later,
-    Rem It goes in the fighter section of the first phb array for now
-    1999 Dim AvailClasses(37) As ClassDef
-    Dim FirstPassClassHolder(37) As ClassDef
-    For I = 1 To 37
-        FirstPassClassHolder(I).ClassName = ""
-    Next I
-
-    Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
-    For I = 1 To 11
-        Select Case RA
-            Case 1
-                If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 2
-                If Classes(I).RaceElf = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 3
-                If Classes(I).RaceGnome = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 4
-                If Classes(I).RaceHalfElf = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 5
-                If Classes(I).RaceHalfling = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 6
-                If Classes(I).RaceHalfOrc = 1 Then FirstPassClassHolder(I) = Classes(I)
-            Case 7
-                If Classes(I).RaceHuman = 1 Then FirstPassClassHolder(I) = Classes(I)
-        End Select
-    Next I
-    For I = 1 To 13
-        K = I + 11
-        Select Case RA
-            Case 1
-                If MultiClasses(I).RaceDwarf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 2
-                If MultiClasses(I).RaceElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 3
-                If MultiClasses(I).RaceGnome = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 4
-                If MultiClasses(I).RaceHalfElf = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 5
-                If MultiClasses(I).RaceHalfling = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 6
-                If MultiClasses(I).RaceHalfOrc = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-            Case 7
-                If MultiClasses(I).RaceHuman = 1 Then FirstPassClassHolder(K) = MultiClasses(I)
-        End Select
-    Next I
-
-    CurIdx = 1
-    For I = 1 To 37
-        If FirstPassClassHolder(I).ClassName <> "" Then
-            If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
-            Else
-                Rem debug statement
-                Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
-                AvailClasses(CurIdx) = FirstPassClassHolder(I)
-                CurIdx = CurIdx + 1
-            End If
+CurIdx = 1
+For I = 1 To 37
+    If FirstPassClassHolder(I).ClassName <> "" Then
+        If StrengthScore < FirstPassClassHolder(I).MinStr Or IntelligenceScore < FirstPassClassHolder(I).MinInt Or WisdomScore < FirstPassClassHolder(I).MinWis Or DexterityScore < FirstPassClassHolder(I).MinDex Or ConstitutionScore < FirstPassClassHolder(I).MinCon Or CharismaScore < FirstPassClassHolder(I).MinCha Or WisdomScore >= FirstPassClassHolder(I).MaxWis Then
+        Else
+            Rem debug statement
+            Rem Print "Eligible for "; FirstPassClassHolder(I).ClassName
+            AvailClasses(CurIdx) = FirstPassClassHolder(I)
+            CurIdx = CurIdx + 1
         End If
-    Next I
-
-    Rem Debug statement to break after class eligibilty was displayed
-    Rem Input "I think this breaks things?", DEBUG_VAR
-    Dim CleanedClasses(CurIdx) As ClassDef
-    For I = 1 To CurIdx
-        CleanedClasses(I) = AvailClasses(I)
-    Next I
-
-    2000
-    Print "Available Classes:"
-    For I = 1 To CurIdx - 1
-        Print I; ". "; CleanedClasses(I).ClassName
-    Next I
-
-    Dim ChosenClass As ClassDef
-    Input "Enter the number of your chosen class: ", CN
-    ChosenClass = CleanedClasses(CN)
-
-    Rem class category check, mainly for psionic abilities
-    If InStr(ChosenClass.Category, "Cleric") Then isCL = 1 ':  Print "IS A CLERIC"
-    If InStr(ChosenClass.Category, "Fighter") Then isFT = 1 ':  Print "IS A FIGHTER"
-    If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1 ': Print "IS A MAGIC-USER"
-    If InStr(ChosenClass.Category, "Thief") Then isTF = 1 'H: Print "IS A THIEF"
-    Rem holding these debug statements for later
-
-    Rem Print ChosenClass.Category
-    Rem Input "WHAT CLASSES ARE THEY", CLASS$
-
-
-    3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
-    3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
-    3110 Z1$ = " 7    9    11   --   --   --   --   --  "
-
-
-    3120 TY$ = " THIEF'S ABILITIES"
-    3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
-    3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
-    Rem this line removed for maintainability reasons.
-    Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
-    Rem We'll come back to it after class is chosen.
-    GOLD = 0
-    For I = 1 To ChosenClass.GoldDieNum
-        goldRoll = Int((Rnd * ChosenClass.GoldDieSize) + 1)
-        GOLD = GOLD + goldRoll
-    Next I
-
-    Rem Monks need little money
-    If ChosenClass.ClassName <> "Monk" Then
-        GOLD = GOLD * 10
     End If
+Next I
+
+Rem Debug statement to break after class eligibilty was displayed
+Rem Input "I think this breaks things?", DEBUG_VAR
+Dim CleanedClasses(CurIdx) As ClassDef
+For I = 1 To CurIdx
+    CleanedClasses(I) = AvailClasses(I)
+Next I
+
+2000
+Print "Available Classes:"
+For I = 1 To CurIdx - 1
+    Print I; ". "; CleanedClasses(I).ClassName
+Next I
+
+Dim ChosenClass As ClassDef
+Input "Enter the number of your chosen class: ", CN
+ChosenClass = CleanedClasses(CN)
+
+Rem class category check, mainly for psionic abilities
+If InStr(ChosenClass.Category, "Cleric") Then isCL = 1 ':  Print "IS A CLERIC"
+If InStr(ChosenClass.Category, "Fighter") Then isFT = 1 ':  Print "IS A FIGHTER"
+If InStr(ChosenClass.Category, "Magic-User") Then isMU = 1 ': Print "IS A MAGIC-USER"
+If InStr(ChosenClass.Category, "Thief") Then isTF = 1 'H: Print "IS A THIEF"
+Rem holding these debug statements for later
+
+Rem Print ChosenClass.Category
+Rem Input "WHAT CLASSES ARE THEY", CLASS$
 
 
-    Rem This is an edge case for non-fighters with 18 STR.
-    Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
-    3361 If isFT = 0 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
-
-    Rem We check if the character is a thief, and then adjust for race.
-    Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
-    Rem I can trust my logic copying from a table, but scrolling?
-    Rem Horrifying.
-    Rem We'll ignore vertical space from increasingly deranged comments.
-    Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
-    If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
-        Select Case RA
-
-            Case 1
-                Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
-                ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
-            Case 2
-                Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
-                ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
-
-            Case 3
-                Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
-                ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
-
-            Case 4
-                Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
-                ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
-            Case 5
-                Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
-                Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
-                Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
-                Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
-                Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
-                ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
-
-            Case 6
-                Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
-                ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
-        End Select
-        Dim ThiefString(8) As String
+3090 CZ$ = " CLERIC VERSUS UNDEAD TABLE (1d20)"
+3100 CU$ = " SKEL ZOMB GHOU WIGT WRAI MUMM SPEC VAMP"
+3110 Z1$ = " 7    9    11   --   --   --   --   --  "
 
 
-        For J = 1 To 8
-            ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
-        Next J
+3120 TY$ = " THIEF'S ABILITIES"
+3130 TA$ = " PICK REMV PICK MOVE CLIM HIDE NEAR READ"
+3140 TB$ = " LOCK TRAP PCKT SILT SURF SHDW NOIS LANG"
+Rem this line removed for maintainability reasons.
+Rem 3150 K1$ = " 15%  10%  20%  20%  87%  10%  1-2"
+Rem We'll come back to it after class is chosen.
+GOLD = 0
+For I = 1 To ChosenClass.GoldDieNum
+    goldRoll = Int((Rnd * ChosenClass.GoldDieSize) + 1)
+    GOLD = GOLD + goldRoll
+Next I
 
-    End If
+Rem Monks need little money
+If ChosenClass.ClassName <> "Monk" Then
+    GOLD = GOLD * 10
+End If
+
+
+Rem This is an edge case for non-fighters with 18 STR.
+Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
+3361 If isFT = 0 And STR = 18 Then SF = 1: SFF = 16: DA = 2: OD = 3
+
+Rem We check if the character is a thief, and then adjust for race.
+Rem Post-hoc style rationalization: if these functions were not one liners, then they would devour precious vertical space, which is at a premium in old IDEs.
+Rem I can trust my logic copying from a table, but scrolling?
+Rem Horrifying.
+Rem We'll ignore vertical space from increasingly deranged comments.
+Rem Implementing PLUS RACIAL ADJUSTMENTS from the PHB table THIEF FUNCTION TABLE (PLUS RACIAL ADJUSTMENTS)  [1, p. 28]
+If isTF = 1 Or InStr(ChosenClass.ClassName, "Monk") Then
+    Select Case RA
+
+        Case 1
+            Rem Dwarf Thieves are good at locks and traps, but bad at climbing walls
+            ThiefSkills(2) = ThiefSkills(2) + 10: ThiefSkills(3) = ThiefSkills(3) + 15: ThiefSkills(7) = ThiefSkills(7) - 10: ThiefSkills(8) = ThiefSkills(8) - 5
+        Case 2
+            Rem Elf Thieves are good at picking pockets, proceeding unseen or unheard, but are bad at lockpicking, spindly dextrous fingers are bad at manipulating locks, you see.
+            ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) - 5: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 10: ThiefSkills(6) = ThiefSkills(6) + 5
+
+        Case 3
+            Rem Gnomes are good at sneaking and opening locks, but are bad at climbing walls. I will be very good at climbing walls when I finish writing this table.
+            ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 10: ThiefSkills(4) = ThiefSkills(4) + 5: ThiefSkills(5) = ThiefSkills(5) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15
+
+        Case 4
+            Rem Half elves do not have half the modifers of elves, that would make far too much sense. They pick pockets and hide.
+            ThiefSkills(1) = ThiefSkills(1) + 10: ThiefSkills(5) = ThiefSkills(5) + 5
+        Case 5
+            Rem Halfling thieves are good at everything except climbing walls and reading Languages. They're also very good at generating heinous unreadable lines of code.
+            Rem CSc 330 told me that 80 characters was the maximum allowable characters on a line, for legibility reasons. The line below is 328.
+            Rem Do I blame Kemeny and Kurtz, Gygax, or myself for this?
+            Rem "He traded space for descriptive variable names, descriptive variable names for aeshetic fidelity, aesthetic fidelity for runtime efficiency, and runtime efficiency for life. In the end, he traded life for space." -Afari, Tales
+            Rem The above bastardization of Magic card flavor text is 232 characters long and fits perfectly on my maximized QB64 window.
+            ThiefSkills(1) = ThiefSkills(1) + 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(4) = ThiefSkills(4) + 10: ThiefSkills(5) = ThiefSkills(5) + 15: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) - 15: ThiefSkills(8) = ThiefSkills(8) - 5
+
+        Case 6
+            Rem Half Orc thieves are bad pickpockets and with languages, but good at hearing, climbing, and mechanics.
+            ThiefSkills(1) = ThiefSkills(1) - 5: ThiefSkills(2) = ThiefSkills(2) + 5: ThiefSkills(3) = ThiefSkills(3) + 5: ThiefSkills(6) = ThiefSkills(6) + 5: ThiefSkills(7) = ThiefSkills(7) + 5: ThiefSkills(8) = ThiefSkills(8) - 10
+    End Select
+    Dim ThiefString(8) As String
+
+
+    For J = 1 To 8
+        ThiefString(J) = LTrim$(Str$(ThiefSkills(J))) + "%"
+    Next J
+
+End If
 
 
 
-    Rem SET ALIGNMENT
-    Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
-    Dim alignment As String
-    Dim Alignments(9) As String
+Rem SET ALIGNMENT
+Rem Alignment can be done in multiple ways, this is not an aspect of the stystem that will  extend, thus very low res implementation.
+Dim alignment As String
+Dim Alignments(9) As String
 
+For I = 1 To 9
+    Read Alignments(I)
+Next I
+Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
+Rem two alignment charts for monks and assassins
+Rem monks are lawful
+Dim MonkAlignments(3) As String
+MonkAlignments(1) = Alignments(1): MonkAlignments(2) = Alignments(4): MonkAlignments(3) = Alignments(7)
+
+Rem asssassins are evil
+Rem Saieth Gygax: "perforce, as  the killing of humans and other intelligent life forms for the purpose of profit is basically held to be the antithesis of weal" [1, p.28]
+Dim Asslignments(3) As String
+Rem QB64's input delay makes me yearn for 2 character varnames.
+Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
+Rem we went backwards, wheeee
+
+Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
+
+Dim GoodAlignments(3) As String
+GoodAlignments(1) = Alignments(1): GoodAlignments(2) = Alignments(2): GoodAlignments(3) = Alignments(3)
+
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Print "As a Monk, your alignment must be Lawful:"
+    For I = 1 To 3
+        Print I; ". "; MonkAlignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = MonkAlignments(A)
+
+
+ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
+    Print "As a Ranger, your alignment must be good:"
+    For I = 1 To 3
+        Print I; ". "; GoodAlignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = GoodAlignments(A)
+
+ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
+    Print "As an Assassin, your alignment must be Evil:"
+    For I = 1 To 3
+        Print I; ". "; Asslignments(I)
+    Next I
+    Do
+        Input "Enter the number of your alignment (1-3): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
+    Loop While A < 1 Or A > 3
+    alignment = Asslignments(A)
+
+ElseIf InStr(ChosenClass.ClassName, "Druid") Then
+    alignment = "True Neutral"
+ElseIf InStr(ChosenClass.ClassName, "Paladin") Then
+    alignment = "Lawful Good"
+Else
+    Print "Choose your alignment:"
     For I = 1 To 9
-        Read Alignments(I)
+        Print I; ". "; Alignments(I)
     Next I
-    Data "Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"
-    Rem two alignment charts for monks and assassins
-    Rem monks are lawful
-    Dim MonkAlignments(3) As String
-    MonkAlignments(1) = Alignments(1): MonkAlignments(2) = Alignments(4): MonkAlignments(3) = Alignments(7)
+    Do
+        Input "Enter the number of your alignment (1-9): ", A$
+        A = Val(A$)
+        If A < 1 Or A > 9 Then Print "Invalid choice. Please choose a number from 1 to 9."
+    Loop While A < 1 Or A > 9
+    alignment = Alignments(A)
 
-    Rem asssassins are evil
-    Rem Saieth Gygax: "perforce, as  the killing of humans and other intelligent life forms for the purpose of profit is basically held to be the antithesis of weal" [1, p.28]
-    Dim Asslignments(3) As String
-    Rem QB64's input delay makes me yearn for 2 character varnames.
-    Asslignments(3) = Alignments(9): Asslignments(2) = Alignments(8): Asslignments(1) = Alignments(7)
-    Rem we went backwards, wheeee
+End If
 
-    Rem We DO NOT make 1d alignment arrays for the paladin and the druid.
+Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
+Rem We expect users not to choose powers they can't take.
+Rem If they do, they get a random choice, as that's fair.
+Rem PSIONICS: PHB Appendix I. [1, p. 110]
+Rem PC must have one or more mental stats at or above 16 to check for psionics
+1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CharismaScore > 15 Then
+    Rem 1% chance of psionics, +more for good stats
+    Rem we cast this to a shot out of 1000 to avoid floating point interactions
 
-    Dim GoodAlignments(3) As String
-    GoodAlignments(1) = Alignments(1): GoodAlignments(2) = Alignments(2): GoodAlignments(3) = Alignments(3)
+    Rem I'm not going to mess around with >= here, we add 1 for a simple greater than check
+    BaseChance = 10
+    Rem We get a residue of good mental ability scores
+    IntRes = IntelligenceScore - 16
+    WisRes = WisdomScore - 16
+    ChaRes = CharismaScore - 16
+    Rem for each point of int about 16, psionics chance increases by 2.5%
+    If IntRes > 0 Then IntRes = IntRes * 25: BaseChance = BaseChance + IntRes
+    Rem for each point of wis above 16, psionics chance increases by 1%
+    If WisRes > 0 Then WisRes = WisRes * 10: BaseChance = BaseChance + WisRes
+    Rem for each point of cha above 16, psionics chance increase by 0.5%
+    If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
 
-    If InStr(ChosenClass.ClassName, "Monk") Then
-        Print "As a Monk, your alignment must be Lawful:"
-        For I = 1 To 3
-            Print I; ". "; MonkAlignments(I)
+    If BaseChance Mod 10 = 5 Then BaseChance = BaseChance - 5
+
+    Rem As an aside, even with perfect 18s, chances of psionics are vanishingly low
+    Rem 1+5+2+1 = 9% of the top end
+
+    PsiRoll = Int((Rnd(1) * 1000) + 1)
+    If BaseChance > PsiRoll Then
+        Print "Psionics available"
+        Rem I just want to implement the check for now
+        Rem Please I just want to stop doing this
+        Rem psionic ability is a percentile roll
+        PA = Int((Rnd(1) * 100) + 1)
+        Rem plus one for each point of mental attribute > 12
+        MD = 0
+        If IntelligenceScore > 12 Then MD = MD + (IntelligenceScore - 12)
+        If WisdomScore > 12 Then MD = MD + (WisdomScore - 12)
+        If CharismaScore > 12 Then MD = MD + (CharismaScore - 12)
+        Rem If two or more exceed sixteen, double the modifier
+        If (IntelligenceScore > 16 And WisdomScore > 16) Or (IntelligenceScore > 16 And CharismaScore > 16) Or (WisdomScore > 16 And CharismaScore > 16) Then MD = MD * 2
+        Rem If all three? Quadruple it.
+        Rem As the precondition is necessarily true, we double it again
+        If IntelligenceScore > 16 And WisdomScore > 16 And CharismaScore > 16 Then MD = MD * 2
+        Rem add modifier to base
+        PS = PA + MD
+
+        Rem Quoth Gygax: "The total is the *psionic strength* of the individual; it is the strength for attack and for defense."
+        Rem Continued: "Psionic ability is double psionic strength, i.e. 10 to 344."
+        Rem Continued: "On-ehalf of *psionic ability* is attack strength, one-half is defense strength."
+        PA = 2 * PS
+        PD = PS
+
+        Rem Each psionicist gets a random number of attack modes, (chosen), a random number of defense modes (chosen), and a random number of psionic disciplines (randomly assigned).
+        Rem Number of psionic attack modes is determined by percentile dice and applied to a table.
+        MentPer = Int((Rnd(1) * 100) + 1)
+        AtCt = 0
+        Select Case MentPer
+            Case 1 To 25
+                AtCt = 1
+            Case 26 To 50
+                AtCt = 2
+            Case 51 To 75
+                AtCt = 3
+            Case 76 To 95
+                AtCt = 4
+            Case Else
+                AtCt = 5
+        End Select
+
+        Dim AttackModes(5) As String
+        AttackModes(1) = "Psionic Blast"
+        AttackModes(2) = "Mind Thrust"
+        AttackModes(3) = "Ego Whip"
+        AttackModes(4) = "Id Insinuation"
+        AttackModes(5) = "Psychic Crush"
+
+        Dim Chosen(5) As Integer
+        Dim Selected(5) As String
+
+        Print "You may choose"; AtCt; " psionic attack mode(s):"
+        For I = 1 To AtCt
+            Print "Available modes:"
+            For J = 1 To 5
+                If Chosen(J) = 0 Then Print J; ": "; AttackModes(J)
+            Next J
+
+            Input "Enter number of your choice: ", Pick
+            While Pick < 1 Or Pick > 5 Or Chosen(Pick) = 1
+                Print "Invalid or already chosen. Try again."
+                Input "Enter number of your choice: ", Pick
+            Wend
+
+            Chosen(Pick) = 1
+            Selected(I) = AttackModes(Pick)
         Next I
-        Do
-            Input "Enter the number of your alignment (1-3): ", A$
-            A = Val(A$)
-            If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
-        Loop While A < 1 Or A > 3
-        alignment = MonkAlignments(A)
 
-
-    ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
-        Print "As a Ranger, your alignment must be good:"
-        For I = 1 To 3
-            Print I; ". "; GoodAlignments(I)
+        Print
+        Print "You have selected the following psionic attack modes:"
+        For I = 1 To AtCt
+            Print "- "; Selected(I)
         Next I
-        Do
-            Input "Enter the number of your alignment (1-3): ", A$
-            A = Val(A$)
-            If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
-        Loop While A < 1 Or A > 3
-        alignment = GoodAlignments(A)
 
-    ElseIf InStr(ChosenClass.ClassName, "Assassin") Then
-        Print "As an Assassin, your alignment must be Evil:"
-        For I = 1 To 3
-            Print I; ". "; Asslignments(I)
-        Next I
-        Do
-            Input "Enter the number of your alignment (1-3): ", A$
-            A = Val(A$)
-            If A < 1 Or A > 3 Then Print "Invalid choice. Please choose a number from 1 to 3."
-        Loop While A < 1 Or A > 3
-        alignment = Asslignments(A)
+        Rem Number of psionic defense modes is determined in much the same way.
+        Rem The table frequencies differ, though.
+        MentPer = Int((Rnd(1) * 100) + 1)
+        DfCt = 0
+        Select Case MentPer
+            Case 1 To 25
+                DfCt = 2
+            Case 25 To 75
+                DfCt = 3
+            Case 76 To 90
+                DfCt = 4
+            Case Else
+                DfCt = 5
+        End Select
 
-    ElseIf InStr(ChosenClass.ClassName, "Druid") Then
-        alignment = "True Neutral"
-    ElseIf InStr(ChosenClass.ClassName, "Paladin") Then
-        alignment = "Lawful Good"
-    Else
-        Print "Choose your alignment:"
-        For I = 1 To 9
-            Print I; ". "; Alignments(I)
-        Next I
-        Do
-            Input "Enter the number of your alignment (1-9): ", A$
-            A = Val(A$)
-            If A < 1 Or A > 9 Then Print "Invalid choice. Please choose a number from 1 to 9."
-        Loop While A < 1 Or A > 9
-        alignment = Alignments(A)
+        Dim DefenseModes(5) As String
+        DefenseModes(1) = "Mind Blank"
+        DefenseModes(2) = "Thought Shield"
+        DefenseModes(3) = "Mental Barrier"
+        DefenseModes(4) = "Intellect Fortress"
+        DefenseModes(5) = "Tower of Iron Will"
 
-    End If
+        Dim DefChosen(5) As Integer
+        Dim DefSelected(5) As String
 
-    Rem PsiCompatibility generates a number between 1 and 22 because it's fully random anyway.
-    Rem We expect users not to choose powers they can't take.
-    Rem If they do, they get a random choice, as that's fair.
-    Rem PSIONICS: PHB Appendix I. [1, p. 110]
-    Rem PC must have one or more mental stats at or above 16 to check for psionics
-    1990 If IntelligenceScore > 15 Or WisdomScore > 15 Or CharismaScore > 15 Then
-        Rem 1% chance of psionics, +more for good stats
-        Rem we cast this to a shot out of 1000 to avoid floating point interactions
+        Rem Mind Blank is automatic
+        DefChosen(1) = 1
+        DefSelected(1) = DefenseModes(1)
 
-        Rem I'm not going to mess around with >= here, we add 1 for a simple greater than check
-        BaseChance = 10
-        Rem We get a residue of good mental ability scores
-        IntRes = IntelligenceScore - 16
-        WisRes = WisdomScore - 16
-        ChaRes = CharismaScore - 16
-        Rem for each point of int about 16, psionics chance increases by 2.5%
-        If IntRes > 0 Then IntRes = IntRes * 25: BaseChance = BaseChance + IntRes
-        Rem for each point of wis above 16, psionics chance increases by 1%
-        If WisRes > 0 Then WisRes = WisRes * 10: BaseChance = BaseChance + WisRes
-        Rem for each point of cha above 16, psionics chance increase by 0.5%
-        If ChaRes > 0 Then ChaRes = ChaRes * 5: BaseChance = BaseChance + ChaRes
+        Print
+        Print "You automatically gain: Mind Blank"
 
-        If BaseChance Mod 10 = 5 Then BaseChance = BaseChance - 5
-
-        Rem As an aside, even with perfect 18s, chances of psionics are vanishingly low
-        Rem 1+5+2+1 = 9% of the top end
-
-        PsiRoll = Int((Rnd(1) * 1000) + 1)
-        If BaseChance > PsiRoll Then
-            Print "Psionics available"
-            Rem I just want to implement the check for now
-            Rem Please I just want to stop doing this
-            Rem psionic ability is a percentile roll
-            PA = Int((Rnd(1) * 100) + 1)
-            Rem plus one for each point of mental attribute > 12
-            MD = 0
-            If IntelligenceScore > 12 Then MD = MD + (IntelligenceScore - 12)
-            If WisdomScore > 12 Then MD = MD + (WisdomScore - 12)
-            If CharismaScore > 12 Then MD = MD + (CharismaScore - 12)
-            Rem If two or more exceed sixteen, double the modifier
-            If (IntelligenceScore > 16 And WisdomScore > 16) Or (IntelligenceScore > 16 And CharismaScore > 16) Or (WisdomScore > 16 And CharismaScore > 16) Then MD = MD * 2
-            Rem If all three? Quadruple it.
-            Rem As the precondition is necessarily true, we double it again
-            If IntelligenceScore > 16 And WisdomScore > 16 And CharismaScore > 16 Then MD = MD * 2
-            Rem add modifier to base
-            PS = PA + MD
-
-            Rem Quoth Gygax: "The total is the *psionic strength* of the individual; it is the strength for attack and for defense."
-            Rem Continued: "Psionic ability is double psionic strength, i.e. 10 to 344."
-            Rem Continued: "On-ehalf of *psionic ability* is attack strength, one-half is defense strength."
-            PA = 2 * PS
-            PD = PS
-
-            Rem Each psionicist gets a random number of attack modes, (chosen), a random number of defense modes (chosen), and a random number of psionic disciplines (randomly assigned).
-            Rem Number of psionic attack modes is determined by percentile dice and applied to a table.
-            MentPer = Int((Rnd(1) * 100) + 1)
-            AtCt = 0
-            Select Case MentPer
-                Case 1 To 25
-                    AtCt = 1
-                Case 26 To 50
-                    AtCt = 2
-                Case 51 To 75
-                    AtCt = 3
-                Case 76 To 95
-                    AtCt = 4
-                Case Else
-                    AtCt = 5
-            End Select
-
-            Dim AttackModes(5) As String
-            AttackModes(1) = "Psionic Blast"
-            AttackModes(2) = "Mind Thrust"
-            AttackModes(3) = "Ego Whip"
-            AttackModes(4) = "Id Insinuation"
-            AttackModes(5) = "Psychic Crush"
-
-            Dim Chosen(5) As Integer
-            Dim Selected(5) As String
-
-            Print "You may choose"; AtCt; " psionic attack mode(s):"
-            For I = 1 To AtCt
-                Print "Available modes:"
-                For J = 1 To 5
-                    If Chosen(J) = 0 Then Print J; ": "; AttackModes(J)
+        DEFct = AtCt ' You gain as many defense modes as attack modes
+        If DEFct > 1 Then
+            Print "You may choose"; DEFct - 1; " additional psionic defense mode(s):"
+            For I = 2 To DEFct
+                Print "Available defense modes:"
+                For J = 2 To 5
+                    If DefChosen(J) = 0 Then Print J; ": "; DefenseModes(J)
                 Next J
 
                 Input "Enter number of your choice: ", Pick
-                While Pick < 1 Or Pick > 5 Or Chosen(Pick) = 1
+                While Pick < 2 Or Pick > 5 Or DefChosen(Pick) = 1
                     Print "Invalid or already chosen. Try again."
                     Input "Enter number of your choice: ", Pick
                 Wend
 
-                Chosen(Pick) = 1
-                Selected(I) = AttackModes(Pick)
+                DefChosen(Pick) = 1
+                DefSelected(I) = DefenseModes(Pick)
             Next I
-
-            Print
-            Print "You have selected the following psionic attack modes:"
-            For I = 1 To AtCt
-                Print "- "; Selected(I)
-            Next I
-
-            Rem Number of psionic defense modes is determined in much the same way.
-            Rem The table frequencies differ, though.
-            MentPer = Int((Rnd(1) * 100) + 1)
-            DfCt = 0
-            Select Case MentPer
-                Case 1 To 25
-                    DfCt = 2
-                Case 25 To 75
-                    DfCt = 3
-                Case 76 To 90
-                    DfCt = 4
-                Case Else
-                    DfCt = 5
-            End Select
-
-            Dim DefenseModes(5) As String
-            DefenseModes(1) = "Mind Blank"
-            DefenseModes(2) = "Thought Shield"
-            DefenseModes(3) = "Mental Barrier"
-            DefenseModes(4) = "Intellect Fortress"
-            DefenseModes(5) = "Tower of Iron Will"
-
-            Dim DefChosen(5) As Integer
-            Dim DefSelected(5) As String
-
-            Rem Mind Blank is automatic
-            DefChosen(1) = 1
-            DefSelected(1) = DefenseModes(1)
-
-            Print
-            Print "You automatically gain: Mind Blank"
-
-            DEFct = AtCt ' You gain as many defense modes as attack modes
-            If DEFct > 1 Then
-                Print "You may choose"; DEFct - 1; " additional psionic defense mode(s):"
-                For I = 2 To DEFct
-                    Print "Available defense modes:"
-                    For J = 2 To 5
-                        If DefChosen(J) = 0 Then Print J; ": "; DefenseModes(J)
-                    Next J
-
-                    Input "Enter number of your choice: ", Pick
-                    While Pick < 2 Or Pick > 5 Or DefChosen(Pick) = 1
-                        Print "Invalid or already chosen. Try again."
-                        Input "Enter number of your choice: ", Pick
-                    Wend
-
-                    DefChosen(Pick) = 1
-                    DefSelected(I) = DefenseModes(Pick)
-                Next I
-            End If
-
-            Print
-            Print "Your psionic defense modes:"
-            For I = 1 To DEFct
-                Print "- "; DefSelected(I)
-            Next I
-
-            Rem Number of Psionic Disciplines is PERCENTILE AGAIN
-            Rem ON ANOTHER ODDLY SHAPED TABLE
-            MentPer = Int((Rnd(1) * 100) + 1)
-            MnD = 0
-            MjD = 0
-            Select Case MentPer
-                Case 1 To 10
-                    MnD = 1
-                Case 11 To 25
-                    MnD = 2
-                Case 26 To 40
-                    MnD = 3
-                Case 41 To 55
-                    MnD = 2: MjD = 1
-                Case 56 To 70
-                    MnD = 3: MjD = 1
-                Case 71 To 80
-                    MnD = 4: MjD = 1
-                Case 81 To 90
-                    MnD = 3: MjD = 2
-                Case 91 To 95
-                    MnD = 5: MjD = 1
-                Case Else
-                    MnD = 4: MjD = 2
-            End Select
-
-            Rem We make an executive decision here, one taken for my sanity.
-            Rem Choosing powers when rolling? No. We reroll.
-            Rem Gygax again [1. p. 111]
-            Rem "Roll again (or select one*)"
-            Rem "*Consult your referee for his ruling on this."
-
-            Rem Not Gygax anymore:
-            Rem "As your referee: no you may not pick. I am not writing that."
-            Rem This may change in a later fork.
-
-            Rem Psionic disciplines are earned via leveling.
-            Rem You get one minor one at character creation.
-            Rem The theoretical 18 INT 18 WIS 18 CHA psionicist is less weary from rolling 1 minor power at level 1.
-
-            Rem 24 options.
-            Rem The TABLE OF PSIONIC DISCIPLINES says Minor(Devotions) disciplines should be generated by rolling a d12 and a d6.
-            Rem Presumably we add 12 to the d12 roll if the d6 is a 4+.
-            Rem That makes sense in 1978.
-            Rem Then in 2012 Joseph Goodman invented the d24.
-            Rem What I'm trying to say here:
-            Rem I don't want to generate a variable between one and twelve, and a variable between one and six.
-            Rem we'll make one between 1 and 24.
-            DV$ = ""
-
-            RollDiscipline:
-            Rem MN stands for Minor Number
-            MN = Int((Rnd(1) * 24) + 1)
-
-            If MN > 22 Then GoTo RollDiscipline
-            If isFT And MN = 10 Then GoTo RollDiscipline
-            If isCL And (MN = 12 Or MN = 20) Then GoTo RollDiscipline
-            If isMU And MN = 3 Then GoTo RollDiscipline
-            If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
-            If MN < 23 Then DV$ = MinorDiscipline(MN)
         End If
+
+        Print
+        Print "Your psionic defense modes:"
+        For I = 1 To DEFct
+            Print "- "; DefSelected(I)
+        Next I
+
+        Rem Number of Psionic Disciplines is PERCENTILE AGAIN
+        Rem ON ANOTHER ODDLY SHAPED TABLE
+        MentPer = Int((Rnd(1) * 100) + 1)
+        MnD = 0
+        MjD = 0
+        Select Case MentPer
+            Case 1 To 10
+                MnD = 1
+            Case 11 To 25
+                MnD = 2
+            Case 26 To 40
+                MnD = 3
+            Case 41 To 55
+                MnD = 2: MjD = 1
+            Case 56 To 70
+                MnD = 3: MjD = 1
+            Case 71 To 80
+                MnD = 4: MjD = 1
+            Case 81 To 90
+                MnD = 3: MjD = 2
+            Case 91 To 95
+                MnD = 5: MjD = 1
+            Case Else
+                MnD = 4: MjD = 2
+        End Select
+
+        Rem We make an executive decision here, one taken for my sanity.
+        Rem Choosing powers when rolling? No. We reroll.
+        Rem Gygax again [1. p. 111]
+        Rem "Roll again (or select one*)"
+        Rem "*Consult your referee for his ruling on this."
+
+        Rem Not Gygax anymore:
+        Rem "As your referee: no you may not pick. I am not writing that."
+        Rem This may change in a later fork.
+
+        Rem Psionic disciplines are earned via leveling.
+        Rem You get one minor one at character creation.
+        Rem The theoretical 18 INT 18 WIS 18 CHA psionicist is less weary from rolling 1 minor power at level 1.
+
+        Rem 24 options.
+        Rem The TABLE OF PSIONIC DISCIPLINES says Minor(Devotions) disciplines should be generated by rolling a d12 and a d6.
+        Rem Presumably we add 12 to the d12 roll if the d6 is a 4+.
+        Rem That makes sense in 1978.
+        Rem Then in 2012 Joseph Goodman invented the d24.
+        Rem What I'm trying to say here:
+        Rem I don't want to generate a variable between one and twelve, and a variable between one and six.
+        Rem we'll make one between 1 and 24.
+        DV$ = ""
+
+        RollDiscipline:
+        Rem MN stands for Minor Number
+        MN = Int((Rnd(1) * 24) + 1)
+
+        If MN > 22 Then GoTo RollDiscipline
+        If isFT And MN = 10 Then GoTo RollDiscipline
+        If isCL And (MN = 12 Or MN = 20) Then GoTo RollDiscipline
+        If isMU And MN = 3 Then GoTo RollDiscipline
+        If isTF And (MN = 9 Or MN = 18) Then GoTo RollDiscipline
+        If MN < 23 Then DV$ = MinorDiscipline(MN)
     End If
+End If
 
 
-    Rem monks, unarmored nimble fighters, do not get their dexterity to AC
-    Rem I cannot tell how this class works.
-    Dim baseAC As Integer
+Rem monks, unarmored nimble fighters, do not get their dexterity to AC
+Rem I cannot tell how this class works.
+Dim baseAC As Integer
 
-    baseAC = 10 + DefAdj
-    Rem "Armor class below 10 is not possibble except through cursed items." [2, p.73]
-    If baseAC > 10 Then baseAC = 10
+baseAC = 10 + DefAdj
+Rem "Armor class below 10 is not possibble except through cursed items." [2, p.73]
+If baseAC > 10 Then baseAC = 10
 
-    If InStr(ChosenClass.ClassName, "Monk") Then baseAC = 10
+If InStr(ChosenClass.ClassName, "Monk") Then baseAC = 10
 
 
-    Rem Language Determination
-    Dim LangList(18) As String
-    LangList(1) = "Dwarvish"
-    LangList(2) = "Elvish"
-    LangList(3) = "Gnome"
-    LangList(4) = "Goblin"
-    LangList(5) = "Gnoll"
-    LangList(6) = "Halfling"
-    LangList(7) = "Hobgoblin"
-    LangList(8) = "Kobold"
-    LangList(9) = "Orc"
-    LangList(10) = "Dragon"
-    LangList(11) = "Giant"
-    LangList(12) = "Ogre"
-    LangList(13) = "Troll"
-    LangList(14) = "Pixie"
-    LangList(15) = "Lizard Man"
-    LangList(16) = "Minotaur"
-    LangList(17) = "Centaur"
-    LangList(18) = "Doppelganger"
+Rem Language Determination
+Dim LangList(18) As String
+LangList(1) = "Dwarvish"
+LangList(2) = "Elvish"
+LangList(3) = "Gnome"
+LangList(4) = "Goblin"
+LangList(5) = "Gnoll"
+LangList(6) = "Halfling"
+LangList(7) = "Hobgoblin"
+LangList(8) = "Kobold"
+LangList(9) = "Orc"
+LangList(10) = "Dragon"
+LangList(11) = "Giant"
+LangList(12) = "Ogre"
+LangList(13) = "Troll"
+LangList(14) = "Pixie"
+LangList(15) = "Lizard Man"
+LangList(16) = "Minotaur"
+LangList(17) = "Centaur"
+LangList(18) = "Doppelganger"
 
-    Dim KnownLangs(10) As String
-    KnownLangs(1) = "Common"
-    KnownLangs(2) = alignment
-    Dim KL As Integer
-    KL = 2
-    Select Case RA
-        Case 1
-            KL = KL + 1: KnownLangs(KL) = "Dwarvish"
-        Case 2
-            KL = KL + 1: KnownLangs(KL) = "Elvish"
-        Case 3
-            KL = KL + 1: KnownLangs(KL) = "Gnome"
-        Case 4
-            KL = KL + 1: KnownLangs(KL) = "Elvish"
-        Case 5
-            KL = KL + 1: KnownLangs(KL) = "Halfling"
-    End Select
+Dim KnownLangs(10) As String
+KnownLangs(1) = "Common"
+KnownLangs(2) = alignment
+Dim KL As Integer
+KL = 2
+Select Case RA
+    Case 1
+        KL = KL + 1: KnownLangs(KL) = "Dwarvish"
+    Case 2
+        KL = KL + 1: KnownLangs(KL) = "Elvish"
+    Case 3
+        KL = KL + 1: KnownLangs(KL) = "Gnome"
+    Case 4
+        KL = KL + 1: KnownLangs(KL) = "Elvish"
+    Case 5
+        KL = KL + 1: KnownLangs(KL) = "Halfling"
+End Select
 
-    If isCL And ChosenClass.ClassName = "Druid" Then
-        KL = KL + 1: KnownLangs(KL) = "Druidic"
-    End If
+If isCL And ChosenClass.ClassName = "Druid" Then
+    KL = KL + 1: KnownLangs(KL) = "Druidic"
+End If
 
-    If isTF Then
-        KL = KL + 1: KnownLangs(KL) = "Thieves' Cant"
-    End If
-    Dim Pick As Integer
-    Dim LangChosen(18) As Integer
-    Print "You may choose"; bonusLangCount; " additional language(s):"
-    For I = 1 To bonusLangCount
-        Print "Available languages:"
-        For J = 1 To 18
-            If LangChosen(J) = 0 Then Print J; ". "; LangList(J)
-        Next J
+If isTF Then
+    KL = KL + 1: KnownLangs(KL) = "Thieves' Cant"
+End If
+Dim Pick As Integer
+Dim LangChosen(18) As Integer
+Print "You may choose"; bonusLangCount; " additional language(s):"
+For I = 1 To bonusLangCount
+    Print "Available languages:"
+    For J = 1 To 18
+        If LangChosen(J) = 0 Then Print J; ". "; LangList(J)
+    Next J
 
-        Do
-            Input "Enter the number of your choice: ", Pick
-            If Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1 Or KnownLangs(3) = LangList(Pick) Then
-                Print "Invalid or already chosen. Try again."
-            End If
-        Loop While Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1
+    Do
+        Input "Enter the number of your choice: ", Pick
+        If Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1 Or KnownLangs(3) = LangList(Pick) Then
+            Print "Invalid or already chosen. Try again."
+        End If
+    Loop While Pick < 1 Or Pick > 18 Or LangChosen(Pick) = 1
 
-        KL = KL + 1
-        KnownLangs(KL) = LangList(Pick)
-        LangChosen(Pick) = 1
+    KL = KL + 1
+    KnownLangs(KL) = LangList(Pick)
+    LangChosen(Pick) = 1
+Next I
+
+Dim AttackMatrix(15) As Integer
+If isFT = 1 Or isCL = 1 Or ChosenClass.ClassName = "Monk" Then
+    For I = 1 To 11
+        AttackMatrix(I) = 9 + I
     Next I
+    For I = 1 To 5
+        AttackMatrix(10 + I) = 20
+    Next I
+Else
+    For I = 1 To 10
+        AttackMatrix(I) = 10 + I
+    Next I
+    For I = 1 To 5
+        AttackMatrix(10 + I) = 20
+    Next I
+End If
+If InStr(ChosenClass.ClassName, "Monk") Then GOLD = GOLD / 10
+If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
+3380 Print "   SUMMARY OF CHARACTER "
+3390 Print "RACE: ", ChosenRace.RaceName;:
+3400 Print " CLASS: ", ChosenClass.ClassName; " TITLE: ", ChosenClass.Title
 
-    Dim AttackMatrix(15) As Integer
-    If isFT = 1 Or isCL = 1 Or ChosenClass.ClassName = "Monk" Then
-        For I = 1 To 11
-            AttackMatrix(I) = 9 + I
-        Next I
-        For I = 1 To 5
-            AttackMatrix(10 + I) = 20
-        Next I
+Print "GOLD: "; GOLD
+Print "Equipment can be found on pages 35-36 of the PHB."
+Print "ALIGNMENT: "; alignment
+
+
+
+
+Dim HitPoints As Integer
+If ChosenClass.SecondHD > 0 Then
+    If ChosenClass.ThirdHD > 0 Then
+        HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.ThirdHD) + 1)) / 3)
     Else
-        For I = 1 To 10
-            AttackMatrix(I) = 10 + I
-        Next I
-        For I = 1 To 5
-            AttackMatrix(10 + I) = 20
-        Next I
-    End If
-    If InStr(ChosenClass.ClassName, "Monk") Then GOLD = GOLD / 10
-    If ChosenClass.Title = "" Then ChosenClass.Title = "Multiclassed"
-    3380 Print "   SUMMARY OF CHARACTER "
-    3390 Print "RACE: ", ChosenRace.RaceName;:
-    3400 Print " CLASS: ", ChosenClass.ClassName; " TITLE: ", ChosenClass.Title
+        If ChosenClass.ClassName = "Cleric/Ranger" Then
+            HitPoints = Int((Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)) / 2)
 
-    Print "GOLD: "; GOLD
-    Print "Equipment can be found on pages 35-36 of the PHB."
-    Print "ALIGNMENT: "; alignment
-
-
-
-
-    Dim HitPoints As Integer
-    If ChosenClass.SecondHD > 0 Then
-        If ChosenClass.ThirdHD > 0 Then
-            HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1) + Int((Rnd * ChosenClass.ThirdHD) + 1)) / 3)
         Else
-            If ChosenClass.ClassName = "Cleric/Ranger" Then
-                HitPoints = Int((Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)) / 2)
-
-            Else
-                HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
-            End If
+            HitPoints = Int((Int((Rnd * ChosenClass.HitDie) + 1) + Int((Rnd * ChosenClass.SecondHD) + 1)) / 2)
         End If
-    ElseIf InStr(ChosenClass.ClassName, "Monk") Then
-        HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
-    ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
-        HitPoints = Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)
-    Else
-        HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
     End If
-    If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
+ElseIf InStr(ChosenClass.ClassName, "Monk") Then
+    HitPoints = Int((Rnd * 4) + 1) + Int((Rnd * 4) + 1)
+ElseIf InStr(ChosenClass.ClassName, "Ranger") Then
+    HitPoints = Int((Rnd * 8) + 1) + Int((Rnd * 8) + 1)
+Else
+    HitPoints = Int((Rnd * ChosenClass.HitDie) + 1)
+End If
+If isFT = 0 And ConstitutionScore > 16 Then HPMod = 2
 
-    HitPoints = HitPoints + HPMod
-    Rem monks are edgy edge case boys.
-    Rem rangers get this too
-    If InStr(ChosenClass.ClassName, "Monk") Or InStr(ChosenClass.ClassName, "Ranger") Then HitPoints = HitPoints + HPMod
-    If HitPoints < 1 Then HitPoints = 1
-    Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print baseAC
+HitPoints = HitPoints + HPMod
+Rem monks are edgy edge case boys.
+Rem rangers get this too
+If InStr(ChosenClass.ClassName, "Monk") Or InStr(ChosenClass.ClassName, "Ranger") Then HitPoints = HitPoints + HPMod
+If HitPoints < 1 Then HitPoints = 1
+Print "HP: ";: Print HitPoints;: Print " BASE ARMOR CLASS: ";: Print baseAC
 
 
-    Rem dwarf constitution spell modifier
-    Rem there was no variable name that wasn't *afflicted*
-    DfCnSpMd = 0
-    Rem SAVES GO HERE
+Rem dwarf constitution spell modifier
+Rem there was no variable name that wasn't *afflicted*
+DfCnSpMd = 0
+Rem SAVES GO HERE
 
-    Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
-    Dim ClericSaves(5) As Integer
-    ClericSaves(1) = 10: ClericSaves(2) = 13: ClericSaves(3) = 14: ClericSaves(4) = 16: ClericSaves(5) = 15
-    Dim FighterSaves(5) As Integer
-    FighterSaves(1) = 14: FighterSaves(2) = 17: FighterSaves(3) = 18: FighterSaves(4) = 20: FighterSaves(5) = 19
-    Dim MUSaves(5) As Integer
-    MUSaves(1) = 14: MUSaves(2) = 13: MUSaves(3) = 11: MUSaves(4) = 15: MUSaves(5) = 12
-    Dim TFSaves(5) As Integer
-    TFSaves(1) = 13: TFSaves(2) = 12: TFSaves(3) = 14: TFSaves(4) = 16: TFSaves(5) = 15
-    Dim SaveTypes(5) As String
-    SaveTypes(1) = "Paralysis, Poison, and Death": SaveTypes(2) = "Petrification or Polymorph": SaveTypes(3) = "Rod, Staff, or Wand": SaveTypes(4) = "Breath Weapon": SaveTypes(5) = "Spell"
-    Dim saveChecker(5, 4) As Integer
-    Rem make a 5x4 array and fill it with 20s
-    Rem sort of vibing my way to best saves for multiclassed characters
-    Rem the intent is to find the minimum and put it in the corresponding save array slot.
+Rem SAVING THROW MATRIX FOR CHARACTERS AND HUMAN TYPES [2, p.79]
+Dim ClericSaves(5) As Integer
+ClericSaves(1) = 10: ClericSaves(2) = 13: ClericSaves(3) = 14: ClericSaves(4) = 16: ClericSaves(5) = 15
+Dim FighterSaves(5) As Integer
+FighterSaves(1) = 14: FighterSaves(2) = 17: FighterSaves(3) = 18: FighterSaves(4) = 20: FighterSaves(5) = 19
+Dim MUSaves(5) As Integer
+MUSaves(1) = 14: MUSaves(2) = 13: MUSaves(3) = 11: MUSaves(4) = 15: MUSaves(5) = 12
+Dim TFSaves(5) As Integer
+TFSaves(1) = 13: TFSaves(2) = 12: TFSaves(3) = 14: TFSaves(4) = 16: TFSaves(5) = 15
+Dim SaveTypes(5) As String
+SaveTypes(1) = "Paralysis, Poison, and Death": SaveTypes(2) = "Petrification or Polymorph": SaveTypes(3) = "Rod, Staff, or Wand": SaveTypes(4) = "Breath Weapon": SaveTypes(5) = "Spell"
+Dim saveChecker(5, 4) As Integer
+Rem make a 5x4 array and fill it with 20s
+Rem sort of vibing my way to best saves for multiclassed characters
+Rem the intent is to find the minimum and put it in the corresponding save array slot.
+For I = 1 To 5
+    For J = 1 To 4
+        saveChecker(I, J) = 20
+    Next J
+Next I
+
+Rem if a cleric, fill line 1 with cleric saves
+If isCL Then
     For I = 1 To 5
-        For J = 1 To 4
-            saveChecker(I, J) = 20
-        Next J
+        saveChecker(I, 1) = ClericSaves(I)
+    Next I
+End If
+
+Rem if a fighter, fill line 2 with fighter saves
+If isFT Then
+    For I = 1 To 5
+        saveChecker(I, 2) = FighterSaves(I)
+    Next I
+End If
+
+Rem if a magic-user, fill line 3 with mu saves
+Rem astute readers will notice a pattern
+If isMU Then
+    For I = 1 To 5
+        saveChecker(I, 3) = MUSaves(I)
+    Next I
+End If
+
+Rem if a thief, fill line 4 with thief saves
+Rem SURPRISE THOUGH: ALSO IF A MONK
+If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
+    For I = 1 To 5
+        saveChecker(I, 4) = TFSaves(I)
+    Next I
+End If
+
+Dim FinalSaves(5) As Integer
+
+For I = 1 To 5
+    MinSave = saveChecker(I, 1)
+    For J = 2 To 4
+        If saveChecker(I, J) < MinSave Then
+            MinSave = saveChecker(I, J)
+        End If
+    Next J
+    FinalSaves(I) = MinSave
+Next I
+If ChosenClass.ClassName = "Paladin" Then
+    For I = 1 To 5
+        FinalSaves(I) = FinalSaves(I) - 2
+    Next I
+End If
+
+Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
+Rem This applies to gnomes as well. [1, p.16]
+Rem Furthermore, halflings [1, p.17]
+
+If RA = 1 Or RA = 3 Or RA = 5 Then
+    Select Case ConstitutionScore
+        Case 7 To 10
+            DfCnSpMd = 2
+        Case 11 To 13
+            DfCnSpMd = 3
+        Case 14 To 17
+            DfCnSpMd = 4
+        Case 18
+            DfCnSpMd = 5
+    End Select
+    FinalSaves(3) = FinalSaves(3) - DfCnSpMd: FinalSaves(5) = FinalSaves(5) - DfCnSpMd
+End If
+
+
+Print " STRENGTH: ";: Print StrengthScore
+Print SH$;: Print SO$;: If OW > 1 Then Print WL$
+Print " INTELLIGENCE: ";: Print IntelligenceScore
+Print lang$
+Print " WISDOM: ";: Print WisdomScore
+If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
+Print " DEXTERITY";: Print DexterityScore
+Print " CONSTITUTION ";: Print ConstitutionScore
+Print " CHARISMA ";: Print CharismaScore
+Print " MAY HAVE "; XF; " RETAINERS"
+For I = 1 To 5
+    Print SaveTypes(I);: Print FinalSaves(I);: Print ". ";:
+Next I
+
+If MN > 0 Then
+    Print "Character is psionic"
+    Print "Psionic Ability: " + Str$(PS)
+    Print "Psionic Attack Strength: " + Str$(PA)
+    Print "Psionic Defense Strength: " + Str$(MD)
+    Print "Number of Psionic Attack Modes: " + Str$(AtCt)
+
+    Print "Psionic Attack Modes: ";
+    For I = 1 To UBound(Selected$)
+        If I < UBound(Selected$) Then
+            Print Selected$(I); ", ";
+        Else
+            Print Selected$(I); ".";
+        End If
+    Next I
+    Print
+
+    Print "Number of Psionic Defense Modes: " + Str$(DfCt)
+
+    Print "Psionic Defense Modes: ";
+    For I = 1 To UBound(DefSelected$)
+        If I < UBound(DefSelected$) Then
+            Print DefSelected$(I); ", ";
+        Else
+            Print DefSelected$(I); ".";
+        End If
+    Next I
+    Print
+
+    Print "Number of Minor Disciplines: " + Str$(MnD)
+    If MjD > 0 Then Print "Number of Major Disciplines: " + Str$(MjD)
+    Print "Psychic Discipline: " + DV$
+End If
+
+If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
+    Print "Cleric Spells Per Day: "
+    Print "Level 1: 1"
+    Print CZ$
+    Print CU$
+    Print Z1$
+End If
+
+If ChosenClass.ClassName = "Druid" Then
+    Print "Druid Spells Per Day: "
+    Print "Level 1: 2"
+End If
+
+Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
+Rem if a  10 is rolled, they pick on that table
+Rem Read Magic is also free.
+If InStr(ChosenClass.ClassName, "Magic-User") Then
+
+    Dim StarterSpells(4) As String
+    StarterSpells(1) = "Read Magic"
+
+    Rem this is either bad style or Gygaxian style.
+    Rem We define three spell lists (above), and then load them into an array.
+    Dim SpellLists(3, 9) As String
+    For I = 1 To 9
+        SpellLists(1, I) = OffensiveSpells(I)
+    Next I
+    For I = 1 To 9
+        SpellLists(2, I) = DefensiveSpells(I)
+    Next I
+    For I = 1 To 9
+        SpellLists(3, I) = MiscSpells(I)
     Next I
 
-    Rem if a cleric, fill line 1 with cleric saves
-    If isCL Then
-        For I = 1 To 5
-            saveChecker(I, 1) = ClericSaves(I)
-        Next I
-    End If
+    Rem iterate through lists
+    For I = 1 To 3
+        spellNum = Int(Rnd * 10) + 1
 
-    Rem if a fighter, fill line 2 with fighter saves
-    If isFT Then
-        For I = 1 To 5
-            saveChecker(I, 2) = FighterSaves(I)
-        Next I
-    End If
+        If spellNum = 10 Then
+            Print "Available spells in category "; I
+            For K = 1 To 9
+                Print K; ". "; SpellLists(I, K)
+            Next K
 
-    Rem if a magic-user, fill line 3 with mu saves
-    Rem astute readers will notice a pattern
-    If isMU Then
-        For I = 1 To 5
-            saveChecker(I, 3) = MUSaves(I)
-        Next I
-    End If
+            Do
+                Input "You get to CHOOSE a spell (1-9): ", SPnum
+                If SPnum < 1 Or SPnum > 9 Then
+                    Print "Invalid choice. Please choose a number from 1 to 9."
+                End If
+            Loop While SPnum < 1 Or SPnum > 9
 
-    Rem if a thief, fill line 4 with thief saves
-    Rem SURPRISE THOUGH: ALSO IF A MONK
-    If isTF Or InStr(ChosenClass.ClassName, "Monk") Then
-        For I = 1 To 5
-            saveChecker(I, 4) = TFSaves(I)
-        Next I
-    End If
+            StarterSpells(I + 1) = SpellLists(I, SPnum)
 
-    Dim FinalSaves(5) As Integer
-
-    For I = 1 To 5
-        MinSave = saveChecker(I, 1)
-        For J = 2 To 4
-            If saveChecker(I, J) < MinSave Then
-                MinSave = saveChecker(I, J)
-            End If
-        Next J
-        FinalSaves(I) = MinSave
+        Else
+            StarterSpells(I + 1) = SpellLists(I, spellNum)
+        End If
     Next I
-    If ChosenClass.ClassName = "Paladin" Then
-        For I = 1 To 5
-            FinalSaves(I) = FinalSaves(I) - 2
-        Next I
-    End If
-
-    Rem Dwarves get a modifier based on Constitution/3.5 to RSW and Spell saves [1, p.15]
-    Rem This applies to gnomes as well. [1, p.16]
-    Rem Furthermore, halflings [1, p.17]
-
-    If RA = 1 Or RA = 3 Or RA = 5 Then
-        Select Case ConstitutionScore
-            Case 7 To 10
-                DfCnSpMd = 2
-            Case 11 To 13
-                DfCnSpMd = 3
-            Case 14 To 17
-                DfCnSpMd = 4
-            Case 18
-                DfCnSpMd = 5
-        End Select
-        FinalSaves(3) = FinalSaves(3) - DfCnSpMd: FinalSaves(5) = FinalSaves(5) - DfCnSpMd
-    End If
-
-
-    Print " STRENGTH: ";: Print StrengthScore
-    Print SH$;: Print SO$;: If OW > 1 Then Print WL$
-    Print " INTELLIGENCE: ";: Print IntelligenceScore
-    Print lang$
-    Print " WISDOM: ";: Print WisdomScore
-    If WF <> 0 Then Print " ADD "; WF; " TO ROLL - MAGIC BASED SAVING THROWS"
-    Print " DEXTERITY";: Print DexterityScore
-    Print " CONSTITUTION ";: Print ConstitutionScore
-    Print " CHARISMA ";: Print CharismaScore
-    Print " MAY HAVE "; XF; " RETAINERS"
-    For I = 1 To 5
-        Print SaveTypes(I);: Print FinalSaves(I);: Print ". ";:
+    Print "Spells Known:"
+    For I = 1 To 4
+        Print StarterSpells(I)
     Next I
-
-    If MN > 0 Then
-        Print "Character is psionic"
-        Print "Psionic Ability: " + Str$(PS)
-        Print "Psionic Attack Strength: " + Str$(PA)
-        Print "Psionic Defense Strength: " + Str$(MD)
-        Print "Number of Psionic Attack Modes: " + Str$(AtCt)
-
-        Print "Psionic Attack Modes: ";
-        For I = 1 To UBound(Selected$)
-            If I < UBound(Selected$) Then
-                Print Selected$(I); ", ";
-            Else
-                Print Selected$(I); ".";
-            End If
-        Next I
-        Print
-
-        Print "Number of Psionic Defense Modes: " + Str$(DfCt)
-
-        Print "Psionic Defense Modes: ";
-        For I = 1 To UBound(DefSelected$)
-            If I < UBound(DefSelected$) Then
-                Print DefSelected$(I); ", ";
-            Else
-                Print DefSelected$(I); ".";
-            End If
-        Next I
-        Print
-
-        Print "Number of Minor Disciplines: " + Str$(MnD)
-        If MjD > 0 Then Print "Number of Major Disciplines: " + Str$(MjD)
-        Print "Psychic Discipline: " + DV$
-    End If
-
-    If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
-        Print "Cleric Spells Per Day: "
-        Print "Level 1: 1"
-        Print CZ$
-        Print CU$
-        Print Z1$
-    End If
-
-    If ChosenClass.ClassName = "Druid" Then
-        Print "Druid Spells Per Day: "
-        Print "Level 1: 2"
-    End If
-
-    Rem Magic-users get one spell from each of three l1 tables: offensive, defensive, and misc. [2, p. 39]
-    Rem if a  10 is rolled, they pick on that table
-    Rem Read Magic is also free.
-    If InStr(ChosenClass.ClassName, "Magic-User") Then
-
-        Dim StarterSpells(4) As String
-        StarterSpells(1) = "Read Magic"
-
-        Rem this is either bad style or Gygaxian style.
-        Rem We define three spell lists (above), and then load them into an array.
-        Dim SpellLists(3, 9) As String
-        For I = 1 To 9
-            SpellLists(1, I) = OffensiveSpells(I)
-        Next I
-        For I = 1 To 9
-            SpellLists(2, I) = DefensiveSpells(I)
-        Next I
-        For I = 1 To 9
-            SpellLists(3, I) = MiscSpells(I)
-        Next I
-
-        Rem iterate through lists
-        For I = 1 To 3
-            spellNum = Int(Rnd * 10) + 1
-
-            If spellNum = 10 Then
-                Print "Available spells in category "; I
-                For K = 1 To 9
-                    Print K; ". "; SpellLists(I, K)
-                Next K
-
-                Do
-                    Input "You get to CHOOSE a spell (1-9): ", SPnum
-                    If SPnum < 1 Or SPnum > 9 Then
-                        Print "Invalid choice. Please choose a number from 1 to 9."
-                    End If
-                Loop While SPnum < 1 Or SPnum > 9
-
-                StarterSpells(I + 1) = SpellLists(I, SPnum)
-
-            Else
-                StarterSpells(I + 1) = SpellLists(I, spellNum)
-            End If
-        Next I
-        Print "Spells Known:"
-        For I = 1 To 4
-            Print StarterSpells(I)
-        Next I
-        Print "Magic-User Spells Per Day"
-        Print "Level 1: 1"
-    End If
+    Print "Magic-User Spells Per Day"
+    Print "Level 1: 1"
+End If
 
 
-    Rem Illusionists generate three random spells, rerolling duplicates. [2, p. 39]
-    If InStr(ChosenClass.ClassName, "Illusionist") Then
-        Dim SpellsKnown(3) As String
-        idx1 = 0
-        idx2 = 0
-        For I = 1 To 3
-            IlluStart:
-            spellNum = Int(Rnd * 12) + 1
-            If spellNum = idx1 Or spellNum = idx2 Then GoTo IlluStart
-            SpellsKnown(I) = IllusL1Spells(spellNum)
-            If I = 1 Then idx1 = spellNum
-            If I = 2 Then idx2 = spellNum
-        Next I
-        Print "Spells Known:"
-        For I = 1 To 3
-            Print SpellsKnown(I)
-        Next I
-        Print "Illusionist Spells Per Day"
-        Print "Level 1: 1"
-    End If
+Rem Illusionists generate three random spells, rerolling duplicates. [2, p. 39]
+If InStr(ChosenClass.ClassName, "Illusionist") Then
+    Dim SpellsKnown(3) As String
+    idx1 = 0
+    idx2 = 0
+    For I = 1 To 3
+        IlluStart:
+        spellNum = Int(Rnd * 12) + 1
+        If spellNum = idx1 Or spellNum = idx2 Then GoTo IlluStart
+        SpellsKnown(I) = IllusL1Spells(spellNum)
+        If I = 1 Then idx1 = spellNum
+        If I = 2 Then idx2 = spellNum
+    Next I
+    Print "Spells Known:"
+    For I = 1 To 3
+        Print SpellsKnown(I)
+    Next I
+    Print "Illusionist Spells Per Day"
+    Print "Level 1: 1"
+End If
 
 
-    If isTF = 1 Then
+If isTF = 1 Then
 
-        Print TY$: Print TA$: Print TB$
-        ThiefString(8) = " --"
+    Print TY$: Print TA$: Print TB$
+    ThiefString(8) = " --"
+    Print "  ";
+    For I = 1 To 8
+        Print ThiefString(I);
         Print "  ";
-        For I = 1 To 8
-            Print ThiefString(I);
-            Print "  ";
-        Next I
-        Print ""
-    End If
+    Next I
+    Print ""
+End If
 
-    If InStr(ChosenClass.ClassName, "Monk") Then
-        Rem We remove PICK PCKT from the thief skills, because monks don't pick pockets.
-        TA$ = " PICK REMV MOVE CLIM HIDE NEAR"
-        TB$ = " LOCK TRAP SILT SURF SHDW NOIS"
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Rem We remove PICK PCKT from the thief skills, because monks don't pick pockets.
+    TA$ = " PICK REMV MOVE CLIM HIDE NEAR"
+    TB$ = " LOCK TRAP SILT SURF SHDW NOIS"
 
-        Print "MONK SKILLS": Print TA$: Print TB$
-        Print "  ";
-        For I = 1 To 7
-            If I <> 3 Then Print ThiefString(I);
-            If I <> 3 Then Print "  ";
-        Next I
-        Print ""
+    Print "MONK SKILLS": Print TA$: Print TB$
+    Print "  ";
+    For I = 1 To 7
+        If I <> 3 Then Print ThiefString(I);
+        If I <> 3 Then Print "  ";
+    Next I
+    Print ""
 
-    End If
-    GoTo 3720
-    3600 X1$ = "ADD "
-    3601 X2$ = "3"
-    3602 X3$ = " TO"
-    3610 Return
+End If
+GoTo 3720
+3600 X1$ = "ADD "
+3601 X2$ = "3"
+3602 X3$ = " TO"
+3610 Return
 
-    3620 X1$ = "ADD "
-    3621 X2$ = "2"
-    3622 X3$ = " TO"
-    3630 Return
+3620 X1$ = "ADD "
+3621 X2$ = "2"
+3622 X3$ = " TO"
+3630 Return
 
-    3640 X1$ = "ADD "
-    3641 X2$ = "2"
-    3642 X3$ = " TO"
-    3650 Return
+3640 X1$ = "ADD "
+3641 X2$ = "2"
+3642 X3$ = " TO"
+3650 Return
 
-    3660 X1$ = "SUBTRACT "
-    3661 X2$ = "1"
-    3662 X3$ = " FROM"
-    3670 Return
+3660 X1$ = "SUBTRACT "
+3661 X2$ = "1"
+3662 X3$ = " FROM"
+3670 Return
 
-    3680 X1$ = "SUBTRACT "
-    3681 X2$ = "2"
-    3682 X3$ = " FROM"
-    3690 Return
+3680 X1$ = "SUBTRACT "
+3681 X2$ = "2"
+3682 X3$ = " FROM"
+3690 Return
 
-    3700 X1$ = "SUBTRACT "
-    3701 X2$ = "3"
-    3702 X3$ = " FROM"
-    3710 Return
+3700 X1$ = "SUBTRACT "
+3701 X2$ = "3"
+3702 X3$ = " FROM"
+3710 Return
 
-    Rem Stonecunning is a thirdism, but that's fine.
-    Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1, p. 15]
-    3720 If RA = 1 Then
-        Print "DWARVEN STONECUNNING"
-        Print " DETECT        OBSERVE   NOTICE  SPOT  INTUIT"
-        Print "  SLOPE   CONSTRUCTION   SHIFTS  TRAP   DEPTH"
-        Print "    75%            75%      66%   50%     50%"
-    End If
-    Rem I don't think this improves with level.
+Rem Stonecunning is a thirdism, but that's fine.
+Rem This didn't get a table heading, but it's in the Dwarf section of the PHB [1, p. 15]
+3720 If RA = 1 Then
+    Print "DWARVEN STONECUNNING"
+    Print " DETECT        OBSERVE   NOTICE  SPOT  INTUIT"
+    Print "  SLOPE   CONSTRUCTION   SHIFTS  TRAP   DEPTH"
+    Print "    75%            75%      66%   50%     50%"
+End If
+Rem I don't think this improves with level.
 
-    Rem As it turns out, Gnomes get stonecunning too.
-    If RA = 3 Then
-        Print "Gnomish Stonecunning"
-        Print " DETECT    NOTICE   INTUIT  DETERMINE"
-        Print "  SLOPE    UNSAFE    DEPTH  DIRECTION"
-        Print "    80%       70%      60%        50%"
-    End If
+Rem As it turns out, Gnomes get stonecunning too.
+If RA = 3 Then
+    Print "Gnomish Stonecunning"
+    Print " DETECT    NOTICE   INTUIT  DETERMINE"
+    Print "  SLOPE    UNSAFE    DEPTH  DIRECTION"
+    Print "    80%       70%      60%        50%"
+End If
 
-    Print "LANGUAGES KNOWN:"
-    For I = 1 To KL
-        Print "- "; KnownLangs(I)
+Print "LANGUAGES KNOWN:"
+For I = 1 To KL
+    Print "- "; KnownLangs(I)
+Next I
+
+Input "What is your character's name?", name$
+Dim filename As String
+filename = "character_" + Date$ + "_" + Time$
+
+For I = 1 To Len(filename)
+    Select Case Mid$(filename, I, 1)
+        Case "/", ":"
+            Mid$(filename, I, 1) = "_"
+    End Select
+Next I
+filename = filename + ".txt"
+
+Open filename For Output As #1
+
+Print #1, "=== ADVANCED DUNGEONS & DRAGONS CHARACTER ==="
+Print #1, ""
+Print #1, "Name: "; name$
+Print #1, "Race: "; ChosenRace.RaceName
+Print #1, "Class: "; ChosenClass.ClassName; " (Title: "; ChosenClass.Title; ")"
+Print #1, "Alignment: "; alignment
+Print #1, "Gold: "; GOLD
+Print #1, "Hit Points: "; HitPoints
+Print #1, "Base Armor Class: "; baseAC
+Print #1, "Add "; SF; " to hit in melee, "; DA; " to damage."
+Dim MeleeMatrix(15) As Integer
+For I = 1 To 15
+    MeleeMatrix(I) = AttackMatrix(I) - SF
+Next I
+Dim RangedMatrix(15) As Integer
+For I = 1 To 15
+    RangedMatrix(I) = AttackMatrix(I) - DF
+Next I
+Dim MatrixNumbers(15) As Integer
+For I = 1 To 15
+    MatrixNumbers(I) = 11 - I
+Next I
+
+Print #1, "== TO HIT ARMOR CLASS =="
+Print #1, "AC:     ";
+For I = 1 To 15
+    Print #1, Using "## "; MatrixNumbers(I);
+Next I
+Print #1, ""
+
+Print #1, "Melee:  ";
+For I = 1 To 15
+    Print #1, Using "## "; MeleeMatrix(I);
+Next I
+Print #1, ""
+
+Print #1, "Ranged: ";
+For I = 1 To 15
+    Print #1, Using "## "; RangedMatrix(I);
+Next I
+Print #1, ""
+
+
+Print #1, ""
+Print #1, "== ABILITY SCORES =="
+If PER > 0 Then
+    Print #1, "STR: "; StrengthScore; " ("; PER; "%)"
+Else
+    Print #1, "STR: "; StrengthScore
+End If
+Print #1, "INT: "; IntelligenceScore
+Print #1, "WIS: "; WisdomScore
+Print #1, "DEX: "; DexterityScore
+Print #1, "CON: "; ConstitutionScore
+Print #1, "CHA: "; CharismaScore
+Print #1, ""
+Print #1, "== SAVING THROWS =="
+For I = 1 To 5
+    Print #1, SaveTypes(I); ": "; FinalSaves(I)
+Next I
+
+Print #1, ""
+Print #1, "== DERIVED ATTRIBUTES =="
+Print #1, "Strength: "
+Print #1, "- Bend Bars/Lift Gates: "; SFF; "%"
+Print #1, "- Open sealed doors: "; OD; "/6"
+If OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
+If isMU = 1 Then
+    Print #1, "Intelligence: "
+    Print #1, "- "; SP$
+End If
+
+If WF <> 0 Then
+    Print #1, "Wisdom: "
+    Print #1, "- Add "; WF; " to saves against mental attacks."
+End If
+
+Print #1, "Dexterity: "
+Print #1, "- Defensive Adjustment: "; DefAdj
+Print #1, "- Reaction/Attacking Adjustment: "; DF
+
+Print #1, "Constitution: "
+Print #1, "- HP modifier per HD: "; HPMod
+Print #1, "- System Shock Survival: "; SystemShockSurvival; "%"
+Print #1, "- Resurrection Survival: "; ResurrectionSurvival; "%"
+
+Print #1, "Charisma: "
+Print #1, "- Maximum Retainerss: "; XF
+Print #1, "- Base Loyalty: "; LltyBase
+Print #1, "- Reaction Adjustment: "; ReactAdj
+
+Print #1, ""
+Print #1, "== LANGUAGES =="
+For I = 1 To KL
+    Print #1, "- "; KnownLangs(I)
+Next I
+Print #1, ""
+
+If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
+    Print #1, "Cleric Spells Per Day: Level 1: 1"
+End If
+
+If ChosenClass.ClassName = "Druid" Then
+    Print #1, "Druid Spells Per Day: Level 1: 2"
+End If
+
+If InStr(ChosenClass.ClassName, "Magic-User") Then
+    Print #1, "Magic-User Spells Per Day: Level 1: 1"
+    Print #1, "Known Spells:"
+    For I = 1 To 4
+        Print #1, "- "; StarterSpells(I)
+    Next I
+End If
+
+If InStr(ChosenClass.ClassName, "Illusionist") Then
+    Print #1, "Illusionist Spells Per Day: Level 1: 1"
+    Print #1, "Known Spells:"
+    For I = 1 To 3
+        Print #1, "- "; SpellsKnown(I)
+    Next I
+End If
+
+If isTF = 1 Then
+    Print #1, "== THIEF SKILLS =="
+
+    Print #1, TY$: Print #1, TA$: Print #1, TB$
+    For I = 1 To 8
+        Print #1, ThiefString(I);
+        If I < 8 Then Print #1, " | ";
+    Next I
+    Print #1, ""
+End If
+If InStr(ChosenClass.ClassName, "Monk") Then
+    Print #1, "== MONK SKILLS ==": Print #1, TA$: Print #1, TB$
+    Print #1, "  ";
+    For I = 1 To 7
+        If I <> 3 Then Print #1, ThiefString(I);
+        If I <> 3 Then Print #1, "  ";
+    Next I
+    Print #1, ""
+
+End If
+
+
+If MN > 0 Then
+    Print #1, "Character is psionic"
+    Print #1, "Psionic Ability: " + Str$(PS)
+    Print #1, "Psionic Attack Strength: " + Str$(PA)
+    Print #1, "Psionic Defense Strength: " + Str$(MD)
+    Print #1, "Number of Psionic Attack Modes: " + Str$(AtCt)
+
+    Print #1, "Psionic Attack Modes: ";
+    For I = 1 To UBound(Selected$)
+        If I < UBound(Selected$) Then
+            Print #1, Selected$(I); ", ";
+        Else
+            Print #1, Selected$(I); ".";
+        End If
+    Next I
+    Print #1,
+
+    Print #1, "Number of Psionic Defense Modes: " + Str$(DfCt)
+
+    Print #1, "Psionic Defense Modes: ";
+    For I = 1 To UBound(DefSelected$)
+        If I < UBound(DefSelected$) Then
+            Print #1, DefSelected$(I); ", ";
+        Else
+            Print #1, DefSelected$(I); ".";
+        End If
     Next I
 
-    Input "What is your character's name?", name$
-    Dim filename As String
-    filename = "character_" + Date$ + "_" + Time$
 
-    For I = 1 To Len(filename)
-        Select Case Mid$(filename, I, 1)
-            Case "/", ":"
-                Mid$(filename, I, 1) = "_"
-        End Select
-    Next I
-    filename = filename + ".txt"
-
-    Open filename For Output As #1
-
-    Print #1, "=== ADVANCED DUNGEONS & DRAGONS CHARACTER ==="
-    Print #1, ""
-    Print #1, "Name: "; name$
-    Print #1, "Race: "; ChosenRace.RaceName
-    Print #1, "Class: "; ChosenClass.ClassName; " (Title: "; ChosenClass.Title; ")"
-    Print #1, "Alignment: "; alignment
-    Print #1, "Gold: "; GOLD
-    Print #1, "Hit Points: "; HitPoints
-    Print #1, "Base Armor Class: "; baseAC
-    Print #1, "Add "; SF; " to hit in melee, "; DA; " to damage."
-    Dim MeleeMatrix(15) As Integer
-    For I = 1 To 15
-        MeleeMatrix(I) = AttackMatrix(I) - SF
-    Next I
-    Dim RangedMatrix(15) As Integer
-    For I = 1 To 15
-        RangedMatrix(I) = AttackMatrix(I) - DF
-    Next I
-    Dim MatrixNumbers(15) As Integer
-    For I = 1 To 15
-        MatrixNumbers(I) = 11 - I
-    Next I
-
-    Print #1, "== TO HIT ARMOR CLASS =="
-    Print #1, "AC:     ";
-    For I = 1 To 15
-        Print #1, Using "## "; MatrixNumbers(I);
-    Next I
-    Print #1, ""
-
-    Print #1, "Melee:  ";
-    For I = 1 To 15
-        Print #1, Using "## "; MeleeMatrix(I);
-    Next I
-    Print #1, ""
-
-    Print #1, "Ranged: ";
-    For I = 1 To 15
-        Print #1, Using "## "; RangedMatrix(I);
-    Next I
-    Print #1, ""
+    Print #1, "Number of Minor Disciplines: " + Str$(MnD)
+    If MjD > 0 Then Print #1, "Number of Major Disciplines: " + Str$(MjD)
+    Print #1, "Psychic Discipline: " + DV$
+End If
 
 
-    Print #1, ""
-    Print #1, "== ABILITY SCORES =="
-    If PER > 0 Then
-        Print #1, "STR: "; StrengthScore; " ("; PER; "%)"
-    Else
-        Print #1, "STR: "; StrengthScore
-    End If
-    Print #1, "INT: "; IntelligenceScore
-    Print #1, "WIS: "; WisdomScore
-    Print #1, "DEX: "; DexterityScore
-    Print #1, "CON: "; ConstitutionScore
-    Print #1, "CHA: "; CharismaScore
-    Print #1, ""
-    Print #1, "== SAVING THROWS =="
-    For I = 1 To 5
-        Print #1, SaveTypes(I); ": "; FinalSaves(I)
-    Next I
+Print #1, ""
+Print #1, "=== END OF CHARACTER SHEET ==="
+Print #1, "Generated: "; Date$; " "; Time$
 
-    Print #1, ""
-    Print #1, "== DERIVED ATTRIBUTES =="
-    Print #1, "Strength: "
-    Print #1, "- Bend Bars/Lift Gates: "; SFF; "%"
-    Print #1, "- Open sealed doors: "; OD; "/6"
-    If OW > 0 Then Print #1, "Open Wizard Locked doors: "; OW; "/6"
-    If isMU = 1 Then
-        Print #1, "Intelligence: "
-        Print #1, "- "; SP$
-    End If
+Close #1
 
-    If WF <> 0 Then
-        Print #1, "Wisdom: "
-        Print #1, "- Add "; WF; " to saves against mental attacks."
-    End If
+Print "Character written to: "; filename
 
-    Print #1, "Dexterity: "
-    Print #1, "- Defensive Adjustment: "; DefAdj
-    Print #1, "- Reaction/Attacking Adjustment: "; DF
-
-    Print #1, "Constitution: "
-    Print #1, "- HP modifier per HD: "; HPMod
-    Print #1, "- System Shock Survival: "; SystemShockSurvival; "%"
-    Print #1, "- Resurrection Survival: "; ResurrectionSurvival; "%"
-
-    Print #1, "Charisma: "
-    Print #1, "- Maximum Retainerss: "; XF
-    Print #1, "- Base Loyalty: "; LltyBase
-    Print #1, "- Reaction Adjustment: "; ReactAdj
-
-    Print #1, ""
-    Print #1, "== LANGUAGES =="
-    For I = 1 To KL
-        Print #1, "- "; KnownLangs(I)
-    Next I
-    Print #1, ""
-
-    If isCL = 1 And ChosenClass.ClassName <> "Druid" Then
-        Print #1, "Cleric Spells Per Day: Level 1: 1"
-    End If
-
-    If ChosenClass.ClassName = "Druid" Then
-        Print #1, "Druid Spells Per Day: Level 1: 2"
-    End If
-
-    If InStr(ChosenClass.ClassName, "Magic-User") Then
-        Print #1, "Magic-User Spells Per Day: Level 1: 1"
-        Print #1, "Known Spells:"
-        For I = 1 To 4
-            Print #1, "- "; StarterSpells(I)
-        Next I
-    End If
-
-    If InStr(ChosenClass.ClassName, "Illusionist") Then
-        Print #1, "Illusionist Spells Per Day: Level 1: 1"
-        Print #1, "Known Spells:"
-        For I = 1 To 3
-            Print #1, "- "; SpellsKnown(I)
-        Next I
-    End If
-
-    If isTF = 1 Then
-        Print #1, "== THIEF SKILLS =="
-
-        Print #1, TY$: Print #1, TA$: Print #1, TB$
-        For I = 1 To 8
-            Print #1, ThiefString(I);
-            If I < 8 Then Print #1, " | ";
-        Next I
-        Print #1, ""
-    End If
-    If InStr(ChosenClass.ClassName, "Monk") Then
-        Print #1, "== MONK SKILLS ==": Print #1, TA$: Print #1, TB$
-        Print #1, "  ";
-        For I = 1 To 7
-            If I <> 3 Then Print #1, ThiefString(I);
-            If I <> 3 Then Print #1, "  ";
-        Next I
-        Print #1, ""
-
-    End If
-
-
-    If MN > 0 Then
-        Print #1, "Character is psionic"
-        Print #1, "Psionic Ability: " + Str$(PS)
-        Print #1, "Psionic Attack Strength: " + Str$(PA)
-        Print #1, "Psionic Defense Strength: " + Str$(MD)
-        Print #1, "Number of Psionic Attack Modes: " + Str$(AtCt)
-
-        Print #1, "Psionic Attack Modes: ";
-        For I = 1 To UBound(Selected$)
-            If I < UBound(Selected$) Then
-                Print #1, Selected$(I); ", ";
-            Else
-                Print #1, Selected$(I); ".";
-            End If
-        Next I
-        Print #1,
-
-        Print #1, "Number of Psionic Defense Modes: " + Str$(DfCt)
-
-        Print #1, "Psionic Defense Modes: ";
-        For I = 1 To UBound(DefSelected$)
-            If I < UBound(DefSelected$) Then
-                Print #1, DefSelected$(I); ", ";
-            Else
-                Print #1, DefSelected$(I); ".";
-            End If
-        Next I
-
-
-        Print #1, "Number of Minor Disciplines: " + Str$(MnD)
-        If MjD > 0 Then Print #1, "Number of Major Disciplines: " + Str$(MjD)
-        Print #1, "Psychic Discipline: " + DV$
-    End If
-
-
-    Print #1, ""
-    Print #1, "=== END OF CHARACTER SHEET ==="
-    Print #1, "Generated: "; Date$; " "; Time$
-
-    Close #1
-
-    Print "Character written to: "; filename
-
-    4000 Print "DONE"
+4000 Print "DONE"
 
 
 Function ROLLDIERESULT
