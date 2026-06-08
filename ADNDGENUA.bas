@@ -177,7 +177,7 @@ Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
 Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 18
 Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 Classes(12).GoldDieNum = 5: Classes(12).GoldDieSize = 4
-Classes(12).Title = "Armiger"
+Classes(12).Title = "Horseman"
 
 
 Rem In which we define the multi-class combinations from the PHB SECTION "The-Multi-Classed Character" [1, pp. 32-33]
@@ -999,7 +999,7 @@ If ChosenClass.ClassName <> "Monk" Then
     GOLD = GOLD * 10
 End If
 
-If ChosenClass.ClassName = "Cavalier" Then
+If ChosenClass.Category = "Cavalier" Then
     Rem Cavaliers determine r social class randomly.
     Rem This was considered to be 'fun' in 1985.
     Rem It still is.
@@ -1023,16 +1023,16 @@ If ChosenClass.ClassName = "Cavalier" Then
             SocialClass = "UMC"
         Case Is < 97
             SocialClass = "LUC"
+            If ChosenClass.ClassName = "Cavalier" Then
+                ChosenClass.Title = "Armiger"
+            End If
+            If ChosenClass.ClassName = "Paladin" Then
+                ChosenClass.Title = "Gallant"
+            End If
         Case Is < 100
             SocialClass = "MUC"
         Case Is = 100
             SocialClass = "UUC"
-
-
-
-
-
-
     End Select
 
 End If
