@@ -110,7 +110,10 @@ Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 18
 Classes(4).MinCha = 17 Rem It did not.
 Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
 Classes(4).GoldDieNum = 5: Classes(4).GoldDieSize = 4
-Classes(4).Title = "Gallant"
+Rem We assume class issues for the paladin, but by class issue we mean social class not character class.
+Rem Can you imagine if the term 'level' referred to three different things?
+Rem https://www.giantitp.com/comics/oots0012.html
+Classes(4).Title = "Horseman"
 
 Classes(5).ClassName = "Magic-User": Classes(5).ClassIndex = 5: Classes(5).HitDie = 4
 Classes(5).Category = "Magic-User"
@@ -177,6 +180,9 @@ Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
 Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 18
 Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 Classes(12).GoldDieNum = 5: Classes(12).GoldDieSize = 4
+Rem In honor of repetition, we mark the class /class distinction again for the cavalier.
+Rem https://www.giantitp.com/comics/oots0012.html
+Rem L E V E L
 Classes(12).Title = "Horseman"
 
 
