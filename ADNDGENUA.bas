@@ -1007,7 +1007,33 @@ If ChosenClass.ClassName = "Cavalier" Then
     Rem Theoretically this should be moved outside, but we're looking for salient mechanical fidenlity, not  complete fidelity.
     Rem SOCIAL CLASS TABLE [2, p. 82]
     Dim SocialClass As String
+    ClassPercentage = Int(Rnd * 100) + 1
+    Select Case ClassPercentage
+        Case Is < 5
+            SocialClass = "LLC"
+        Case Is < 11
+            SocialClass = "MLC"
+        Case Is < 21
+            SocialClass = "ULC"
+        Case Is < 36
+            SocialClass = "LMC"
+        Case Is < 56
+            SocialClass = "MMC"
+        Case Is < 88
+            SocialClass = "UMC"
+        Case Is < 97
+            SocialClass = "LUC"
+        Case Is < 100
+            SocialClass = "MUC"
+        Case Is = 100
+            SocialClass = "UUC"
 
+
+
+
+
+
+    End Select
 
 End If
 
