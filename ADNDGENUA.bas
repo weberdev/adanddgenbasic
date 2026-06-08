@@ -999,6 +999,17 @@ If ChosenClass.ClassName <> "Monk" Then
     GOLD = GOLD * 10
 End If
 
+If ChosenClass.ClassName = "Cavalier" Then
+    Rem Cavaliers determine r social class randomly.
+    Rem This was considered to be 'fun' in 1985.
+    Rem It still is.
+    Rem We only check this for Cavaliers
+    Rem Theoretically this should be moved outside, but we're looking for salient mechanical fidenlity, not  complete fidelity.
+    Rem SOCIAL CLASS TABLE [2, p. 82]
+    Dim SocialClass As String
+
+
+End If
 
 Rem This is an edge case for non-fighters with 18 STR.
 Rem You don't get to break out your golf ball d100s for a MUSCLE WIZARD
@@ -2103,4 +2114,4 @@ Rem [4] G. Gygax, Advanced Dungeons & Dragons Dungeon Masters Guide, 1st ed., La
 
 Rem [5] D. Turnbull, Ed., Fiend Folio. Lake Geneva, WI, USA: TSR Hobbies, Inc., 1981.
 
-rem [6] J. M. Ward and R. J. Kuntz, Deities & Demigods. 4th printing. Lake Geneva, WI, USA: TSR Hobbies, Inc., 1981.
+Rem [6] J. M. Ward and R. J. Kuntz, Deities & Demigods. 4th printing. Lake Geneva, WI, USA: TSR Hobbies, Inc., 1981.
