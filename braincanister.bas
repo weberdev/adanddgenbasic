@@ -165,7 +165,7 @@ For I = 3 To 18
                             DefSelected(1) = DefenseModes(1)
 
                             Print
-                            DEFct = AtCt ' You gain as many defense modes as attack modes
+                            rem DEFct = AtCt ' You gain as many defense modes as attack modes
 
                             Rem Number of Psionic Disciplines is PERCENTILE AGAIN
                             Rem ON ANOTHER ODDLY SHAPED TABLE
