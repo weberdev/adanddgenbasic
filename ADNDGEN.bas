@@ -1144,7 +1144,8 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Print
         Print "You automatically gain: Mind Blank"
 
-        DEFct = AtCt ' You gain as many defense modes as attack modes
+        Rem the line below  is wrong. I don't know why it was implemented. It's  been excised.
+        Rem DEFct = AtCt ' You gain as many defense modes as attack modes
         If DEFct > 1 Then
             Print "You may choose"; DEFct - 1; " additional psionic defense mode(s):"
             For I = 2 To DEFct
