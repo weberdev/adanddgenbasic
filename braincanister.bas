@@ -142,7 +142,7 @@ For I = 3 To 18
                             Select Case MentPer
                                 Case 1 To 25
                                     DfCt = 2
-                                Case 25 To 75
+                                Case 26 To 75
                                     DfCt = 3
                                 Case 76 To 90
                                     DfCt = 4
