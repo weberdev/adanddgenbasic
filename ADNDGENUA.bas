@@ -1223,7 +1223,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
 
         Rem Quoth Gygax: "The total is the *psionic strength* of the individual; it is the strength for attack and for defense."
         Rem Continued: "Psionic ability is double psionic strength, i.e. 10 to 344."
-        Rem Continued: "On-ehalf of *psionic ability* is attack strength, one-half is defense strength."
+        Rem Continued: "One-half of *psionic ability* is attack strength, one-half is defense strength."
         PA = 2 * PS
         PD = PS
 
@@ -1309,7 +1309,7 @@ Rem PC must have one or more mental stats at or above 16 to check for psionics
         Print
         Print "You automatically gain: Mind Blank"
 
-        rem = AtCt ' You gain as many defense modes as attack modes
+        Rem = AtCt ' You gain as many defense modes as attack modes
         If DEFct > 1 Then
             Print "You may choose"; DEFct - 1; " additional psionic defense mode(s):"
             For I = 2 To DEFct
