@@ -522,18 +522,18 @@ If ChosenRace.HasSubRaces = 1 Then
                     Rem There are half a dozen traits that dark elves get, will need to return to this.
                 Case 2
                     ChosenRace.RaceName = "Gray Elf"
-                    IntelligenceScore = IntelligenceScore + 1
+                    AbilityAssignedArray(2) = AbilityAssignedArray(2) + 1
                     Rem Gray elves get a free point of int for no cost [2, p. 10]. This was considered fair and balanced.
                 Case 3
                     ChosenRace.RaceName = "High Elf"
                 Case 4
                     ChosenRace.RaceName = "Valley Elf"
-                    IntelligenceScore = IntelligenceScore + 1
+                    AbilityAssignedArray(2) = AbilityAssignedArray(2) + 1
                     Rem Valley elves get a free point of int for no cost [2, p. 10]. This was considered fair and balanced.
                     Rem Valley Elves also get gnomish as a language. Gray elves have been power crept on the same page.
                 Case 5
                     ChosenRace.RaceName = "Wild Elf"
-                    StrengthScore = StrengthScore + 2
+                    AbilityAssignedArray(1) = AbilityAssignedArray(1) + 2
                     Rem Wild: Druid, Fighter, Thief, Acrobat, Assassin
                     Classes(4).RaceElf = 0: Classes(5).RaceElf = 0: Classes(7).RaceElf = 0
                     Classes(8).RaceElf = 1: Classes(12).RaceElf = 0
@@ -541,8 +541,8 @@ If ChosenRace.HasSubRaces = 1 Then
 
                 Case 6
                     ChosenRace.RaceName = "Wood Elf"
-                    IntelligenceScore = IntelligenceScore - 1
-                    StrengthScore = StrengthScore + 1
+                    AbilityAssignedArray(2) = AbilityAssignedArray(2) - 1
+                    AbilityAssignedArray(1) = AbilityAssignedArray(1) + 1
                     Rem Wood elves speak the tongue of woodland mammals.
                     Rem I'll patch that in to languages later.
             End Select
