@@ -904,7 +904,7 @@ For I = 1 To 37
 Next I
 
 Rem CHARACTER RACE TABLE II.: CLASS LEVEL LIMITATIONS from PHB [1, p. 14]
-For I = 1 To 11
+For I = 1 To 12
     Select Case RA
         Case 1
             If Classes(I).RaceDwarf = 1 Then FirstPassClassHolder(I) = Classes(I)
