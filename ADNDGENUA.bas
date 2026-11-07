@@ -1912,6 +1912,7 @@ Print #1, "WIS: "; WisdomScore
 Print #1, "DEX: "; DexterityScore
 Print #1, "CON: "; ConstitutionScore
 Print #1, "CHA: "; CharismaScore
+Print #1, "COM: "; ComelinessScore
 Print #1, ""
 Print #1, "== SAVING THROWS =="
 For I = 1 To 5
