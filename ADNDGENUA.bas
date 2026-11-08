@@ -551,6 +551,14 @@ If ChosenRace.HasSubRaces = 1 Then
             Print "1. Deep Gnome" Rem Svirfneblin, term used interchageably.
             Print "2. Surface Gnome"
             Input "Select your chosen subrace. ", SR
+            Select Case SR
+                Case 1
+                    ChosenRace.RaceName = "Deep Gnome"
+                    Rem Will add details at end, small changes
+                Case 2
+                    ChosenRace.RaceName = "Surface Gnome"
+                    Rem No huge changes
+            End Select
     End Select
 End If
 
