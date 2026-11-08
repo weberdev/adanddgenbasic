@@ -78,7 +78,7 @@ Classes(1).MinStr = 9: Classes(1).MinInt = 0: Classes(1).MinWis = 0
 Classes(1).MinDex = 0: Classes(1).MinCon = 7: Classes(1).MinCha = 0
 Rem Futureproofing for UA barbarian. My honest reaction: >:(
 Rem Futureproofing paid off.
-Classes(1).MaxWis = 18
+Classes(1).MaxWis = 20
 Classes(1).RaceDwarf = 1: Classes(1).RaceElf = 1: Classes(1).RaceGnome = 1
 Classes(1).RaceHalfElf = 1: Classes(1).RaceHalfling = 1
 Classes(1).RaceHalfOrc = 1: Classes(1).RaceHuman = 1
@@ -96,7 +96,7 @@ Classes(2).Title = "Barbarian"
 Classes(3).ClassName = "Ranger": Classes(3).ClassIndex = 3: Classes(3).HitDie = 16
 Classes(3).Category = "Fighter"
 Classes(3).MinStr = 13: Classes(3).MinInt = 13: Classes(3).MinWis = 14: Classes(3).MinCon = 14
-Classes(3).MaxWis = 18
+Classes(3).MaxWis = 20
 Rem Elves can't be rangers for some reason.
 Rem Rangers don't have to be dextrous for some reason.
 Classes(3).RaceHalfElf = 1: Classes(3).RaceHuman = 1
@@ -106,7 +106,7 @@ Classes(3).Title = "Runner"
 Classes(4).ClassName = "Paladin": Classes(4).ClassIndex = 4: Classes(4).HitDie = 10
 Classes(4).Category = "Cavalier"
 Classes(4).MinStr = 15: Classes(4).MinInt = 10: Classes(4).MinWis = 13
-Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 18
+Classes(4).MinDex = 15: Classes(4).MinCon = 15: Classes(4).MaxWis = 20
 Classes(4).MinCha = 17 Rem It did not.
 Classes(4).RaceElf = 1: Classes(4).RaceHalfElf = 1: Classes(4).RaceHuman = 1
 Classes(4).GoldDieNum = 5: Classes(4).GoldDieSize = 4
@@ -117,14 +117,14 @@ Classes(4).Title = "Horseman"
 
 Classes(5).ClassName = "Magic-User": Classes(5).ClassIndex = 5: Classes(5).HitDie = 4
 Classes(5).Category = "Magic-User"
-Classes(5).MinInt = 9: Classes(5).MinDex = 6: Classes(5).MaxWis = 18
+Classes(5).MinInt = 9: Classes(5).MinDex = 6: Classes(5).MaxWis = 20
 Classes(5).RaceElf = 1: Classes(5).RaceHalfElf = 1: Classes(5).RaceHuman = 1
 Classes(5).GoldDieNum = 2: Classes(5).GoldDieSize = 4
 Classes(5).Title = "Prestidigitator"
 
 Classes(6).ClassName = "Illusionist": Classes(6).ClassIndex = 6: Classes(6).HitDie = 4
 Classes(6).Category = "Magic-User"
-Classes(6).MinInt = 15: Classes(6).MinDex = 16: Classes(6).MaxWis = 18
+Classes(6).MinInt = 15: Classes(6).MinDex = 16: Classes(6).MaxWis = 20
 Classes(6).RaceGnome = 1: Classes(6).RaceHuman = 1
 Classes(6).GoldDieNum = 2: Classes(6).GoldDieSize = 4
 Rem Not an error, l1 wizards and illusionists have the same title.
@@ -133,7 +133,7 @@ Classes(6).Title = "Prestidigitator"
 
 Classes(7).ClassName = "Cleric": Classes(7).ClassIndex = 7: Classes(7).HitDie = 8
 Classes(7).Category = "Cleric"
-Classes(7).MinWis = 9: Classes(7).MaxWis = 18
+Classes(7).MinWis = 9: Classes(7).MaxWis = 20
 Classes(7).RaceDwarf = 1: Classes(7).RaceElf = 1: Classes(7).RaceGnome = 1
 Classes(7).RaceHalfElf = 1: Classes(7).RaceHalfOrc = 1: Classes(7).RaceHuman = 1
 Classes(7).GoldDieNum = 3: Classes(7).GoldDieSize = 6
@@ -141,7 +141,7 @@ Classes(7).Title = "Acolyte"
 
 Classes(8).ClassName = "Druid": Classes(8).ClassIndex = 8: Classes(8).HitDie = 8
 Classes(8).Category = "Cleric"
-Classes(8).MinWis = 12: Classes(8).MinCha = 15: Classes(8).MaxWis = 18
+Classes(8).MinWis = 12: Classes(8).MinCha = 15: Classes(8).MaxWis = 20
 Rem the restriction on elves and nature classes comes from Moorcock and Poul Anderson. Elves are not nearly as Tolkeinian in early D&D.
 Classes(8).RaceHalfElf = 1: Classes(8).RaceHalfling = 1: Classes(8).RaceHuman = 1
 Classes(8).GoldDieNum = 3: Classes(8).GoldDieSize = 6
@@ -149,7 +149,7 @@ Classes(8).Title = "Aspirant"
 
 Classes(9).ClassName = "Thief": Classes(9).ClassIndex = 9: Classes(9).HitDie = 6
 Classes(9).Category = "Thief"
-Classes(9).MinDex = 9: Classes(9).MaxWis = 18
+Classes(9).MinDex = 9: Classes(9).MaxWis = 20
 Rem everyone can steal
 Classes(9).RaceDwarf = 1: Classes(9).RaceElf = 1: Classes(9).RaceGnome = 1
 Classes(9).RaceHalfElf = 1: Classes(9).RaceHalfling = 1: Classes(9).RaceHalfOrc = 1
@@ -159,7 +159,7 @@ Classes(9).Title = "Rogue (Apprentice)"
 
 Classes(10).ClassName = "Assassin": Classes(10).ClassIndex = 10: Classes(10).HitDie = 6
 Classes(10).Category = "Thief"
-Classes(10).MinInt = 11: Classes(10).MinDex = 12: Classes(10).MaxWis = 18
+Classes(10).MinInt = 11: Classes(10).MinDex = 12: Classes(10).MaxWis = 20
 Classes(10).RaceDwarf = 1: Classes(10).RaceElf = 1: Classes(10).RaceGnome = 1
 Classes(10).RaceHalfElf = 1: Classes(10).RaceHalfOrc = 1: Classes(10).RaceHuman = 1
 Classes(10).GoldDieNum = 2: Classes(10).GoldDieSize = 6
@@ -168,7 +168,7 @@ Classes(10).Title = "Bravo (Apprentice)"
 Classes(11).ClassName = "Monk": Classes(11).ClassIndex = 11: Classes(11).HitDie = 4
 Classes(11).Category = "Monk"
 Classes(11).MinStr = 15: Classes(11).MinWis = 15: Classes(11).MinDex = 15: Classes(11).MinCon = 11
-Classes(11).MaxWis = 18
+Classes(11).MaxWis = 20
 Classes(11).RaceHuman = 1
 Classes(11).GoldDieNum = 5: Classes(11).GoldDieSize = 4
 Classes(11).Title = "Novice"
@@ -177,7 +177,7 @@ Rem Cavalier from Unearthed Arcana [2, p. 14]
 Classes(12).ClassName = "Cavalier": Classes(12).ClassIndex = 12: Classes(12).HitDie = 12
 Classes(12).Category = "Cavalier"
 Classes(12).MinStr = 15: Classes(12).MinDex = 15: Classes(12).MinCon = 15
-Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 18
+Classes(12).MinInt = 10: Classes(12).MinWis = 10: Classes(12).MaxWis = 20
 Classes(12).RaceHuman = 1: Classes(12).RaceHalfElf = 1: Classes(12).RaceElf = 1
 Classes(12).GoldDieNum = 5: Classes(12).GoldDieSize = 4
 Rem In honor of repetition, we mark the class /class distinction again for the cavalier.
@@ -192,80 +192,80 @@ Dim MultiClasses(13) As ClassDef
 
 MultiClasses(1).ClassName = "Cleric/Fighter": MultiClasses(1).ClassIndex = (12): MultiClasses(1).HitDie = 10: MultiClasses(1).SecondHD = 8
 MultiClasses(1).Category = "Cleric/Fighter"
-MultiClasses(1).MinStr = 9: MultiClasses(1).MinCon = 7: MultiClasses(1).MinWis = 9: MultiClasses(1).MaxWis = 18
+MultiClasses(1).MinStr = 9: MultiClasses(1).MinCon = 7: MultiClasses(1).MinWis = 9: MultiClasses(1).MaxWis = 20
 MultiClasses(1).RaceHalfElf = 1: MultiClasses(1).RaceHalfOrc = 1
 MultiClasses(1).GoldDieNum = 5: MultiClasses(1).GoldDieSize = 4
 
 MultiClasses(2).ClassName = "Cleric/Fighter/Magic-User": MultiClasses(2).ClassIndex = (13): MultiClasses(2).HitDie = 10: MultiClasses(2).SecondHD = 8: MultiClasses(2).ThirdHD = 4
 MultiClasses(2).Category = "Cleric/Fighter/Magic-User"
-MultiClasses(2).MinStr = 9: MultiClasses(2).MinCon = 7: MultiClasses(2).MinWis = 9: MultiClasses(2).MaxWis = 18
+MultiClasses(2).MinStr = 9: MultiClasses(2).MinCon = 7: MultiClasses(2).MinWis = 9: MultiClasses(2).MaxWis = 20
 MultiClasses(2).RaceHalfElf = 1
 MultiClasses(2).GoldDieNum = 5: MultiClasses(2).GoldDieSize = 4
 
 MultiClasses(3).ClassName = "Cleric/Ranger": MultiClasses(3).ClassIndex = 14: MultiClasses(3).HitDie = 8: MultiClasses(3).SecondHD = 8
 MultiClasses(3).Category = "Cleric/Fighter"
-MultiClasses(3).MinStr = 13: MultiClasses(3).MinInt = 13: MultiClasses(3).MinWis = 14: MultiClasses(3).MinCon = 14: MultiClasses(3).MaxWis = 18
+MultiClasses(3).MinStr = 13: MultiClasses(3).MinInt = 13: MultiClasses(3).MinWis = 14: MultiClasses(3).MinCon = 14: MultiClasses(3).MaxWis = 20
 MultiClasses(3).RaceHalfElf = 1
 MultiClasses(3).GoldDieNum = 5: MultiClasses(3).GoldDieSize = 4
 
 MultiClasses(4).ClassName = "Cleric/Magic-User": MultiClasses(4).ClassIndex = 15: MultiClasses(4).HitDie = 8: MultiClasses(4).SecondHD = 4
 MultiClasses(4).Category = "Cleric/Magic-User"
-MultiClasses(4).MinWis = 9: MultiClasses(4).MinInt = 9: MultiClasses(4).MaxWis = 18
+MultiClasses(4).MinWis = 9: MultiClasses(4).MinInt = 9: MultiClasses(4).MaxWis = 20
 MultiClasses(4).RaceHalfElf = 1
 MultiClasses(4).GoldDieNum = 3: MultiClasses(4).GoldDieSize = 5
 
 MultiClasses(5).ClassName = "Cleric/Thief": MultiClasses(5).ClassIndex = 16: MultiClasses(5).HitDie = 8: MultiClasses(5).SecondHD = 6
 MultiClasses(5).Category = "Cleric/Thief"
-MultiClasses(5).MinWis = 9: MultiClasses(5).MinDex = 9: MultiClasses(5).MaxWis = 18
+MultiClasses(5).MinWis = 9: MultiClasses(5).MinDex = 9: MultiClasses(5).MaxWis = 20
 MultiClasses(5).RaceHalfElf = 1: MultiClasses(5).RaceHalfOrc = 1
 MultiClasses(5).GoldDieNum = 3: MultiClasses(5).GoldDieSize = 5
 
 MultiClasses(6).ClassName = "Cleric/Assassin": MultiClasses(6).ClassIndex = 17: MultiClasses(6).HitDie = 8: MultiClasses(6).SecondHD = 6
 MultiClasses(6).Category = "Cleric/Thief"
-MultiClasses(6).MinWis = 9: MultiClasses(6).MinDex = 13: MultiClasses(6).MinInt = 11: MultiClasses(6).MaxWis = 18
+MultiClasses(6).MinWis = 9: MultiClasses(6).MinDex = 13: MultiClasses(6).MinInt = 11: MultiClasses(6).MaxWis = 20
 MultiClasses(6).RaceHalfOrc = 1
 MultiClasses(6).GoldDieNum = 3: MultiClasses(6).GoldDieSize = 5
 
 MultiClasses(7).ClassName = "Fighter/Magic-User": MultiClasses(7).ClassIndex = 18: MultiClasses(7).HitDie = 10: MultiClasses(7).SecondHD = 4
 MultiClasses(7).Category = "Fighter/Magic-User"
-MultiClasses(7).MinStr = 9: MultiClasses(7).MinCon = 7: MultiClasses(7).MinInt = 9: MultiClasses(7).MaxWis = 18
+MultiClasses(7).MinStr = 9: MultiClasses(7).MinCon = 7: MultiClasses(7).MinInt = 9: MultiClasses(7).MaxWis = 20
 MultiClasses(7).RaceElf = 1: MultiClasses(7).RaceHalfElf = 1
 MultiClasses(7).GoldDieNum = 4: MultiClasses(7).GoldDieSize = 4
 
 MultiClasses(8).ClassName = "Fighter/Illusionist": MultiClasses(8).ClassIndex = 19: MultiClasses(8).HitDie = 10: MultiClasses(8).SecondHD = 4
 MultiClasses(8).Category = "Fighter/Magic-User"
-MultiClasses(8).MinStr = 9: MultiClasses(8).MinCon = 7: MultiClasses(8).MinDex = 16: MultiClasses(8).MinInt = 15: MultiClasses(8).MaxWis = 18
+MultiClasses(8).MinStr = 9: MultiClasses(8).MinCon = 7: MultiClasses(8).MinDex = 16: MultiClasses(8).MinInt = 15: MultiClasses(8).MaxWis = 20
 MultiClasses(8).RaceGnome = 1
 MultiClasses(8).GoldDieNum = 4: MultiClasses(8).GoldDieSize = 4
 
 MultiClasses(9).ClassName = "Fighter/Thief": MultiClasses(9).ClassIndex = 20: MultiClasses(9).HitDie = 10: MultiClasses(9).SecondHD = 6
 MultiClasses(9).Category = "Fighter/Thief"
-MultiClasses(9).MinStr = 9: MultiClasses(9).MinCon = 7: MultiClasses(9).MinDex = 9: MultiClasses(9).MaxWis = 18
+MultiClasses(9).MinStr = 9: MultiClasses(9).MinCon = 7: MultiClasses(9).MinDex = 9: MultiClasses(9).MaxWis = 20
 MultiClasses(9).RaceDwarf = 1: MultiClasses(9).RaceElf = 1: MultiClasses(9).RaceGnome = 1
 MultiClasses(9).RaceHalfElf = 1: MultiClasses(9).RaceHalfling = 1: MultiClasses(9).RaceHalfOrc = 1
 MultiClasses(9).GoldDieNum = 4: MultiClasses(9).GoldDieSize = 4
 
 MultiClasses(10).ClassName = "Fighter/Assassin": MultiClasses(10).ClassIndex = 21: MultiClasses(10).HitDie = 10: MultiClasses(10).SecondHD = 6
 MultiClasses(10).Category = "Fighter/Thief"
-MultiClasses(10).MinStr = 9: MultiClasses(10).MinCon = 7: MultiClasses(10).MinDex = 13: MultiClasses(10).MinInt = 11: MultiClasses(10).MaxWis = 18
+MultiClasses(10).MinStr = 9: MultiClasses(10).MinCon = 7: MultiClasses(10).MinDex = 13: MultiClasses(10).MinInt = 11: MultiClasses(10).MaxWis = 20
 MultiClasses(10).RaceHalfOrc = 1
 MultiClasses(10).GoldDieNum = 4: MultiClasses(10).GoldDieSize = 4
 
 MultiClasses(11).ClassName = "Fighter/Magic-User/Thief": MultiClasses(11).ClassIndex = 22: MultiClasses(11).HitDie = 10: MultiClasses(11).SecondHD = 4: MultiClasses(11).ThirdHD = 6
 MultiClasses(11).Category = "Fighter/Magic-User/Thief"
-MultiClasses(11).MinStr = 9: MultiClasses(11).MinCon = 7: MultiClasses(11).MinInt = 9: MultiClasses(11).MinDex = 9: MultiClasses(11).MaxWis = 18
+MultiClasses(11).MinStr = 9: MultiClasses(11).MinCon = 7: MultiClasses(11).MinInt = 9: MultiClasses(11).MinDex = 9: MultiClasses(11).MaxWis = 20
 MultiClasses(11).RaceElf = 1: MultiClasses(11).RaceHalfElf = 1
 MultiClasses(11).GoldDieNum = 4: MultiClasses(11).GoldDieSize = 4
 
 MultiClasses(12).ClassName = "Magic-User/Thief": MultiClasses(12).ClassIndex = 23: MultiClasses(12).HitDie = 4: MultiClasses(12).SecondHD = 6
 MultiClasses(12).Category = "Magic-User/Thief"
-MultiClasses(12).MinInt = 9: MultiClasses(12).MinDex = 9: MultiClasses(12).MaxWis = 18
+MultiClasses(12).MinInt = 9: MultiClasses(12).MinDex = 9: MultiClasses(12).MaxWis = 20
 MultiClasses(12).RaceElf = 1: MultiClasses(12).RaceHalfElf = 1
 MultiClasses(12).GoldDieNum = 3: MultiClasses(12).GoldDieSize = 4
 
 MultiClasses(13).ClassName = "Illusionist/Thief": MultiClasses(13).ClassIndex = 24: MultiClasses(13).HitDie = 4: MultiClasses(13).SecondHD = 6
 MultiClasses(13).Category = "Magic-User/Thief"
-MultiClasses(13).MinInt = 15: MultiClasses(13).MinDex = 16: MultiClasses(13).MaxWis = 18
+MultiClasses(13).MinInt = 15: MultiClasses(13).MinDex = 16: MultiClasses(13).MaxWis = 20
 MultiClasses(13).RaceGnome = 1
 MultiClasses(13).GoldDieNum = 3: MultiClasses(13).GoldDieSize = 4
 
@@ -295,28 +295,28 @@ Dim Races(7) As RaceDef
 Races(1).RaceName = "Dwarf"
 Races(1).RaceIndex = 1
 Races(1).MinStr = 8: Races(1).MaxStr = 18: Races(1).MinInt = 3: Races(1).MaxInt = 18
-Races(1).MinWis = 3: Races(1).MaxWis = 18: Races(1).MinDex = 3: Races(1).MaxDex = 17
+Races(1).MinWis = 3: Races(1).MaxWis = 20: Races(1).MinDex = 3: Races(1).MaxDex = 17
 Races(1).MinCon = 12: Races(1).MaxCon = 18: Races(1).MinCha = 3: Races(1).MaxCha = 16
 Races(1).HasSubRaces = 1
 
 Races(2).RaceName = "Elf"
 Races(2).RaceIndex = 2
 Races(2).MinStr = 3: Races(2).MaxStr = 18: Races(2).MinInt = 8: Races(2).MaxInt = 18
-Races(2).MinWis = 3: Races(2).MaxWis = 18: Races(2).MinDex = 7: Races(2).MaxDex = 18
+Races(2).MinWis = 3: Races(2).MaxWis = 20: Races(2).MinDex = 7: Races(2).MaxDex = 18
 Races(2).MinCon = 6: Races(2).MaxCon = 18: Races(2).MinCha = 8: Races(2).MaxCha = 18
 Races(2).HasSubRaces = 1
 
 Races(3).RaceName = "Gnome"
 Races(3).RaceIndex = 3
 Races(3).MinStr = 6: Races(3).MaxStr = 18: Races(3).MinInt = 7: Races(3).MaxInt = 18
-Races(3).MinWis = 3: Races(3).MaxWis = 18: Races(3).MinDex = 3: Races(3).MaxDex = 18
+Races(3).MinWis = 3: Races(3).MaxWis = 20: Races(3).MinDex = 3: Races(3).MaxDex = 18
 Races(3).MinCon = 8: Races(3).MaxCon = 18: Races(3).MinCha = 3: Races(3).MaxCha = 18
 Races(3).HasSubRaces = 1
 
 Races(4).RaceName = "Half-Elf"
 Races(4).RaceIndex = 4
 Races(4).MinStr = 3: Races(4).MaxStr = 18: Races(4).MinInt = 4: Races(4).MaxInt = 18
-Races(4).MinWis = 3: Races(4).MaxWis = 18: Races(4).MinDex = 6: Races(4).MaxDex = 18
+Races(4).MinWis = 3: Races(4).MaxWis = 20: Races(4).MinDex = 6: Races(4).MaxDex = 18
 Races(4).MinCon = 6: Races(4).MaxCon = 18: Races(4).MinCha = 3: Races(4).MaxCha = 18
 
 Races(5).RaceName = "Halfling"
@@ -334,7 +334,7 @@ Races(6).MinCon = 13: Races(6).MaxCon = 18: Races(6).MinCha = 3: Races(6).MaxCha
 Races(7).RaceName = "Human"
 Races(7).RaceIndex = 7
 Races(7).MinStr = 3: Races(7).MaxStr = 18: Races(7).MinInt = 3: Races(7).MaxInt = 18
-Races(7).MinWis = 3: Races(7).MaxWis = 18: Races(7).MinDex = 3: Races(7).MaxDex = 18
+Races(7).MinWis = 3: Races(7).MaxWis = 20: Races(7).MinDex = 3: Races(7).MaxDex = 18
 Races(7).MinCon = 3: Races(7).MaxCon = 18: Races(7).MinCha = 3: Races(7).MaxCha = 18
 
 
@@ -548,7 +548,7 @@ If ChosenRace.HasSubRaces = 1 Then
             End Select
 
         Case 3
-            Print "1. Deep Gnome"
+            Print "1. Deep Gnome" Rem Svirfneblin, term used interchageably.
             Print "2. Surface Gnome"
             Input "Select your chosen subrace. ", SR
     End Select
