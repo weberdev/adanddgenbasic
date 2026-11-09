@@ -340,27 +340,27 @@ Races(7).MinCon = 3: Races(7).MaxCon = 18: Races(7).MinCha = 3: Races(7).MaxCha 
 
 
 Rem Making a secondary system to assign ability scores.
-110 Dim Abilities(7) As Integer
+110 Dim Abilities(6) As Integer
 120 GenerateSortedStats Abilities()
-130 For I = 1 To 7
+130 For I = 1 To 6
     131 Print Str$(I) + "." + Str$(Abilities(I)) + "  ";
 132 Next I
 140 Print " "
-150 Dim AbilityAssignedArray(7) As Integer
-151 Dim UsedAbilityArray(7) As Integer
-152 Dim AbilityNames(7) As String
+150 Dim AbilityAssignedArray(6) As Integer
+151 Dim UsedAbilityArray(6) As Integer
+152 Dim AbilityNames(6) As String
 AbilityNames(1) = "Strength": AbilityNames(2) = "Intelligence": AbilityNames(3) = "Wisdom"
 AbilityNames(4) = "Dexterity": AbilityNames(5) = "Constitution": AbilityNames(6) = "Charisma"
-AbilityNames(7) = "Comeliness"
+Rem AbilityNames(7) = "Comeliness"
 
-160 For I = 1 To 7
+160 For I = 1 To 6
     Print "You rolled a "; Abilities(I)
     If Abilities(I) > 18 Then Print "Something is WRONG. This should not exceed 18.": Abilities(I) = 18
     If Abilities(I) < 3 Then Print "Something is WRONG. This should not be less than 3.": Abilities(I) = 3
     Print "Assign this score to one of the following unassigned stats:"
 
     Rem Show unassigned abilities
-    For J = 1 To 7
+    For J = 1 To 6
         If UsedAbilityArray(J) = 0 Then Print J; ". "; AbilityNames(J)
     Next J
 
@@ -377,13 +377,13 @@ Next I
 
 170 Print
 171 Print "Final Assigned Stats:"
-172 For I = 1 To 7
+172 For I = 1 To 6
     Print AbilityNames(I); ": "; AbilityAssignedArray(I)
 Next I
 
 180 Input "Are these ability scores okay? Enter y if yes, anything else if no.", response$
 181 If LCase$(response$) <> "y" Then
-    For I = 1 To 7
+    For I = 1 To 6
         UsedAbilityArray(I) = 0
     Next I
     GoTo 150
