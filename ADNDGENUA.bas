@@ -2,6 +2,7 @@ Rem AD&DGEN v1.2: Unearthed Arcana
 Rem Update began November 9, 2025
 Rem Ian Weber
 Rem Status Nov 9, one year anniversary (i've been busy)
+rem todo: classes and racial traits as string.
 Option Base 1
 Randomize Timer
 
